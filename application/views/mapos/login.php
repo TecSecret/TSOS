@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
     
@@ -52,7 +51,6 @@
 
         <script type="text/javascript">
             $(document).ready(function(){
-
                 $('#email').focus();
                 $("#formLogin").validate({
                      rules :{
@@ -82,10 +80,8 @@
                             }
                           }
                           });
-
                           return false;
                     },
-
                     errorClass: "help-inline",
                     errorElement: "span",
                     highlight:function(element, errorClass, validClass) {
@@ -96,9 +92,7 @@
                         $(element).parents('.control-group').addClass('success');
                     }
                 });
-
             });
-
         </script>
 
 
@@ -123,12 +117,3 @@
     </body>
 
 </html>
-
-
-
-
-
-
-
-
-
