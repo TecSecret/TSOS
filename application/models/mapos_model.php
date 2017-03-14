@@ -2,32 +2,34 @@
 class Mapos_model extends CI_Model {
 
     /**
-     * author: Ramon Silva 
+     * author: Ramon Silva
      * email: silva018-mg@yahoo.com.br
-     * 
+     *
      */
-    
-    function __construct() {
+
+    function __construct()
+    {
         parent::__construct();
     }
 
-    
-    function get($table,$fields,$where='',$perpage=0,$start=0,$one=false,$array='array'){
-        
+
+    function get($table,$fields,$where='',$perpage=0,$start=0,$one=false,$array='array')
+    {
+
         $this->db->select($fields);
         $this->db->from($table);
         $this->db->limit($perpage,$start);
+      
         if($where){
             $this->db->where($where);
         }
-        
         $query = $this->db->get();
-        
         $result =  !$one  ? $query->result() : $query->row();
         return $result;
     }
 
-    function getById($id){
+    function getById($id)
+    {
         $this->db->from('usuarios');
         $this->db->select('usuarios.*, permissoes.nome as permissao');
         $this->db->join('permissoes', 'permissoes.idPermissao = usuarios.permissoes_id', 'left');
@@ -36,26 +38,25 @@ class Mapos_model extends CI_Model {
         return $this->db->get()->row();
     }
 
-    public function alterarSenha($senha,$oldSenha,$id){
+    public function alterarSenha($senha,$oldSenha,$id)
+    {
 
         $this->db->where('idUsuarios', $id);
         $this->db->limit(1);
         $usuario = $this->db->get('usuarios')->row();
 
-        $oldSenha = $this->encrypt->sha1($oldSenha);
         if($usuario->senha != $oldSenha){
             return false;
         }
         else{
-            $this->db->set('senha',$this->encrypt->sha1($senha));
+            $this->db->set('senha',$senha);
             $this->db->where('idUsuarios',$id);
-            return $this->db->update('usuarios');    
+            return $this->db->update('usuarios');
         }
-
-        
     }
 
-    function pesquisar($termo){
+    function pesquisar($termo)
+    {
          $data = array();
          // buscando clientes
          $this->db->like('nomeCliente',$termo);
@@ -78,60 +79,79 @@ class Mapos_model extends CI_Model {
          $data['servicos'] = $this->db->get('servicos')->result();
 
          return $data;
-
-
     }
 
-    
-    function add($table,$data){
-        $this->db->insert($table, $data);         
+
+    function add($table,$data)
+    {
+        $this->db->insert($table, $data);
         if ($this->db->affected_rows() == '1')
-		{
-			return TRUE;
-		}
-		
-		return FALSE;       
+		      {
+  			return TRUE;
+  		  }
+
+  	    return FALSE;
     }
-    
-    function edit($table,$data,$fieldID,$ID){
+
+    function edit($table,$data,$fieldID,$ID)
+    {
         $this->db->where($fieldID,$ID);
         $this->db->update($table, $data);
 
         if ($this->db->affected_rows() >= 0)
-		{
-			return TRUE;
-		}
-		
-		return FALSE;       
+	      {
+			         return TRUE;
+		    }
+
+	      return FALSE;
     }
-    
+
     function delete($table,$fieldID,$ID){
         $this->db->where($fieldID,$ID);
         $this->db->delete($table);
         if ($this->db->affected_rows() == '1')
-		{
-			return TRUE;
-		}
-		
-		return FALSE;        
-    }   
-	
-	function count($table){
-		return $this->db->count_all($table);
-	}
+    		{
+    			return TRUE;
+    		}
 
-    function getOsAbertas(){
+    		return FALSE;
+    }
+
+	  function count($table){
+		    return $this->db->count_all($table);
+	  }
+
+    function getOs($coluna = 'idOs', $ordem = 'DESC'){
+        $this->db->select('o.idOs, o.dataFinal, o.dataInicial, c.nomeCliente');
+        $this->db->from('os o');
+        $this->db->join('clientes c', 'c.idClientes = o.clientes_id');
+        $this->db->where('o.status','Aberto');
+        $this->db->order_by($coluna, $ordem);
+        // $this->db->limit(10);
+        return $this->db->get()->result();
+    }       
+    function getOsAbertas($coluna = 'idOs', $ordem = 'DESC'){
+        $this->db->select('o.idOs, o.dataFinal, o.dataInicial, c.nomeCliente');
+        $this->db->from('os o');
+        $this->db->join('clientes c', 'c.idClientes = o.clientes_id');
+        $this->db->where('o.status','Aberto');
+        $this->db->order_by($coluna, $ordem);
+        // $this->db->limit(10);
+        return $this->db->get()->result();
+    }    
+    function getOsOrcamentos(){
         $this->db->select('os.*, clientes.nomeCliente');
         $this->db->from('os');
         $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
-        $this->db->where('os.status','Aberto');
-        $this->db->limit(10);
+        $this->db->where('os.status','Orçamento');
+        $this->db->order_by('idOs', 'DESC');
+        // $this->db->limit(10);
         return $this->db->get()->result();
     }
 
     function getProdutosMinimo(){
 
-        $sql = "SELECT * FROM produtos WHERE estoque <= estoqueMinimo LIMIT 10"; 
+        $sql = "SELECT * FROM produtos WHERE estoque <= estoqueMinimo LIMIT 10";
         return $this->db->query($sql)->result();
 
     }
@@ -142,7 +162,7 @@ class Mapos_model extends CI_Model {
     }
 
     public function getEstatisticasFinanceiro(){
-        $sql = "SELECT SUM(CASE WHEN baixado = 1 AND tipo = 'receita' THEN valor END) as total_receita, 
+        $sql = "SELECT SUM(CASE WHEN baixado = 1 AND tipo = 'receita' THEN valor END) as total_receita,
                        SUM(CASE WHEN baixado = 1 AND tipo = 'despesa' THEN valor END) as total_despesa,
                        SUM(CASE WHEN baixado = 0 AND tipo = 'receita' THEN valor END) as total_receita_pendente,
                        SUM(CASE WHEN baixado = 0 AND tipo = 'despesa' THEN valor END) as total_despesa_pendente FROM lancamentos";
@@ -156,7 +176,7 @@ class Mapos_model extends CI_Model {
     }
 
     public function addEmitente($nome, $cnpj, $ie, $logradouro, $numero, $bairro, $cidade, $uf,$telefone,$email, $logo){
-       
+
        $this->db->set('nome', $nome);
        $this->db->set('cnpj', $cnpj);
        $this->db->set('ie', $ie);
@@ -173,7 +193,7 @@ class Mapos_model extends CI_Model {
 
 
     public function editEmitente($id, $nome, $cnpj, $ie, $logradouro, $numero, $bairro, $cidade, $uf,$telefone,$email){
-        
+
        $this->db->set('nome', $nome);
        $this->db->set('cnpj', $cnpj);
        $this->db->set('ie', $ie);
@@ -189,11 +209,23 @@ class Mapos_model extends CI_Model {
     }
 
 
-    public function editLogo($id, $logo){
-        
-        $this->db->set('url_logo', $logo); 
+    public function editLogo($id, $logo)
+    {
+
+        $this->db->set('url_logo', $logo);
         $this->db->where('id', $id);
-        return $this->db->update('emitente'); 
-         
+        return $this->db->update('emitente');
+
+    }
+
+    public function getSenhaUsuario($email)
+    {
+      $this->db->select('senha, email');
+      $this->db->limit(1);
+      $this->db->where('email',$email);
+      $this->db->or_where('usuario',$email);
+      $this->db->where('situacao', 1);
+
+      return $this->db->get('usuarios');
     }
 }
