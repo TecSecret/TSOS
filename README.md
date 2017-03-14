@@ -4,7 +4,7 @@ Este projeto tem como objetico criar o melhor sistema ERP para gerenciamento de 
 Este projeto é mantido pelas equipes da:
 
 * TecSecret (https://tecsecret.com.br) = Responsável Técnico (Nelsir Luterek)
-* DC Web Solution (https://dcwebsolutions.com.br) = Responsável Técnico (Daniel)
+* DC WEBSOLUTIONS (https://dcwebsolutions.com.br) = Responsável Técnico (Daniel Costa)
 
 
 
