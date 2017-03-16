@@ -59,13 +59,13 @@
                     
                         $.ajax({
                           type: "POST",
-                          url: "<?php echo base_url();?>index.php/mapos/verificarLogin?ajax=true",
+                          url: "<?php echo base_url();?>tsdc/verificarLogin?ajax=true",
                           data: dados,
                           dataType: 'json',
                           success: function(data)
                           {
                             if(data.result == true){
-                                window.location.href = "<?php echo base_url();?>index.php/mapos";
+                                window.location.href = "<?php echo base_url();?>tsdc";
                             }
                             else{
                                 $('#call-modal').trigger('click');

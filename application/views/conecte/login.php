@@ -70,13 +70,13 @@
                     
                         $.ajax({
                           type: "POST",
-                          url: "<?php echo base_url();?>index.php/conecte/login?ajax=true",
+                          url: "<?php echo base_url();?>conecte/login?ajax=true",
                           data: dados,
                           dataType: 'json',
                           success: function(data)
                           {
                             if(data.result == true){
-                                window.location.href = "<?php echo base_url();?>index.php/conecte/painel";
+                                window.location.href = "<?php echo base_url();?>conecte/painel";
                             }
                             else{
                                 $('#call-modal').trigger('click');
