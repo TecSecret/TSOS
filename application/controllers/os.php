@@ -150,7 +150,7 @@ class Os extends MY_Acesso
     {
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('tsdc');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
@@ -213,7 +213,7 @@ class Os extends MY_Acesso
     {
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('tsdc');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
@@ -222,13 +222,13 @@ class Os extends MY_Acesso
         }
 
         $this->data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('tsdc_model');
         $this->data['TotalDescontoOs'] = $this->os_model->TotalDescontoOs($this->uri->segment(3));
         $this->data['valorTotal'] = $this->os_model->TotalValorOs($this->uri->segment(3));
         $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-        $this->data['emitente'] = $this->mapos_model->getEmitente();
+        $this->data['emitente'] = $this->tsdc_model->getEmitente();
 
         $this->data['view'] = 'os/visualizarOs';
         $this->load->view('tema/topo', $this->data);

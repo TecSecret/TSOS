@@ -1,6 +1,6 @@
 <?php
 
-class Os_model extends CI_Model
+class Os_model extends MY_Model
 {
     /**
      * author: Ramon Silva

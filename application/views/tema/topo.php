@@ -29,7 +29,7 @@
 <div id="user-nav" class="navbar navbar-inverse">
   <ul class="nav">
 
-    <li class=""><a title="" href="<?=site_url('minhaConta')?>"><i class="icon icon-star"></i> <span class="text">Minha Conta</span></a></li>
+    <li class=""><a title="" href="<?=site_url('mapos/minhaConta')?>"><i class="icon icon-star"></i> <span class="text">Minha Conta</span></a></li>
     <li class=""><a title="" href="<?=site_url('sair')?>"><i class="icon icon-share-alt"></i> <span class="text">Sair do Sistema</span></a></li>
   </ul>
 </div>

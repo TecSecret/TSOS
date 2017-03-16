@@ -4,7 +4,7 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Financeiro extends CI_Controller
+class Financeiro extends MY_Acesso
 {
     /**
      * author: Ramon Silva

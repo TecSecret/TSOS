@@ -1,4 +1,4 @@
-<a href="<?php echo base_url()?>index.php/usuarios/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Usuário</a>
+<a href="<?=site_url('usuarios/adicionar')?>" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Usuário</a>
 <?php
 if(!$results){?>
         <div class="widget-box">
@@ -18,15 +18,16 @@ if(!$results){?>
         <tr style="backgroud-color: #2D335B">
             <th>#</th>
             <th>Nome</th>
+            <th>Usuário</th>
             <th>CPF</th>
             <th>Telefone</th>
             <th>Nível</th>
             <th></th>
         </tr>
     </thead>
-    <tbody>    
+    <tbody>
         <tr>
-            <td colspan="5">Nenhum Usuário Cadastrado</td>
+            <td colspan="6">Nenhum Usuário Cadastrado</td>
         </tr>
     </tbody>
 </table>
@@ -53,6 +54,7 @@ if(!$results){?>
         <tr style="backgroud-color: #2D335B">
             <th>#</th>
             <th>Nome</th>
+            <th>Usuário</th>
             <th>CPF</th>
             <th>Telefone</th>
             <th>Nível</th>
@@ -61,25 +63,26 @@ if(!$results){?>
     </thead>
     <tbody>
         <?php foreach ($results as $r) {
-           
+
             echo '<tr>';
             echo '<td>'.$r->idUsuarios.'</td>';
             echo '<td>'.$r->nome.'</td>';
+            echo '<td>'.$r->usuario.'</td>';
             echo '<td>'.$r->cpf.'</td>';
             echo '<td>'.$r->telefone.'</td>';
             echo '<td>'.$r->permissao.'</td>';
             echo '<td>
-                      <a href="'.base_url().'index.php/usuarios/editar/'.$r->idUsuarios.'" class="btn btn-info tip-top" title="Editar Usuário"><i class="icon-pencil icon-white"></i></a>
+                      <a href="'.site_url('usuarios/editar/').''.$r->idUsuarios.'" class="btn btn-info tip-top" title="Editar Usuário"><i class="icon-pencil icon-white"></i></a>
                   </td>';
             echo '</tr>';
         }?>
         <tr>
-            
+
         </tr>
     </tbody>
 </table>
 </div>
 </div>
 
-	
+
 <?php echo $this->pagination->create_links();}?>

@@ -10,8 +10,8 @@ Este projeto é mantido pelas equipes da:
 
 ## Documentação e Suporte
 
-   - Documentação:  https://github.com/TecSecret/TSDC-Assistencia/wiki
-   - Suporte e reporte a problemas: https://github.com/TecSecret/TSDC-Assistencia/issues
+   - Documentação:  https://github.com/TecSecret/TS-Assistencia/wiki
+   - Suporte e reporte a problemas: https://github.com/TecSecret/TS-Assistencia/issues
 
 Contribua com o desenvolvimento do projeto.
 

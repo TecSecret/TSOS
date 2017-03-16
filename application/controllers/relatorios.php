@@ -1,20 +1,16 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Relatorios extends CI_Controller{
+class Relatorios extends MY_Acesso{
 
 
     /**
-     * author: Ramon Silva 
+     * author: Ramon Silva
      * email: silva018-mg@yahoo.com.br
-     * 
+     *
      */
-    
+
     public function __construct() {
         parent::__construct();
-        if((!$this->session->userdata('session_id')) || (!$this->session->userdata('logado'))){
-            redirect('mapos/login');
-        }
-        
         $this->load->model('Relatorios_model','',TRUE);
         $this->data['menuRelatorios'] = 'Relatórios';
 
@@ -55,20 +51,34 @@ class Relatorios extends CI_Controller{
         //$this->load->view('relatorios/imprimir/imprimirClientes', $data);
         $html = $this->load->view('relatorios/imprimir/imprimirClientes', $data, true);
         pdf_create($html, 'relatorio_clientes' . date('d/m/y'), TRUE);
-    
+
     }
 
     public function clientesRapid(){
         if(!$this->permission->checkPermission($this->session->userdata('permissao'),'rCliente')){
            $this->session->set_flashdata('error','Você não tem permissão para gerar relatórios de clientes.');
-           redirect(base_url());
+           redirect(site_url());
         }
 
         $data['clientes'] = $this->Relatorios_model->clientesRapid();
 
         $this->load->helper('mpdf');
-        //$this->load->view('relatorios/imprimir/imprimirClientes', $data);
+        // $this->load->view('relatorios/imprimir/imprimirClientes', $data);
         $html = $this->load->view('relatorios/imprimir/imprimirClientes', $data, true);
+        // // Create an instance of the class:
+        //
+
+
+        // sleep(60);
+
+        // $mpdf = new mPDF();
+        //
+        // // Write some HTML code:
+        // $mpdf->WriteHTML($html);
+        // $mpdf->WriteHTML('asdadasd');
+        // //
+        // // // Output a PDF file directly to the browser
+        // $mpdf->Output();
         pdf_create($html, 'relatorio_clientes' . date('d/m/y'), TRUE);
     }
 
@@ -81,9 +91,9 @@ class Relatorios extends CI_Controller{
         $data['produtos'] = $this->Relatorios_model->produtosRapid();
 
         $this->load->helper('mpdf');
-        //$this->load->view('relatorios/imprimir/imprimirProdutos', $data);
-        $html = $this->load->view('relatorios/imprimir/imprimirProdutos', $data, true);
-        pdf_create($html, 'relatorio_produtos' . date('d/m/y'), TRUE);
+        $this->load->view('relatorios/imprimir/imprimirProdutos', $data);
+        // $html = $this->load->view('relatorios/imprimir/imprimirProdutos', $data, true);
+        // pdf_create($html, 'relatorio_produtos' . date('d/m/y'), TRUE);
     }
 
     public function produtosRapidMin(){
@@ -97,7 +107,7 @@ class Relatorios extends CI_Controller{
         $this->load->helper('mpdf');
         $html = $this->load->view('relatorios/imprimir/imprimirProdutos', $data, true);
         pdf_create($html, 'relatorio_produtos' . date('d/m/y'), TRUE);
-        
+
     }
 
     public function produtosCustom(){
@@ -187,7 +197,7 @@ class Relatorios extends CI_Controller{
            $this->session->set_flashdata('error','Você não tem permissão para gerar relatórios de OS.');
            redirect(base_url());
         }
-        
+
         $dataInicial = $this->input->get('dataInicial');
         $dataFinal = $this->input->get('dataFinal');
         $cliente = $this->input->get('cliente');
@@ -210,7 +220,7 @@ class Relatorios extends CI_Controller{
 
         $this->data['view'] = 'relatorios/rel_financeiro';
         $this->load->view('tema/topo',$this->data);
-    
+
     }
 
 

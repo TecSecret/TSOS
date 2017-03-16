@@ -1,6 +1,6 @@
 <?php
 
-class Clientes extends CI_Controller {
+class Clientes extends MY_Acesso {
 
     /**
      * author: Ramon Silva
@@ -29,7 +29,7 @@ class Clientes extends CI_Controller {
         $this->load->library('pagination');
 
 
-        $config['base_url'] = base_url().'index.php/clientes/gerenciar/';
+        $config['base_url'] = base_url().'clientes/gerenciar/';
         $config['total_rows'] = $this->clientes_model->count('clientes');
         $config['per_page'] = 10;
         $config['next_link'] = 'Próxima';
@@ -102,7 +102,7 @@ class Clientes extends CI_Controller {
 
           if ($this->clientes_model->add('clientes', $data) == TRUE) {
               $this->session->set_flashdata('success','Cliente adicionado com sucesso!');
-              redirect(base_url() . 'index.php/clientes/adicionar/');
+              redirect(base_url() . 'clientes/adicionar/');
           } else {
               $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
           }
@@ -162,7 +162,7 @@ class Clientes extends CI_Controller {
 
       if(!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))){
           $this->session->set_flashdata('error','Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-          redirect('mapos');
+          redirect('tsdc');
       }
 
 
@@ -196,7 +196,7 @@ class Clientes extends CI_Controller {
 
           if ($this->clientes_model->edit('clientes', $data, 'idClientes', $this->input->post('idClientes')) == TRUE) {
               $this->session->set_flashdata('success','Cliente editado com sucesso!');
-              redirect(base_url() . 'index.php/clientes/editar/'.$this->input->post('idClientes'));
+              redirect(base_url() . 'clientes/editar/'.$this->input->post('idClientes'));
           } else {
               $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro</p></div>';
           }
@@ -213,7 +213,7 @@ class Clientes extends CI_Controller {
 
       if(!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))){
           $this->session->set_flashdata('error','Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-          redirect('mapos');
+          redirect('tsdc');
       }
 
       if(!$this->permission->checkPermission($this->session->userdata('permissao'),'vCliente')){
@@ -291,6 +291,6 @@ class Clientes extends CI_Controller {
           $this->clientes_model->delete('clientes','idClientes',$id);
 
           $this->session->set_flashdata('success','Cliente excluido com sucesso!');
-          redirect(base_url().'index.php/clientes/gerenciar/');
+          redirect(base_url().'clientes/gerenciar/');
   }
 }
