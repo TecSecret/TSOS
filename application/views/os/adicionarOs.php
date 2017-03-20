@@ -1,9 +1,11 @@
 <link rel="stylesheet" href="<?=base_url('assets/js/jquery-ui/css/smoothness/jquery-ui-1.9.2.custom.css')?>" />
 <script type="text/javascript" src="<?=base_url('assets/js/jquery-ui/js/jquery-ui-1.9.2.custom.js')?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/js/jquery.validate.js')?>"></script>
+
+<div id="alert"></div>
 <div class="row-fluid" style="margin-top:0">
-    <a class="btn btn-success" href="#modalCliente" data-toggle="modal" role="button">Adicionar Cliente</a>
     <div class="span12">
+     <a class="btn btn-success" href="#modalCliente" data-toggle="modal" role="button">Adicionar Cliente</a>
         <div class="widget-box">
             <div class="widget-title">
                 <span class="icon">
@@ -12,12 +14,15 @@
                 <h5>Cadastro de OS</h5>
             </div>
             <div class="widget-content nopadding">
+                
+
                 <div class="span12" id="divProdutosServicos" style=" margin-left: 0">
                     <ul class="nav nav-tabs">
                         <li class="active" id="tabDetalhes"><a href="#tab1" data-toggle="tab">Detalhes da OS</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
+
                             <div class="span12" id="divCadastrarOs">
                                 <?php if($custom_error == true){ ?>
                                 <div class="span12 alert alert-danger" id="divInfo" style="padding: 1%;">Dados incompletos, verifique os campos com asterisco ou se selecionou corretamente cliente e responsável.</div>
@@ -46,8 +51,6 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">MapOS - Adicionar Despesa</h3>
   </div>
-
-<!-- <form action="<?=site_url('clientes/adicionarAjax')?>" id="formCliente" method="post" class="form-horizontal" > -->
   <div class="modal-body">
                     <div class="control-group">
                         <label for="nomeCliente" class="control-label">Nome<span class="required">*</span></label>
@@ -128,8 +131,6 @@
     <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
     <button type="submit" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar</button>
   </div>
-</form>
-  </form>
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -151,12 +152,18 @@ $(document).ready(function(){
           rules:{
              cliente: {required:true},
              tecnico: {required:true},
-             dataInicial: {required:true}
+             dataInicial: {required:true},
+             fabricante: {required:true},
+             modelo: {required:true},
+             tipo_equipamento: {required:true}
           },
           messages:{
              cliente: {required: 'Campo Requerido.'},
              tecnico: {required: 'Campo Requerido.'},
-             dataInicial: {required: 'Campo Requerido.'}
+             dataInicial: {required: 'Campo Requerido.'},
+             fabricante: {required: 'Campo Requerido.'},
+             modelo: {required: 'Campo Requerido.'},
+             tipo_equipamento: {required: 'Campo Requerido.'}
           },
 
             errorClass: "help-inline",
@@ -205,14 +212,12 @@ $(document).ready(function(){
                           success: function(data)
                           {
                             if(data.result == true){
-                                // window.location.href = "<?=site_url()?>";
-                                // $('#modalCliente').toggle();
                                 $('.close').trigger('click');
-                                $('.row-fluid').prepend('<div class="alert alert-success"><button class="close" data-dismiss="alert">×</button>Sucesso ao adicionar cliente!</div>');
+                                $('#alert').prepend('<div class="alert alert-success"><button class="close" data-dismiss="alert">×</button>Sucesso ao adicionar cliente!</div>');
                             }
                             else{
                                 $('#call-modal').trigger('click');
-                                $('.row-fluid').prepend('<div class="alert alert-error"><button class="close" data-dismiss="alert">×</button>Erro ao adicionar cliente!</div>');
+                                $('#alert').prepend('<div class="alert alert-error"><button class="close" data-dismiss="alert">×</button>Erro ao adicionar cliente!</div>');
                             }
                           }
                           });
@@ -228,6 +233,5 @@ $(document).ready(function(){
                 $(element).parents('.control-group').addClass('success');
             }
            });
-    // $('#formCliente').submit()
 });
 </script>

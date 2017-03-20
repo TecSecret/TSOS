@@ -3,7 +3,7 @@
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
-    <title>Conecte - Área do Cliente</title>
+    <title><?=$this->lang->line('conectetemptitulo');?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -25,26 +25,26 @@
 
     <!--Header-part-->
     <div id="header">
-      <h1><a href="dashboard.html">MapOS</a></h1>
+      <h1><a href="dashboard.html"><?=$this->lang->line('nomesist');?></a></h1>
     </div>
     <!--close-Header-part--> 
 
     <!--top-Header-menu-->
     <div id="user-nav" class="navbar navbar-inverse">
       <ul class="nav">
-        <li class=""><a title="" href="<?php echo base_url()?>index.php/conecte/conta"><i class="icon icon-star"></i> <span class="text"> Minha Conta</span></a></li>
-        <li class=""><a title="" href="<?php echo base_url()?>index.php/conecte/sair"><i class="icon icon-share-alt"></i> <span class="text"> Sair</span></a></li>
+        <li class=""><a title="" href="<?php echo base_url()?>index.php/conecte/conta"><i class="icon icon-star"></i> <span class="text"><?=$this->lang->line('conectetempmc');?></span></a></li>
+        <li class=""><a title="" href="<?php echo base_url()?>index.php/conecte/sair"><i class="icon icon-share-alt"></i> <span class="text"><?=$this->lang->line('conectetempsair');?></span></a></li>
       </ul>
     </div>
 
 
-    <div id="sidebar"> <a href="#" class="visible-phone"><i class="icon icon-list"></i> Menu</a>
+    <div id="sidebar"> <a href="#" class="visible-phone"><i class="icon icon-list"></i><?=$this->lang->line('conectetempmenu');?></a>
       <ul>
-        <li class="<?php if(isset($menuPainel)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/conecte/painel"><i class="icon icon-home"></i> <span>Painel</span></a></li>
-        <li class="<?php if(isset($menuConta)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/conecte/conta"><i class="icon icon-star"></i> <span>Minha Conta</span></a></li>
-        <li class="<?php if(isset($menuOs)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/conecte/os"><i class="icon icon-tags"></i> <span>Ordens de Serviço</span></a></li>
-        <li class="<?php if(isset($menuVendas)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/conecte/compras"><i class="icon icon-shopping-cart"></i> <span>Compras</span></a></li>
-        <li class=""><a href="<?php echo base_url()?>index.php/conecte/sair"><i class="icon icon-share-alt"></i> <span>Sair</span></a></li>
+        <li class="<?php if(isset($menuPainel)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/conecte/painel"><i class="icon icon-home"></i> <span><?=$this->lang->line('conectetemppainel');?></span></a></li>
+        <li class="<?php if(isset($menuConta)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/conecte/conta"><i class="icon icon-star"></i> <span><?=$this->lang->line('conectetempmc');?></span></a></li>
+        <li class="<?php if(isset($menuOs)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/conecte/os"><i class="icon icon-tags"></i> <span><?=$this->lang->line('conectetempos');?></span></a></li>
+        <li class="<?php if(isset($menuVendas)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/conecte/compras"><i class="icon icon-shopping-cart"></i> <span><?=$this->lang->line('conectetempcompra');?></span></a></li>
+        <li class=""><a href="<?php echo base_url()?>index.php/conecte/sair"><i class="icon icon-share-alt"></i> <span><?=$this->lang->line('conectetempexit');?></span></a></li>
         
       </ul>
     </div>
@@ -53,7 +53,7 @@
    
     <div id="content">
       <div id="content-header">
-        <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+        <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i><?=$this->lang->line('conectetemphome');?></a></div>
       </div>
  
       <div class="container-fluid">
@@ -70,7 +70,7 @@
     </div>
     <!--Footer-part-->
     <div class="row-fluid">
-      <div id="footer" class="span12"> 2014 &copy; MapOS</div>
+      <div id="footer" class="span12"> 2016 &copy; TSDC Assistência - Projeto mantido pela TecSecret e DC WebSolutions</div>
     </div>
 
     <!-- javascript

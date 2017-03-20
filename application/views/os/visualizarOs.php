@@ -74,6 +74,31 @@
 
                     <div style="margin-top: 0; padding-top: 0">
 
+                    <hr style="margin-top: 0">
+                    <h5>Dados Produto</h5>
+                    <div class="span12">
+                    <div class="span2">
+                    <strong>Fabricante</strong>
+                    <p><?=$result->fabricante?></p>
+                    </div>
+                    <div class="span2">
+                    <strong>Modelo</strong>
+                    <p><?=$result->modelo?></p>
+                    </div>
+                    <div class="span2">
+                    <strong>Tipo de Equipamento</strong>
+                    <p><?=$result->tipo_equipamento?></p>
+                    </div>
+                    <div class="span2">
+                    <strong>Nº de Série</strong>
+                    <p><?=$result->serie?></p>
+                    </div>
+                    <div class="span2">
+                    <strong>Part Namber</strong>
+                    <p><?=$result->part_namber?></p>
+                    </div>
+                    </div>
+
                     <?php if($result->descricaoProduto != null){?>
                     <hr style="margin-top: 0">
                     <h5>Descrição</h5>
@@ -220,7 +245,6 @@
             mywindow.document.write("<link rel='stylesheet' href='<?=base_url('assets/css/bootstrap.min.css')?>' />");
             mywindow.document.write("<link rel='stylesheet' href='<?=base_url('assets/css/bootstrap-responsive.min.css')?>' />");
             mywindow.document.write("<link rel='stylesheet' href='<?=base_url('assets/css/matrix-style.css')?>' />");
-            mywindow.document.write("<link rel='stylesheet' href='<?=base_url('assets/css/matrix-media.css')?>' />");
 
 
             mywindow.document.write("</head><body >");

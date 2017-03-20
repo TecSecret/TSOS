@@ -19,7 +19,7 @@ class Tsdc extends MY_Controller
     public function index()
     {
         if ((!$this->session->userdata('session_id')) || (!$this->session->userdata('logado'))) {
-            redirect('tsdc/login');
+            redirect('/login');
         }
       
 
@@ -53,10 +53,10 @@ class Tsdc extends MY_Controller
         $result = $this->tsdc_model->alterarSenha($senha, $oldSenha, $this->session->userdata('id'));
         if ($result) {
             $this->session->set_flashdata('success', 'Senha Alterada com sucesso!');
-            redirect(base_url().'tsdc/minhaConta');
+            redirect(base_url().'index.php/tsdc/minhaConta');
         } else {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar a senha!');
-            redirect(base_url().'tsdc/minhaConta');
+            redirect(base_url().'index.php/tsdc/minhaConta');
         }
     }
     public function pesquisar()
@@ -239,7 +239,7 @@ class Tsdc extends MY_Controller
     public function cadastrarEmitente()
     {
         if ((!$this->session->userdata('session_id')) || (!$this->session->userdata('logado'))) {
-            redirect('tsdc/login');
+            redirect('index.php/tsdc/login');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cEmitente')) {
@@ -261,7 +261,7 @@ class Tsdc extends MY_Controller
 
         if ($this->form_validation->run() == false) {
             $this->session->set_flashdata('error', 'Campos obrigatórios não foram preenchidos.');
-            redirect(base_url().'tsdc/emitente');
+            redirect(base_url().'index.php/tsdc/emitente');
         } else {
             $nome = $this->input->post('nome');
             $cnpj = $this->input->post('cnpj');
@@ -279,17 +279,17 @@ class Tsdc extends MY_Controller
             $retorno = $this->tsdc_model->addEmitente($nome, $cnpj, $ie, $logradouro, $numero, $bairro, $cidade, $uf, $telefone, $email, $logo);
             if ($retorno) {
                 $this->session->set_flashdata('success', 'As informações foram inseridas com sucesso.');
-                redirect(base_url().'tsdc/emitente');
+                redirect(base_url().'index.php/tsdc/emitente');
             } else {
                 $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar inserir as informações.');
-                redirect(base_url().'tsdc/emitente');
+                redirect(base_url().'index.php/tsdc/emitente');
             }
         }
     }
     public function editarEmitente()
     {
         if ((!$this->session->userdata('session_id')) || (!$this->session->userdata('logado'))) {
-            redirect('tsdc/login');
+            redirect('index.php/tsdc/login');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cEmitente')) {
@@ -298,20 +298,20 @@ class Tsdc extends MY_Controller
         }
 
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('nome', 'Razão Social', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('cnpj', 'CNPJ', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('ie', 'IE', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('logradouro', 'Logradouro', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('numero', 'Número', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('bairro', 'Bairro', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('cidade', 'Cidade', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('uf', 'UF', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('telefone', 'Telefone', 'required|xss_clean|trim');
-        $this->form_validation->set_rules('email', 'E-mail', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('nome', 'Razão Social', 'required');
+        $this->form_validation->set_rules('cnpj', 'CNPJ', 'required');
+        $this->form_validation->set_rules('ie', 'IE', 'required');
+        $this->form_validation->set_rules('logradouro', 'Logradouro', 'required');
+        $this->form_validation->set_rules('numero', 'Número', 'required');
+        $this->form_validation->set_rules('bairro', 'Bairro', 'required');
+        $this->form_validation->set_rules('cidade', 'Cidade', 'required');
+        $this->form_validation->set_rules('uf', 'UF', 'required');
+        $this->form_validation->set_rules('telefone', 'Telefone', 'required');
+        $this->form_validation->set_rules('email', 'E-mail', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->session->set_flashdata('error', 'Campos obrigatórios não foram preenchidos.');
-            redirect(base_url().'tsdc/emitente');
+            redirect(base_url().'index.php/tsdc/emitente');
         } else {
             $nome = $this->input->post('nome');
             $cnpj = $this->input->post('cnpj');
@@ -328,17 +328,17 @@ class Tsdc extends MY_Controller
             $retorno = $this->tsdc_model->editEmitente($id, $nome, $cnpj, $ie, $logradouro, $numero, $bairro, $cidade, $uf, $telefone, $email);
             if ($retorno) {
                 $this->session->set_flashdata('success', 'As informações foram alteradas com sucesso.');
-                redirect(base_url().'tsdc/emitente');
+                redirect(base_url().'index.php/tsdc/emitente');
             } else {
                 $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar as informações.');
-                redirect(base_url().'tsdc/emitente');
+                redirect(base_url().'index.php/tsdc/emitente');
             }
         }
     }
     public function editarLogo()
     {
         if ((!$this->session->userdata('session_id')) || (!$this->session->userdata('logado'))) {
-            redirect('tsdc/login');
+            redirect('index.php/tsdc/login');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cEmitente')) {
@@ -349,7 +349,7 @@ class Tsdc extends MY_Controller
         $id = $this->input->post('id');
         if ($id == null || !is_numeric($id)) {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar a logomarca.');
-            redirect(base_url().'tsdc/emitente');
+            redirect(base_url().'index.php/tsdc/emitente');
         }
         $this->load->helper('file');
         delete_files(FCPATH.'assets/uploads/');
@@ -360,10 +360,10 @@ class Tsdc extends MY_Controller
         $retorno = $this->tsdc_model->editLogo($id, $logo);
         if ($retorno) {
             $this->session->set_flashdata('success', 'As informações foram alteradas com sucesso.');
-            redirect(base_url().'tsdc/emitente');
+            redirect(base_url().'index.php/tsdc/emitente');
         } else {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar as informações.');
-            redirect(base_url().'tsdc/emitente');
+            redirect(base_url().'index.php/tsdc/emitente');
         }
     }
     function os_aberta(){

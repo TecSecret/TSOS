@@ -1,4 +1,16 @@
 
+
+__________________
+v1.0 - Final
+- Add desconto nas abas produtos e serviços
+- fix bug impressão os
+- fix erros em diversas páginas
+- add novas linhas de tradução
+- add cadastro de equipameto (tipo, NS, PN, modelo, fabricante) na os
+- add opção editar emitente direto pelo admin
+- add suporte a mysql 5.7 e php 7
+
+_________________
 v1.0 beta 1 - 15/03/2017
 - Inicio da implementação para suporte multi idiomas
 - Ajustes no core e framewokr e JS

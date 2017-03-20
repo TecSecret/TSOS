@@ -6,7 +6,7 @@ if(!$results){?>
         <span class="icon">
             <i class="icon-tags"></i>
          </span>
-        <h5>Ordens de Serviço</h5>
+        <h5><?=$this->lang->line('conecteos');?></h5>
 
      </div>
 
@@ -16,18 +16,18 @@ if(!$results){?>
 <table class="table table-bordered ">
     <thead>
         <tr style="backgroud-color: #2D335B">
-            <th>#</th>
-            <th>Responsável</th>
-            <th>Data Inicial</th>
-            <th>Data Final</th>
-            <th>Status</th>
+            <th><?=$this->lang->line('conecteosnos');?></th>
+            <th><?=$this->lang->line('conecteosrespo');?></th>
+            <th><?=$this->lang->line('conecteosdtinicial');?></th>
+            <th><?=$this->lang->line('conecteosdtfim');?></th>
+            <th><?=$this->lang->line('conecteosstatus');?></th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 
         <tr>
-            <td colspan="6">Nenhuma OS Cadastrada</td>
+            <td colspan="6"><?=$this->lang->line('conecteosnone');?></td>
         </tr>
     </tbody>
 </table>
@@ -41,7 +41,7 @@ if(!$results){?>
         <span class="icon">
             <i class="icon-tags"></i>
          </span>
-        <h5>Ordens de Serviço</h5>
+        <h5><?=$this->lang->line('conecteos');?></h5>
 
      </div>
 
@@ -51,11 +51,11 @@ if(!$results){?>
 <table class="table table-bordered ">
     <thead>
         <tr style="backgroud-color: #2D335B">
-            <th>#</th>
-            <th>Responsável</th>
-            <th>Data Inicial</th>
-            <th>Data Final</th>
-            <th>Status</th>
+            <th><?=$this->lang->line('conecteosnos');?></th>
+            <th><?=$this->lang->line('conecteosrespo');?></th>
+            <th><?=$this->lang->line('conecteosdtinicial');?></th>
+            <th><?=$this->lang->line('conecteosdtfim');?></th>
+            <th><?=$this->lang->line('conecteosstatus');?></th>
             <th></th>
         </tr>
     </thead>

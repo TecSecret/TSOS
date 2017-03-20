@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'servidor do banco de dados',
-	'username' => 'usuaio do banco de dados',
-	'password' => 'senha do usuário do banco',
-	'database' => 'nome do banco de dados',
+	'hostname' => 'localhost',
+	'username' => 'tsdc',
+	'password' => 'passworddb',
+	'database' => 'tsdc',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

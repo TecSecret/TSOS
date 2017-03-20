@@ -21,7 +21,7 @@
 
 
 <div id="modalCadastrar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <form action="<?=site_url('mapos/cadastrarEmitente')?>" id="formCadastrar" enctype="multipart/form-data" method="post" class="form-horizontal" >
+  <form action="<?=site_url('tsdc/cadastrarEmitente')?>" id="formCadastrar" enctype="multipart/form-data" method="post" class="form-horizontal" >
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">MapOS - Cadastrar Dados do Emitente</h3>
@@ -131,7 +131,7 @@
     </div>
 </div>
 <div id="modalAlterar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <form action="<?site_url('mapos/editarEmitente')?>" id="formAlterar" enctype="multipart/form-data" method="post" class="form-horizontal" >
+  <form action="<?=site_url('tsdc/editarEmitente')?>" id="formAlterar" enctype="multipart/form-data" method="post" class="form-horizontal" >
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="">MapOS - Editar Dados do Emitente</h3>
@@ -212,7 +212,7 @@
 
 
 <div id="modalLogo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <form action="<?=site_url('mapos/editarLogo')?>" id="formLogo" enctype="multipart/form-data" method="post" class="form-horizontal" >
+  <form action="<?=site_url('tsdc/editarLogo')?>" id="formLogo" enctype="multipart/form-data" method="post" class="form-horizontal" >
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="">MapOS - Alterar Logomarca</h3>
@@ -301,7 +301,6 @@ $(document).ready(function(){
     $("#formAlterar").validate({
       rules:{
          userfile: {required:true},
-         nome: {required:true},
          cnpj: {required:true},
          ie: {required:true},
          logradouro: {required:true},

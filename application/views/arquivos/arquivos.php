@@ -4,7 +4,7 @@
     <form method="get" action="<?=current_url()?>">
         <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'aArquivo')){ ?>
              <div class="span3">
-                <a href="<?=site_url('arquivos/adicionar')?>" class="btn btn-success span12"><i class="icon-plus icon-white"></i> Adicionar Arquivo</a>
+                <a href="<?=site_url('arquivos/adicionar')?>" class="btn btn-success span12"><i class="icon-plus icon-white"></i><?=$this->lang->line('arquiadd2');?></a>
             </div>
         <?php } ?>
         <div class="span5">
@@ -27,23 +27,23 @@ if(!$results){?>
             <span class="icon">
                 <i class="icon-hdd"></i>
             </span>
-            <h5>Arquivos</h5>
+            <h5><?=$this->lang->line('arquiarqui2');?></h5>
         </div>
         <div class="widget-content nopadding">
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Documento</th>
-                        <th>Data</th>
-                        <th>Tamanho</th>
-                        <th>Extensão</th>
+                        <th><?=$this->lang->line('arquiid');?></th>
+                        <th><?=$this->lang->line('arquinome');?></th>
+                        <th><?=$this->lang->line('arquidt');?></th>
+                        <th><?=$this->lang->line('arquitm');?></th>
+                        <th><?=$this->lang->line('arquiext');?></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="5">Nenhum Arquivo Encontrado</td>
+                        <td colspan="5"><?=$this->lang->line('arquivazio');?></td>
                     </tr>
                 </tbody>
             </table>
@@ -57,17 +57,17 @@ if(!$results){?>
             <span class="icon">
                 <i class="icon-hdd"></i>
              </span>
-            <h5>Arquivos</h5>
+            <h5><?=$this->lang->line('arquiarqui2');?></h5>
          </div>
     <div class="widget-content nopadding">
     <table class="table table-bordered ">
         <thead>
             <tr>
-                <th>#</th>
-                <th>Documento</th>
-                <th>Data</th>
-                <th>Tamanho</th>
-                <th>Extensão</th>
+                <th><?=$this->lang->line('arquiid');?></th>
+                <th><?=$this->lang->line('arquinome');?></th>
+                <th><?=$this->lang->line('arquidt');?></th>
+                <th><?=$this->lang->line('arquitm');?></th>
+                <th><?=$this->lang->line('arquiext');?></th>
                 <th></th>
             </tr>
         </thead>
@@ -108,15 +108,15 @@ if(!$results){?>
   <form action="<?=site_url('arquivos/excluir')?>" method="post" >
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h5 id="myModalLabel">Excluir Arquivo</h5>
+    <h5 id="myModalLabel"><?=$this->lang->line('arquidel');?></h5>
   </div>
   <div class="modal-body">
     <input type="hidden" id="idDocumento" name="id" value="" />
-    <h5 style="text-align: center">Deseja realmente excluir este arquivo?</h5>
+    <h5 style="text-align: center"><?=$this->lang->line('arquidelmsg');?></h5>
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-    <button class="btn btn-danger">Excluir</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true"><?=$this->lang->line('arquicancelar');?></button>
+    <button class="btn btn-danger"><?=$this->lang->line('arquidel2');?></button>
   </div>
   </form>
 </div>

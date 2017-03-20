@@ -67,7 +67,7 @@
 
             </div>
             <div class="widget-content nopadding collapse" id="servicoAberto" style="height: auto;">
-                <table class="table table-bordered data-table os-abertas" data-url="<?=site_url('mapos/os_aberta')?>">
+                <table class="table table-bordered data-table os-abertas" data-url="<?=site_url('tsdc/os_aberta')?>">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -87,7 +87,7 @@
         <div class="accordion-group widget-box">
             <div class="widget-title" data-toggle="collapse" href="#ordens_orcamento"><span class="icon"><i class="icon-chevron-down"></i></span><span class="icon"><i class="icon-signal"></i></span><h5>Ordens de Serviço Orçamento</h5></div>
             <div class="widget-content nopadding collapse" id="ordens_orcamento" style="height: 0px;">
-                <table class="table table-bordered data-table os-orcamento" data-url="<?=site_url('mapos/os_aberta')?>">
+                <table class="table table-bordered data-table os-orcamento" data-url="<?=site_url('tsdc/os_aberta')?>">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -224,7 +224,6 @@
 <script type="text/javascript" src="<?=base_url('assets/js/dist/plugins/jqplot.pieRenderer.min.js');?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/js/dist/plugins/jqplot.donutRenderer.min.js');?>"></script>
 <script src="<?=base_url('assets/js/bootstrap.min.js')?>"></script>
-<script type="text/javascript" src="<?=base_url('assets/js/matrix.js');?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/js/matrix.tables.js');?>"></script>
 
 

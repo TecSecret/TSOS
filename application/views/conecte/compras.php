@@ -6,7 +6,7 @@ if(!$results){?>
         <span class="icon">
             <i class="icon-tags"></i>
          </span>
-        <h5>Compras</h5>
+        <h5><?=$this->lang->line('conectcpcp');?></h5>
 
      </div>
 
@@ -16,17 +16,17 @@ if(!$results){?>
 <table class="table table-bordered ">
     <thead>
         <tr style="backgroud-color: #2D335B">
-            <th>#</th>
-            <th>Data da Compra</th>
-            <th>Responsável</th>
-            <th>Faturado</th>
+            <th><?=$this->lang->line('conectcpid');?></th>
+            <th><?=$this->lang->line('conectcpdtcp');?></th>
+            <th><?=$this->lang->line('conectcpresp');?></th>
+            <th><?=$this->lang->line('conectcpfat');?></th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 
         <tr>
-            <td colspan="6">Nenhuma compra cadastrada</td>
+            <td colspan="6"><?=$this->lang->line('conectcpnone');?></td>
         </tr>
     </tbody>
 </table>
@@ -40,7 +40,7 @@ if(!$results){?>
         <span class="icon">
             <i class="icon-tags"></i>
          </span>
-        <h5>Compras</h5>
+        <h5><?=$this->lang->line('conectcpcp');?></h5>
 
      </div>
 
@@ -50,10 +50,10 @@ if(!$results){?>
 <table class="table table-bordered ">
     <thead>
         <tr style="backgroud-color: #2D335B">
-            <th>#</th>
-            <th>Data da Compra</th>
-            <th>Responsável</th>
-            <th>Faturado</th>
+            <th><?=$this->lang->line('conectcpid');?></th>
+            <th><?=$this->lang->line('conectcpdtcp');?></th>
+            <th><?=$this->lang->line('conectcpresp');?></th>
+            <th><?=$this->lang->line('conectcpfat');?></th>
             <th></th>
         </tr>
     </thead>

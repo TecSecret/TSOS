@@ -8,35 +8,35 @@
                 <span class="icon">
                     <i class="icon-hdd"></i>
                 </span>
-                <h5>Cadastro de Arquivo</h5>
+                <h5><?=$this->lang->line('arquicad');?></h5>
             </div>
             <div class="widget-content nopadding">
                 <?=$custom_error; ?>
                 <form action="<?=current_url()?>" id="formArquivo" enctype="multipart/form-data" method="post" class="form-horizontal" >
 
                     <div class="control-group">
-                        <label for="preco" class="control-label"><span class="required">Arquivo*</span></label>
+                        <label for="preco" class="control-label"><span class="required"><?=$this->lang->line('arquiarqui');?>*</span></label>
                         <div class="controls">
                             <input id="arquivo" type="file" name="userfile" /> (txt|pdf|gif|png|jpg|jpeg)
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label for="nome" class="control-label">Nome do Arquivo*</label>
+                        <label for="nome" class="control-label"><?=$this->lang->line('arquinome');?>*</label>
                         <div class="controls">
                             <input id="nome" type="text" name="nome" />
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label for="descricao" class="control-label">Descrição</label>
+                        <label for="descricao" class="control-label"><?=$this->lang->line('arquidescr');?></label>
                         <div class="controls">
                             <textarea rows="3" cols="30" name="descricao" id="descricao"></textarea>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label for="descricao" class="control-label">Data</label>
+                        <label for="descricao" class="control-label"><?=$this->lang->line('arquidt');?></label>
                         <div class="controls">
                             <input id="data" type="text" class="datepicker" name="data" />
                         </div>
@@ -45,8 +45,8 @@
                     <div class="form-actions">
                         <div class="span12">
                             <div class="span6 offset3">
-                                <button type="submit" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar</button>
-                                <a href="<?=site_url('arquivos')?>" class="btn"><i class="icon-arrow-left"></i> Voltar</a>
+                                <button type="submit" class="btn btn-success"><i class="icon-plus icon-white"></i><?=$this->lang->line('arquiadd');?></button>
+                                <a href="<?=site_url('arquivos')?>" class="btn"><i class="icon-arrow-left"></i><?=$this->lang->line('arquivoltar');?></a>
                             </div>
                         </div>
                     </div>
@@ -65,8 +65,8 @@
                   userfile:{ required: true}
             },
             messages:{
-                  nome :{ required: 'Campo Requerido.'},
-                  userfile :{ required: 'Campo Requerido.'}
+                  nome :{ required: '<?=$this->lang->line('arquiobrigatorio');?>'},
+                  userfile :{ required: '<?=$this->lang->line('arquiobrigatorio');?>'}
             },
             errorClass: "help-inline",
             errorElement: "span",

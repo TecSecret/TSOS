@@ -1,10 +1,10 @@
 <div class="widget-box">
     <div class="widget-title">
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#tab1">Meus Dados</a></li>
+            <li class="active"><a data-toggle="tab" href="#tab1"><?=$this->lang->line('conectccdados');?></a></li>
             
             <div class="buttons">
-                    <a title="Icon Title" class="btn btn-mini btn-info" href="<?php echo base_url()?>index.php/conecte/editarDados/<?php echo $result->idClientes?>"><i class="icon-pencil icon-white"></i> Editar</a>
+                    <a title="Icon Title" class="btn btn-mini btn-info" href="<?php echo base_url()?>index.php/conecte/editarDados/<?php echo $result->idClientes?>"><i class="icon-pencil icon-white"></i><?=$this->lang->line('conectcceditar');?></a>
                 </div>
         </ul>
     </div>
@@ -16,7 +16,7 @@
                                 <div class="accordion-heading">
                                     <div class="widget-title">
                                         <a data-parent="#collapse-group" href="#collapseGOne" data-toggle="collapse">
-                                            <span class="icon"><i class="icon-list"></i></span><h5>Dados Pessoais</h5>
+                                            <span class="icon"><i class="icon-list"></i></span><h5><?=$this->lang->line('conectccddpessoais');?></h5>
                                         </a>
                                     </div>
                                 </div>
@@ -25,15 +25,15 @@
                                         <table class="table table-bordered">
                                             <tbody>
                                                 <tr>
-                                                    <td style="text-align: right; width: 30%"><strong>Nome</strong></td>
+                                                    <td style="text-align: right; width: 30%"><strong><?=$this->lang->line('conectccnome');?></strong></td>
                                                     <td><?php echo $result->nomeCliente ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="text-align: right"><strong>Documento</strong></td>
+                                                    <td style="text-align: right"><strong><?=$this->lang->line('conectccdoc');?></strong></td>
                                                     <td><?php echo $result->documento ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="text-align: right"><strong>Data de Cadastro</strong></td>
+                                                    <td style="text-align: right"><strong><?=$this->lang->line('conectccdtcad');?></strong></td>
                                                     <td><?php echo date('d/m/Y',  strtotime($result->dataCadastro)) ?></td>
                                                 </tr>
                                             </tbody>
@@ -45,7 +45,7 @@
                                 <div class="accordion-heading">
                                     <div class="widget-title">
                                         <a data-parent="#collapse-group" href="#collapseGTwo" data-toggle="collapse">
-                                            <span class="icon"><i class="icon-list"></i></span><h5>Contatos</h5>
+                                            <span class="icon"><i class="icon-list"></i></span><h5><?=$this->lang->line('conectcccontatos');?></h5>
                                         </a>
                                     </div>
                                 </div>
@@ -54,15 +54,15 @@
                                         <table class="table table-bordered">
                                             <tbody>
                                                 <tr>
-                                                    <td style="text-align: right; width: 30%"><strong>Telefone</strong></td>
+                                                    <td style="text-align: right; width: 30%"><strong><?=$this->lang->line('conectcctelfxo');?></strong></td>
                                                     <td><?php echo $result->telefone ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="text-align: right"><strong>Celular</strong></td>
+                                                    <td style="text-align: right"><strong><?=$this->lang->line('conectcctelmovel');?></strong></td>
                                                     <td><?php echo $result->celular ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="text-align: right"><strong>Email</strong></td>
+                                                    <td style="text-align: right"><strong><?=$this->lang->line('conectccemail');?></strong></td>
                                                     <td><?php echo $result->email ?></td>
                                                 </tr>
                                             </tbody>
@@ -74,7 +74,7 @@
                                 <div class="accordion-heading">
                                     <div class="widget-title">
                                         <a data-parent="#collapse-group" href="#collapseGThree" data-toggle="collapse">
-                                            <span class="icon"><i class="icon-list"></i></span><h5>Endereço</h5>
+                                            <span class="icon"><i class="icon-list"></i></span><h5><?=$this->lang->line('conectccend');?></h5>
                                         </a>
                                     </div>
                                 </div>
@@ -83,23 +83,23 @@
                                         <table class="table table-bordered">
                                             <tbody>
                                                 <tr>
-                                                    <td style="text-align: right; width: 30%"><strong>Rua</strong></td>
+                                                    <td style="text-align: right; width: 30%"><strong><?=$this->lang->line('conectccend2');?></strong></td>
                                                     <td><?php echo $result->rua ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="text-align: right"><strong>Número</strong></td>
+                                                    <td style="text-align: right"><strong><?=$this->lang->line('conectccendnum');?></strong></td>
                                                     <td><?php echo $result->numero ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="text-align: right"><strong>Bairro</strong></td>
+                                                    <td style="text-align: right"><strong><?=$this->lang->line('conectccendbairro');?></strong></td>
                                                     <td><?php echo $result->bairro ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="text-align: right"><strong>Cidade</strong></td>
+                                                    <td style="text-align: right"><strong><?=$this->lang->line('conectccendciti');?></strong></td>
                                                     <td><?php echo $result->cidade ?> - <?php echo $result->estado ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="text-align: right"><strong>CEP</strong></td>
+                                                    <td style="text-align: right"><strong><?=$this->lang->line('conectccendcep');?></strong></td>
                                                     <td><?php echo $result->cep ?></td>
                                                 </tr>
                                             </tbody>

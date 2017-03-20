@@ -6,7 +6,7 @@
  *
  * This content is released under the MIT License (MIT)
  *
- * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
+ * Copyright (c) 2014 - 2016, British Columbia Institute of Technology
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,13 +29,26 @@
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
+ * @copyright	Copyright (c) 2014 - 2016, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
  */
+ setlocale(LC_ALL, "pt_BR", "pt_BR.utf-8", "portuguese");
+ date_default_timezone_set('America/Sao_Paulo');
 
+ ini_set('display_errors', 1);
+ ini_set('display_startup_errors', 1);
+ error_reporting(E_ALL);
+
+ // if($_SERVER['SERVER_NAME'] == 'mapos.com.br'){ // Aqui vai o site base em produção
+ // 	define('ENVIRONMENT', 'production');
+ // }else if(preg_match('/mapos.dev/i',$_SERVER['SERVER_NAME'])){ // Aqui um dominio local - bem como localhost
+ // 	define('ENVIRONMENT', 'development');
+ // }else{
+ // 	define('ENVIRONMENT', 'production');
+ // }
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
@@ -312,4 +325,6 @@ switch (ENVIRONMENT)
  *
  * And away we go...
  */
+ // require FCPATH . 'vendor/autoload.php';
+ 
 require_once BASEPATH.'core/CodeIgniter.php';

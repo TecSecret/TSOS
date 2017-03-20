@@ -8,7 +8,7 @@
                 <span class="icon">
                     <i class="icon-hdd"></i>
                 </span>
-                <h5>Cadastro de Arquivo</h5>
+                <h5><?=$this->lang->line('arquicad');?></h5>
             </div>
             <div class="widget-content nopadding">
                 <?=$custom_error; ?>
@@ -16,7 +16,7 @@
 
 
                     <div class="control-group">
-                        <label for="nome" class="control-label">Nome do Arquivo*</label>
+                        <label for="nome" class="control-label"><?=$this->lang->line('arquinome');?>*</label>
                         <div class="controls">
                             <input id="nome" type="text" name="nome" value="<?=$result->documento?> " />
 
@@ -25,14 +25,14 @@
                     </div>
 
                     <div class="control-group">
-                        <label for="descricao" class="control-label">Descrição</label>
+                        <label for="descricao" class="control-label"><?=$this->lang->line('arquidescri');?></label>
                         <div class="controls">
                             <textarea rows="3" cols="30" name="descricao" id="descricao"><?=$result->descricao?></textarea>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label for="descricao" class="control-label">Data</label>
+                        <label for="descricao" class="control-label"><?=$this->lang->line('arquidt');?></label>
                         <div class="controls">
                             <input id="data" type="text" class="datepicker" name="data" value="<?=date('d/m/Y',strtotime($result->cadastro))?>" />
                         </div>
@@ -41,8 +41,8 @@
                     <div class="form-actions">
                         <div class="span12">
                             <div class="span6 offset3">
-                                <button type="submit" class="btn btn-primary"><i class="icon-ok icon-white"></i> Alterar</button>
-                                <a href="<?=site_url('arquivos')?>" class="btn"><i class="icon-arrow-left"></i> Voltar</a>
+                                <button type="submit" class="btn btn-primary"><i class="icon-ok icon-white"></i><?=$this->lang->line('arquialterar');?></button>
+                                <a href="<?=site_url('arquivos')?>" class="btn"><i class="icon-arrow-left"></i><?=$this->lang->line('arquivoltar');?></a>
                             </div>
                         </div>
                     </div>

@@ -3,7 +3,7 @@
 <html lang="pt-br">
     
 <head>
-        <title>Map Os</title><meta charset="UTF-8" />
+        <title><?=$this->lang->line('topo_nomesist');?></title><meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap.min.css" />
         <link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap-responsive.min.css" />
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="form-actions" style="text-align: center">
-                    <button class="btn btn-info btn-large"/> Acessar</button>
+                    <button class="btn btn-info btn-large"/><?=$this->lang->line('conectelgacessar');?></button>
                 </div>
             </form>
        
@@ -61,8 +61,8 @@
                           senha: { required: true}
                     },
                     messages:{
-                          email: { required: 'Campo Requerido.', email: 'Insira Email válido'},
-                          senha: {required: 'Campo Requerido.'}
+                          email: { required: '<?=$this->lang->line('conectelgobriga');?>', email: '<?=$this->lang->line('conectelgobrigaemail');?>'},
+                          senha: {required: '<?=$this->lang->line('conectelgobriga');?>'}
                     },
                    submitHandler: function( form ){       
                          var dados = $( form ).serialize();
@@ -70,13 +70,13 @@
                     
                         $.ajax({
                           type: "POST",
-                          url: "<?php echo base_url();?>conecte/login?ajax=true",
+                          url: "<?php echo base_url();?>index.php/conecte/login?ajax=true",
                           data: dados,
                           dataType: 'json',
                           success: function(data)
                           {
                             if(data.result == true){
-                                window.location.href = "<?php echo base_url();?>conecte/painel";
+                                window.location.href = "<?php echo base_url();?>index.php/conecte/painel";
                             }
                             else{
                                 $('#call-modal').trigger('click');
@@ -104,18 +104,18 @@
 
 
 
-        <a href="#notification" id="call-modal" role="button" class="btn" data-toggle="modal" style="display: none ">notification</a>
+        <a href="#notification" id="call-modal" role="button" class="btn" data-toggle="modal" style="display: none "><?=$this->lang->line('conectelgnotice');?></a>
 
         <div id="notification" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 id="myModalLabel">MapOS</h4>
+            <h4 id="myModalLabel"><?=$this->lang->line('nomesist');?></h4>
           </div>
           <div class="modal-body">
-            <h5 style="text-align: center">Os dados de acesso estão incorretos, por favor tente novamente!</h5>
+            <h5 style="text-align: center"><?=$this->lang->line('conectelgmsgerro');?></h5>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Fechar</button>
+            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true"><?=$this->lang->line('conectelgclose');?></button>
 
           </div>
         </div>

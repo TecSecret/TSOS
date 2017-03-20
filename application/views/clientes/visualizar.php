@@ -1,4 +1,3 @@
-<?=$this->lang->load('visualizar_lang');?>
 <div class="widget-box">
     <div class="widget-title">
         <ul class="nav nav-tabs">
@@ -48,7 +47,7 @@
                                 <div class="accordion-heading">
                                     <div class="widget-title">
                                         <a data-parent="#collapse-group" href="#collapseGTwo" data-toggle="collapse">
-                                            <span class="icon"><i class="icon-list"></i></span><h5><?=$this->lang->line('clivis_tab1_inf2');?></h5>
+                                            <span class="icon"><i class="icon-list"></i></span><h5><?=$this->lang->line('clivis_tab1_info2');?></h5>
                                         </a>
                                     </div>
                                 </div>
@@ -77,7 +76,7 @@
                                 <div class="accordion-heading">
                                     <div class="widget-title">
                                         <a data-parent="#collapse-group" href="#collapseGThree" data-toggle="collapse">
-                                            <span class="icon"><i class="icon-list"></i></span><h5><?=$this->lang->line('clivis_tab1_inf3');?></h5>
+                                            <span class="icon"><i class="icon-list"></i></span><h5><?=$this->lang->line('clivis_tab1_info3');?></h5>
                                         </a>
                                     </div>
                                 </div>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-        <title>Map Os</title><meta charset="UTF-8" />
+        <title><?=$this->lang->line('nomesist');?></title><meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap.min.css')?>" />
         <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap-responsive.min.css')?>" />
         <link rel="stylesheet" href="<?=base_url('assets/css/matrix-login.css')?>" />
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
         <script src="<?=base_url('assets/js/jquery-1.10.2.min.js')?>"></script>
     </head>
     <body>
@@ -41,31 +41,30 @@
         </div>
         <script src="<?=base_url('assets/js/bootstrap.min.js')?>"></script>
         <script src="<?=base_url('assets/js/validate.js')?>"></script>
-        <script type="text/javascript">
+         <script type="text/javascript">
             $(document).ready(function(){
                 $('#email').focus();
                 $("#formLogin").validate({
-                     rules :{
-                          email: { required: true, email: true},
+                   rules :{
+                          email: { required: true},
                           senha: { required: true}
                     },
                     messages:{
-                          email: { required: 'Campo Requerido.', email: 'Insira Email válido'},
+                          email: { required: 'Campo Requerido.'},
                           senha: {required: 'Campo Requerido.'}
                     },
-                   submitHandler: function( form ){       
-                         var dados = $( form ).serialize();
-                         
-                    
+                   submitHandler: function(form){
+                         var dados = $(form).serialize();
                         $.ajax({
                           type: "POST",
-                          url: "<?php echo base_url();?>tsdc/verificarLogin?ajax=true",
+                          url: "<?=site_url('verificarLogin?ajax=true')?>",
                           data: dados,
                           dataType: 'json',
                           success: function(data)
                           {
                             if(data.result == true){
-                                window.location.href = "<?php echo base_url();?>tsdc";
+                                console.log('entrou no if');
+                                window.location.href = "<?=site_url()?>";
                             }
                             else{
                                 $('#call-modal').trigger('click');
@@ -90,7 +89,7 @@
         <div id="notification" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 id="myModalLabel">MapOS</h4>
+            <h4 id="myModalLabel"><?=$this->lang->line('nomesist');?></h4>
           </div>
           <div class="modal-body">
             <h5 style="text-align: center">Os dados de acesso estão incorretos, por favor tente novamente!</h5>

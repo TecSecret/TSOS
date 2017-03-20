@@ -8,22 +8,22 @@ if(!$results){?>
             <span class="icon">
                 <i class="icon-user"></i>
             </span>
-            <h5>Clientes</h5>
+            <h5><?=$this->lang->line('cli');?></h5>
         </div>
         <div class="widget-content nopadding">
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Nome</th>
-                        <th>CPF/CNPJ</th>
-                        <th>Telefone</th>
+                        <th><?=$this->lang->line('cliaid');?></th>
+                        <th><?=$this->lang->line('clinome');?></th>
+                        <th><?=$this->lang->line('clicpfcnpj');?></th>
+                        <th><?=$this->lang->line('clifonefixo');?></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="5">Nenhum Cliente Cadastrado</td>
+                        <td colspan="5"><?=$this->lang->line('clivazio');?></td>
                     </tr>
                 </tbody>
             </table>
@@ -36,16 +36,16 @@ if(!$results){?>
         <span class="icon">
             <i class="icon-user"></i>
          </span>
-        <h5>Clientes</h5>
+        <h5><?=$this->lang->line('cli');?></h5>
      </div>
 <div class="widget-content nopadding">
 <table class="table table-bordered ">
     <thead>
         <tr>
-            <th>#</th>
-            <th>Nome</th>
-            <th>CPF/CNPJ</th>
-            <th>Telefone</th>
+            <th><?=$this->lang->line('cliaid');?></th>
+            <th><?=$this->lang->line('clinome');?></th>
+            <th><?=$this->lang->line('clicpfcnpj');?></th>
+            <th><?=$this->lang->line('clifonefixo');?></th>
             <th></th>
         </tr>
     </thead>
@@ -81,15 +81,15 @@ if(!$results){?>
   <form action="<?=site_url('clientes/excluir')?>" method="post" >
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h5 id="myModalLabel">Excluir Cliente</h5>
+    <h5 id="myModalLabel"><?=$this->lang->line('clidel');?></h5>
   </div>
   <div class="modal-body">
     <input type="hidden" id="idCliente" name="id" value="" />
-    <h5 style="text-align: center">Deseja realmente excluir este cliente e os dados associados a ele (OS, Vendas, Receitas)?</h5>
+    <h5 style="text-align: center"><?=$this->lang->line('clidelmsg');?></h5>
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-    <button class="btn btn-danger">Excluir</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true"><?=$this->lang->line('clicancelar');?></button>
+    <button class="btn btn-danger"><?=$this->lang->line('clidel2');?></button>
   </div>
   </form>
 </div>

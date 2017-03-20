@@ -1,9 +1,8 @@
-
   <div class="quick-actions_homepage">
     <ul class="quick-actions">
-      <li class="bg_lo span3"> <a href="<?php echo base_url()?>index.php/conecte/os"> <i class="icon-tags"></i> Ordens de Serviço</a> </li>
-      <li class="bg_ls span3"> <a href="<?php echo base_url()?>index.php/conecte/compras"><i class="icon-shopping-cart"></i> Compras</a></li>
-      <li class="bg_lg span3"> <a href="<?php echo base_url()?>index.php/conecte/conta"><i class="icon-star"></i> Minha Conta</a></li>
+      <li class="bg_lo span3"> <a href="<?php echo base_url()?>index.php/conecte/os"> <i class="icon-tags"></i><?=$this->lang->line('conectepnlos');?></a> </li>
+      <li class="bg_ls span3"> <a href="<?php echo base_url()?>index.php/conecte/compras"><i class="icon-shopping-cart"></i><?=$this->lang->line('conectepnlcp');?></a></li>
+      <li class="bg_lg span3"> <a href="<?php echo base_url()?>index.php/conecte/conta"><i class="icon-star"></i><?=$this->lang->line('conectepnlmc');?></a></li>
     </ul>
   </div>
  
@@ -11,16 +10,16 @@
   <div class="span12" style="margin-left: 0">
       
       <div class="widget-box">
-          <div class="widget-title"><span class="icon"><i class="icon-signal"></i></span><h5>Últimas Ordens de Serviço</h5></div>
+          <div class="widget-title"><span class="icon"><i class="icon-signal"></i></span><h5><?=$this->lang->line('conectepnlultimaos');?></h5></div>
           <div class="widget-content">
               <table class="table table-bordered">
                   <thead>
                       <tr>
-                          <th>#</th>
-                          <th>Data Inicial</th>
-                          <th>Data Final</th>
-                          <th>Garantia</th>
-                          <th>Status</th>
+                          <th><?=$this->lang->line('conectepnlnos');?></th>
+                          <th><?=$this->lang->line('conectepnldti');?></th>
+                          <th><?=$this->lang->line('conectepnldtf');?></th>
+                          <th><?=$this->lang->line('conectepnlgar');?></th>
+                          <th><?=$this->lang->line('conectepnlsta');?></th>
                           <th></th>
                       </tr>
                   </thead>
@@ -51,15 +50,15 @@
       </div>
 
       <div class="widget-box">
-          <div class="widget-title"><span class="icon"><i class="icon-signal"></i></span><h5>Últimas Compras</h5></div>
+          <div class="widget-title"><span class="icon"><i class="icon-signal"></i></span><h5><?=$this->lang->line('conectepnlcpultima');?></h5></div>
           <div class="widget-content">
               <table class="table table-bordered">
                   <thead>
                       <tr>
-                          <th>#</th>
-                          <th>Data de Venda</th>
-                          <th>Responsável</th>
-                          <th>Faturado</th>
+                          <th><?=$this->lang->line('conectepnlcpid');?></th>
+                          <th><?=$this->lang->line('conectepnldtvenda');?></th>
+                          <th><?=$this->lang->line('conectepnlrespo');?></th>
+                          <th><?=$this->lang->line('conectepnlfat');?></th>
                           <th></th>
                       </tr>
                   </thead>

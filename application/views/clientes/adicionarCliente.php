@@ -1,4 +1,3 @@
-<?=$this->lang->load('adicionarCliente_lang');?>
 <div class="row-fluid" style="margin-top:0">
     <div class="span12">
         <div class="widget-box">
@@ -90,8 +89,8 @@
                     <div class="form-actions">
                         <div class="span12">
                             <div class="span6 offset3">
-                                <button type="submit" class="btn btn-success"><i class="icon-plus icon-white"></i> <?=$this->lang->line('cad_add');?></button>
-                                <a href="<?=site_url('clientes')?>" id="" class="btn"><i class="icon-arrow-left"></i> <?=$this->lang->line('cad_exit');?></a>
+                                <button type="submit" class="btn btn-success"><i class="icon-plus icon-white"></i><?=$this->lang->line('cad_add');?></button>
+                                <a href="<?=site_url('clientes')?>" id="" class="btn"><i class="icon-arrow-left"></i><?=$this->lang->line('cad_exit');?></a>
                             </div>
                         </div>
                     </div>

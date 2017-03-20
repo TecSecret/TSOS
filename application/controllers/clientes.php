@@ -29,7 +29,7 @@ class Clientes extends MY_Acesso {
         $this->load->library('pagination');
 
 
-        $config['base_url'] = base_url().'clientes/gerenciar/';
+        $config['base_url'] = base_url().'index.php/clientes/gerenciar/';
         $config['total_rows'] = $this->clientes_model->count('clientes');
         $config['per_page'] = 10;
         $config['next_link'] = 'Próxima';
@@ -102,7 +102,7 @@ class Clientes extends MY_Acesso {
 
           if ($this->clientes_model->add('clientes', $data) == TRUE) {
               $this->session->set_flashdata('success','Cliente adicionado com sucesso!');
-              redirect(base_url() . 'clientes/adicionar/');
+              redirect(base_url() . 'index.php/clientes/adicionar/');
           } else {
               $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
           }
@@ -196,7 +196,7 @@ class Clientes extends MY_Acesso {
 
           if ($this->clientes_model->edit('clientes', $data, 'idClientes', $this->input->post('idClientes')) == TRUE) {
               $this->session->set_flashdata('success','Cliente editado com sucesso!');
-              redirect(base_url() . 'clientes/editar/'.$this->input->post('idClientes'));
+              redirect(base_url() . 'index.php/clientes/editar/'.$this->input->post('idClientes'));
           } else {
               $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro</p></div>';
           }
@@ -291,6 +291,6 @@ class Clientes extends MY_Acesso {
           $this->clientes_model->delete('clientes','idClientes',$id);
 
           $this->session->set_flashdata('success','Cliente excluido com sucesso!');
-          redirect(base_url().'clientes/gerenciar/');
+          redirect(base_url().'index.php/clientes/gerenciar/');
   }
 }
