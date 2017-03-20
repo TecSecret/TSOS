@@ -54,12 +54,12 @@ hr{ border-top-color:#dadada;}
 }
 #header h1 {
 	background: url("../img/logo.png") no-repeat scroll 0 0 transparent;
-	height: 31px;
+	height: 72px;
 	left: 20px;
 	line-height: 600px;
 	overflow: hidden;
 	position: relative;
-	top: 26px;
+	top: 3px;
 	width: 191px;
 }
 #header h1 a {
@@ -1274,8 +1274,9 @@ form {
 /* Responsive design */
 @media (max-width: 480px) {
 #header h1 {
-	top: 10px; left:5px;
-	margin: 3px auto;
+	background: url("../img/logo-mobile.png") no-repeat scroll 0 0 transparent;
+	top: 1px; left:40px;
+	margin: auto;
 }
 #user-nav {
 	position: relative;
