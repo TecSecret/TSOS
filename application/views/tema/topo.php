@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="<?=base_url('assets/css/matrix-media.css')?>" />
 <link rel="stylesheet" href="<?=base_url('assets/font-awesome/css/font-awesome.css')?>"  />
 <link rel="stylesheet" href="<?=base_url('assets/css/fullcalendar.css')?>" />
-<link rel="icon" href="<?=base_url('assets/img/favicon.png')?>">
+<link rel="icon" href="<?=base_url('assets/img/favicon.ico')?>">
 
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 <script type="text/javascript"  src="<?=base_url('assets/js/jquery-1.10.2.min.js')?>"></script>

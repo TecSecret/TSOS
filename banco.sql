@@ -1,35 +1,39 @@
--- Copiando estrutura para tabela os.anexos
-CREATE TABLE IF NOT EXISTS `anexos` (
-  `idAnexos` int(11) NOT NULL AUTO_INCREMENT,
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `anexos`
+--
+
+CREATE TABLE `anexos` (
+  `idAnexos` int(11) NOT NULL,
   `anexo` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `thumb` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `url` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
   `path` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `os_id` int(11) NOT NULL,
-  PRIMARY KEY (`idAnexos`),
-  KEY `fk_anexos_os1` (`os_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `os_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Copiando dados para a tabela os.anexos: 0 rows
-/*!40000 ALTER TABLE `anexos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `anexos` ENABLE KEYS */;
+-- --------------------------------------------------------
 
--- Copiando estrutura para tabela os.ci_sessions
-CREATE TABLE IF NOT EXISTS `ci_sessions` (
+--
+-- Estrutura para tabela `ci_sessions`
+--
+
+CREATE TABLE `ci_sessions` (
   `id` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `ip_address` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `timestamp` int(10) unsigned NOT NULL DEFAULT '0',
-  `data` blob NOT NULL,
-  KEY `ci_sessions_timestamp` (`timestamp`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `data` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Copiando dados para a tabela os.ci_sessions: 0 rows
-/*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
+-- --------------------------------------------------------
 
--- Copiando estrutura para tabela os.clientes
-CREATE TABLE IF NOT EXISTS `clientes` (
-  `idClientes` int(11) NOT NULL AUTO_INCREMENT,
+--
+-- Estrutura para tabela `clientes`
+--
+
+CREATE TABLE `clientes` (
+  `idClientes` int(11) NOT NULL,
   `nomeCliente` varchar(255) NOT NULL,
   `documento` varchar(20) NOT NULL,
   `telefone` varchar(20) NOT NULL,
@@ -41,19 +45,17 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   `bairro` varchar(45) DEFAULT NULL,
   `cidade` varchar(45) DEFAULT NULL,
   `estado` varchar(20) DEFAULT NULL,
-  `cep` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`idClientes`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `cep` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela os.clientes: 1 rows
-/*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` (`idClientes`, `nomeCliente`, `documento`, `telefone`, `celular`, `email`, `dataCadastro`, `rua`, `numero`, `bairro`, `cidade`, `estado`, `cep`) VALUES
-	(2, 'Daniel', 'sdfsdf', '(11) 1111-11111', '(11) 1111-11111', 'dsds@dsdsd.cas', '2017-03-16', 'asd', 'asd', 'adsd', 'sad', 'ads', 'asdas');
-/*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
+-- --------------------------------------------------------
 
--- Copiando estrutura para tabela os.documentos
-CREATE TABLE IF NOT EXISTS `documentos` (
-  `idDocumentos` int(11) NOT NULL AUTO_INCREMENT,
+--
+-- Estrutura para tabela `documentos`
+--
+
+CREATE TABLE `documentos` (
+  `idDocumentos` int(11) NOT NULL,
   `documento` varchar(70) COLLATE utf8_unicode_ci DEFAULT NULL,
   `descricao` text COLLATE utf8_unicode_ci,
   `file` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -62,17 +64,17 @@ CREATE TABLE IF NOT EXISTS `documentos` (
   `cadastro` date DEFAULT NULL,
   `categoria` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
   `tipo` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `tamanho` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`idDocumentos`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `tamanho` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Copiando dados para a tabela os.documentos: 0 rows
-/*!40000 ALTER TABLE `documentos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `documentos` ENABLE KEYS */;
+-- --------------------------------------------------------
 
--- Copiando estrutura para tabela os.emitente
-CREATE TABLE IF NOT EXISTS `emitente` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+--
+-- Estrutura para tabela `emitente`
+--
+
+CREATE TABLE `emitente` (
+  `id` int(11) NOT NULL,
   `nome` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `cnpj` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ie` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -83,36 +85,32 @@ CREATE TABLE IF NOT EXISTS `emitente` (
   `uf` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `telefone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `url_logo` varchar(225) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `url_logo` varchar(225) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Copiando dados para a tabela os.emitente: 1 rows
-/*!40000 ALTER TABLE `emitente` DISABLE KEYS */;
-INSERT INTO `emitente` (`id`, `nome`, `cnpj`, `ie`, `rua`, `numero`, `bairro`, `cidade`, `uf`, `telefone`, `email`, `url_logo`) VALUES
-	(1, 'DC WEBSOLUTIONS', '00000000000000', 'asd', 'zzxc', '145', 'Maracatu', 'GUARAREMA', 'São Paulo', '111111111111', 'fafafa@hotmail.com', 'http://os.dev/assets/uploads/e8e35bd7f64e522cd19e93ac59847af7.png');
-/*!40000 ALTER TABLE `emitente` ENABLE KEYS */;
+-- --------------------------------------------------------
 
--- Copiando estrutura para tabela os.itens_de_vendas
-CREATE TABLE IF NOT EXISTS `itens_de_vendas` (
-  `idItens` int(11) NOT NULL AUTO_INCREMENT,
+--
+-- Estrutura para tabela `itens_de_vendas`
+--
+
+CREATE TABLE `itens_de_vendas` (
+  `idItens` int(11) NOT NULL,
   `subTotal` decimal(12,2) DEFAULT '0.00',
   `quantidade` int(11) DEFAULT '0',
   `vendas_id` int(11) NOT NULL,
   `desconto` decimal(12,2) DEFAULT '0.00',
-  `produtos_id` int(11) NOT NULL,
-  PRIMARY KEY (`idItens`),
-  KEY `fk_itens_de_vendas_vendas1` (`vendas_id`),
-  KEY `fk_itens_de_vendas_produtos1` (`produtos_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `produtos_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
--- Copiando dados para a tabela os.itens_de_vendas: 0 rows
-/*!40000 ALTER TABLE `itens_de_vendas` DISABLE KEYS */;
-/*!40000 ALTER TABLE `itens_de_vendas` ENABLE KEYS */;
+-- --------------------------------------------------------
 
--- Copiando estrutura para tabela os.lancamentos
-CREATE TABLE IF NOT EXISTS `lancamentos` (
-  `idLancamentos` int(11) NOT NULL AUTO_INCREMENT,
+--
+-- Estrutura para tabela `lancamentos`
+--
+
+CREATE TABLE `lancamentos` (
+  `idLancamentos` int(11) NOT NULL,
   `descricao` varchar(255) DEFAULT NULL,
   `valor` decimal(12,2) DEFAULT '0.00',
   `desconto` decimal(12,2) DEFAULT '0.00',
@@ -123,21 +121,17 @@ CREATE TABLE IF NOT EXISTS `lancamentos` (
   `forma_pgto` varchar(100) DEFAULT NULL,
   `tipo` varchar(45) DEFAULT NULL,
   `anexo` varchar(250) DEFAULT NULL,
-  `clientes_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idLancamentos`),
-  KEY `fk_lancamentos_clientes1` (`clientes_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `clientes_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela os.lancamentos: 2 rows
-/*!40000 ALTER TABLE `lancamentos` DISABLE KEYS */;
-INSERT INTO `lancamentos` (`idLancamentos`, `descricao`, `valor`, `desconto`, `data_vencimento`, `data_pagamento`, `baixado`, `cliente_fornecedor`, `forma_pgto`, `tipo`, `anexo`, `clientes_id`) VALUES
-	(1, 'Fatura de Venda - #1 ', 51.00, 0.00, '2017-03-23', '0000-00-00', NULL, 'Daniel', 'Dinheiro', 'receita', NULL, 2),
-	(2, 'teste', 11.11, 0.00, '2017-03-16', '2017-03-16', 0, 'Daniel', 'Dinheiro', 'receita', NULL, NULL);
-/*!40000 ALTER TABLE `lancamentos` ENABLE KEYS */;
+-- --------------------------------------------------------
 
--- Copiando estrutura para tabela os.os
-CREATE TABLE IF NOT EXISTS `os` (
-  `idOs` int(11) NOT NULL AUTO_INCREMENT,
+--
+-- Estrutura para tabela `os`
+--
+
+CREATE TABLE `os` (
+  `idOs` int(11) NOT NULL,
   `dataInicial` date DEFAULT NULL,
   `dataFinal` date DEFAULT NULL,
   `garantia` varchar(45) DEFAULT NULL,
@@ -156,107 +150,97 @@ CREATE TABLE IF NOT EXISTS `os` (
   `modelo` tinytext,
   `serie` tinytext,
   `tipo_equipamento` tinytext,
-  `part_namber` tinytext,
-  PRIMARY KEY (`idOs`),
-  KEY `fk_os_clientes1` (`clientes_id`),
-  KEY `fk_os_usuarios1` (`usuarios_id`),
-  KEY `fk_os_lancamentos1` (`lancamento`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `part_namber` tinytext
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela os.os: 4 rows
-/*!40000 ALTER TABLE `os` DISABLE KEYS */;
-INSERT INTO `os` (`idOs`, `dataInicial`, `dataFinal`, `garantia`, `descricaoProduto`, `defeito`, `status`, `observacoes`, `laudoTecnico`, `descontoTotal`, `valorTotal`, `clientes_id`, `usuarios_id`, `lancamento`, `faturado`, `fabricante`, `modelo`, `serie`, `tipo_equipamento`, `part_namber`) VALUES
-	(2, '2017-03-16', '2017-03-17', '1', 'asds', 'adsad', 'Orçamento', 'asdd', 'adsdad', 0.00, 11.11, 2, 1, NULL, 0, NULL, NULL, NULL, NULL, NULL),
-	(3, '2017-03-16', '2017-03-31', '2', 'dsasda', 'dasa', 'Orçamento', 'sadd', 'sada', 0.00, 0.00, 2, 1, NULL, 0, NULL, NULL, NULL, NULL, NULL),
-	(4, '2017-03-17', '2017-03-24', '2', 'asx', 'ada', 'Orçamento', 'das', 'adsd', 0.00, 0.00, 2, 1, NULL, 0, 'teste', 'teste', NULL, NULL, NULL),
-	(5, '2017-03-18', '2017-03-24', '2', 'teste1', 'teste', 'Aberto', 'teste', 'teste', 0.00, 0.00, 2, 1, NULL, 0, 'teste1', 'teste1', '00', 'teste1', '00');
-/*!40000 ALTER TABLE `os` ENABLE KEYS */;
+-- --------------------------------------------------------
 
--- Copiando estrutura para tabela os.permissoes
-CREATE TABLE IF NOT EXISTS `permissoes` (
-  `idPermissao` int(11) NOT NULL AUTO_INCREMENT,
+--
+-- Estrutura para tabela `permissoes`
+--
+
+CREATE TABLE `permissoes` (
+  `idPermissao` int(11) NOT NULL,
   `nome` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
   `permissoes` text COLLATE utf8_unicode_ci,
   `situacao` tinyint(1) DEFAULT NULL,
-  `data` date DEFAULT NULL,
-  PRIMARY KEY (`idPermissao`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `data` date DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Copiando dados para a tabela os.permissoes: 1 rows
-/*!40000 ALTER TABLE `permissoes` DISABLE KEYS */;
+--
+-- Fazendo dump de dados para tabela `permissoes`
+--
+
 INSERT INTO `permissoes` (`idPermissao`, `nome`, `permissoes`, `situacao`, `data`) VALUES
-	(1, 'Administrador', 'a:38:{s:8:"aCliente";s:1:"1";s:8:"eCliente";s:1:"1";s:8:"dCliente";s:1:"1";s:8:"vCliente";s:1:"1";s:8:"aProduto";s:1:"1";s:8:"eProduto";s:1:"1";s:8:"dProduto";s:1:"1";s:8:"vProduto";s:1:"1";s:8:"aServico";s:1:"1";s:8:"eServico";s:1:"1";s:8:"dServico";s:1:"1";s:8:"vServico";s:1:"1";s:3:"aOs";s:1:"1";s:3:"eOs";s:1:"1";s:3:"dOs";s:1:"1";s:3:"vOs";s:1:"1";s:6:"aVenda";s:1:"1";s:6:"eVenda";s:1:"1";s:6:"dVenda";s:1:"1";s:6:"vVenda";s:1:"1";s:8:"aArquivo";s:1:"1";s:8:"eArquivo";s:1:"1";s:8:"dArquivo";s:1:"1";s:8:"vArquivo";s:1:"1";s:11:"aLancamento";s:1:"1";s:11:"eLancamento";s:1:"1";s:11:"dLancamento";s:1:"1";s:11:"vLancamento";s:1:"1";s:8:"cUsuario";s:1:"1";s:9:"cEmitente";s:1:"1";s:10:"cPermissao";s:1:"1";s:7:"cBackup";s:1:"1";s:8:"rCliente";s:1:"1";s:8:"rProduto";s:1:"1";s:8:"rServico";s:1:"1";s:3:"rOs";s:1:"1";s:6:"rVenda";s:1:"1";s:11:"rFinanceiro";s:1:"1";}', 1, '2014-09-03');
-/*!40000 ALTER TABLE `permissoes` ENABLE KEYS */;
+(1, 'Administrador', 'a:38:{s:8:\"aCliente\";s:1:\"1\";s:8:\"eCliente\";s:1:\"1\";s:8:\"dCliente\";s:1:\"1\";s:8:\"vCliente\";s:1:\"1\";s:8:\"aProduto\";s:1:\"1\";s:8:\"eProduto\";s:1:\"1\";s:8:\"dProduto\";s:1:\"1\";s:8:\"vProduto\";s:1:\"1\";s:8:\"aServico\";s:1:\"1\";s:8:\"eServico\";s:1:\"1\";s:8:\"dServico\";s:1:\"1\";s:8:\"vServico\";s:1:\"1\";s:3:\"aOs\";s:1:\"1\";s:3:\"eOs\";s:1:\"1\";s:3:\"dOs\";s:1:\"1\";s:3:\"vOs\";s:1:\"1\";s:6:\"aVenda\";s:1:\"1\";s:6:\"eVenda\";s:1:\"1\";s:6:\"dVenda\";s:1:\"1\";s:6:\"vVenda\";s:1:\"1\";s:8:\"aArquivo\";s:1:\"1\";s:8:\"eArquivo\";s:1:\"1\";s:8:\"dArquivo\";s:1:\"1\";s:8:\"vArquivo\";s:1:\"1\";s:11:\"aLancamento\";s:1:\"1\";s:11:\"eLancamento\";s:1:\"1\";s:11:\"dLancamento\";s:1:\"1\";s:11:\"vLancamento\";s:1:\"1\";s:8:\"cUsuario\";s:1:\"1\";s:9:\"cEmitente\";s:1:\"1\";s:10:\"cPermissao\";s:1:\"1\";s:7:\"cBackup\";s:1:\"1\";s:8:\"rCliente\";s:1:\"1\";s:8:\"rProduto\";s:1:\"1\";s:8:\"rServico\";s:1:\"1\";s:3:\"rOs\";s:1:\"1\";s:6:\"rVenda\";s:1:\"1\";s:11:\"rFinanceiro\";s:1:\"1\";}', 1, '2014-09-03'),
+(2, 'Usuario', 'a:38:{s:8:\"aCliente\";s:1:\"1\";s:8:\"eCliente\";s:1:\"1\";s:8:\"dCliente\";s:1:\"1\";s:8:\"vCliente\";s:1:\"1\";s:8:\"aProduto\";s:1:\"1\";s:8:\"eProduto\";s:1:\"1\";s:8:\"dProduto\";s:1:\"1\";s:8:\"vProduto\";s:1:\"1\";s:8:\"aServico\";s:1:\"1\";s:8:\"eServico\";s:1:\"1\";s:8:\"dServico\";s:1:\"1\";s:8:\"vServico\";s:1:\"1\";s:3:\"aOs\";s:1:\"1\";s:3:\"eOs\";s:1:\"1\";s:3:\"dOs\";s:1:\"1\";s:3:\"vOs\";s:1:\"1\";s:6:\"aVenda\";s:1:\"1\";s:6:\"eVenda\";s:1:\"1\";s:6:\"dVenda\";s:1:\"1\";s:6:\"vVenda\";s:1:\"1\";s:8:\"aArquivo\";s:1:\"1\";s:8:\"eArquivo\";s:1:\"1\";s:8:\"dArquivo\";s:1:\"1\";s:8:\"vArquivo\";s:1:\"1\";s:11:\"aLancamento\";s:1:\"1\";s:11:\"eLancamento\";s:1:\"1\";s:11:\"dLancamento\";s:1:\"1\";s:11:\"vLancamento\";s:1:\"1\";s:8:\"cUsuario\";N;s:9:\"cEmitente\";s:1:\"1\";s:10:\"cPermissao\";N;s:7:\"cBackup\";N;s:8:\"rCliente\";s:1:\"1\";s:8:\"rProduto\";s:1:\"1\";s:8:\"rServico\";s:1:\"1\";s:3:\"rOs\";s:1:\"1\";s:6:\"rVenda\";s:1:\"1\";s:11:\"rFinanceiro\";s:1:\"1\";}', 1, '2017-03-20');
 
--- Copiando estrutura para tabela os.produtos
-CREATE TABLE IF NOT EXISTS `produtos` (
-  `idProdutos` int(11) NOT NULL AUTO_INCREMENT,
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `produtos`
+--
+
+CREATE TABLE `produtos` (
+  `idProdutos` int(11) NOT NULL,
   `descricao` varchar(80) NOT NULL,
   `unidade` varchar(10) DEFAULT NULL,
   `precoCompra` decimal(12,2) DEFAULT '0.00',
   `precoVenda` decimal(12,2) DEFAULT '0.00',
   `estoque` int(11) NOT NULL,
-  `estoqueMinimo` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idProdutos`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `estoqueMinimo` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela os.produtos: 1 rows
-/*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
-INSERT INTO `produtos` (`idProdutos`, `descricao`, `unidade`, `precoCompra`, `precoVenda`, `estoque`, `estoqueMinimo`) VALUES
-	(2, 'teste', 'jkhdsh', 222.22, 11.11, 1, 0);
-/*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
+-- --------------------------------------------------------
 
--- Copiando estrutura para tabela os.produtos_os
-CREATE TABLE IF NOT EXISTS `produtos_os` (
-  `idProdutos_os` int(11) NOT NULL AUTO_INCREMENT,
+--
+-- Estrutura para tabela `produtos_os`
+--
+
+CREATE TABLE `produtos_os` (
+  `idProdutos_os` int(11) NOT NULL,
   `quantidade` int(11) NOT NULL DEFAULT '0',
   `os_id` int(11) NOT NULL,
   `produtos_id` int(11) NOT NULL,
   `desconto` decimal(12,2) DEFAULT '0.00',
-  `subTotal` decimal(12,2) DEFAULT '0.00',
-  PRIMARY KEY (`idProdutos_os`),
-  KEY `fk_produtos_os_os1` (`os_id`),
-  KEY `fk_produtos_os_produtos1` (`produtos_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `subTotal` decimal(12,2) DEFAULT '0.00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Copiando dados para a tabela os.produtos_os: 1 rows
-/*!40000 ALTER TABLE `produtos_os` DISABLE KEYS */;
-INSERT INTO `produtos_os` (`idProdutos_os`, `quantidade`, `os_id`, `produtos_id`, `desconto`, `subTotal`) VALUES
-	(1, 1, 2, 2, 0.00, 11.11);
-/*!40000 ALTER TABLE `produtos_os` ENABLE KEYS */;
+-- --------------------------------------------------------
 
--- Copiando estrutura para tabela os.servicos
-CREATE TABLE IF NOT EXISTS `servicos` (
-  `idServicos` int(11) NOT NULL AUTO_INCREMENT,
+--
+-- Estrutura para tabela `servicos`
+--
+
+CREATE TABLE `servicos` (
+  `idServicos` int(11) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `descricao` varchar(45) DEFAULT NULL,
-  `preco` decimal(10,2) DEFAULT '0.00',
-  PRIMARY KEY (`idServicos`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `preco` decimal(10,2) DEFAULT '0.00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela os.servicos: 0 rows
-/*!40000 ALTER TABLE `servicos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `servicos` ENABLE KEYS */;
+-- --------------------------------------------------------
 
--- Copiando estrutura para tabela os.servicos_os
-CREATE TABLE IF NOT EXISTS `servicos_os` (
-  `idServicos_os` int(11) NOT NULL AUTO_INCREMENT,
+--
+-- Estrutura para tabela `servicos_os`
+--
+
+CREATE TABLE `servicos_os` (
+  `idServicos_os` int(11) NOT NULL,
   `os_id` int(11) NOT NULL,
   `servicos_id` int(11) NOT NULL,
   `desconto` decimal(12,2) DEFAULT '0.00',
-  `subTotal` decimal(12,2) DEFAULT '0.00',
-  PRIMARY KEY (`idServicos_os`),
-  KEY `fk_servicos_os_os1` (`os_id`),
-  KEY `fk_servicos_os_servicos1` (`servicos_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `subTotal` decimal(12,2) DEFAULT '0.00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela os.servicos_os: 0 rows
-/*!40000 ALTER TABLE `servicos_os` DISABLE KEYS */;
-/*!40000 ALTER TABLE `servicos_os` ENABLE KEYS */;
+-- --------------------------------------------------------
 
--- Copiando estrutura para tabela os.usuarios
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `idUsuarios` int(11) NOT NULL AUTO_INCREMENT,
+--
+-- Estrutura para tabela `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `idUsuarios` int(11) NOT NULL,
   `nome` varchar(80) NOT NULL,
   `usuario` varchar(80) NOT NULL,
   `rg` varchar(20) DEFAULT NULL,
@@ -273,20 +257,24 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `situacao` tinyint(1) NOT NULL,
   `dataCadastro` date NOT NULL,
   `nivel` int(11) NOT NULL,
-  `permissoes_id` int(11) NOT NULL,
-  PRIMARY KEY (`idUsuarios`),
-  KEY `fk_usuarios_permissoes1_idx` (`permissoes_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `permissoes_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela os.usuarios: 1 rows
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+--
+-- Fazendo dump de dados para tabela `usuarios`
+--
+
 INSERT INTO `usuarios` (`idUsuarios`, `nome`, `usuario`, `rg`, `cpf`, `rua`, `numero`, `bairro`, `cidade`, `estado`, `email`, `senha`, `telefone`, `celular`, `situacao`, `dataCadastro`, `nivel`, `permissoes_id`) VALUES
-	(1, 'admin', 'admin', 'MG-25.502.560', '600.021.520-87', 'Rua Acima', '12', 'Alvorada', 'Teste', 'MG', 'admin@admin.com', '$2y$10$66ofwMBpn7TMfg1Ob/2vz.PqTgtLy4wACaNglj5592CEHzDrsf80u', '0000-0000', '', 1, '2013-11-22', 1, 1);
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+(1, 'Usuario Demo', 'admin', '486638753', '45418589083', 'Av. rua sem endereço demo', '001', 'Vila Demo', 'São Paulo', 'SP', 'admin@admin.com', '$2y$10$66ofwMBpn7TMfg1Ob/2vz.PqTgtLy4wACaNglj5592CEHzDrsf80u', '1111111111', '11222222222', 1, '2017-03-20', 0, 1);
 
--- Copiando estrutura para tabela os.vendas
-CREATE TABLE IF NOT EXISTS `vendas` (
-  `idVendas` int(11) NOT NULL AUTO_INCREMENT,
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `vendas`
+--
+
+CREATE TABLE `vendas` (
+  `idVendas` int(11) NOT NULL,
   `dataVenda` date DEFAULT NULL,
   `valorTotal` decimal(12,2) DEFAULT '0.00',
   `descontoTotal` decimal(12,2) DEFAULT '0.00',
@@ -294,17 +282,192 @@ CREATE TABLE IF NOT EXISTS `vendas` (
   `faturado` tinyint(1) DEFAULT NULL,
   `clientes_id` int(11) NOT NULL,
   `usuarios_id` int(11) DEFAULT NULL,
-  `lancamentos_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idVendas`),
-  KEY `fk_vendas_clientes1` (`clientes_id`),
-  KEY `fk_vendas_usuarios1` (`usuarios_id`),
-  KEY `fk_vendas_lancamentos1` (`lancamentos_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `lancamentos_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
--- Copiando dados para a tabela os.vendas: 1 rows
-/*!40000 ALTER TABLE `vendas` DISABLE KEYS */;
-INSERT INTO `vendas` (`idVendas`, `dataVenda`, `valorTotal`, `descontoTotal`, `desconto`, `faturado`, `clientes_id`, `usuarios_id`, `lancamentos_id`) VALUES
-	(2, '2017-03-16', 0.00, 0.00, 0.00, 0, 2, 1, NULL);
-/*!40000 ALTER TABLE `vendas` ENABLE KEYS */;
+--
+-- Índices de tabelas apagadas
+--
 
+--
+-- Índices de tabela `anexos`
+--
+ALTER TABLE `anexos`
+  ADD PRIMARY KEY (`idAnexos`),
+  ADD KEY `fk_anexos_os1` (`os_id`);
 
+--
+-- Índices de tabela `ci_sessions`
+--
+ALTER TABLE `ci_sessions`
+  ADD KEY `ci_sessions_timestamp` (`timestamp`);
+
+--
+-- Índices de tabela `clientes`
+--
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`idClientes`);
+
+--
+-- Índices de tabela `documentos`
+--
+ALTER TABLE `documentos`
+  ADD PRIMARY KEY (`idDocumentos`);
+
+--
+-- Índices de tabela `emitente`
+--
+ALTER TABLE `emitente`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `itens_de_vendas`
+--
+ALTER TABLE `itens_de_vendas`
+  ADD PRIMARY KEY (`idItens`),
+  ADD KEY `fk_itens_de_vendas_vendas1` (`vendas_id`),
+  ADD KEY `fk_itens_de_vendas_produtos1` (`produtos_id`);
+
+--
+-- Índices de tabela `lancamentos`
+--
+ALTER TABLE `lancamentos`
+  ADD PRIMARY KEY (`idLancamentos`),
+  ADD KEY `fk_lancamentos_clientes1` (`clientes_id`);
+
+--
+-- Índices de tabela `os`
+--
+ALTER TABLE `os`
+  ADD PRIMARY KEY (`idOs`),
+  ADD KEY `fk_os_clientes1` (`clientes_id`),
+  ADD KEY `fk_os_usuarios1` (`usuarios_id`),
+  ADD KEY `fk_os_lancamentos1` (`lancamento`);
+
+--
+-- Índices de tabela `permissoes`
+--
+ALTER TABLE `permissoes`
+  ADD PRIMARY KEY (`idPermissao`);
+
+--
+-- Índices de tabela `produtos`
+--
+ALTER TABLE `produtos`
+  ADD PRIMARY KEY (`idProdutos`);
+
+--
+-- Índices de tabela `produtos_os`
+--
+ALTER TABLE `produtos_os`
+  ADD PRIMARY KEY (`idProdutos_os`),
+  ADD KEY `fk_produtos_os_os1` (`os_id`),
+  ADD KEY `fk_produtos_os_produtos1` (`produtos_id`);
+
+--
+-- Índices de tabela `servicos`
+--
+ALTER TABLE `servicos`
+  ADD PRIMARY KEY (`idServicos`);
+
+--
+-- Índices de tabela `servicos_os`
+--
+ALTER TABLE `servicos_os`
+  ADD PRIMARY KEY (`idServicos_os`),
+  ADD KEY `fk_servicos_os_os1` (`os_id`),
+  ADD KEY `fk_servicos_os_servicos1` (`servicos_id`);
+
+--
+-- Índices de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`idUsuarios`),
+  ADD KEY `fk_usuarios_permissoes1_idx` (`permissoes_id`);
+
+--
+-- Índices de tabela `vendas`
+--
+ALTER TABLE `vendas`
+  ADD PRIMARY KEY (`idVendas`),
+  ADD KEY `fk_vendas_clientes1` (`clientes_id`),
+  ADD KEY `fk_vendas_usuarios1` (`usuarios_id`),
+  ADD KEY `fk_vendas_lancamentos1` (`lancamentos_id`);
+
+--
+-- AUTO_INCREMENT de tabelas apagadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `anexos`
+--
+ALTER TABLE `anexos`
+  MODIFY `idAnexos` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de tabela `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `idClientes` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de tabela `documentos`
+--
+ALTER TABLE `documentos`
+  MODIFY `idDocumentos` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de tabela `emitente`
+--
+ALTER TABLE `emitente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de tabela `itens_de_vendas`
+--
+ALTER TABLE `itens_de_vendas`
+  MODIFY `idItens` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de tabela `lancamentos`
+--
+ALTER TABLE `lancamentos`
+  MODIFY `idLancamentos` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de tabela `os`
+--
+ALTER TABLE `os`
+  MODIFY `idOs` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de tabela `permissoes`
+--
+ALTER TABLE `permissoes`
+  MODIFY `idPermissao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de tabela `produtos`
+--
+ALTER TABLE `produtos`
+  MODIFY `idProdutos` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de tabela `produtos_os`
+--
+ALTER TABLE `produtos_os`
+  MODIFY `idProdutos_os` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de tabela `servicos`
+--
+ALTER TABLE `servicos`
+  MODIFY `idServicos` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de tabela `servicos_os`
+--
+ALTER TABLE `servicos_os`
+  MODIFY `idServicos_os` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `idUsuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de tabela `vendas`
+--
+ALTER TABLE `vendas`
+  MODIFY `idVendas` int(11) NOT NULL AUTO_INCREMENT;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

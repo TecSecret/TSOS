@@ -8,9 +8,11 @@
         <link rel="stylesheet" href="<?=base_url('assets/css/matrix-login.css')?>" />
         <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
         <script src="<?=base_url('assets/js/jquery-1.10.2.min.js')?>"></script>
+        <link rel="icon" href="<?=base_url('assets/img/favicon.ico')?>">
     </head>
     <body>
-        <div id="loginbox">
+    <div id="loginbox">
+    <div class="control-group normal_text"> <h3><img src="<?=base_url('assets/img/logo.png')?>" alt="Logo" /></h3></div>
             <?=form_open(site_url('verificarLogin'),'class="form-vertical" id="formLogin"') ?>
             <!-- <form   method="post" action="""> -->
                   <?php if($this->session->flashdata('error') != null):?>
@@ -18,8 +20,7 @@
                           <button type="button" class="close" data-dismiss="alert">&times;</button>
                           <?=$this->session->flashdata('error')?>
                        </div>
-                  <?php endif;?>
-                <div class="control-group normal_text"> <h3><img src="<?=base_url('assets/img/logo.png')?>" alt="Logo" /></h3></div>
+                  <?php endif;?>         
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">

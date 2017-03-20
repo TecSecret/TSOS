@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$allowed_domains = array('tsdc.tsdc.com');
-$default_domain  = 'tsdc.tsdc.com';
+$allowed_domains = array('os.dev');
+$default_domain  = 'os.dev';
 
 if (in_array($_SERVER['HTTP_HOST'], $allowed_domains, TRUE))
 {

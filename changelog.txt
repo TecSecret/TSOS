@@ -1,7 +1,7 @@
 
 
 __________________
-v1.0 - Final
+v1.0 - Final 20/03/2017
 - Add desconto nas abas produtos e serviços
 - fix bug impressão os
 - fix erros em diversas páginas
@@ -9,6 +9,7 @@ v1.0 - Final
 - add cadastro de equipameto (tipo, NS, PN, modelo, fabricante) na os
 - add opção editar emitente direto pelo admin
 - add suporte a mysql 5.7 e php 7
+- fix acesso ssl
 
 _________________
 v1.0 beta 1 - 15/03/2017
