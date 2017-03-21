@@ -20,5 +20,12 @@ _Importante_: Ao solicitar nova funcionalidade ou reportar erros, por favor info
 Usuário: admin@admin.com
 Senha: 123456
 
+#__Custos__#
+* A Versão do sistema distribuída neste repositório é gratuíta.
+
+* Adquira o sistema hospedado em Plesk com a **TecSecret** __[Clicando Aqui](https://central.tecsecret.com.br/cart.php?a=add&pid=64)__ <br />
+* Aquira a hospedagem do sistema em Cpanel com a **DC WEB Solution** __[Clicando Aqui]C                      https://www.central.dcwebsolutions.com.br/cart.php?a=add&pid=240)__<br/>
+
+
 #__Créditos__#<br />
 O código fonte deste projeto, tem como base o [mapos](https://github.com/RamonSilva20/mapos).<p />
