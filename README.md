@@ -8,11 +8,17 @@ O Seu ERP para Assistências Técnicas
 * Reportar erros e solicitar novas funcionalidades: __[Issues](https://github.com/TecSecret/TSDC-Assistencia/issues)__<br />
 _Importante_: Ao solicitar nova funcionalidade ou reportar erros, por favor informe o máximo de informações possível para nossa equipe analizar e poder retornar o mais rápido possível.<br />
 * O suporte somente será prestado via __[Issues](https://github.com/TecSecret/TSDC-Assistencia/issues)__.<br />
-* Algumas atualizações podem não ficar disponívels nas [releases](https://github.com/TecSecret/TSDC-Assistencia/releases), mas sim somente no repositório master do github, o qual receberá atualizações mais constantes.<p /><p />
+* Algumas atualizações podem não ficar disponívels nas [releases](https://github.com/TecSecret/TSDC-Assistencia/releases), mas sim somente no repositório master do github, o qual receberá atualizações mais constantes.
+* Para saber das atualizações o modificações nas versões Releases __[Clique Aqui](https://github.com/TecSecret/TSDC-Assistencia/wiki/Change-Log)__ <p />
 
-#__Mantenedores do Projeto__#<br />
+#__Mantenedores do Projeto__#
 * _[TecSecret](tecsecret.com.br)_ com o responsável técnico (Nelsir Luterek);<br />
-* _[DC Web Solutions](dcwebsolutions.com.br)_ com o responsável técnico (Daniel Costa);
+* _[DC Web Solutions](dcwebsolutions.com.br)_ com o responsável técnico (Daniel Costa);<p /><p />
+
+#__Demo__#
+* Acesse o demo __[Clicando Aqui](https://demotsdc.tecsecret.com.br)__
+Usuário: admin@admin.com
+Senha: 123456
 
 #__Créditos__#<br />
-O código fonte deste projeto, tem como base o [mapos](https://github.com/RamonSilva20/mapos).
+O código fonte deste projeto, tem como base o [mapos](https://github.com/RamonSilva20/mapos).<p />
