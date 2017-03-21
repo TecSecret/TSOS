@@ -27,7 +27,7 @@
                                 <?php if($emitente == null) {?>
 
                                 <tr>
-                                    <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?=site_url('index.php/mapos/emitente')?>">Configurar</a><<<</td>
+                                    <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?=site_url('index.php/tsdc/emitente')?>">Configurar</a><<<</td>
                                 </tr>
                                 <?php } else {?>
                                 <tr>
@@ -240,7 +240,7 @@
 
         function Popup(data)
         {
-            var mywindow = window.open('', 'MapOs', 'height=600,width=800');
+            var mywindow = window.open('', 'TSDC', 'height=600,width=800');
             mywindow.document.write('<html><head><title>Map Os</title>');
             mywindow.document.write("<link rel='stylesheet' href='<?=base_url('assets/css/bootstrap.min.css')?>' />");
             mywindow.document.write("<link rel='stylesheet' href='<?=base_url('assets/css/bootstrap-responsive.min.css')?>' />");
