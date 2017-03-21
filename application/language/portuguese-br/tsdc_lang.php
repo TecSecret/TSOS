@@ -2,7 +2,7 @@
 
 // v1.0 beta
 defined('BASEPATH') OR exit('No direct script access allowed');
-$lang['nomesist'] = 'TSDC Assistêcia - O Seu Sistema para Assistêcnia Técnica';
+$lang['nomesist'] = 'TSDC Assistência - O Seu Sistema para Assistência Técnica';
 $lang['addos_addcli'] = 'Adicionar Cliente';
 $lang['addos_cados'] = 'Cadastro de OS';
 $lang['addos_detos'] = 'Detalhes da OS';
