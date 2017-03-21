@@ -24,7 +24,7 @@ Senha: 123456
 * A Versão do sistema distribuída neste repositório é gratuíta.
 
 * Adquira o sistema hospedado em Plesk com a **TecSecret** __[Clicando Aqui](https://central.tecsecret.com.br/cart.php?a=add&pid=64)__ <br />
-* Aquira a hospedagem do sistema em Cpanel com a **DC WEB Solutions** __[Clicando Aqui](https://www.central.dcwebsolutions.com.br/cart.php?a=add&pid=240)__<br/>
+* Adquira a hospedagem do sistema em cPanel com a **DC WEB Solutions** __[Clicando Aqui](https://www.central.dcwebsolutions.com.br/cart.php?a=add&pid=24)__<br/>
 
 
 #__Créditos__#<br />
