@@ -253,5 +253,24 @@ $lang['conectetempos'] = 'Ordem de Serviço';
 $lang['conectetempcompra'] = 'Compra';
 $lang['conectetempexit'] = 'Sair';
 $lang['conectetemphome'] = 'Home';
+$lang['conecteviscpcp'] = 'Compra';
+$lang['conecteviscpprint'] = 'Imprimir';
+$lang['conecteviscpnotemitente'] = 'Os dados do emitente não foram configurados.';
+$lang['conecteviscpemailemitente'] = 'E-mail';
+$lang['conecteviscpvd'] = '#Venda';
+$lang['conecteviscpemite'] = 'Emissão';
+$lang['conecteviscpcli'] = 'Cliente';
+$lang['conecteviscpcvend'] = 'Vendedor';
+$lang['conecteviscptel'] = 'Telefone:';
+$lang['conecteviscpemail'] = 'E-mail:'
+$lang['conecteviscpprod'] = 'Produto';
+$lang['conectevistqtd'] = 'Quantidade';
+$lang['conectevissubt'] = 'Subtotal';
+$lang['conectevisr$'] = 'R$:'; //altere para o simbolo da moeda do seu país (USA = $)
+$lang['conectevistt'] = 'Total:';
+$lang['conectevisvaltr$'] = 'Valor Total: R$'; //altere para o simbolo da moeda do seu país (USA = $)
+$lang['conectevisosos'] = 'Ordem de Serviço';
+$lang['conectevisosprint'] = 'Imprimir';
+
 
  

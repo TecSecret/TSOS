@@ -6,10 +6,10 @@
                 <span class="icon">
                     <i class="icon-tags"></i>
                 </span>
-                <h5>Ordem de Serviço</h5>
+                <h5><?=$this->lang->line('conectevisosos');?></h5>
                 <div class="buttons">
                     
-                    <a id="imprimir" title="Imprimir" class="btn btn-mini btn-inverse" href=""><i class="icon-print icon-white"></i> Imprimir</a>
+                    <a id="imprimir" title="Imprimir" class="btn btn-mini btn-inverse" href=""><i class="icon-print icon-white"></i><?=$this->lang->line('conectevisosprint');?></a>
                 </div>
             </div>
             <div class="widget-content" id="printOs">

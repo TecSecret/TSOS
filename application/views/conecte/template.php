@@ -70,7 +70,7 @@
     </div>
     <!--Footer-part-->
     <div class="row-fluid">
-      <div id="footer" class="span12"> 2016 &copy; TSDC Assistência - Projeto mantido pela TecSecret e DC WebSolutions</div>
+      <div id="footer" class="span12"> 2017 &copy; TSDC Assistência - Projeto mantido pela TecSecret e DC WebSolutions</div>
     </div>
 
     <!-- javascript
