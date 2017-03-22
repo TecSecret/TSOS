@@ -139,12 +139,11 @@
 
         function Popup(data)
         {
-            var mywindow = window.open('', 'MapOs', 'height=600,width=800');
+            var mywindow = window.open('', 'TSDC', 'height=600,width=800');
             mywindow.document.write('<html><head><title>Map Os</title>');
             mywindow.document.write("<link rel='stylesheet' href='<?=base_url('assets/css/bootstrap.min.css')?>' />");
             mywindow.document.write("<link rel='stylesheet' href='<?=base_url('assets/css/bootstrap-responsive.min.css')?>' />");
             mywindow.document.write("<link rel='stylesheet' href='<?=base_url('assets/css/matrix-style.css')?>' />");
-            mywindow.document.write("<link rel='stylesheet' href='<?=base_url('assets/css/matrix-media.css')?>' />");
 
 
             mywindow.document.write('</head><body >');
@@ -152,7 +151,6 @@
             mywindow.document.write('</body></html>');
 
             mywindow.print();
-            mywindow.close();
 
             return true;
         }

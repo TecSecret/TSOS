@@ -247,18 +247,11 @@
             mywindow.document.write("<link rel='stylesheet' href='<?=base_url('assets/css/matrix-style.css')?>' />");
 
 
-            mywindow.document.write("</head><body >");
+            mywindow.document.write('</head><body >');
             mywindow.document.write(data);
-            mywindow.document.write("</body></html>");
-            // $(document).ready(){
-            // }
-            $('.invoice-content').ready(function() {
-              // Handler for .ready() called.
-                mywindow.print();
+            mywindow.document.write('</body></html>');
 
-            });
-            setTimeout(function(){
-            }, 200);
+            mywindow.print();
 
             return true;
         }
