@@ -14,15 +14,36 @@ class Os extends MY_Acesso
         $this->data['menuOs'] = 'OS';
     }
 
-    public function index()
-    {
+    function index(){
         $this->gerenciar();
     }
 
-    public function gerenciar()
-    {
+    function gerenciar(){
+        
         $this->load->library('pagination');
-
+        
+        $where_array = array();
+        $pesquisa = $this->input->get('pesquisa');
+        $status = $this->input->get('status');
+        $de = $this->input->get('data');
+        $ate = $this->input->get('data2');
+        if($pesquisa){
+           $where_array['pesquisa'] = $pesquisa;
+        }
+        if($status){
+            $where_array['status'] = $status;
+        }
+        if($de){
+            $de = explode('/', $de);
+            $de = $de[2].'-'.$de[1].'-'.$de[0];
+            $where_array['de'] = $de;
+        }
+        if($ate){
+            $ate = explode('/', $ate);
+            $ate = $ate[2].'-'.$ate[1].'-'.$ate[0];
+            $where_array['ate'] = $ate;
+        }
+        
         $config['base_url'] = base_url().'index.php/os/gerenciar/';
         $config['total_rows'] = $this->os_model->count('os');
         $config['per_page'] = 10;
@@ -44,13 +65,14 @@ class Os extends MY_Acesso
         $config['first_tag_close'] = '</li>';
         $config['last_tag_open'] = '<li>';
         $config['last_tag_close'] = '</li>';
-
-        $this->pagination->initialize($config);
-
-        $this->data['results'] = $this->os_model->get('os', 'idOs,dataInicial,dataFinal,garantia,descricaoProduto,defeito,status,observacoes,laudoTecnico', '', $config['per_page'], $this->uri->segment(3));
-
+            
+        $this->pagination->initialize($config);     
+        $this->data['results'] = $this->os_model->getOs('os','idOs,dataInicial,dataFinal,garantia,descricaoProduto,defeito,status,observacoes,laudoTecnico',$where_array,$config['per_page'],$this->uri->segment(3));
+       
         $this->data['view'] = 'os/os';
-        $this->load->view('tema/topo', $this->data);
+        $this->load->view('tema/topo',$this->data);
+      
+        
     }
 
     public function adicionar()
@@ -560,6 +582,7 @@ class Os extends MY_Acesso
         return $this->data['lista_status'] = array(
                     'Orçamento'  => 'Orçamento',
                     'Aberto'     => 'Aberto',
+                    'Em Andamento'     => 'Em Andamento',
                     'Faturado'   => 'Faturado',
                     'Finalizado' => 'Finalizado',
                     'Cancelado'  => 'Cancelado'

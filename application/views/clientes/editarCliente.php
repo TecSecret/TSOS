@@ -87,6 +87,12 @@
                             <input id="cep" type="text" name="cep" value="<?=$result->cep?>"  />
                         </div>
                     </div>
+                    <div class="control-group" class="control-label">
+                        <label for="pass_codigo" class="control-label">Codigo<span class="required">*</span></label>
+                        <div class="controls">
+                            <input id="pass_codigo" type="text" name="pass_codigo" value="<?=$result->pass_codigo?>"  />
+                        </div>
+                    </div>
                     <div class="form-actions">
                         <div class="span12">
                             <div class="span6 offset3">

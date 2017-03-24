@@ -22,6 +22,7 @@ if(!$results){?>
         <tr style="backgroud-color: #2D335B">
             <th>#</th>
             <th>Cliente</th>
+            <th>Responsável</th>
             <th>Data Inicial</th>
             <th>Data Final</th>
             <th>Status</th>
@@ -57,6 +58,7 @@ if(!$results){?>
         <tr style="backgroud-color: #2D335B">
             <th>#</th>
             <th>Cliente</th>
+            <th>Responsável</th>
             <th>Data Inicial</th>
             <th>Data Final</th>
             <th>Status</th>
@@ -67,12 +69,38 @@ if(!$results){?>
         <?php foreach ($results as $r) {
             $dataInicial = date(('d/m/Y'),strtotime($r->dataInicial));
             $dataFinal = date(('d/m/Y'),strtotime($r->dataFinal));
+
+            switch ($r->status) {
+                case 'Aberto':
+                    $cor = '#8A9B0F';
+                    break;
+                case 'Em Andamento':
+                    $cor = '#A7DBD8';
+                    break;
+                case 'Orçamento':
+                    $cor = '#CDB380';
+                    break;
+                case 'Cancelado':
+                    $cor = '#E97F02';
+                    break;
+                case 'Finalizado':
+                    $cor = '#0B486B';
+                    break;
+                case 'Faturado':
+                    $cor = '#B266FF';
+                    break;
+                default:
+                    $cor = '#E0E4CC';
+                    break;
+            }
+
             echo '<tr>';
             echo '<td>'.$r->idOs.'</td>';
             echo '<td>'.$r->nomeCliente.'</td>';
+            echo '<td>'.$r->nome.'</td>';
             echo '<td>'.$dataInicial.'</td>';
             echo '<td>'.$dataFinal.'</td>';
-            echo '<td>'.$r->status.'</td>';
+            echo '<td><span class="badge" style="background-color: '.$cor.'; border-color: '.$cor.'">'.$r->status.'</span> </td>';
 
 
             echo '<td>';
@@ -119,8 +147,28 @@ if(!$results){?>
 <script type="text/javascript">
 $(document).ready(function(){
    $(document).on('click', 'a', function(event) {
+        
         var os = $(this).attr('os');
         $('#idOs').val(os);
     });
+   $(document).on('click', '#excluir-notificacao', function(event) {
+       event.preventDefault();
+       
+       $.ajax({
+           url: '<?php echo site_url() ?>/os/excluir_notificacao',
+           type: 'GET',
+           dataType: 'json',
+       })
+       .done(function(data) {
+           if(data.result == true){
+              alert('Notificação excluída com sucesso');
+              location.reload();
+           }else{
+              alert('Ocorreu um problema ao tentar exlcuir notificação.');
+           }   
+       });
+       
+   });
+   $(".datepicker" ).datepicker({ dateFormat: 'dd/mm/yy' });
 });
 </script>

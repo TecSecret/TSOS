@@ -86,6 +86,12 @@
                             <input id="cep" data-validate="<?=$validate_rules['cep']?>" type="text" name="cep" value="<?=set_value('cep')?>"  />
                         </div>
                     </div>
+                    <div class="control-group" class="control-label">
+                        <label for="pass_codigo" class="control-label">Codigo<span class="required">*</span></label>
+                        <div class="controls">
+                            <input id="pass_codigo" data-validate="<?=$validate_rules['pass_codigo']?>" type="text" name="pass_codigo" value="<?=set_value('pass_codigo')?>"  />
+                        </div>
+                    </div>
                     <div class="form-actions">
                         <div class="span12">
                             <div class="span6 offset3">
@@ -117,7 +123,8 @@
                   bairro:{ required: $('#bairro').data('validate')},
                   cidade:{ required: $('#cidade').data('validate')},
                   estado:{ required: $('#estado').data('validate')},
-                  cep:{ required: $('#cep').data('validate')}
+                  cep:{ required: $('#cep').data('validate')},
+                  pass_codigo:{ required: $('#pass_codigo').data('validate')}
             },
             messages:{
                   nomeCliente :{ required: '<?=$this->lang->line('cad_obrigatorio');?>'},
@@ -129,7 +136,8 @@
                   bairro:{ required: '<?=$this->lang->line('cad_obrigatorio');?>'},
                   cidade:{ required: '<?=$this->lang->line('cad_obrigatorio');?>'},
                   estado:{ required: '<?=$this->lang->line('cad_obrigatorio');?>'},
-                  cep:{ required: '<?=$this->lang->line('cad_obrigatorio');?>'}
+                  cep:{ required: '<?=$this->lang->line('cad_obrigatorio');?>'},
+                  pass_codigo:{ required: '<?=$this->lang->line('cad_obrigatorio');?>'}
             },
             errorClass: "help-inline",
             errorElement: "span",
