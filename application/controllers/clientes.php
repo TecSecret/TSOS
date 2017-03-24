@@ -97,6 +97,7 @@ class Clientes extends MY_Acesso {
               'cidade' => set_value('cidade'),
               'estado' => set_value('estado'),
               'cep' => set_value('cep'),
+              'pass_codigo' => set_value('pass_codigo'),
               'dataCadastro' => date('Y-m-d')
           );
 
@@ -137,6 +138,7 @@ class Clientes extends MY_Acesso {
               'cidade' => set_value('cidade'),
               'estado' => set_value('estado'),
               'cep' => set_value('cep'),
+              'pass_codigo' => set_value('pass_codigo'),
               'dataCadastro' => date('Y-m-d')
           );
           if ($ajax == true) {
@@ -191,7 +193,8 @@ class Clientes extends MY_Acesso {
               'bairro' => $this->input->post('bairro'),
               'cidade' => $this->input->post('cidade'),
               'estado' => $this->input->post('estado'),
-              'cep' => $this->input->post('cep')
+              'cep' => $this->input->post('cep'),
+              'pass_codigo' => $this->input->post('pass_codigo')
           );
 
           if ($this->clientes_model->edit('clientes', $data, 'idClientes', $this->input->post('idClientes')) == TRUE) {

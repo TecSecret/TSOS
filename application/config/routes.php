@@ -40,6 +40,7 @@
 
 $route['configuracoes']       = "configuracoes";
 $route['vendas']              = "vendas";
+$route['conecte']             = "conecte";
 $route['usuarios']            = "usuarios";
 $route['servicos']            = "servicos";
 $route['relatorios']          = "relatorios";

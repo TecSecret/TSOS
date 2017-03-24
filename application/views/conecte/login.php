@@ -3,18 +3,18 @@
 <html lang="pt-br">
     
 <head>
-        <title><?=$this->lang->line('topo_nomesist');?></title><meta charset="UTF-8" />
+        <title><?=$this->lang->line('nomesistcli');?></title><meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap.min.css" />
-        <link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap-responsive.min.css" />
-        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/matrix-login.css" />
-        <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-        <script src="<?php echo base_url()?>js/jquery-1.10.2.min.js"></script>
+        <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap.min.css')?>" />
+        <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap-responsive.min.css')?>" />
+        <link rel="stylesheet" href="<?=base_url('assets/css/matrix-login.css')?>" />
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+        <script src="<?=base_url('assets/js/jquery-1.10.2.min.js')?>"></script>
+        <link rel="icon" href="<?=base_url('assets/img/favicon.ico')?>">
     </head>
     <body>
         <div id="loginbox">            
-            <form  class="form-vertical" id="formLogin" method="post" action="<?php echo base_url()?>index.php/conecte/login">
+            <form  class="form-vertical" id="formLogin" method="post" action="<?=base_url('conecte/login')?>">
                   <?php if($this->session->flashdata('error') != null){?>
                         <div class="alert alert-danger">
                           <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -32,7 +32,7 @@
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_ly"><i class="icon-star"></i></span><input name="telefone" type="text" placeholder="Telefone | Ex: 9999-9999" />
+                            <span class="add-on bg_ly"><i class="icon-star"></i></span><input name="pass_codigo" type="text" placeholder="Codigo" />
                         </div>
                     </div>
                 </div>
@@ -45,8 +45,8 @@
         
         
         
-        <script src="<?php echo base_url()?>assets/js/bootstrap.min.js"></script>
-        <script src="<?php echo base_url()?>js/jquery.validate.js"></script>
+       <script src="<?=base_url('assets/js/bootstrap.min.js')?>"></script>
+        <script src="<?=base_url('assets/js/validate.js')?>"></script>
 
 
 
@@ -58,11 +58,11 @@
                 $("#formLogin").validate({
                      rules :{
                           email: { required: true, email: true},
-                          senha: { required: true}
+                          pass_codigo: { required: true}
                     },
                     messages:{
                           email: { required: '<?=$this->lang->line('conectelgobriga');?>', email: '<?=$this->lang->line('conectelgobrigaemail');?>'},
-                          senha: {required: '<?=$this->lang->line('conectelgobriga');?>'}
+                          pass_codigo: {required: '<?=$this->lang->line('conectelgobriga');?>'}
                     },
                    submitHandler: function( form ){       
                          var dados = $( form ).serialize();
@@ -70,13 +70,13 @@
                     
                         $.ajax({
                           type: "POST",
-                          url: "<?php echo base_url();?>index.php/conecte/login?ajax=true",
+                          url: "<?=base_url('index.php/conecte/login?ajax=true')?>",
                           data: dados,
                           dataType: 'json',
                           success: function(data)
                           {
                             if(data.result == true){
-                                window.location.href = "<?php echo base_url();?>index.php/conecte/painel";
+                                window.location.href = "<?=base_url('index.php/conecte/painel')?>";
                             }
                             else{
                                 $('#call-modal').trigger('click');

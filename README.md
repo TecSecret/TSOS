@@ -1,4 +1,4 @@
-# TSDC Assistencia
+# TSDC-Assistencia
 O Seu ERP para Assistências Técnicas
 <p />
 <p />
@@ -19,13 +19,6 @@ _Importante_: Ao solicitar nova funcionalidade ou reportar erros, por favor info
 * Acesse o demo __[Clicando Aqui](https://demotsdc.tecsecret.com.br)__
 Usuário: admin@admin.com
 Senha: 123456
-
-#__Custos__#
-* A Versão do sistema distribuída neste repositório é gratuíta.
-
-* Adquira o sistema hospedado em Plesk com a **TecSecret** __[Clicando Aqui](https://central.tecsecret.com.br/cart.php?a=add&pid=64)__ <br />
-* Adquira a hospedagem do sistema em cPanel com a **DC WEB Solutions** __[Clicando Aqui](https://www.central.dcwebsolutions.com.br/cart.php?a=add&pid=24)__<br/>
-
 
 #__Créditos__#<br />
 O código fonte deste projeto, tem como base o [mapos](https://github.com/RamonSilva20/mapos).<p />

@@ -2,12 +2,7 @@
 
 class Conecte_model extends CI_Model {
 
-    /**
-     * author: Ramon Silva 
-     * email: silva018-mg@yahoo.com.br
-     * 
-     */
-    
+
 	public function getLastOs($cliente){
 		
 		$this->db->where('clientes_id',$cliente);
@@ -46,13 +41,14 @@ class Conecte_model extends CI_Model {
     }
 
 
-    public function getOs($table,$fields,$where='',$perpage=0,$start=0,$one=false,$array='array',$cliente){
+    public function getOs($table,$fields,$where='',$perpage=0,$start=0,$one=false,$array='array',$cliente, $order_by = array('coluna' => 'idOs', 'order' => 'DESC')){
         
         $this->db->select($fields);
         $this->db->from($table);
         $this->db->join('usuarios', 'os.usuarios_id = usuarios.idUsuarios', 'left');
         $this->db->where('clientes_id', $cliente);
         $this->db->limit($perpage,$start);
+        $this->db->order_by($order_by['coluna'],$order_by['order']);
         if($where){
             $this->db->where($where);
         }
