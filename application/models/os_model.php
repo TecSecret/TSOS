@@ -13,21 +13,63 @@ class Os_model extends MY_Model
         $this->idName = 'idOs';
     }
 
-    public function get($table, $fields, $where = '', $perpage = 0, $start = 0, $one = false, $array = 'array', $order_by = array('coluna' => 'idOs', 'order' => 'DESC'))
-    {
+    function get($table,$fields,$where='',$perpage=0,$start=0,$one=false,$array='array'){
+        
         $this->db->select($fields.',clientes.nomeCliente');
         $this->db->from($table);
-        $this->db->join('clientes', 'clientes.idClientes = os.clientes_id');
-        $this->db->limit($perpage, $start);
-        $this->db->order_by($order_by['coluna'],$order_by['order']);
-        if ($where) {
+        $this->db->join('clientes','clientes.idClientes = os.clientes_id');
+        $this->db->limit($perpage,$start);
+        $this->db->order_by('idOs','desc');
+        if($where){
             $this->db->where($where);
         }
-
+        
         $query = $this->db->get();
-
-        $result = !$one ? $query->result() : $query->row();
-        // var_dump($result, $this->db);
+        
+        $result =  !$one  ? $query->result() : $query->row();
+        return $result;
+    }
+    function getOs($table,$fields,$where='',$perpage=0,$start=0,$one=false,$array='array'){
+        $lista_clientes = array();
+        if($where){
+            if(array_key_exists('pesquisa',$where)){
+                $this->db->select('idClientes');
+                $this->db->like('nomeCliente',$where['pesquisa']);
+                $this->db->limit(5);
+                $clientes = $this->db->get('clientes')->result();
+                foreach ($clientes as $c) {
+                    array_push($lista_clientes,$c->idClientes);
+                }
+            }
+        }
+        $this->db->select($fields.',clientes.nomeCliente, usuarios.nome');
+        $this->db->from($table);
+        $this->db->join('clientes','clientes.idClientes = os.clientes_id');
+        $this->db->join('usuarios','usuarios.idUsuarios = os.usuarios_id','left');
+        // condicionais da pesquisa
+        // condicional de status
+        if(array_key_exists('status',$where)){
+            $this->db->where('status',$where['status']);
+        }
+        // condicional de clientes
+        if(array_key_exists('pesquisa',$where)){
+            if($lista_clientes != null){
+                $this->db->where_in('os.clientes_id',$lista_clientes);
+            }
+        }
+        // condicional data inicial
+        if(array_key_exists('de',$where)){
+            $this->db->where('dataInicial >=' ,$where['de']);
+        }
+        // condicional data final
+        if(array_key_exists('ate',$where)){
+            $this->db->where('dataFinal <=', $where['ate']);
+        }
+        
+        $this->db->limit($perpage,$start);
+        $this->db->order_by('os.idOs','desc');
+        $query = $this->db->get();
+        $result =  !$one  ? $query->result() : $query->row();
         return $result;
     }
 

@@ -1,7 +1,11 @@
 ﻿<?php
 
-// v1.0 beta
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+// V1.1
+
+
+// v1.0 beta
 $lang['nomesist'] = 'TSDC Assistência - O Seu Sistema para Assistência Técnica';
 $lang['nomesistcli'] = 'TSDC Assistência - Área do Cliente';
 $lang['addos_addcli'] = 'Adicionar Cliente';
@@ -260,7 +264,7 @@ $lang['conecteviscpnotemitente'] = 'Os dados do emitente não foram configurados
 $lang['conecteviscpemailemitente'] = 'E-mail';
 $lang['conecteviscpvd'] = '#Venda';
 $lang['conecteviscpemite'] = 'Emissão';
-$lang['conecteviscpcli'] = 'Cliente';
+/*$lang['conecteviscpcli'] = 'Cliente';
 $lang['conecteviscpcvend'] = 'Vendedor';
 $lang['conecteviscptel'] = 'Telefone:';
 $lang['conecteviscpemail'] = 'E-mail:'
@@ -271,7 +275,4 @@ $lang['conectevisr$'] = 'R$:'; //altere para o simbolo da moeda do seu país (US
 $lang['conectevistt'] = 'Total:';
 $lang['conectevisvaltr$'] = 'Valor Total: R$'; //altere para o simbolo da moeda do seu país (USA = $)
 $lang['conectevisosos'] = 'Ordem de Serviço';
-$lang['conectevisosprint'] = 'Imprimir';
-
-
- 
+$lang['conectevisosprint'] = 'Imprimir';*/
