@@ -92,7 +92,7 @@
                         <div class="span12">
                             <div class="span6 offset3">
                                 <button type="submit" class="btn btn-primary"><i class="icon-ok icon-white"></i><?=$this->lang->line('conecteeditaedita');?></button>
-                                <a href="<?php echo base_url() ?>index.php/conecte/conta" id="" class="btn"><i class="icon-arrow-left"></i><?=$this->lang->line('conecteeditavolta');?></a>
+                                <a href="<?php echo base_url() ?>conecte/conta" id="" class="btn"><i class="icon-arrow-left"></i><?=$this->lang->line('conecteeditavolta');?></a>
                             </div>
                         </div>
                     </div>

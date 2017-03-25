@@ -21,13 +21,13 @@
                                 <?php if($emitente == null) {?>
                                             
                                 <tr>
-                                    <td colspan="3" class="alert">Os dados do emitente não foram configurados.</td>
+                                    <td colspan="3" class="alert"><?=$this->lang->line('conectevisosnoneemite');?></td>
                                 </tr>
                                 <?php } else {?>
                                 <tr>
                                     <td style="width: 25%"><img src=" <?php echo $emitente[0]->url_logo; ?> "></td>
-                                    <td> <span style="font-size: 20px; "> <?php echo $emitente[0]->nome; ?></span> </br><span><?php echo $emitente[0]->cnpj; ?> </br> <?php echo $emitente[0]->rua.', nº:'.$emitente[0]->numero.', '.$emitente[0]->bairro.' - '.$emitente[0]->cidade.' - '.$emitente[0]->uf; ?> </span> </br> <span> E-mail: <?php echo $emitente[0]->email.' - Fone: '.$emitente[0]->telefone; ?></span></td>
-                                    <td style="width: 18%; text-align: center">#Protocolo: <span ><?php echo $result->idOs?></span></br> </br> <span>Emissão: <?php echo date('d/m/Y')?></span></td>
+                                    <td> <span style="font-size: 20px; "> <?php echo $emitente[0]->nome; ?></span> </br><span><?php echo $emitente[0]->cnpj; ?> </br> <?php echo $emitente[0]->rua.', nº:'.$emitente[0]->numero.', '.$emitente[0]->bairro.' - '.$emitente[0]->cidade.' - '.$emitente[0]->uf; ?> </span> </br> <span> <?=$this->lang->line('conectevisosemail');?> <?php echo $emitente[0]->email.' - Fone: '.$emitente[0]->telefone; ?></span></td>
+                                    <td style="width: 18%; text-align: center"><?=$this->lang->line('conectevisosos2');?><span ><?php echo $result->idOs?></span></br> </br> <span><?=$this->lang->line('conectevisosemissao');?><?php echo date('d/m/Y')?></span></td>
                                 </tr>
 
                                 <?php } ?>
@@ -41,7 +41,7 @@
                                     <td style="width: 50%; padding-left: 0">
                                         <ul>
                                             <li>
-                                                <span><h5>Cliente</h5>
+                                                <span><h5><?=$this->lang->line('conectevisoscli');?></h5>
                                                 <span><?php echo $result->nomeCliente?></span><br/>
                                                 <span><?php echo $result->rua?>, <?php echo $result->numero?>, <?php echo $result->bairro?></span><br/>
                                                 <span><?php echo $result->cidade?> - <?php echo $result->estado?></span>
@@ -51,10 +51,10 @@
                                     <td style="width: 50%; padding-left: 0">
                                         <ul>
                                             <li>
-                                                <span><h5>Responsável</h5></span>
+                                                <span><h5><?=$this->lang->line('conectevisostcrespo');?></h5></span>
                                                 <span><?php echo $result->nome?></span> <br/>
-                                                <span>Telefone: <?php echo $result->telefone?></span><br/>
-                                                <span>Email: <?php echo $result->email?></span>
+                                                <span><?=$this->lang->line('conectevisostcfone');?><?php echo $result->telefone?></span><br/>
+                                                <span><?=$this->lang->line('conectevisostcemail');?><?php echo $result->email?></span>
                                             </li>
                                         </ul>
                                     </td>
@@ -68,7 +68,7 @@
 
                     <?php if($result->descricaoProduto != null){?>
                     <hr style="margin-top: 0">
-                    <h5>Descrição</h5>
+                    <h5><?=$this->lang->line('conectevisosdescricao');?></h5>
                     <p>
                         <?php echo $result->descricaoProduto?>
                         
@@ -77,21 +77,21 @@
 
                     <?php if($result->defeito != null){?>
                     <hr style="margin-top: 0">
-                    <h5>Defeito</h5>
+                    <h5><?=$this->lang->line('conectevisosdefeito');?></h5>
                     <p>
                         <?php echo $result->defeito?>
                     </p>
                     <?php }?>
                     <?php if($result->laudoTecnico != null){?>
                     <hr style="margin-top: 0">
-                    <h5>Laudo Técnico</h5>
+                    <h5><?=$this->lang->line('conectevisoslaudo');?></h5>
                     <p>
                         <?php echo $result->laudoTecnico?>
                     </p>
                     <?php }?>
                     <?php if($result->observacoes != null){?>
                     <hr style="margin-top: 0">
-                    <h5>Observações</h5>
+                    <h5><?=$this->lang->line('conectevisosobs');?></h5>
                     <p>
                         <?php echo $result->observacoes?>
                     </p>
@@ -102,9 +102,9 @@
                         <table class="table table-bordered" id="tblProdutos">
                                     <thead>
                                         <tr>
-                                            <th>Produto</th>
-                                            <th>Quantidade</th>
-                                            <th>Sub-total</th>
+                                            <th><?=$this->lang->line('conectevisosprod');?></th>
+                                            <th><?=$this->lang->line('conectevisosqtd');?></th>
+                                            <th><?=$this->lang->line('conectevisosst');?></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -122,8 +122,8 @@
                                         }?>
 
                                         <tr>
-                                            <td colspan="2" style="text-align: right"><strong>Total:</strong></td>
-                                            <td><strong>R$ <?php echo number_format($totalProdutos,2,',','.');?></strong></td>
+                                            <td colspan="2" style="text-align: right"><strong><?=$this->lang->line('conectevisostt');?></strong></td>
+                                            <td><strong><?=$this->lang->line('conectevisosr$');?><?php echo number_format($totalProdutos,2,',','.');?></strong></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -133,8 +133,8 @@
                         <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Serviço</th>
-                                                <th>Sub-total</th>
+                                                <th><?=$this->lang->line('conectevisosservicos');?></th>
+                                                <th><?=$this->lang->line('conectevisossubt2');?></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -150,15 +150,15 @@
                                         }?>
 
                                         <tr>
-                                            <td colspan="1" style="text-align: right"><strong>Total:</strong></td>
-                                            <td><strong>R$ <?php  echo number_format($totalServico, 2, ',', '.');?></strong></td>
+                                            <td colspan="1" style="text-align: right"><strong><?=$this->lang->line('conectevisostt');?></strong></td>
+                                            <td><strong><?=$this->lang->line('conectevisosr$2');?> <?php  echo number_format($totalServico, 2, ',', '.');?></strong></td>
                                         </tr>
                                         </tbody>
                                     </table>
                         <?php }?>
                         <hr />
                     
-                        <h4 style="text-align: right">Valor Total: R$ <?php echo number_format($totalProdutos + $totalServico,2,',','.');?></h4>
+                        <h4 style="text-align: right"><?=$this->lang->line('conectevisosvltr$');?><?php echo number_format($totalProdutos + $totalServico,2,',','.');?></h4>
 
                     </div>
             
@@ -185,8 +185,8 @@
 
         function Popup(data)
         {
-            var mywindow = window.open('', 'TSDC', 'height=600,width=800');
-            mywindow.document.write('<html><head><title>TSDC Assistência</title>');
+            var mywindow = window.open('', '<?=$this->lang->line('nomesist3');?>', 'height=600,width=800');
+            mywindow.document.write('<html><head><title><?=$this->lang->line('nomesist2');?></title>');
             mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url();?>assets/css/bootstrap.min.css' /><link rel='stylesheet' href='<?php echo base_url();?>assets/css/bootstrap-responsive.min.css' />");
             mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url();?>assets/css/matrix-style.css' /> <link rel='stylesheet' href='<?php echo base_url();?>assets/css/matrix-media.css' />");
 

@@ -71,7 +71,7 @@ if(!$results){?>
             echo '<td>'.$r->status.'</td>';
             
             
-            echo '<td><a href="'.base_url().'index.php/conecte/visualizarOs/'.$r->idOs.'" class="btn tip-top" title="Ver mais detalhes"><i class="icon-eye-open"></i></a>
+            echo '<td><a href="'.base_url().'conecte/visualizarOs/'.$r->idOs.'" class="btn tip-top" title="Ver mais detalhes"><i class="icon-eye-open"></i></a>
                   </td>';
             echo '</tr>';
         }?>

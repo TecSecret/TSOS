@@ -51,7 +51,7 @@
                                     <td style="width: 50%; padding-left: 0">
                                         <ul>
                                             <li>
-                                                <span><h5><?=$this->lang->line('conecteviscpvend');?></h5></span>
+                                                <span><h5><?=$this->lang->line('conecteviscpcvend');?></h5></span>
                                                 <span><?php echo $result->nome?></span> <br/>
                                                 <span><?=$this->lang->line('conecteviscptel');?><?php echo $result->telefone?></span><br/>
                                                 <span><?=$this->lang->line('conecteviscpemail');?><?php echo $result->email?></span>

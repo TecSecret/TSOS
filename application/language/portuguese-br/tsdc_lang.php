@@ -3,15 +3,41 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 // V1.1
+$lang['conectelgpasscode'] = 'Seu Código de Acesso Único';
+$lang['conectelgemail'] = 'Seu endereço de e-mail';
+$lang['conectevisosnoneemite'] = 'Os dados do emitente não foram configurados.';
+$lang['conectevisosemail'] = 'E-mail: ';
+$lang['conectevisosos2'] = 'OS: ';
+$lang['conectevisosemissao'] = 'Emissão: ';
+$lang['conectevisoscli'] = 'Cliente';
+$lang['conectevisostcrespo'] = 'Técnico Responsável';
+$lang['conectevisostcfone'] = 'Telefone: ';
+$lang['conectevisostcemail'] = 'E-mail: ';
+$lang['conectevisosdescricao'] = 'Descrição';
+$lang['conectevisosdefeito'] = 'Defeito';
+$lang['conectevisoslaudo'] = 'Laudo Técnico';
+$lang['conectevisosobs'] = 'Observações';
+$lang['conectevisosprod'] = 'Produto';
+$lang['conectevisosqtd'] = 'Quantidade';
+$lang['conectevisosst'] = 'Subtotal';
+$lang['conectevisostt'] = 'Total: ';
+$lang['conectevisosr$'] = 'R$: '; //Altere para a moeda do seu idioma. Exemplo dólar = $
+$lang['conectevisosservicos'] = 'Serviços';
+$lang['conectevisossubt2'] = 'Subtotal';
+$lang['conectevisosr$2'] = 'R$'; //Altere para a moeda do seu idioma. Exemplo dólar = $
+$lang['conectevisosvltr$'] = 'Valor Total: R$';
+$lang['conectetitulo'] = 'TSDC - Área do Cliente';
 
 
 // v1.0 beta
 $lang['nomesist'] = 'TSDC Assistência - O Seu Sistema para Assistência Técnica';
+$lang['nomesist2'] = 'TSDC Assistência';
+$lang['nomesist3'] = 'TSDC';
 $lang['nomesistcli'] = 'TSDC Assistência - Área do Cliente';
 $lang['addos_addcli'] = 'Adicionar Cliente';
 $lang['addos_cados'] = 'Cadastro de OS';
 $lang['addos_detos'] = 'Detalhes da OS';
-$lang['addos_infodadosincompletos'] = 'Dados incompletos, verifique os campos com asterisco ou se selecionou corretamente cliente e respons?el.';
+$lang['addos_infodadosincompletos'] = 'Dados incompletos, verifique os campos com asterisco ou se selecionou corretamente cliente e responsável.';
 $lang['addos_avancar'] = 'Avançar';
 $lang['addos_voltar'] = 'Voltar';
 $lang['addos_finanadddespesa'] = 'TSDC - Adicionar Despesa';
@@ -32,6 +58,7 @@ $lang['addos_cprequerido'] = 'Campo Requerido';
 $lang['addos_addclisucesso'] = 'Cliente adicionado com sucesso';
 $lang['addos_addclierror'] = 'Erro ao Adicionar Cliente';
 $lang['cliadd'] = 'Adicionar Cliente';
+$lang['cliapass_code'] = 'Código de Acesso';
 $lang['cli'] = 'Clientes';
 $lang['cliid'] = 'ID';
 $lang['clinome'] = 'Nome do Cliente';
@@ -60,11 +87,11 @@ $lang['clivis_tab1_inf'] = 'Dados Cadastrais';
 $lang['clivis_tab1_nome'] = 'Nome Completo';
 $lang['clivis_tab1_doc'] = 'Documento Cadastrado';
 $lang['clivis_tab1_dtcad'] = 'Cliente desde de';
-$lang['clivis_tab1_inf2'] = 'Forma de Contato';
+$lang['clivis_tab1_info2'] = 'Forma de Contato';
 $lang['clivis_tab1_telfxo'] = 'Telefone Fixo';
 $lang['clivis_tab1_telmovel'] = 'Telefone Celular';
 $lang['clivis_tab1_email'] = 'E-mail';
-$lang['clivis_tab1_inf3'] = 'Endereços';
+$lang['clivis_tab1_info3'] = 'Correspondência';
 $lang['clivis_tab1_num'] = 'Número';
 $lang['clivis_tab1_bairro'] = 'Bairro';
 $lang['clivis_tab1_citi'] = 'Cidade';
@@ -191,22 +218,6 @@ $lang['conectecpdtcp'] = 'Data da Compra';
 $lang['conectecpresp'] = 'Responsável';
 $lang['conectecpfat'] = 'Faturado';
 $lang['conectecpnone'] = 'Nenhuma compra cadastrada';
-$lang['conecteccdados'] = 'Meus Dados';
-$lang['conectecceditar'] = 'Editar';
-$lang['conecteccddpessoais'] = 'Dados Pessoais';
-$lang['conecteccnome'] = 'Nome Completo';
-$lang['conecteccdoc'] = 'Documento';
-$lang['conecteccdtcad'] = 'Data do Cadastro';
-$lang['conectecccontatos'] = 'Contatos';
-$lang['conectecctelfxo'] = 'Telefone Fixo';
-$lang['conectecctelmovel'] = 'Telefone Celular';
-$lang['conecteccemail'] = 'E-mail';
-$lang['conecteccend'] = 'Endereço';
-$lang['conecteccend2'] = 'Endereço Completo';
-$lang['conecteccendnum'] = 'Numero';
-$lang['conecteccendbairro'] = 'Bairro';
-$lang['conecteccendciti'] = 'Cidade';
-$lang['connectccendcep'] = 'CEP';
 $lang['conecteeditadados'] = 'Meus dados';
 $lang['conecteeditanome'] = 'Nome Completo';
 $lang['conecteeditacpfcnpj'] = 'CPF/CNPJ';
@@ -249,7 +260,6 @@ $lang['conectepnlcpid'] = 'ID';
 $lang['conectepnldtvenda'] = 'Data da Venda';
 $lang['conectepnlrespo'] = 'Responsável';
 $lang['conectepnlfat'] = 'Faturado';
-$lang['conectetemptitulo'] = 'Conecte - Área do Cliente';
 $lang['conectetempmc'] = 'Minha Conta';
 $lang['conectetempsair'] = 'Sair';
 $lang['conectetempmenu'] = 'Menu';
@@ -263,16 +273,33 @@ $lang['conecteviscpprint'] = 'Imprimir';
 $lang['conecteviscpnotemitente'] = 'Os dados do emitente não foram configurados.';
 $lang['conecteviscpemailemitente'] = 'E-mail';
 $lang['conecteviscpvd'] = '#Venda';
-$lang['conecteviscpemite'] = 'Emissão';
-/*$lang['conecteviscpcli'] = 'Cliente';
+$lang['conecteviscpemite'] = 'Emissão: ';
+$lang['conecteviscpcli'] = 'Cliente';
 $lang['conecteviscpcvend'] = 'Vendedor';
-$lang['conecteviscptel'] = 'Telefone:';
-$lang['conecteviscpemail'] = 'E-mail:'
+$lang['conecteviscptel'] = 'Telefone: ';
+$lang['conecteviscpemail'] = 'E-mail: ';
 $lang['conecteviscpprod'] = 'Produto';
-$lang['conectevistqtd'] = 'Quantidade';
-$lang['conectevissubt'] = 'Subtotal';
-$lang['conectevisr$'] = 'R$:'; //altere para o simbolo da moeda do seu país (USA = $)
-$lang['conectevistt'] = 'Total:';
-$lang['conectevisvaltr$'] = 'Valor Total: R$'; //altere para o simbolo da moeda do seu país (USA = $)
-$lang['conectevisosos'] = 'Ordem de Serviço';
-$lang['conectevisosprint'] = 'Imprimir';*/
+$lang['conecteviscpqtd'] = 'Quantidade';
+$lang['conecteviscpsubt'] = 'Subtotal';
+$lang['conecteviscpr$'] = 'R$'; //altere para o simbolo da moeda do seu país (USA = $)
+$lang['conecteviscptt'] = 'Total: ';
+$lang['conecteviscpvaltr$'] = 'Valor Total: R$'; //altere para o simbolo da moeda do seu país (USA = $)
+$lang['conectevisosos'] = 'Ordem De Serviço';
+$lang['conectevisosprint'] = 'Imprimir';
+$lang['conectccdados'] = 'Sua Conta';
+$lang['conectcceditar'] = 'Editar';
+$lang['conectccddpessoais'] = 'Dados Pessoais';
+$lang['conectccnome'] = 'Nome Completo';
+$lang['conectccdoc'] = 'Documento';
+$lang['conectccdtcad'] = 'Data do Cadastro';
+$lang['conectcccontatos'] = 'Dados de Contato';
+$lang['conectcctelfxo'] = 'Telefone Fixo';
+$lang['conectcctelmovel'] = 'Telefone Celular';
+$lang['conectccemail'] = 'E-mail';
+$lang['conectccend'] = 'Dados de Correspondência';
+$lang['conectccend2'] = 'Endereço';
+$lang['conectccendnum'] = 'Número';
+$lang['conectccendbairro'] = 'Bairro';
+$lang['conectccendciti'] = 'Cidade';
+$lang['conectccendcep'] = 'CEP';
+

@@ -6,7 +6,7 @@ if(!$results){?>
         <span class="icon">
             <i class="icon-tags"></i>
          </span>
-        <h5><?=$this->lang->line('conectcpcp');?></h5>
+        <h5><?=$this->lang->line('conectecpcp');?></h5>
 
      </div>
 
@@ -16,17 +16,17 @@ if(!$results){?>
 <table class="table table-bordered ">
     <thead>
         <tr style="backgroud-color: #2D335B">
-            <th><?=$this->lang->line('conectcpid');?></th>
-            <th><?=$this->lang->line('conectcpdtcp');?></th>
-            <th><?=$this->lang->line('conectcpresp');?></th>
-            <th><?=$this->lang->line('conectcpfat');?></th>
+            <th><?=$this->lang->line('conectecpid');?></th>
+            <th><?=$this->lang->line('conectecpdtcp');?></th>
+            <th><?=$this->lang->line('conectecpresp');?></th>
+            <th><?=$this->lang->line('conectecpfat');?></th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 
         <tr>
-            <td colspan="6"><?=$this->lang->line('conectcpnone');?></td>
+            <td colspan="6"><?=$this->lang->line('conectecpnone');?></td>
         </tr>
     </tbody>
 </table>
@@ -40,7 +40,7 @@ if(!$results){?>
         <span class="icon">
             <i class="icon-tags"></i>
          </span>
-        <h5><?=$this->lang->line('conectcpcp');?></h5>
+        <h5><?=$this->lang->line('conectecpcp');?></h5>
 
      </div>
 
@@ -50,10 +50,10 @@ if(!$results){?>
 <table class="table table-bordered ">
     <thead>
         <tr style="backgroud-color: #2D335B">
-            <th><?=$this->lang->line('conectcpid');?></th>
-            <th><?=$this->lang->line('conectcpdtcp');?></th>
-            <th><?=$this->lang->line('conectcpresp');?></th>
-            <th><?=$this->lang->line('conectcpfat');?></th>
+            <th><?=$this->lang->line('conectecpid');?></th>
+            <th><?=$this->lang->line('conectecpdtcp');?></th>
+            <th><?=$this->lang->line('conectecpresp');?></th>
+            <th><?=$this->lang->line('conectecpfat');?></th>
             <th></th>
         </tr>
     </thead>
@@ -67,7 +67,7 @@ if(!$results){?>
             echo '<td>'.$r->nome.'</td>';
             echo '<td>'.$faturado.'</td>';
             
-            echo '<td><a href="'.base_url().'index.php/conecte/visualizarCompra/'.$r->idVendas.'" class="btn tip-top" title="Ver mais detalhes"><i class="icon-eye-open"></i></a>
+            echo '<td><a href="'.base_url().'conecte/visualizarCompra/'.$r->idVendas.'" class="btn tip-top" title="Ver mais detalhes"><i class="icon-eye-open"></i></a>
                      
                       
                   </td>';

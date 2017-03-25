@@ -25,14 +25,14 @@
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lg"><i class="icon-user"></i></span><input id="email" name="email" type="text" placeholder="Email" />
+                            <span class="add-on bg_lg"><i class="icon-user"></i></span><input id="email" name="email" type="text" placeholder="<?=$this->lang->line('conectelgemail');?>" />
                         </div>
                     </div>
                 </div>
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_ly"><i class="icon-star"></i></span><input name="pass_codigo" type="text" placeholder="Codigo" />
+                            <span class="add-on bg_ly"><i class="icon-star"></i></span><input name="pass_codigo" type="text" placeholder="<?=$this->lang->line('conectelgpasscode');?>" />
                         </div>
                     </div>
                 </div>
@@ -70,13 +70,13 @@
                     
                         $.ajax({
                           type: "POST",
-                          url: "<?=base_url('index.php/conecte/login?ajax=true')?>",
+                          url: "<?=base_url('conecte/login?ajax=true')?>",
                           data: dados,
                           dataType: 'json',
                           success: function(data)
                           {
                             if(data.result == true){
-                                window.location.href = "<?=base_url('index.php/conecte/painel')?>";
+                                window.location.href = "<?=base_url('conecte/painel')?>";
                             }
                             else{
                                 $('#call-modal').trigger('click');

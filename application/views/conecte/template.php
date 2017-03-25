@@ -3,7 +3,7 @@
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
-    <title><?=$this->lang->line('conectetemptitulo');?></title>
+    <title><?=$this->lang->line('conectetitulo');?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -32,19 +32,19 @@
     <!--top-Header-menu-->
     <div id="user-nav" class="navbar navbar-inverse">
       <ul class="nav">
-        <li class=""><a title="" href="<?php echo base_url()?>index.php/conecte/conta"><i class="icon icon-star"></i> <span class="text"><?=$this->lang->line('conectetempmc');?></span></a></li>
-        <li class=""><a title="" href="<?php echo base_url()?>index.php/conecte/sair"><i class="icon icon-share-alt"></i> <span class="text"><?=$this->lang->line('conectetempsair');?></span></a></li>
+        <li class=""><a title="" href="<?php echo base_url()?>conecte/conta"><i class="icon icon-star"></i> <span class="text"><?=$this->lang->line('conectetempmc');?></span></a></li>
+        <li class=""><a title="" href="<?php echo base_url()?>conecte/sair"><i class="icon icon-share-alt"></i> <span class="text"><?=$this->lang->line('conectetempsair');?></span></a></li>
       </ul>
     </div>
 
 
     <div id="sidebar"> <a href="#" class="visible-phone"><i class="icon icon-list"></i><?=$this->lang->line('conectetempmenu');?></a>
       <ul>
-        <li class="<?php if(isset($menuPainel)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/conecte/painel"><i class="icon icon-home"></i> <span><?=$this->lang->line('conectetemppainel');?></span></a></li>
-        <li class="<?php if(isset($menuConta)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/conecte/conta"><i class="icon icon-star"></i> <span><?=$this->lang->line('conectetempmc');?></span></a></li>
-        <li class="<?php if(isset($menuOs)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/conecte/os"><i class="icon icon-tags"></i> <span><?=$this->lang->line('conectetempos');?></span></a></li>
-        <li class="<?php if(isset($menuVendas)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/conecte/compras"><i class="icon icon-shopping-cart"></i> <span><?=$this->lang->line('conectetempcompra');?></span></a></li>
-        <li class=""><a href="<?php echo base_url()?>index.php/conecte/sair"><i class="icon icon-share-alt"></i> <span><?=$this->lang->line('conectetempexit');?></span></a></li>
+        <li class="<?php if(isset($menuPainel)){echo 'active';};?>"><a href="<?php echo base_url()?>conecte/painel"><i class="icon icon-home"></i> <span><?=$this->lang->line('conectetemppainel');?></span></a></li>
+        <li class="<?php if(isset($menuConta)){echo 'active';};?>"><a href="<?php echo base_url()?>conecte/conta"><i class="icon icon-star"></i> <span><?=$this->lang->line('conectetempmc');?></span></a></li>
+        <li class="<?php if(isset($menuOs)){echo 'active';};?>"><a href="<?php echo base_url()?>conecte/os"><i class="icon icon-tags"></i> <span><?=$this->lang->line('conectetempos');?></span></a></li>
+        <li class="<?php if(isset($menuVendas)){echo 'active';};?>"><a href="<?php echo base_url()?>conecte/compras"><i class="icon icon-shopping-cart"></i> <span><?=$this->lang->line('conectetempcompra');?></span></a></li>
+        <li class=""><a href="<?php echo base_url()?>conecte/sair"><i class="icon icon-share-alt"></i> <span><?=$this->lang->line('conectetempexit');?></span></a></li>
         
       </ul>
     </div>

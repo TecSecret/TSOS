@@ -4,7 +4,7 @@
             <li class="active"><a data-toggle="tab" href="#tab1"><?=$this->lang->line('conectccdados');?></a></li>
             
             <div class="buttons">
-                    <a title="Icon Title" class="btn btn-mini btn-info" href="<?php echo base_url()?>index.php/conecte/editarDados/<?php echo $result->idClientes?>"><i class="icon-pencil icon-white"></i><?=$this->lang->line('conectcceditar');?></a>
+                    <a title="Icon Title" class="btn btn-mini btn-info" href="<?php echo base_url()?>conecte/editarDados/<?php echo $result->idClientes?>"><i class="icon-pencil icon-white"></i><?=$this->lang->line('conectcceditar');?></a>
                 </div>
         </ul>
     </div>
