@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 // V1.1
 $lang['conectelgpasscode'] = 'Seu Código de Acesso Único';
+$lang['cliaddclipass_code'] = 'Código de Acesso';
 $lang['conectelgemail'] = 'Seu endereço de e-mail';
 $lang['conectevisosnoneemite'] = 'Os dados do emitente não foram configurados.';
 $lang['conectevisosemail'] = 'E-mail: ';
@@ -25,9 +26,23 @@ $lang['conectevisosr$'] = 'R$: '; //Altere para a moeda do seu idioma. Exemplo d
 $lang['conectevisosservicos'] = 'Serviços';
 $lang['conectevisossubt2'] = 'Subtotal';
 $lang['conectevisosr$2'] = 'R$'; //Altere para a moeda do seu idioma. Exemplo dólar = $
-$lang['conectevisosvltr$'] = 'Valor Total: R$';
+$lang['conectevisosvltr$'] = 'Valor Total: R$'; //Altere para a moeda do seu idioma o simbolo R$. Exemplo dólar = $
 $lang['conectetitulo'] = 'TSDC - Área do Cliente';
-
+$lang['configaltformularios'] = 'Configurações de Formulários';
+$lang['configaltcli'] = 'Clientes';
+$lang['configaltnome'] = 'Nome';
+$lang['configaltdoc'] = 'Documento';
+$lang['configaltfonefxo'] = 'Telefone Fixo';
+$lang['configaltfonemovel'] = 'Telefone Celular';
+$lang['configaltemail'] = 'E-mail';
+$lang['configaltend'] = 'Endereço';
+$lang['configaltendn'] = 'Número';
+$lang['configaltendbairro'] = 'Bairro';
+$lang['configaltendciti'] = 'Cidade';
+$lang['configaltendus'] = 'Estado';
+$lang['configaltendcep'] = 'CEP';
+$lang['configaltsalvar'] = 'Salvar';
+ 
 
 // v1.0 beta
 $lang['nomesist'] = 'TSDC Assistência - O Seu Sistema para Assistência Técnica';
@@ -58,7 +73,6 @@ $lang['addos_cprequerido'] = 'Campo Requerido';
 $lang['addos_addclisucesso'] = 'Cliente adicionado com sucesso';
 $lang['addos_addclierror'] = 'Erro ao Adicionar Cliente';
 $lang['cliadd'] = 'Adicionar Cliente';
-$lang['cliapass_code'] = 'Código de Acesso';
 $lang['cli'] = 'Clientes';
 $lang['cliid'] = 'ID';
 $lang['clinome'] = 'Nome do Cliente';
@@ -149,10 +163,6 @@ $lang['painel_osopendtin'] = 'Data Abertura';
 $lang['painel_osopenfim'] = 'Data Finalização';
 $lang['painel_osopencli'] = 'Nome do Cliente';
 $lang['painel_osorcamento'] = 'Ordem de Serviço aguardando aprovação do cliente';
-$lang['paneil_osorçamenton'] = 'Nº OS';
-$lang['painel_osorcamentodtin'] = 'Data Abertura';
-$lang['painel_osorcamentodtfim'] = 'Data Final';
-$lang['painel_osorcamentocli'] = 'Nome do Cliente';
 $lang['painel_osestoque'] = 'Produtos com estoque minímo';
 $lang['paneil_osestoqueid'] = 'Produto ID';
 $lang['painel_osestoqueprod'] = 'Produto';

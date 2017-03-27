@@ -3,12 +3,12 @@
 
 <div class="widget-box">
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-          <h5>Configurações de formulários</h5>
+          <h5><?=$this->lang->line('configaltformularios');?></h5>
         </div>
         <div class="widget-content nopadding">
           <form action="<?=current_url()?>" method="POST" class="form-horizontal">
           	<div class="control-group">
-              <label class="control-label">Clientes</label>
+              <label class="control-label"><?=$this->lang->line('configaltcli');?></label>
               <div class="controls">
                 <label>
                   <div class="checker" id="uniform-undefined">
@@ -16,7 +16,7 @@
                       <input type="checkbox" name="nomeCliente" style="opacity: 0;" value="required" <?=$validate_rules['nomeCliente']?> >
                     </span>
                   </div>
-                  Nome
+                  <?=$this->lang->line('configaltnome');?>
                 </label>
                 <label>
                   <div class="checker" id="uniform-undefined">
@@ -24,7 +24,7 @@
                       <input type="checkbox" name="documento" style="opacity: 0;" value="required" <?=$validate_rules['documento']?> >
                     </span>
                   </div>
-                 	Documento 
+                 	<?=$this->lang->line('configaltdoc');?> 
                  </label>       
                  <label>
                   <div class="checker" id="uniform-undefined">
@@ -32,7 +32,7 @@
                       <input type="checkbox" name="telefone" style="opacity: 0;" value="required" <?=$validate_rules['telefone']?> >
                     </span>
                   </div>
-                 	Telefone 
+                 	<?=$this->lang->line('configaltfonefxo');?> 
                  </label>        
                  <label>
                   <div class="checker" id="uniform-undefined">
@@ -40,7 +40,7 @@
                       <input type="checkbox" name="celular" style="opacity: 0;" value="required" <?=$validate_rules['celular']?> >
                     </span>
                   </div>
-                 	Celular 
+                 	<?=$this->lang->line('configaltfonemovel');?> 
                  </label>        
                  <label>
                   <div class="checker" id="uniform-undefined">
@@ -48,7 +48,7 @@
                       <input type="checkbox" name="email" style="opacity: 0;" value="required" <?=$validate_rules['email']?> >
                     </span>
                   </div>
-                 	Email 
+                 	<?=$this->lang->line('configaltemail');?> 
                  </label>                 
                  <label>
                   <div class="checker" id="uniform-undefined">
@@ -56,7 +56,7 @@
                       <input type="checkbox" name="rua" style="opacity: 0;" value="required" <?=$validate_rules['rua']?> >
                     </span>
                   </div>
-                 	Rua 
+                 	<?=$this->lang->line('configaltend');?> 
                  </label>                 
                  <label>
                   <div class="checker" id="uniform-undefined">
@@ -64,7 +64,7 @@
                       <input type="checkbox" name="numero" style="opacity: 0;" value="required" <?=$validate_rules['numero']?> >
                     </span>
                   </div>
-                 	Número 
+                 	<?=$this->lang->line('configaltendn');?> 
                  </label>                 
                  <label>
                   <div class="checker" id="uniform-undefined">
@@ -72,7 +72,7 @@
                       <input type="checkbox" name="bairro" style="opacity: 0;" value="required" <?=$validate_rules['bairro']?> >
                     </span>
                   </div>
-                 	Bairro 
+                 	<?=$this->lang->line('configaltendbairro');?> 
                  </label>                 
                  <label>
                   <div class="checker" id="uniform-undefined">
@@ -80,7 +80,7 @@
                       <input type="checkbox" name="cidade" style="opacity: 0;" value="required" <?=$validate_rules['cidade']?> >
                     </span>
                   </div>
-                 	Cidade 
+                 	<?=$this->lang->line('configaltendciti');?> 
                  </label>                 
                  <label>
                   <div class="checker" id="uniform-undefined">
@@ -88,7 +88,7 @@
                       <input type="checkbox" name="estado" style="opacity: 0;" value="required" <?=$validate_rules['estado']?> >
                     </span>
                   </div>
-                 	Estado 
+                 	<?=$this->lang->line('configaltendus');?> 
                  </label>                 
                  <label>
                   <div class="checker" id="uniform-undefined">
@@ -96,7 +96,7 @@
                       <input type="checkbox" name="cep" style="opacity: 0;" value="required" <?=$validate_rules['cep']?> >
                     </span>
                   </div>
-                 	CEP 
+                 	<?=$this->lang->line('configaltendcep');?> 
                  </label>
                 
               </div>
@@ -104,7 +104,7 @@
             </div>
          </div>
             <div class="form-actions">
-              <button type="submit" class="btn btn-success">Salvar</button>
+              <button type="submit" class="btn btn-success"><?=$this->lang->line('configaltsalvar');?></button>
             </div>
           </form>
         </div>
