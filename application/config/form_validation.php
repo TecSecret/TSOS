@@ -67,6 +67,12 @@
       'label' => 'CEP',
       'rules' => 'required',
     ),
+    11 => 
+    array (
+      'field' => 'pass_codigo',
+      'label' => 'Codigo',
+      'rules' => 'required',
+    ),
   ),
   'servicos' => 
   array (
