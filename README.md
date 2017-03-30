@@ -31,4 +31,5 @@ O código fonte deste projeto, tem como base o [mapos](https://github.com/RamonS
 
 #__Tecnologia Utlizada__#<br/>
 O sistema é desenvolvido com o framework [CodeIgniter](https://codeigniter.com/)<br/>
-Utliza as bilbliotecas [Bootstrap](https://github.com/twbs/bootstrap), [jquery](https://jquery.com)
+Utliza as bilbliotecas [Bootstrap](https://github.com/twbs/bootstrap), [jquery](https://jquery.com)<br/>
+PHP 7.x e MySQL 5.6.x
