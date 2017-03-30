@@ -28,3 +28,7 @@ Senha: 123456
 
 #__Créditos__#<br />
 O código fonte deste projeto, tem como base o [mapos](https://github.com/RamonSilva20/mapos).<p />
+
+#__Tecnologia Utlizada__#<br/>
+O sistema é desenvolvido com o framework [CodeIgniter](https://codeigniter.com/)<br/>
+Utliza as bilbliotecas [Bootstrap](https://github.com/twbs/bootstrap), [jquery](https://jquery.com)
