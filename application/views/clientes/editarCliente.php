@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="control-group" class="control-label">
-                        <label for="pass_codigo" class="control-label">Codigo<span class="required">*</span></label>
+                        <label for="pass_codigo" class="control-label"><?=$this->lang->line('clieditclipass_code');?><span class="required">*</span></label>
                         <div class="controls">
                             <input id="pass_codigo" type="text" name="pass_codigo" value="<?=$result->pass_codigo?>"  />
                         </div>

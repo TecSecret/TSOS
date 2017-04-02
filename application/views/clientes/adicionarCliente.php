@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div class="control-group" class="control-label">
-                        <label for="pass_codigo" class="control-label"><?=$this->lang->line('clipass_code');?><span class="required">*</span></label>
+                        <label for="pass_codigo" class="control-label"><?=$this->lang->line('cliaddclipass_code');?><span class="required">*</span></label>
                         <div class="controls">
                             <input id="pass_codigo" data-validate="<?=$validate_rules['pass_codigo']?>" type="text" name="pass_codigo" value="<?=set_value('pass_codigo')?>"  />
                         </div>
