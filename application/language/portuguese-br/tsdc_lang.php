@@ -145,6 +145,26 @@ $lang['permpermipermidel'] = 'Excluir Permissão';
 $lang['permpermipermidelmsg'] = 'Você realmente deseja excluie está permissão?';
 $lang['permpermipermicanc'] = 'Cancelar';
 $lang['permpermipermiexc'] = 'Excluir';
+$lang['prodaddprodtitulocad'] = 'Cadastro de Produto';
+$lang['prodaddproddesc'] = 'Nome do Produto';
+$lang['prodaddprodund'] = 'Unidade';
+$lang['prodaddprodpccom'] = 'Preço de Compra';
+$lang['prodaddprodpcven'] = 'Preço de Venda';
+$lang['prodaddprodstoq'] = 'Estoque';
+$lang['prodaddprodstoqmin'] = 'Estoque Minímo';
+$lang['prodaddprodadd'] = 'Adicionar';
+$lang['prodaddprodvoltar'] = 'Voltar';
+$lang['prodaddprodobrigatorio'] = 'Campo Requerido.';
+$lang['prodeditprodtitulocad'] = 'Editar Produto';
+$lang['prodeditproddesc'] = 'Nome do Produto';
+$lang['prodeditprodund'] = 'Unidade';
+$lang['prodeditprodpccom'] = 'Preço de Compra';
+$lang['prodeditprodpcven'] = 'Preço de Venda';
+$lang['prodeditprodstoq'] = 'Estoque';
+$lang['prodeditprodstoqmin'] = 'Estoque Minímo';
+$lang['prodeditprodalterar'] = 'Alterar';
+$lang['prodeditprodvoltar'] = 'Voltar';
+$lang['prodeditprodobrigatorio'] = 'Campo Requerido.';
 
 
 
