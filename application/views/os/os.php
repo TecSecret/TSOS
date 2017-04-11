@@ -1,5 +1,7 @@
+<script type="text/javascript" src="<?=base_url('assets/js/jquery-ui/js/jquery-ui-1.9.2.custom.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/js/jquery.validate.js')?>"></script>
 <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'aOs')){ ?>
-    <a href="<?=site_url('os/adicionar')?>" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar OS</a>
+<a href="<?=site_url('os/adicionar')?>" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar OS</a>
 <?php } ?>
 
 <?php

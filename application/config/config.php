@@ -23,26 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$allowed_domains = array('os.dev');
-$default_domain  = 'os.dev';
 
-if (in_array($_SERVER['HTTP_HOST'], $allowed_domains, TRUE))
-{
-        $domain = $_SERVER['HTTP_HOST'];
-}
-else
-{
-        $domain = $default_domain;
-}
-
-if ( ! empty($_SERVER['HTTPS']))
-{
-        $config['base_url'] = 'https://'.$domain;
-}
-else
-{
-        $config['base_url'] = 'http://'.$domain;
-}
+$config['base_url'] = 'http://os.dev/';
 
 /*
 |--------------------------------------------------------------------------
@@ -119,7 +101,7 @@ $config['charset'] = 'UTF-8';
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = TRUE; 
+$config['enable_hooks'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------

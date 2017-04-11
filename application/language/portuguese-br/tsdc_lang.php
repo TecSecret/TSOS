@@ -1,11 +1,11 @@
-﻿<?php
+<?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 // V1.1
 $lang['conectelgpasscode'] = 'Seu Código de Acesso Único';
-$lang['cliaddclipass_code'] = 'Código de Acesso Área do Cliente';
-$lang['clieditclipass_code'] = 'Código de Acesso Área do Ciente';
+$lang['cliaddclipass_code'] = 'Código de Acesso';
+$lang['clieditclipass_code'] = 'Código de Acesso';
 $lang['conectelgemail'] = 'Seu endereço de e-mail';
 $lang['conectevisosnoneemite'] = 'Os dados do emitente não foram configurados.';
 $lang['conectevisosemail'] = 'E-mail: ';
