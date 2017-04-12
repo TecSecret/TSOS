@@ -46,6 +46,7 @@ CREATE TABLE `clientes` (
   `cidade` varchar(45) DEFAULT NULL,
   `estado` varchar(20) DEFAULT NULL,
   `cep` varchar(20) DEFAULT NULL
+  `pass_codigo` varchar(100) DEFAULT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
