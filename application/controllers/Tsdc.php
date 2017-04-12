@@ -250,7 +250,7 @@ class Tsdc extends MY_Controller
         $this->load->library('form_validation');
         $this->form_validation->set_rules('nome', 'Razão Social', 'required');
         $this->form_validation->set_rules('cnpj', 'CNPJ', 'required');
-        $this->form_validation->set_rules('ie', 'IE', 'required');
+        $this->form_validation->set_rules('ie', 'IE');
         $this->form_validation->set_rules('logradouro', 'Logradouro', 'required');
         $this->form_validation->set_rules('numero', 'Número', 'required');
         $this->form_validation->set_rules('bairro', 'Bairro', 'required');
@@ -300,7 +300,7 @@ class Tsdc extends MY_Controller
         $this->load->library('form_validation');
         $this->form_validation->set_rules('nome', 'Razão Social', 'required');
         $this->form_validation->set_rules('cnpj', 'CNPJ', 'required');
-        $this->form_validation->set_rules('ie', 'IE', 'required');
+        $this->form_validation->set_rules('ie', 'IE');
         $this->form_validation->set_rules('logradouro', 'Logradouro', 'required');
         $this->form_validation->set_rules('numero', 'Número', 'required');
         $this->form_validation->set_rules('bairro', 'Bairro', 'required');

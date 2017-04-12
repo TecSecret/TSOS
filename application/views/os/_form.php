@@ -31,17 +31,17 @@
 </div>
 <div class="span12" style="padding: 1%; margin-left: 0">
     <div class="span6">
-        <label for="fabricante"><?=$this->lang->line('cados_eqfabri');?><span class="required">*</span></label>
+        <label for="fabricante"><?=$this->lang->line('cados_eqfabri');?></label>
         <input id="fabricante" class="span12" type="text" name="fabricante" value="<?=isset($result->fabricante)? html_escape($result->fabricante) :'' ?>"  />
     </div>
     <div class="span6">
-        <label for="modelo"><?=$this->lang->line('cados_eqmod');?><span class="required">*</span></label>
+        <label for="modelo"><?=$this->lang->line('cados_eqmod');?></label>
         <input id="modelo" class="span12" type="text" name="modelo" value="<?=isset($result->modelo)? html_escape($result->modelo) :'' ?>"  />
     </div>
 </div>
 <div class="span12" style="padding: 1%; margin-left: 0">
     <div class="span4">
-        <label for="tipo_equipamento">Tipo de Equipamento<span class="required">*</span></label>
+        <label for="tipo_equipamento">Tipo de Equipamento</label>
         <input id="tipo_equipamento" class="span12" type="text" name="tipo_equipamento" value="<?=isset($result->tipo_equipamento)? html_escape($result->tipo_equipamento) :'' ?>"  />
     </div>
     <div class="span4">

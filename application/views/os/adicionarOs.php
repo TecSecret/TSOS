@@ -153,17 +153,11 @@ $(document).ready(function(){
              cliente: {required:true},
              tecnico: {required:true},
              dataInicial: {required:true},
-             fabricante: {required:true},
-             modelo: {required:true},
-             tipo_equipamento: {required:true}
           },
           messages:{
              cliente: {required: 'Campo Requerido.'},
              tecnico: {required: 'Campo Requerido.'},
              dataInicial: {required: 'Campo Requerido.'},
-             fabricante: {required: 'Campo Requerido.'},
-             modelo: {required: 'Campo Requerido.'},
-             tipo_equipamento: {required: 'Campo Requerido.'}
           },
 
             errorClass: "help-inline",

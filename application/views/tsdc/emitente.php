@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label for="descricao" class="control-label"><span class="required">IE*</span></label>
+                        <label for="descricao" class="control-label"><span class="required">IE</span></label>
                         <div class="controls">
                             <input type="text" name="ie" value=""  />
                         </div>
@@ -151,7 +151,7 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label for="descricao" class="control-label"><span class="required">IE*</span></label>
+                        <label for="descricao" class="control-label"><span class="required">IE</span></label>
                         <div class="controls">
                             <input type="text" name="ie" value="<?=$dados[0]->ie?>"  />
                         </div>
@@ -264,7 +264,6 @@ $(document).ready(function(){
          userfile: {required:true},
          nome: {required:true},
          cnpj: {required:true},
-         ie: {required:true},
          logradouro: {required:true},
          numero: {required:true},
          bairro: {required:true},
@@ -277,7 +276,6 @@ $(document).ready(function(){
          userfile: {required: 'Campo Requerido.'},
          nome: {required: 'Campo Requerido.'},
          cnpj: {required: 'Campo Requerido.'},
-         ie: {required: 'Campo Requerido.'},
          logradouro: {required: 'Campo Requerido.'},
          numero: {required:'Campo Requerido.'},
          bairro: {required:'Campo Requerido.'},
@@ -302,7 +300,6 @@ $(document).ready(function(){
       rules:{
          userfile: {required:true},
          cnpj: {required:true},
-         ie: {required:true},
          logradouro: {required:true},
          numero: {required:true},
          bairro: {required:true},
@@ -315,7 +312,6 @@ $(document).ready(function(){
          userfile: {required: 'Campo Requerido.'},
          nome: {required: 'Campo Requerido.'},
          cnpj: {required: 'Campo Requerido.'},
-         ie: {required: 'Campo Requerido.'},
          logradouro: {required: 'Campo Requerido.'},
          numero: {required:'Campo Requerido.'},
          bairro: {required:'Campo Requerido.'},
