@@ -13,7 +13,7 @@ $config['base_url']	= '';
 
 Aqui você colocará a url base de sua aplicação, se colocar na raiz do servidor por exemplo colocará assim: $config['base_url']	= 'http://127.0.0.1'; ou 'http://dominio.com'
 
-Se colocar dentro de uma pasta com nome por exemplo 'mapos' ficará assim:
+Se colocar dentro de uma pasta com nome por exemplo 'tsdc' ficará assim:
 $config['base_url']	= 'http://127.0.0.1/tsdc';
 
 
@@ -26,12 +26,16 @@ Exemplo: $config['base_url']	= 'http://127.0.0.1:3000/tsdc';
 Dentro da pasta 'Application' -> 'Config' edite o arquivo 'database.php' e coloque os dados de acesso ao banco de dados. 
 ---------------------------------------
 
+---------------------------------------
+O logotipo se encontra dentro da pasta assets/img. Caso queira trocá-lo, basta substituir pelo logo desejado com o mesmo nome (logo.png). 
+---------------------------------------
 
 ---------------------------------------
 Dados de acesso
 Email: admin@admin.com
 Senha: 123456
 ---------------------------------------
+
 
 
 

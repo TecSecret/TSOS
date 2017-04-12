@@ -177,7 +177,8 @@
                                 <div class="span12 well" style="padding: 1%; margin-left: 0" id="form-anexos">
                                     <form id="formAnexos" enctype="multipart/form-data" action="javascript:;" accept-charset="utf-8"s method="post">
                                     <div class="span10">
-                                        <input type="hidden" name="idOsServico" id="idOsServico" value="<?=$result->idOs?>" />
+                                
+                                        <input type="hidden" name="idOsServico" id="idOsServico" value="<?php echo $result->idOs?>" />
                                         <label for="">Anexo</label>
                                         <input type="file" class="span12" name="userfile[]" multiple="multiple" size="20" />
                                     </div>
@@ -187,26 +188,26 @@
                                     </div>
                                     </form>
                                 </div>
+                
                                 <div class="span12" id="divAnexos" style="margin-left: 0">
-                                    <?php
+                                    <?php 
                                     $cont = 1;
                                     $flag = 5;
                                     foreach ($anexos as $a) {
                                         if($a->thumb == null){
-                                            $thumb = base_url('assets/img/icon-file.png');
-                                            $link = base_url('assets/img/icon-file.png');
+                                            $thumb = base_url().'assets/img/icon-file.png';
+                                            $link = base_url().'assets/img/icon-file.png';
                                         }
                                         else{
-                                            $thumb = base_url('assets/anexos/thumbs/').$a->thumb;
+                                            $thumb = base_url().'assets/anexos/thumbs/'.$a->thumb;
                                             $link = $a->url.$a->anexo;
                                         }
-
                                         if($cont == $flag){
-                                           echo '<div style="margin-left: 0" class="span3"><a href="#modal-anexo" imagem="'.$a->idAnexos.'" link="'.$link.'" role="button" class="btn anexo" data-toggle="modal"><img src="'.$thumb.'" alt=""></a></div>';
+                                           echo '<div style="margin-left: 0" class="span3"><a href="#modal-anexo" imagem="'.$a->idAnexos.'" link="'.$link.'" role="button" class="btn anexo" data-toggle="modal"><img src="'.$thumb.'" alt=""></a></div>'; 
                                            $flag += 4;
                                         }
                                         else{
-                                           echo '<div class="span3"><a href="#modal-anexo" imagem="'.$a->idAnexos.'" link="'.$link.'" role="button" class="btn anexo" data-toggle="modal"><img src="'.$thumb.'" alt=""></a></div>';
+                                           echo '<div class="span3"><a href="#modal-anexo" imagem="'.$a->idAnexos.'" link="'.$link.'" role="button" class="btn anexo" data-toggle="modal"><img src="'.$thumb.'" alt=""></a></div>'; 
                                         }
                                         $cont ++;
                                     } ?>
@@ -500,16 +501,16 @@ $(document).ready(function(){
        });
 
 
-        $("#formAnexos").validate({
-
-          submitHandler: function( form ){
+         $("#formAnexos").validate({
+         
+          submitHandler: function( form ){       
                 //var dados = $( form ).serialize();
-                var dados = new FormData(form);
+                var dados = new FormData(form); 
                 $("#form-anexos").hide('1000');
                 $("#divAnexos").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
                 $.ajax({
                   type: "POST",
-                  url: "<?site_url('os/anexar')?>",
+                  url: "<?php echo base_url();?>index.php/os/anexar",
                   data: dados,
                   mimeType:"multipart/form-data",
                   contentType: false,
@@ -519,23 +520,20 @@ $(document).ready(function(){
                   success: function(data)
                   {
                     if(data.result == true){
-                        $("#divAnexos" ).load("<?=current_url()?> #divAnexos" );
+                        $("#divAnexos" ).load("<?php echo current_url();?> #divAnexos" );
                         $("#userfile").val('');
                     }
                     else{
-                        $("#divAnexos").html('<div class="alert fade in"><button type="button" class="close" data-dismiss="alert">×</button><strong>Atenção!</strong> '+data.mensagem+'</div>');
+                        $("#divAnexos").html('<div class="alert fade in"><button type="button" class="close" data-dismiss="alert">×</button><strong>Atenção!</strong> '+data.mensagem+'</div>');      
                     }
                   },
                   error : function() {
-                      $("#divAnexos").html('<div class="alert alert-danger fade in"><button type="button" class="close" data-dismiss="alert">×</button><strong>Atenção!</strong> Ocorreu um erro. Verifique se você anexou o(s) arquivo(s).</div>');
+                      $("#divAnexos").html('<div class="alert alert-danger fade in"><button type="button" class="close" data-dismiss="alert">×</button><strong>Atenção!</strong> Ocorreu um erro. Verifique se você anexou o(s) arquivo(s).</div>');      
                   }
-
                   });
-
                   $("#form-anexos").show('1000');
                   return false;
                 }
-
         });
 
        $(document).on('click', 'a', function(event) {

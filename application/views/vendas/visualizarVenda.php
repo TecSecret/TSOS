@@ -139,7 +139,16 @@
 
         function Popup(data)
         {
-            var mywindow = window.open('', 'TSDC', 'height=600,width=800');
+            var mywindow = window.open('', 'mydiv', 'height=600,width=800');
+             mywindow.document.open();
+            mywindow.document.onreadystatechange=function(){
+             if(this.readyState==='complete'){
+              this.onreadystatechange=function(){};
+               mywindow.focus();
+               mywindow.print();
+               mywindow.close();
+              }
+            }
             mywindow.document.write('<html><head><title>Map Os</title>');
             mywindow.document.write("<link rel='stylesheet' href='<?=base_url('assets/css/bootstrap.min.css')?>' />");
             mywindow.document.write("<link rel='stylesheet' href='<?=base_url('assets/css/bootstrap-responsive.min.css')?>' />");
@@ -150,7 +159,7 @@
             mywindow.document.write(data);
             mywindow.document.write('</body></html>');
 
-            mywindow.print();
+            mywindow.document.close();
 
             return true;
         }

@@ -1,0 +1,1 @@
+ALTER TABLE `clientes` ADD `pass_codigo` TEXT NOT NULL ;
