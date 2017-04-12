@@ -1,4 +1,4 @@
-
+<?php header("Access-Control-Allow-Origin:*"); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
     
@@ -13,7 +13,8 @@
         <link rel="icon" href="<?=base_url('assets/img/favicon.ico')?>">
     </head>
     <body>
-        <div id="loginbox">            
+        <div id="loginbox">
+            <div class="control-group normal_text"> <h3><img src="<?php echo base_url()?>assets/img/logo.png" alt="Logo" /></h3></div>
             <form  class="form-vertical" id="formLogin" method="post" action="<?=base_url('conecte/login')?>">
                   <?php if($this->session->flashdata('error') != null){?>
                         <div class="alert alert-danger">
@@ -21,7 +22,6 @@
                           <?php echo $this->session->flashdata('error');?>
                        </div>
                   <?php }?>
-                <div class="control-group normal_text"> <h3><img src="<?php echo base_url()?>assets/img/logo.png" alt="Logo" /></h3></div>
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
@@ -36,11 +36,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-actions" style="text-align: center">
-                    <button class="btn btn-info btn-large"/><?=$this->lang->line('conectelgacessar');?></button>
-                </div>
+                <div style="text-align: center" >
+                <button class="btn btn-info btn-large"><?=$this->lang->line('conectelgacessar');?></button>
+            </div>
+            <div class="form-actions" style="text-align: center">
+                <a href="<?=site_url('/login')?>"><h5><span>CENTRAL DO ADMINISTRADOR</span></h5></a>
+            </div>
             </form>
-       
         </div>
         
         
