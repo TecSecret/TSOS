@@ -1,267 +1,230 @@
-<?php $totalServico = 0; $totalProdutos = 0;?>
-<style type="text/css">
-    @media print{button.assinatura_cliente{display:none;}}
-</style>
+<link href="<?= base_url('assets/css/custom.css'); ?>" rel="stylesheet">
+<?php $totalServico = 0;
+$totalProdutos = 0; ?>
 <div class="row-fluid" style="margin-top: 0">
     <div class="span12">
         <div class="widget-box">
             <div class="widget-title">
                 <span class="icon">
-                    <i class="icon-tags"></i>
+                    <i class="fas fa-diagnoses"></i>
                 </span>
                 <h5>Ordem de Serviço</h5>
                 <div class="buttons">
-                    <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'eOs')){
-                        echo '<a title="Icon Title" class="btn btn-mini btn-info" href="'.site_url('os/editar/').$result->idOs.'"><i class="icon-pencil icon-white"></i> Editar</a>';
+                    <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
+                        echo '<a title="Editar OS" class="btn btn-mini btn-info" href="' . base_url() . '/os/editar/' . $result->idOs . '"><i class="fas fa-edit"></i> Editar</a>';
                     } ?>
 
-                    <a id="imprimir" title="Imprimir" class="btn btn-mini btn-inverse" href=""><i class="icon-print icon-white"></i> Imprimir</a>
+                    <a target="_blank" title="Imprimir OS" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir</a>
+                    <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
+                        $zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
+                        echo '<a title="Enviar Por WhatsApp" class="btn btn-mini btn-success" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0aFavor%20entrar%20em%20contato%20para%20saber%20mais%20detalhes.%0d%0a%0d%0aAtenciosamente,%20_' . ($emitente ? $emitente[0]->nome : '') . '%20' . ($emitente ? $emitente[0]->telefone : '') . '_"><i class="fab fa-whatsapp"></i> WhatsApp</a>';
+                    } ?>
+
+                    <a title="Enviar por E-mail" class="btn btn-mini btn-warning" href="<?php echo site_url() ?>/os/enviar_email/<?php echo $result->idOs; ?>"><i class="fas fa-envelope"></i> Enviar por E-mail</a>
+                    <?php if ($result->garantias_id) { ?> <a target="_blank" title="Imprimir Termo de Garantia" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/garantias/imprimir/<?php echo $result->garantias_id; ?>"><i class="fas fa-text-width"></i> Imprimir Termo de Garantia</a> <?php  } ?>
                 </div>
             </div>
             <div class="widget-content" id="printOs">
                 <div class="invoice-content">
                     <div class="invoice-head" style="margin-bottom: 0">
 
-                        <table class="table">
+                        <table class="table table-condensed" style="">
                             <tbody>
-                                <?php if($emitente == null) {?>
+                                <?php if ($emitente == null) { ?>
 
-                                <tr>
-                                    <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?=site_url('index.php/tsdc/emitente')?>">Configurar</a><<<</td>
-                                </tr>
-                                <?php } else {?>
-                                <tr>
-                                    <td style="width: 25%"><img src=" <?=$emitente[0]->url_logo?> "></td>
-                                    <td> <span style="font-size: 20px; "> <?=$emitente[0]->nome?></span> </br><span><?=$emitente[0]->cnpj?> </br>
-                                      <?=$emitente[0]->rua.', nº:'.$emitente[0]->numero.', '.$emitente[0]->bairro.' - '.$emitente[0]->cidade.' - '.$emitente[0]->uf?> </span> </br> <span> E-mail: <?=$emitente[0]->email.' - Fone: '.$emitente[0]->telefone?></span></td>
-                                      <td style="width: 18%; text-align: center">#Protocolo: <span ><?=$result->idOs?></span></br> </br> <span>Emissão: <?=date('d/m/Y')?></span></td>
-                                  </tr>
+                                    <tr>
+                                        <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?php echo base_url(); ?>/tsos/emitente">Configurar</a>
+                                            <<<</td> </tr> <?php } else { ?> <tr>
+                                        <td style="width: 25%"><img src=" <?php echo $emitente[0]->url_logo; ?> " style="max-height: 100px"></td>
+                                        <td> <span style="font-size: 20px; "> <?php echo $emitente[0]->nome; ?></span> </br><span><?php echo $emitente[0]->cnpj; ?> </br> <?php echo $emitente[0]->rua . ', ' . $emitente[0]->numero . ' - ' . $emitente[0]->bairro . ' - ' . $emitente[0]->cidade . ' - ' . $emitente[0]->uf; ?> </span> </br> <span> E-mail: <?php echo $emitente[0]->email . ' - Fone: ' . $emitente[0]->telefone; ?></span></td>
+                                        <td style="width: 18%; text-align: center"><b>N° OS:</b> <span><?php echo $result->idOs ?></span></br> </br> <span>Emissão: <?php echo date('d/m/Y') ?></span></td>
+                                    </tr>
 
-                                  <?php } ?>
-                              </tbody>
-                          </table>
+                                <?php } ?>
+                            </tbody>
+                        </table>
 
-
-                          <table class="table">
+                        <table class="table table-condensend">
                             <tbody>
                                 <tr>
                                     <td style="width: 50%; padding-left: 0">
                                         <ul>
                                             <li>
-                                                <span><h5>Cliente</h5>
-                                                    <span><?=$result->nomeCliente?></span><br/>
-                                                    <span><?=$result->clienteCelular?> / <?=$result->clienteTelefone?> </span><br/>
-                                                    <span><?=$result->rua?>, <?=$result->numero?>, <?=$result->bairro?></span><br/>
-                                                    <span><?=$result->cidade?> - <?=$result->estado?></span>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td style="width: 50%; padding-left: 0">
-                                            <ul>
-                                                <li>
-                                                    <span><h5>Responsável</h5></span>
-                                                    <span><?=$result->nome?></span> <br/>
-                                                    <span>Telefone: <?=$result->telefone?></span><br/>
-                                                    <span>Email: <?=$result->email?></span>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                                <span>
+                                                    <h5><b>CLIENTE</b></h5>
+                                                    <span><?php echo $result->nomeCliente ?></span><br />
+                                                    <span><?php echo $result->rua ?>, <?php echo $result->numero ?>, <?php echo $result->bairro ?></span>,
+                                                    <span><?php echo $result->cidade ?> - <?php echo $result->estado ?></span><br>
+                                                    <span>E-mail: <?php echo $result->email ?></span><br>
+                                                    <span>Contato: <?php echo $result->celular_cliente ?></span>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td style="width: 50%; padding-left: 0">
+                                        <ul>
+                                            <li>
+                                                <span>
+                                                    <h5><b>RESPONSÁVEL</b></h5>
+                                                </span>
+                                                <span><?php echo $result->nome ?></span> <br />
+                                                <span>Contato: <?php echo $result->telefone_usuario ?></span><br />
+                                                <span>Email: <?php echo $result->email_responsavel ?></span>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                        </div>
+                    </div>
 
-                        <div style="margin-top: 0; padding-top: 0">
+                    <div style="margin-top: 0; padding-top: 0">
 
-                            <hr style="margin-top: 0">
-                            <h5>Dados Produto</h5>
-                            <table class="table table-bordered">
-                                <thead>
+                        <table class="table table-condensed">
+                            <tbody>
+                                <?php if ($result->dataInicial != null) { ?>
                                     <tr>
-                                        <th>Fabricante</th>
-                                        <th>Modelo</th>
-                                        <th>Tipo de Equipamento</th>
-                                        <th>Nº de Série</th>
-                                        <th>Part Namber</th>
+                                        <td>
+                                            <b>STATUS OS: </b>
+                                            <?php echo $result->status ?>
+                                        </td>
+
+                                        <td>
+                                            <b>DATA INICIAL: </b>
+                                            <?php echo date('d/m/Y', strtotime($result->dataInicial)); ?>
+                                        </td>
+
+                                        <td>
+                                            <b>DATA FINAL: </b>
+                                            <?php echo $result->dataFinal ? date('d/m/Y', strtotime($result->dataFinal)) : ''; ?>
+                                        </td>
+
+                                        <td>
+                                            <b>GARANTIA: </b>
+                                            <?php echo $result->garantia; ?>
+                                        </td>
+
+                                        <td>
+                                            <b>TERMO GARANTIA: </b>
+                                            <?php echo $result->refGarantia; ?>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
+                                <?php } ?>
+
+                                <?php if ($result->descricaoProduto != null) { ?>
                                     <tr>
-                                        <td><?=$result->fabricante?></td>
-                                        <td><?=$result->modelo?></td>
-                                        <td><?=$result->tipo_equipamento?></td>
-                                        <td><?=$result->serie?></td>
-                                        <td><?=$result->part_namber?></td>
+                                        <td colspan="5">
+                                            <b>DESCRIÇÃO: </b>
+                                            <?php echo htmlspecialchars_decode($result->descricaoProduto) ?>
+                                        </td>
                                     </tr>
-                                </tbody>
-                            </table>
+                                <?php } ?>
 
-                            <?php if($result->descricaoProduto != null){?>
-                            <hr style="margin-top: 0">
-                            <h5>Descrição</h5>
-                            <p>
-                                <?=$result->descricaoProduto?>
+                                <?php if ($result->defeito != null) { ?>
+                                    <tr>
+                                        <td colspan="5">
+                                            <b>DEFEITO APRESENTADO: </b>
+                                            <?php echo htmlspecialchars_decode($result->defeito) ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
 
-                            </p>
-                            <?php }?>
+                                <?php if ($result->observacoes != null) { ?>
+                                    <tr>
+                                        <td colspan="5">
+                                            <b>OBSERVAÇÕES: </b>
+                                            <?php echo htmlspecialchars_decode($result->observacoes) ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
 
-                            <?php if($result->defeito != null){?>
-                            <hr style="margin-top: 0">
-                            <h5>Defeito</h5>
-                            <p>
-                                <?=$result->defeito?>
-                            </p>
-                            <?php }?>
-                            <?php if($result->laudoTecnico != null){?>
-                            <hr style="margin-top: 0">
-                            <h5>Laudo Técnico</h5>
-                            <p>
-                                <?=$result->laudoTecnico?>
-                            </p>
-                            <?php }?>
-                            <?php if($result->observacoes != null){?>
-                            <hr style="margin-top: 0">
-                            <h5>Observações</h5>
-                            <p>
-                                <?=$result->observacoes?>
-                            </p>
-                            <?php }?>
+                                <?php if ($result->laudoTecnico != null) { ?>
+                                    <tr>
+                                        <td colspan="5">
+                                            <b>LAUDO TÉCNICO: </b>
+                                            <?php echo htmlspecialchars_decode($result->laudoTecnico) ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
 
-                            <?php if($produtos != null){?>
+                        <?php if ($produtos != null) { ?>
                             <br />
-                            <table class="table table-bordered" id="tblProdutos">
+                            <table class="table table-bordered table-condensed" id="tblProdutos">
                                 <thead>
                                     <tr>
                                         <th>Produto</th>
-                                        <th>Valor</th>
                                         <th>Quantidade</th>
-                                        <th>Desconto</th>
+                                        <th>Preço unit.</th>
                                         <th>Sub-total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $totalProduto = 0;
-                                    $descontoTotalProduto = 0;
-                                    $precoVendaProduto = 0;
-                                    foreach ($produtos as $p) {
 
-                                        $descontoTotalProduto += $p->desconto;
-                                        $precoVendaProduto += $p->precoVenda * $p->quantidade;
-                                        $totalProduto += $p->subTotal;
-                                        echo '<tr>';
-                                        echo '<td>'.$p->descricao.'</td>';
-                                        echo '<td>R$ '.number_format($p->precoVenda, 2, ',', '.').'</td>';
-                                        echo '<td>'.$p->quantidade.'</td>';
-                                        echo '<td>R$ '.number_format($p->desconto, 2, ',', '.').'</td>';
+                                        foreach ($produtos as $p) {
 
-                                        echo '<td>R$ '.number_format($p->subTotal,2,',','.').'</td>';
-                                        echo '</tr>';
-                                    }?>
+                                            $totalProdutos = $totalProdutos + $p->subTotal;
+                                            echo '<tr>';
+                                            echo '<td>' . $p->descricao . '</td>';
+                                            echo '<td>' . $p->quantidade . '</td>';
+                                            echo '<td>' . $p->preco ?: $p->precoVenda . '</td>';
+                                            echo '<td>R$ ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
+                                            echo '</tr>';
+                                        } ?>
 
                                     <tr>
-                                        <td style="text-align: left"><strong>Total:</strong></td>
-                                        <td style="text-align: center" colspan="2"><strong>R$ <?=number_format($precoVendaProduto,2,',','.');?></strong></td>
-                                        <td style="text-align: center"><strong>R$ <?=number_format($descontoTotalProduto,2,',','.');?></strong></td>
-                                        <td style="text-align: center" colspan="2"><strong>R$ <?=number_format($totalProduto,2,',','.');?><input type="hidden" id="total-venda" value="<?=number_format($totalProduto,2); ?>"></strong></td>
+                                        <td></td>
+                                        <td colspan="2" style="text-align: right"><strong>Total:</strong></td>
+                                        <td><strong>R$ <?php echo number_format($totalProdutos, 2, ',', '.'); ?></strong></td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <?php }?>
+                        <?php } ?>
 
-                            <?php if($servicos != null){?>
-                            <table class="table table-bordered">
+                        <?php if ($servicos != null) { ?>
+                            <table class="table table-bordered table-condensed">
                                 <thead>
                                     <tr>
                                         <th>Serviço</th>
-                                        <th>Valor</th>
-                                        <th>Desconto</th>
+                                        <th>Quantidade</th>
+                                        <th>Preço unit.</th>
                                         <th>Sub-total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $subTotalServicos = 0;
-                                    $totalDescontoServicos = 0;
-                                    $totalServicos = 0;
-                                    setlocale(LC_MONETARY, 'en_US');
-                                    foreach ($servicos as $s) {
-                                        $subTotalServicos += $s->subTotal;
-                                        $totalDescontoServicos += $s->desconto;
-                                        $totalServicos += $s->preco;
-                                        echo '<tr>';
-                                        echo '<td>'.$s->nome.'</td>';
-                                        echo '<td>R$ '.number_format($s->preco, 2, ',', '.').'</td>';
-                                        echo '<td>R$ '.number_format($s->desconto, 2, ',', '.').'</td>';
-                                        echo '<td>R$ '.number_format($s->preco - $s->desconto, 2, ',', '.').'</td>';
-                                        echo '</tr>';
-                                    }?>
+                                        setlocale(LC_MONETARY, 'en_US');
+                                        foreach ($servicos as $s) {
+                                            $preco = $s->preco ?: $s->precoVenda;
+                                            $subtotal = $preco * ($s->quantidade ?: 1);
+                                            $totalServico = $totalServico + $subtotal;
+                                            echo '<tr>';
+                                            echo '<td>' . $s->nome . '</td>';
+                                            echo '<td>' . ($s->quantidade ?: 1) . '</td>';
+                                            echo '<td>' . $preco . '</td>';
+                                            echo '<td>R$ ' . number_format($subtotal, 2, ',', '.') . '</td>';
+                                            echo '</tr>';
+                                        } ?>
 
-                                    <tr >
-                                        <td style="text-align: left"><strong>Total:</strong></td>
-                                        <td style="text-align: center"><strong>R$ <?=number_format($totalServicos,2,',','.');?></strong></td>
-                                        <td style="text-align: center"><strong>R$ <?=number_format($totalDescontoServicos,2,',','.');?></strong></td>
-                                        <td style="text-align: center"><strong>R$ <?=number_format($subTotalServicos,2,',','.');?></strong></td>
+                                    <tr>
+                                        <td colspan="3" style="text-align: right"><strong>Total:</strong></td>
+                                        <td><strong>R$ <?php echo number_format($totalServico, 2, ',', '.'); ?></strong></td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <?php }?>
-                            <hr />
-
-                            <h6 style="text-align: right">Subtotal: R$ <?=number_format($result->valorTotal,2,',','.')?></h6>
-                            <h6 style="text-align: right">Desconto Total: R$ <?=number_format($result->descontoTotal,2,',','.')?></h6>
-                            <h4 style="text-align: right">Valor Total: R$ <?=number_format($result->valorTotal - $result->descontoTotal,2,',','.')?></h4>
-                            <span class="assinatura_cliente">
-                                <h5 style="text-align:left">Recebido por:____________________________________</h5>
-                                <h5 style="text-align:left">Data: ____/____/________</h5>
-                                <h5 style="text-align:left">Assinatura: _____________________________________</h5>
-                            </span>
-                            <button class="assinatura_cliente" onclick="$('.assinatura_cliente').remove();">Remover Assinatura</button>
-                        </div>
+                        <?php } ?>
+                        <?php
+                        if ($totalProdutos != 0 || $totalServico != 0) {
+                            echo "<h4 style='text-align: right'>Valor Total: R$" . number_format($totalProdutos + $totalServico, 2, ',', '.') . "</h4>";
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#imprimir").click(function(){
-                $('button.assinatura_cliente').remove();
-                PrintElem('#printOs');
-            })
-
-            function PrintElem(elem)
-            {
-                Popup($(elem).html());
-            }
-
-            function Popup(data)
-            {
-                var mywindow = window.open('', 'mydiv', 'height=600,width=800');
-                mywindow.document.open();
-                mywindow.document.onreadystatechange=function(){
-                  if(this.readyState==='complete'){
-                     this.onreadystatechange=function(){};
-                     mywindow.focus();
-                     mywindow.print();
-                     mywindow.close();
-                 }
-             }
-             mywindow.document.write('<html><head><title>TSDC</title>');
-             mywindow.document.write("<link rel='stylesheet' href='<?=base_url('assets/css/bootstrap.min.css')?>' />");
-             mywindow.document.write("<link rel='stylesheet' href='<?=base_url('assets/css/bootstrap-responsive.min.css')?>' />");
-             mywindow.document.write("<link rel='stylesheet' href='<?=base_url('assets/css/matrix-style.css')?>' />");
-
-
-             mywindow.document.write('</head><body >');
-             mywindow.document.write(data);
-             mywindow.document.write('</body></html>');
-
-             mywindow.document.close();
-
-             return true;
-         }
-
-     });
- </script>
+</div>
+</div>

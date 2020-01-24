@@ -1,4 +1,6 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if (! defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
@@ -38,21 +40,8 @@
 |
 */
 
-$route['configuracoes']       = "configuracoes";
-$route['vendas']              = "vendas";
-$route['conecte']             = "conecte";
-$route['usuarios']            = "usuarios";
-$route['servicos']            = "servicos";
-$route['relatorios']          = "relatorios";
-$route['produtos']            = "produtos";
-$route['permissoes']          = "permissoes";
-$route['os']                  = "os";
-$route['financeiro']          = "financeiro";
-$route['arquivos']            = "arquivos";
-$route['clientes']            = "clientes";
-$route['(:any)']              = "tsdc/$1";
-$route['default_controller']  = "tsdc";
-$route['404_override']        = '';
+$route['default_controller'] = "tsos";
+$route['404_override'] = '';
 
 
 

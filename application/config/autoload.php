@@ -1,4 +1,6 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if (! defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
 /*
 | -------------------------------------------------------------------
 | AUTO-LOADER
@@ -64,7 +66,7 @@ $autoload['libraries'] = array('database','session','permission');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url');
+$autoload['helper'] = array('url','audit');
 
 
 /*
@@ -96,7 +98,8 @@ $autoload['config'] = array();
 |
 */
 
-$autoload['language'] = array();
+// $autoload['language'] = array();
+$autoload['language'] = array('tsosclientes','tsos','tsosconecte','tsosfinanceiro','tsosrelatorio','tsosgarantia');
 
 
 /*

@@ -1,31 +1,16 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# production
+/install/files
+
+# misc
 .DS_Store
+.vscode
 
-application/cache/*
-!application/cache/index.html
-!application/cache/.htaccess
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-application/logs/*
-!application/logs/index.html
-!application/logs/.htaccess
-
-user_guide_src/build/*
-user_guide_src/cilexer/build/*
-user_guide_src/cilexer/dist/*
-user_guide_src/cilexer/pycilexer.egg-info/*
-/vendor/
-
-# IDE Files
-#-------------------------
-/nbproject/
-.idea/*
-
-## Sublime Text cache files
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
-*.sublime-workspace
-*.sublime-project
-
-alterações.txt
-teste.php
-/assets/uploads/*
+!blank/.gitkeep
+desktop.ini

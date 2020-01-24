@@ -1,14 +1,21 @@
-<?php
+<?php if (!defined('BASEPATH')) {exit('No direct script access allowed');}
 
-class Vendas extends MY_Acesso
+class Vendas extends CI_Controller
 {
+
     /**
      * author: Ramon Silva
-     * email: silva018-mg@yahoo.com.br.
+     * email: silva018-mg@yahoo.com.br
+     *
      */
+
     public function __construct()
     {
         parent::__construct();
+
+        if ((!session_id()) || (!$this->session->userdata('logado'))) {
+            redirect('mapos/login');
+        }
 
         $this->load->helper(array('form', 'codegen_helper'));
         $this->load->model('vendas_model', '', true);
@@ -22,6 +29,7 @@ class Vendas extends MY_Acesso
 
     public function gerenciar()
     {
+
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) {
             $this->session->set_flashdata('error', 'Você não tem permissão para visualizar vendas.');
             redirect(base_url());
@@ -29,7 +37,7 @@ class Vendas extends MY_Acesso
 
         $this->load->library('pagination');
 
-        $config['base_url'] = base_url().'index.php/vendas/gerenciar/';
+        $config['base_url'] = base_url() . 'index.php/vendas/gerenciar/';
         $config['total_rows'] = $this->vendas_model->count('vendas');
         $config['per_page'] = 10;
         $config['next_link'] = 'Próxima';
@@ -61,24 +69,25 @@ class Vendas extends MY_Acesso
 
     public function adicionar()
     {
+
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'aVenda')) {
             $this->session->set_flashdata('error', 'Você não tem permissão para adicionar Vendas.');
             redirect(base_url());
         }
 
         $this->load->library('form_validation');
-        
-
         $this->data['custom_error'] = '';
 
         if ($this->form_validation->run('vendas') == false) {
             $this->data['custom_error'] = (validation_errors() ? true : false);
         } else {
+
             $dataVenda = $this->input->post('dataVenda');
 
             try {
+
                 $dataVenda = explode('/', $dataVenda);
-                $dataVenda = $dataVenda[2].'-'.$dataVenda[1].'-'.$dataVenda[0];
+                $dataVenda = $dataVenda[2] . '-' . $dataVenda[1] . '-' . $dataVenda[0];
             } catch (Exception $e) {
                 $dataVenda = date('Y/m/d');
             }
@@ -92,8 +101,10 @@ class Vendas extends MY_Acesso
 
             if (is_numeric($id = $this->vendas_model->add('vendas', $data, true))) {
                 $this->session->set_flashdata('success', 'Venda iniciada com sucesso, adicione os produtos.');
-                redirect('vendas/editar/'.$id);
+                log_info('Adicionou uma venda.');
+                redirect('vendas/editar/' . $id);
             } else {
+
                 $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
             }
         }
@@ -104,9 +115,10 @@ class Vendas extends MY_Acesso
 
     public function editar()
     {
+
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('tsdc');
+            redirect('mapos');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'eVenda')) {
@@ -118,13 +130,15 @@ class Vendas extends MY_Acesso
         $this->data['custom_error'] = '';
 
         if ($this->form_validation->run('vendas') == false) {
-            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">'.validation_errors().'</div>' : false);
+            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
+
             $dataVenda = $this->input->post('dataVenda');
 
             try {
+
                 $dataVenda = explode('/', $dataVenda);
-                $dataVenda = $dataVenda[2].'-'.$dataVenda[1].'-'.$dataVenda[0];
+                $dataVenda = $dataVenda[2] . '-' . $dataVenda[1] . '-' . $dataVenda[0];
             } catch (Exception $e) {
                 $dataVenda = date('Y/m/d');
             }
@@ -137,14 +151,14 @@ class Vendas extends MY_Acesso
 
             if ($this->vendas_model->edit('vendas', $data, 'idVendas', $this->input->post('idVendas')) == true) {
                 $this->session->set_flashdata('success', 'Venda editada com sucesso!');
-                redirect(site_url().'/vendas/editar/'.$this->input->post('idVendas'));
+                log_info('Alterou uma venda. ID: ' . $this->input->post('idVendas'));
+                redirect(base_url() . 'index.php/vendas/editar/' . $this->input->post('idVendas'));
             } else {
                 $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro</p></div>';
             }
         }
 
         $this->data['result'] = $this->vendas_model->getById($this->uri->segment(3));
-        // $this->data['totalDesconto']= $this->vendas_model->getTotalDesconto($this->uri->segment(3));
         $this->data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
         $this->data['view'] = 'vendas/editarVenda';
         $this->load->view('tema/topo', $this->data);
@@ -152,9 +166,10 @@ class Vendas extends MY_Acesso
 
     public function visualizar()
     {
+
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('tsdc');
+            redirect('mapos');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) {
@@ -163,17 +178,40 @@ class Vendas extends MY_Acesso
         }
 
         $this->data['custom_error'] = '';
-        $this->load->model('tsdc_model');
+        $this->load->model('mapos_model');
         $this->data['result'] = $this->vendas_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
-        $this->data['emitente'] = $this->tsdc_model->getEmitente();
+        $this->data['emitente'] = $this->mapos_model->getEmitente();
 
         $this->data['view'] = 'vendas/visualizarVenda';
         $this->load->view('tema/topo', $this->data);
     }
 
+    public function imprimir()
+    {
+
+        if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
+            $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
+            redirect('mapos');
+        }
+
+        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) {
+            $this->session->set_flashdata('error', 'Você não tem permissão para visualizar vendas.');
+            redirect(base_url());
+        }
+
+        $this->data['custom_error'] = '';
+        $this->load->model('mapos_model');
+        $this->data['result'] = $this->vendas_model->getById($this->uri->segment(3));
+        $this->data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
+        $this->data['emitente'] = $this->mapos_model->getEmitente();
+
+        $this->load->view('vendas/imprimirVenda', $this->data);
+    }
+
     public function excluir()
     {
+
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'dVenda')) {
             $this->session->set_flashdata('error', 'Você não tem permissão para excluir vendas');
             redirect(base_url());
@@ -181,8 +219,9 @@ class Vendas extends MY_Acesso
 
         $id = $this->input->post('id');
         if ($id == null) {
+
             $this->session->set_flashdata('error', 'Erro ao tentar excluir venda.');
-            redirect(base_url().'index.php/vendas/gerenciar/');
+            redirect(base_url() . 'index.php/vendas/gerenciar/');
         }
 
         $this->db->where('vendas_id', $id);
@@ -191,69 +230,74 @@ class Vendas extends MY_Acesso
         $this->db->where('idVendas', $id);
         $this->db->delete('vendas');
 
+        log_info('Removeu uma venda. ID: ' . $id);
+
         $this->session->set_flashdata('success', 'Venda excluída com sucesso!');
-        redirect(base_url().'index.php/vendas/gerenciar/');
+        redirect(base_url() . 'index.php/vendas/gerenciar/');
     }
 
     public function autoCompleteProduto()
     {
-        if ($this->input->get('term') !== NULL) {
-            $q = strtolower($this->input->get('term'));
+
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
             $this->vendas_model->autoCompleteProduto($q);
         }
     }
 
     public function autoCompleteCliente()
     {
-        if ($this->input->get('term') !== NULL) {
-            $q = strtolower($this->input->get('term'));
+
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
             $this->vendas_model->autoCompleteCliente($q);
         }
     }
 
     public function autoCompleteUsuario()
     {
-        if ($this->input->get('term') !== NULL) {
-            $q = strtolower($this->input->get('term'));
+
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
             $this->vendas_model->autoCompleteUsuario($q);
         }
     }
 
     public function adicionarProduto()
     {
+
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'eVenda')) {
             $this->session->set_flashdata('error', 'Você não tem permissão para editar vendas.');
             redirect(base_url());
         }
 
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('quantidade', 'Quantidade', 'required');
-        $this->form_validation->set_rules('idProduto', 'Produto', 'required');
-        $this->form_validation->set_rules('idVendasProduto', 'Vendas', 'required');
+        $this->form_validation->set_rules('quantidade', 'Quantidade', 'trim|required');
+        $this->form_validation->set_rules('idProduto', 'Produto', 'trim|required');
+        $this->form_validation->set_rules('idVendasProduto', 'Vendas', 'trim|required');
 
         if ($this->form_validation->run() == false) {
             echo json_encode(array('result' => false));
         } else {
+
             $preco = $this->input->post('preco');
             $quantidade = $this->input->post('quantidade');
             $subtotal = $preco * $quantidade;
             $produto = $this->input->post('idProduto');
-            $desconto = $this->input->post('desconto');
-            $id_venda = $this->input->post('idVendasProduto');
-            $valor_produto = $this->input->post('preco');
             $data = array(
                 'quantidade' => $quantidade,
                 'subTotal' => $subtotal,
                 'produtos_id' => $produto,
-                'desconto' => $desconto,
-                'vendas_id' => $id_venda,
-
+                'preco' => $preco,
+                'vendas_id' => $this->input->post('idVendasProduto'),
             );
 
             if ($this->vendas_model->add('itens_de_vendas', $data) == true) {
-                $sql = 'UPDATE produtos set estoque = estoque - ? WHERE idProdutos = ?';
+                $sql = "UPDATE produtos set estoque = estoque - ? WHERE idProdutos = ?";
                 $this->db->query($sql, array($quantidade, $produto));
-                $this->vendas_model->AdicionarProduto($id_venda,$desconto, $valor_produto * $quantidade);
+
+                log_info('Adicionou produto a uma venda.');
+
                 echo json_encode(array('result' => true));
             } else {
                 echo json_encode(array('result' => false));
@@ -263,22 +307,23 @@ class Vendas extends MY_Acesso
 
     public function excluirProduto()
     {
-        // if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'eVenda')) {
-        //     $this->session->set_flashdata('error', 'Você não tem permissão para editar Vendas');
-        //     redirect(base_url());
-        // }
+
+        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'eVenda')) {
+            $this->session->set_flashdata('error', 'Você não tem permissão para editar Vendas');
+            redirect(base_url());
+        }
 
         $ID = $this->input->post('idProduto');
         if ($this->vendas_model->delete('itens_de_vendas', 'idItens', $ID) == true) {
+
             $quantidade = $this->input->post('quantidade');
             $produto = $this->input->post('produto');
-            $desconto = $this->input->post('desconto');
-            $id_venda = $this->input->post('id_venda');
-            $valor_produto = $this->input->post('valor_produto');
-            $sql = 'UPDATE produtos set estoque = estoque + ? WHERE idProdutos = ?';
-            $this->vendas_model->AdicionarProduto($id_venda,$desconto, $valor_produto, '-');
+
+            $sql = "UPDATE produtos set estoque = estoque + ? WHERE idProdutos = ?";
 
             $this->db->query($sql, array($quantidade, $produto));
+
+            log_info('Removeu produto de uma venda.');
             echo json_encode(array('result' => true));
         } else {
             echo json_encode(array('result' => false));
@@ -287,6 +332,7 @@ class Vendas extends MY_Acesso
 
     public function faturar()
     {
+
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'eVenda')) {
             $this->session->set_flashdata('error', 'Você não tem permissão para editar Vendas');
             redirect(base_url());
@@ -296,27 +342,30 @@ class Vendas extends MY_Acesso
         $this->data['custom_error'] = '';
 
         if ($this->form_validation->run('receita') == false) {
-            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">'.validation_errors().'</div>' : false);
+            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
+
+            $venda_id = $this->input->post('vendas_id');
             $vencimento = $this->input->post('vencimento');
             $recebimento = $this->input->post('recebimento');
 
             try {
+
                 $vencimento = explode('/', $vencimento);
-                $vencimento = $vencimento[2].'-'.$vencimento[1].'-'.$vencimento[0];
+                $vencimento = $vencimento[2] . '-' . $vencimento[1] . '-' . $vencimento[0];
 
                 if ($recebimento != null) {
                     $recebimento = explode('/', $recebimento);
-                    $recebimento = $recebimento[2].'-'.$recebimento[1].'-'.$recebimento[0];
+                    $recebimento = $recebimento[2] . '-' . $recebimento[1] . '-' . $recebimento[0];
                 }
             } catch (Exception $e) {
                 $vencimento = date('Y/m/d');
             }
 
             $data = array(
+                'vendas_id' => $venda_id,
                 'descricao' => set_value('descricao'),
                 'valor' => $this->input->post('valor'),
-                'desconto' => $this->input->post('desconto'),
                 'clientes_id' => $this->input->post('clientes_id'),
                 'data_vencimento' => $vencimento,
                 'data_pagamento' => $recebimento,
@@ -327,12 +376,15 @@ class Vendas extends MY_Acesso
             );
 
             if ($this->vendas_model->add('lancamentos', $data) == true) {
+
                 $venda = $this->input->post('vendas_id');
 
                 $this->db->set('faturado', 1);
                 $this->db->set('valorTotal', $this->input->post('valor'));
                 $this->db->where('idVendas', $venda);
                 $this->db->update('vendas');
+
+                log_info('Faturou uma venda.');
 
                 $this->session->set_flashdata('success', 'Venda faturada com sucesso!');
                 $json = array('result' => true);
