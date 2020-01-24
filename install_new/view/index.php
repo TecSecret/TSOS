@@ -28,7 +28,7 @@
 
       <div class="panel-heading text-center">
         <img id="logo" class="card-img-top" src="<?php echo $dashboard_url; ?>assets/img/logo.png" title="Logo" />
-        <h3><?php echo($settings['title']); ?></h3>
+        <h3>TSOS</h3>
       </div>
 
       <div class="panel-body no-padding">

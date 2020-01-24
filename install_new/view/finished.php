@@ -7,7 +7,7 @@
       <br />
 
       <span style="line-height: 50px;">Parabéns! Você instalou o
-        <strong><?php echo($settings['title']); ?></strong> com sucesso!
+        <strong>TSOS</strong> com sucesso!
       </span>
 
       <div style="margin: 15px 0 15px 0px; color: #d73b3b;">
