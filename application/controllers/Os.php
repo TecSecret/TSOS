@@ -15,7 +15,7 @@ class Os extends CI_Controller
         parent::__construct();
 
         if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('mapos/login');
+            redirect('tsos/login');
         }
 
         $this->load->helper(array('form', 'codegen_helper'));
@@ -31,7 +31,7 @@ class Os extends CI_Controller
     public function gerenciar()
     {
         $this->load->library('pagination');
-        $this->load->model('mapos_model');
+        $this->load->model('tsos_model');
 
         $where_array = array();
 
@@ -85,7 +85,7 @@ class Os extends CI_Controller
         $this->pagination->initialize($config);
 
         $this->data['results'] = $this->os_model->getOs('os', 'idOs,dataInicial,dataFinal,garantia,refGarantia,descricaoProduto,defeito,status,observacoes,laudoTecnico,valorTotal', $where_array, $config['per_page'], $this->uri->segment(3));
-        $this->data['emitente'] = $this->mapos_model->getEmitente();
+        $this->data['emitente'] = $this->tsos_model->getEmitente();
         $this->data['view'] = 'os/os';
         $this->load->view('tema/topo', $this->data);
     }
@@ -144,12 +144,12 @@ class Os extends CI_Controller
             );
 
             if (is_numeric($id = $this->os_model->add('os', $data, true))) {
-                $this->load->model('mapos_model');
+                $this->load->model('tsos_model');
                 $this->load->model('usuarios_model');
 
                 $idOs = $id;
                 $os = $this->os_model->getById($idOs);
-                $emitente = $this->mapos_model->getEmitente()[0];
+                $emitente = $this->tsos_model->getEmitente()[0];
                 $tecnico = $this->usuarios_model->getById($os->usuarios_id);
 
                 $remetentes = [
@@ -207,7 +207,7 @@ class Os extends CI_Controller
     {
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('tsos');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
@@ -253,13 +253,13 @@ class Os extends CI_Controller
             );
 
             if ($this->os_model->edit('os', $data, 'idOs', $this->input->post('idOs')) == true) {
-                $this->load->model('mapos_model');
+                $this->load->model('tsos_model');
                 $this->load->model('usuarios_model');
 
                 $idOs = $this->input->post('idOs');
 
                 $os = $this->os_model->getById($idOs);
-                $emitente = $this->mapos_model->getEmitente()[0];
+                $emitente = $this->tsos_model->getEmitente()[0];
                 $tecnico = $this->usuarios_model->getById($os->usuarios_id);
 
                 $remetentes = [
@@ -284,8 +284,8 @@ class Os extends CI_Controller
         $this->data['anexos'] = $this->os_model->getAnexos($this->uri->segment(3));
         $this->data['anotacoes'] = $this->os_model->getAnotacoes($this->uri->segment(3));
 
-        $this->load->model('mapos_model');
-        $this->data['emitente'] = $this->mapos_model->getEmitente();
+        $this->load->model('tsos_model');
+        $this->data['emitente'] = $this->tsos_model->getEmitente();
         
         $this->data['view'] = 'os/editarOs';
         $this->load->view('tema/topo', $this->data);
@@ -295,7 +295,7 @@ class Os extends CI_Controller
     {
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('tsos');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
@@ -304,11 +304,11 @@ class Os extends CI_Controller
         }
 
         $this->data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('tsos_model');
         $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-        $this->data['emitente'] = $this->mapos_model->getEmitente();
+        $this->data['emitente'] = $this->tsos_model->getEmitente();
 
         $this->data['view'] = 'os/visualizarOs';
         $this->load->view('tema/topo', $this->data);
@@ -318,7 +318,7 @@ class Os extends CI_Controller
     {
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('tsos');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
@@ -327,11 +327,11 @@ class Os extends CI_Controller
         }
 
         $this->data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('tsos_model');
         $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-        $this->data['emitente'] = $this->mapos_model->getEmitente();
+        $this->data['emitente'] = $this->tsos_model->getEmitente();
 
         $this->load->view('os/imprimirOs', $this->data);
     }
@@ -340,7 +340,7 @@ class Os extends CI_Controller
     {
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('tsos');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
@@ -349,11 +349,11 @@ class Os extends CI_Controller
         }
 
         $this->data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('tsos_model');
         $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-        $this->data['emitente'] = $this->mapos_model->getEmitente();
+        $this->data['emitente'] = $this->tsos_model->getEmitente();
 
         $this->load->view('os/imprimirOsTermica', $this->data);
     }
@@ -362,7 +362,7 @@ class Os extends CI_Controller
     {
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('tsos');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
@@ -370,7 +370,7 @@ class Os extends CI_Controller
             redirect(base_url());
         }
 
-        $this->load->model('mapos_model');
+        $this->load->model('tsos_model');
         $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
         if (!isset($this->data['result']->email)) {
             $this->session->set_flashdata('error', 'O cliente não tem e-mail cadastrado.');
@@ -379,7 +379,7 @@ class Os extends CI_Controller
 
         $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-        $this->data['emitente'] = $this->mapos_model->getEmitente();
+        $this->data['emitente'] = $this->tsos_model->getEmitente();
 
         if (!isset($this->data['emitente'][0]->email)) {
             $this->session->set_flashdata('error', 'Efetue o cadastro dos dados de emitente');
@@ -744,7 +744,7 @@ class Os extends CI_Controller
     {
         $dados = [];
 
-        $this->load->model('mapos_model');
+        $this->load->model('tsos_model');
         $dados['result'] = $this->os_model->getById($idOs);
         if (!isset($dados['result']->email)) {
             return false;
@@ -752,7 +752,7 @@ class Os extends CI_Controller
 
         $dados['produtos'] = $this->os_model->getProdutos($idOs);
         $dados['servicos'] = $this->os_model->getServicos($idOs);
-        $dados['emitente'] = $this->mapos_model->getEmitente();
+        $dados['emitente'] = $this->tsos_model->getEmitente();
 
         $emitente = $dados['emitente'][0]->email;
         if (!isset($emitente)) {

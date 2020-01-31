@@ -14,7 +14,7 @@ class Vendas extends CI_Controller
         parent::__construct();
 
         if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('mapos/login');
+            redirect('tsos/login');
         }
 
         $this->load->helper(array('form', 'codegen_helper'));
@@ -118,7 +118,7 @@ class Vendas extends CI_Controller
 
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('tsos');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'eVenda')) {
@@ -169,7 +169,7 @@ class Vendas extends CI_Controller
 
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('tsos');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) {
@@ -178,10 +178,10 @@ class Vendas extends CI_Controller
         }
 
         $this->data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('tsos_model');
         $this->data['result'] = $this->vendas_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
-        $this->data['emitente'] = $this->mapos_model->getEmitente();
+        $this->data['emitente'] = $this->tsos_model->getEmitente();
 
         $this->data['view'] = 'vendas/visualizarVenda';
         $this->load->view('tema/topo', $this->data);
@@ -192,7 +192,7 @@ class Vendas extends CI_Controller
 
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('tsos');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) {
@@ -201,10 +201,10 @@ class Vendas extends CI_Controller
         }
 
         $this->data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('tsos_model');
         $this->data['result'] = $this->vendas_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
-        $this->data['emitente'] = $this->mapos_model->getEmitente();
+        $this->data['emitente'] = $this->tsos_model->getEmitente();
 
         $this->load->view('vendas/imprimirVenda', $this->data);
     }
@@ -214,7 +214,7 @@ class Vendas extends CI_Controller
 
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('tsos');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) {
@@ -223,10 +223,10 @@ class Vendas extends CI_Controller
         }
 
         $this->data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('tsos_model');
         $this->data['result'] = $this->vendas_model->getById($this->uri->segment(3));
         $this->data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
-        $this->data['emitente'] = $this->mapos_model->getEmitente();
+        $this->data['emitente'] = $this->tsos_model->getEmitente();
 
         $this->load->view('vendas/imprimirVendaTermica', $this->data);
     }
