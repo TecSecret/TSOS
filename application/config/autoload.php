@@ -99,7 +99,7 @@ $autoload['config'] = array();
 */
 
 // $autoload['language'] = array();
-$autoload['language'] = array('tsosclientes','tsos','tsos_os','tsosvendas','tsosconecte','tsosfinanceiro','tsosrelatorio','tsosgarantia');
+$autoload['language'] = array('tsosclientes','tsos','tsosos','tsosvendas','tsosconecte','tsosfinanceiro','tsosrelatorio','tsosgarantia');
 
 
 /*
