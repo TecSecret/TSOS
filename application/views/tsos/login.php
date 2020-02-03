@@ -14,7 +14,7 @@
 
 <body>
     <div id="loginbox">
-        <form class="form-vertical" id="formLogin" method="post" action="<?php echo base_url() ?>index.php/tsos/verificarLogin">
+        <form class="form-vertical" id="formLogin" method="post" action="<?php echo base_url() ?>tsos/verificarLogin">
             <?php if ($this->session->flashdata('error') != null) { ?>
                 <div class="alert alert-danger">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -79,12 +79,12 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "<?php echo base_url(); ?>index.php/tsos/verificarLogin?ajax=true",
+                        url: "<?php echo base_url(); ?>tsos/verificarLogin?ajax=true",
                         data: dados,
                         dataType: 'json',
                         success: function(data) {
                             if (data.result == true) {
-                                window.location.href = "<?php echo base_url(); ?>index.php/tsos";
+                                window.location.href = "<?php echo base_url(); ?>tsos";
                             } else {
 
 
