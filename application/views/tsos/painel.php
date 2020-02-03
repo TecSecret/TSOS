@@ -159,7 +159,7 @@
                                     </td>
                                     <td>
                                         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
-                                            <a href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" class="btn">
+                                            <a href="<?= base_url() ?>os/visualizar/<?= $o->idOs ?>" class="btn">
                                                 <i class="fas fa-eye"></i> </a>
                                         <?php endif ?>
                                     </td>
@@ -209,7 +209,7 @@
                                 </td>
                                 <td>
                                     <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
-                                        <a href="<?= base_url() ?>index.php/os/visualizar/<?= $o->idOs ?>" class="btn">
+                                        <a href="<?= base_url() ?>os/visualizar/<?= $o->idOs ?>" class="btn">
                                             <i class="fas fa-eye"></i> </a>
                                     <?php endif ?>
                                 </td>

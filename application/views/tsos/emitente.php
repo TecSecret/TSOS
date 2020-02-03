@@ -20,10 +20,10 @@
 
 
     <div id="modalCadastrar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <form action="<?php echo base_url(); ?>index.php/mapos/cadastrarEmitente" id="formCadastrar" enctype="multipart/form-data" method="post" class="form-horizontal">
+        <form action="<?php echo base_url(); ?>tsos/cadastrarEmitente" id="formCadastrar" enctype="multipart/form-data" method="post" class="form-horizontal">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabel">MapOS - Cadastrar Dados do Emitente</h3>
+                <h3 id="myModalLabel">TSOS - <?= ($this->lang->line('tsos_emitter_cad_data_emitter')) ?></h3>
             </div>
             <div class="modal-body">
 
@@ -143,10 +143,10 @@
 
 
     <div id="modalAlterar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <form action="<?php echo base_url(); ?>index.php/mapos/editarEmitente" id="formAlterar" enctype="multipart/form-data" method="post" class="form-horizontal">
+        <form action="<?php echo base_url(); ?>tsos/editarEmitente" id="formAlterar" enctype="multipart/form-data" method="post" class="form-horizontal">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="">MapOS - Editar Dados do Emitente</h3>
+                <h3 id="">TSOS - <?= ($this->lang->line('tsos_emitter_cad_data_edit')) ?></h3>
             </div>
             <div class="modal-body">
 
@@ -226,10 +226,10 @@
 
 
     <div id="modalLogo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <form action="<?php echo base_url(); ?>index.php/mapos/editarLogo" id="formLogo" enctype="multipart/form-data" method="post" class="form-horizontal">
+        <form action="<?php echo base_url(); ?>tsos/editarLogo" id="formLogo" enctype="multipart/form-data" method="post" class="form-horizontal">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="">MapOS - Atualizar Logotipo</h3>
+                <h3 id="">TSOS - <?= ($this->lang->line('tsos_emitter_update_logo')) ?></h3>
             </div>
             <div class="modal-body">
                 <div class="span12 alert alert-info">Selecione uma nova imagem da logotipo. Tamanho indicado (130 X 130).</div>

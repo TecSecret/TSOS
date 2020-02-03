@@ -82,3 +82,8 @@ $lang['tsos_painel_acoes'] = 'Ações';
 $lang['tsos_painel_rs'] = 'R$'; // Simbolo da moeda local. Aqui usamos o Real basileiro R$
 $lang['tsos_painel_prodstoqnullinfo'] = 'Nenhum produto com estoque baixo';
 $lang['tsos_painel_osopen'] = 'Ordem de serviço status em aberto';
+
+// emitente
+$lang['tsos_emitter_cad_data_emitter'] = 'Cadastrar dados do emitente';
+$lang['tsos_emitter_cad_data_edit'] = 'Editar dados do emitente';
+$lang['tsos_emitter_update_logo'] = 'Atualizar logo';
