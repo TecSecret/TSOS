@@ -14,7 +14,7 @@
 
 <body>
     <div id="loginbox">
-        <form class="form-vertical" id="formLogin" method="post" action="<?php echo base_url() ?>/tsos/verificarLogin">
+        <form class="form-vertical" id="formLogin" method="post" action="<?php echo base_url() ?>index.php/tsos/verificarLogin">
             <?php if ($this->session->flashdata('error') != null) { ?>
                 <div class="alert alert-danger">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -42,7 +42,7 @@
                 <div id="progress-acessar" class='hide progress progress-info progress-striped active'>
                     <div class='bar' style='width: 100%'></div>
                 </div>
-                <button id="btn-acessar" class="btn btn-success btn-large" /> <?= ($this->lang->line('tsos_login_acessar')) ?></button>
+                <button id="btn-acessar" class="btn btn-success btn-large" /> Acessar</button>
             </div>
         </form>
 
@@ -65,11 +65,11 @@
                 },
                 messages: {
                     email: {
-                        required: '<?= ($this->lang->line('tsos_login_campoobriga')) ?>',
-                        email: '<?= ($this->lang->line('tsos_login_mailvalid')) ?>'
+                        required: 'Campo Requerido.',
+                        email: 'Insira Email válido'
                     },
                     senha: {
-                        required: '<?= ($this->lang->line('tsos_login_camporequerido')) ?>'
+                        required: 'Campo Requerido.'
                     }
                 },
                 submitHandler: function(form) {
@@ -79,12 +79,12 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "<?php echo base_url(); ?>/tsos/verificarLogin?ajax=true",
+                        url: "<?php echo base_url(); ?>index.php/tsos/verificarLogin?ajax=true",
                         data: dados,
                         dataType: 'json',
                         success: function(data) {
                             if (data.result == true) {
-                                window.location.href = "<?php echo base_url(); ?>/tsos";
+                                window.location.href = "<?php echo base_url(); ?>index.php/tsos";
                             } else {
 
 
@@ -113,17 +113,17 @@
         });
     </script>
 
-    <a href="#notification" id="call-modal" role="button" class="btn" data-toggle="modal" style="display: none "><?= ($this->lang->line('tsos_login_notificacao')) ?></a>
+    <a href="#notification" id="call-modal" role="button" class="btn" data-toggle="modal" style="display: none ">notification</a>
     <div id="notification" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h4 id="myModalLabel"><?= ($this->lang->line('tsos_login_systemname')) ?></h4>
         </div>
         <div class="modal-body">
-            <h5 style="text-align: center"><?= ($this->lang->line('tsos_login_errorlogin')) ?></h5>
+            <h5 style="text-align: center">Os dados de acesso estão incorretos, por favor tente novamente!</h5>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true"><?= ($this->lang->line('tsos_login_close')) ?></button>
+            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Fechar</button>
         </div>
     </div>
 
