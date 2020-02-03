@@ -79,12 +79,12 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "<?php echo base_url(); ?>tsos/verificarLogin?ajax=true",
+                        url: "<?php echo base_url(); ?>/tsos/verificarLogin?ajax=true",
                         data: dados,
                         dataType: 'json',
                         success: function(data) {
                             if (data.result == true) {
-                                window.location.href = "<?php echo base_url(); ?>tsos";
+                                window.location.href = "<?php echo base_url(); ?>/tsos";
                             } else {
 
 

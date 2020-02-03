@@ -58,7 +58,7 @@ class Tsos extends CI_Controller
 
         if (!$current_user) {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao pesquisar usuário!');
-            redirect(base_url() . '/tsos/minhaConta');
+            redirect(base_url() . 'tsos/minhaConta');
         }
 
         $oldSenha = $this->input->post('oldSenha');
@@ -66,18 +66,18 @@ class Tsos extends CI_Controller
 
         if (!password_verify($oldSenha, $current_user->senha)) {
             $this->session->set_flashdata('error', 'A senha atual não corresponde com a senha informada.');
-            redirect(base_url() . '/tsos/minhaConta');
+            redirect(base_url() . 'tsos/minhaConta');
         }
 
         $result = $this->tsos_model->alterarSenha($senha);
 
         if ($result) {
             $this->session->set_flashdata('success', 'Senha alterada com sucesso!');
-            redirect(base_url() . '/tsos/minhaConta');
+            redirect(base_url() . 'tsos/minhaConta');
         }
 
         $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar a senha!');
-        redirect(base_url() . '/tsos/minhaConta');
+        redirect(base_url() . 'tsos/minhaConta');
     }
 
     public function pesquisar()
@@ -272,7 +272,7 @@ class Tsos extends CI_Controller
         if ($this->form_validation->run() == false) {
 
             $this->session->set_flashdata('error', 'Campos obrigatórios não foram preenchidos.');
-            redirect(base_url() . '/tsos/emitente');
+            redirect(base_url() . 'tsos/emitente');
         } else {
 
             $nome = $this->input->post('nome');
@@ -293,10 +293,10 @@ class Tsos extends CI_Controller
 
                 $this->session->set_flashdata('success', 'As informações foram inseridas com sucesso.');
                 log_info('Adicionou informações de emitente.');
-                redirect(base_url() . '/tsos/emitente');
+                redirect(base_url() . 'tsos/emitente');
             } else {
                 $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar inserir as informações.');
-                redirect(base_url() . '/tsos/emitente');
+                redirect(base_url() . 'tsos/emitente');
             }
         }
     }
@@ -328,7 +328,7 @@ class Tsos extends CI_Controller
         if ($this->form_validation->run() == false) {
 
             $this->session->set_flashdata('error', 'Campos obrigatórios não foram preenchidos.');
-            redirect(base_url() . '/tsos/emitente');
+            redirect(base_url() . 'tsos/emitente');
         } else {
 
             $nome = $this->input->post('nome');
@@ -348,10 +348,10 @@ class Tsos extends CI_Controller
 
                 $this->session->set_flashdata('success', 'As informações foram alteradas com sucesso.');
                 log_info('Alterou informações de emitente.');
-                redirect(base_url() . '/tsos/emitente');
+                redirect(base_url() . 'tsos/emitente');
             } else {
                 $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar as informações.');
-                redirect(base_url() . '/tsos/emitente');
+                redirect(base_url() . 'tsos/emitente');
             }
         }
     }
@@ -371,7 +371,7 @@ class Tsos extends CI_Controller
         $id = $this->input->post('id');
         if ($id == null || !is_numeric($id)) {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar a logomarca.');
-            redirect(base_url() . '/tsos/emitente');
+            redirect(base_url() . 'tsos/emitente');
         }
         $this->load->helper('file');
         delete_files(FCPATH . 'assets/uploads/');
@@ -384,10 +384,10 @@ class Tsos extends CI_Controller
 
             $this->session->set_flashdata('success', 'As informações foram alteradas com sucesso.');
             log_info('Alterou a logomarca do emitente.');
-            redirect(base_url() . '/tsos/emitente');
+            redirect(base_url() . 'tsos/emitente');
         } else {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar as informações.');
-            redirect(base_url() . '/tsos/emitente');
+            redirect(base_url() . 'tsos/emitente');
         }
     }
 }

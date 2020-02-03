@@ -11,48 +11,48 @@
         <ul class="quick-actions">
             <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) : ?>
                 <li class="bg_lb">
-                    <a href="<?= base_url() ?>/clientes"> <i class="fas fa-users" style="font-size:36px"></i>
-                        <div> <?= ($this->lang->line('tsos_painel_cli')) ?><span class="badge badge-light"><?= ($this->lang->line('tsos_painel_f1')) ?></span></div>
+                    <a href="<?= base_url() ?>clientes"> <i class="fas fa-users" style="font-size:36px"></i>
+                        <div><?= ($this->lang->line('tsos_painel_cli')) ?> <span class="badge badge-light">F1</span></div>
                     </a>
                 </li>
             <?php endif ?>
 
             <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vProduto')) : ?>
                 <li class="bg_lg">
-                    <a href="<?= base_url() ?>/produtos"> <i class="fas fa-shopping-bag" style="font-size:36px"></i>
-                        <div><?= ($this->lang->line('tsos_painel_produtos')) ?> <span class="badge badge-light"><?= ($this->lang->line('tsos_painel_f2')) ?></span></div>
+                    <a href="<?= base_url() ?>produtos"> <i class="fas fa-shopping-bag" style="font-size:36px"></i>
+                        <div><?= ($this->lang->line('tsos_painel_produtos')) ?> <span class="badge badge-light">F2</span></div>
                     </a>
                 </li>
             <?php endif ?>
 
             <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vServico')) : ?>
                 <li class="bg_ly">
-                    <a href="<?= base_url() ?>/servicos"> <i class="fas fa-wrench" style="font-size:36px"></i>
-                        <div><?= ($this->lang->line('tsos_painel_services')) ?> <span class="badge badge-light"><?= ($this->lang->line('tsos_painel_f3')) ?></span></div>
+                    <a href="<?= base_url() ?>servicos"> <i class="fas fa-wrench" style="font-size:36px"></i>
+                        <div><?= ($this->lang->line('tsos_painel_services')) ?> <span class="badge badge-light">F3</span></div>
                     </a>
                 </li>
             <?php endif ?>
 
             <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
                 <li class="bg_lo">
-                    <a href="<?= base_url() ?>/os"> <i class="fas fa-diagnoses" style="font-size:36px"></i>
-                        <div><?= ($this->lang->line('tsos_painel_os')) ?> <span class="badge badge-light"><?= ($this->lang->line('tsos_painel_f4')) ?></span></div>
+                    <a href="<?= base_url() ?>os"> <i class="fas fa-diagnoses" style="font-size:36px"></i>
+                        <div><?= ($this->lang->line('tsos_painel_os')) ?> <span class="badge badge-light">F4</span></div>
                     </a>
                 </li>
             <?php endif ?>
 
             <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) : ?>
                 <li class="bg_ls">
-                    <a href="<?= base_url() ?>/vendas"><i class="fas fa-cash-register" style="font-size:36px"></i>
-                        <div><?= ($this->lang->line('tsos_painel_vendas')) ?> <span class="badge badge-light"><?= ($this->lang->line('tsos_painel_f6')) ?></span></div>
+                    <a href="<?= base_url() ?>vendas"><i class="fas fa-cash-register" style="font-size:36px"></i>
+                        <div><?= ($this->lang->line('tsos_painel_vendas')) ?> <span class="badge badge-light">F6</span></div>
                     </a>
                 </li>
             <?php endif ?>
 
             <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vGarantia')) : ?>
                 <li class="bg_ls">
-                    <a href="<?= base_url() ?>/garantias"><i class="fas fa-book" style="font-size:36px"></i>
-                        <div><?= ($this->lang->line('tsos_painel_tergarantia')) ?><span class="badge badge-light"><?= ($this->lang->line('tsos_painel_f7')) ?></span></div>
+                    <a href="<?= base_url() ?>garantias"><i class="fas fa-book" style="font-size:36px"></i>
+                        <div><?= ($this->lang->line('tsos_painel_tergarantia')) ?> <span class="badge badge-light">F7</span></div>
                     </a>
                 </li>
             <?php endif ?>
@@ -102,7 +102,7 @@
                                     </td>
                                     <td>
                                         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eProduto')) : ?>
-                                            <a href="<?= base_url() ?>/produtos/editar/<?= $p->idProdutos ?>" class="btn btn-info">
+                                            <a href="<?= base_url() ?>produtos/editar/<?= $p->idProdutos ?>" class="btn btn-info">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                         <?php endif ?>
