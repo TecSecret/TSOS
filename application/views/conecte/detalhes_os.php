@@ -109,6 +109,7 @@
                                         <tr>
                                             <th>Produto</th>
                                             <th>Quantidade</th>
+                                            <th>Preço</th>
                                             <th>Sub-total</th>
                                         </tr>
                                     </thead>
@@ -121,12 +122,13 @@
                                             echo '<tr>';
                                             echo '<td>' . $p->descricao . '</td>';
                                             echo '<td>' . $p->quantidade . '</td>';
+                                            echo '<td>' . $p->preco . '</td>';
                                             echo '<td>R$ ' . number_format($p->subTotal, 2, ',', '.') . '</td>';
                                             echo '</tr>';
                                         } ?>
 
                                         <tr>
-                                            <td colspan="2" style="text-align: right"><strong>Total:</strong></td>
+                                            <td colspan="3" style="text-align: right"><strong>Total:</strong></td>
                                             <td><strong>R$
                                                     <?php echo number_format($total, 2, ',', '.'); ?><input type="hidden" id="total-venda" value="<?php echo number_format($total, 2); ?>"></strong></td>
                                         </tr>
@@ -145,6 +147,8 @@
                                         <thead>
                                             <tr>
                                                 <th>Serviço</th>
+                                                <th>Quantidade</th>
+                                                <th>Preço</th>
                                                 <th>Sub-total</th>
                                             </tr>
                                         </thead>
@@ -152,16 +156,18 @@
                                             <?php
                                             $total = 0;
                                             foreach ($servicos as $s) {
-                                                $preco = $s->preco;
-                                                $total = $total + $preco;
+                                                $subTotal = $s->subTotal;
+                                                $total = $total + $subTotal;
                                                 echo '<tr>';
                                                 echo '<td>' . $s->nome . '</td>';
-                                                echo '<td>R$ ' . number_format($s->preco, 2, ',', '.') . '</td>';
+                                                echo '<td>' . $s->quantidade . '</td>';
+                                                echo '<td>' . $s->preco . '</td>';
+                                                echo '<td>R$ ' . number_format($s->subTotal, 2, ',', '.') . '</td>';
                                                 echo '</tr>';
                                             } ?>
 
                                             <tr>
-                                                <td colspan="1" style="text-align: right"><strong>Total:</strong></td>
+                                                <td colspan="3" style="text-align: right"><strong>Total:</strong></td>
                                                 <td><strong>R$
                                                         <?php echo number_format($total, 2, ',', '.'); ?><input type="hidden" id="total-servico" value="<?php echo number_format($total, 2); ?>"></strong></td>
                                             </tr>

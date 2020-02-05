@@ -167,12 +167,12 @@ $totalProdutos = 0; ?>
                                     <?php
                                         setlocale(LC_MONETARY, 'en_US');
                                         foreach ($servicos as $s) {
-                                            $preco = $s->preco;
-                                            $totalServico = $totalServico + $preco;
+                                            $subTotal = $s->subTotal;
+                                            $totalServico = $totalServico + $subTotal;
                                             echo '<tr>';
                                             echo '<td style="text-align: center">' . $s->nome . '</td>';
-                                            echo '<td></td>';
-                                            echo '<td style="text-align: center">R$ ' . number_format($s->preco, 2, ',', '.') . '</td>';
+                                             echo '<td style="text-align: center">' . $s->quantidade . '</td>';
+                                            echo '<td style="text-align: center">R$ ' . number_format($s->subTotal, 2, ',', '.') . '</td>';
                                             echo '</tr>';
                                         }
                                         ?>
