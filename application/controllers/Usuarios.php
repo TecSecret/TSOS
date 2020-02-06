@@ -14,7 +14,7 @@ class Usuarios extends CI_Controller
 
         parent::__construct();
         if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('mapos/login');
+            redirect('tsos/login');
         }
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cUsuario')) {
             $this->session->set_flashdata('error', 'Você não tem permissão para configurar os usuários.');
@@ -37,7 +37,7 @@ class Usuarios extends CI_Controller
 
         $this->load->library('pagination');
 
-        $config['base_url'] = base_url() . 'index.php/usuarios/gerenciar/';
+        $config['base_url'] = base_url() . 'usuarios/gerenciar/';
         $config['total_rows'] = $this->usuarios_model->count('usuarios');
         $config['per_page'] = 10;
         $config['next_link'] = 'Próxima';
@@ -99,7 +99,7 @@ class Usuarios extends CI_Controller
             if ($this->usuarios_model->add('usuarios', $data) == true) {
                 $this->session->set_flashdata('success', 'Usuário cadastrado com sucesso!');
                 log_info('Adicionou um usuário.');
-                redirect(base_url() . 'index.php/usuarios/adicionar/');
+                redirect(base_url() . 'usuarios/adicionar/');
             } else {
                 $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
             }
@@ -116,7 +116,7 @@ class Usuarios extends CI_Controller
 
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('tsos');
         }
 
         $this->load->library('form_validation');
@@ -140,7 +140,7 @@ class Usuarios extends CI_Controller
 
             if ($this->input->post('idUsuarios') == 1 && $this->input->post('situacao') == 0) {
                 $this->session->set_flashdata('error', 'O usuário super admin não pode ser desativado!');
-                redirect(base_url() . 'index.php/usuarios/editar/' . $this->input->post('idUsuarios'));
+                redirect(base_url() . 'usuarios/editar/' . $this->input->post('idUsuarios'));
             }
 
             $senha = $this->input->post('senha');
@@ -188,7 +188,7 @@ class Usuarios extends CI_Controller
             if ($this->usuarios_model->edit('usuarios', $data, 'idUsuarios', $this->input->post('idUsuarios')) == true) {
                 $this->session->set_flashdata('success', 'Usuário editado com sucesso!');
                 log_info('Alterou um usuário. ID: ' . $this->input->post('idUsuarios'));
-                redirect(base_url() . 'index.php/usuarios/editar/' . $this->input->post('idUsuarios'));
+                redirect(base_url() . 'usuarios/editar/' . $this->input->post('idUsuarios'));
             } else {
                 $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro</p></div>';
             }
@@ -210,6 +210,6 @@ class Usuarios extends CI_Controller
 
         log_info('Removeu um usuário. ID: ' . $ID);
 
-        redirect(base_url() . 'index.php/usuarios/gerenciar/');
+        redirect(base_url() . 'usuarios/gerenciar/');
     }
 }

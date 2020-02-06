@@ -60,7 +60,7 @@ class Os extends CI_Controller
             $where_array['ate'] = $ate;
         }
 
-        $config['base_url'] = base_url() . 'index.php/os/gerenciar/';
+        $config['base_url'] = base_url() . 'os/gerenciar/';
         $config['total_rows'] = $this->os_model->count('os');
         $config['per_page'] = 30;
         $config['next_link'] = 'Próxima';
@@ -271,7 +271,7 @@ class Os extends CI_Controller
 
                 $this->session->set_flashdata('success', 'Os editada com sucesso!');
                 log_info('Alterou uma OS. ID: ' . $this->input->post('idGarantias'));
-                redirect(base_url() . 'index.php/os/editar/' . $this->input->post('idOs'));
+                redirect(base_url() . 'os/editar/' . $this->input->post('idOs'));
             } else {
                 $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro</p></div>';
             }
@@ -413,7 +413,7 @@ class Os extends CI_Controller
         if ($id == null) {
 
             $this->session->set_flashdata('error', 'Erro ao tentar excluir OS.');
-            redirect(base_url() . 'index.php/os/gerenciar/');
+            redirect(base_url() . 'os/gerenciar/');
         }
 
         $this->db->where('os_id', $id);
@@ -429,7 +429,7 @@ class Os extends CI_Controller
 
         log_info('Removeu uma OS. ID: ' . $id);
         $this->session->set_flashdata('success', 'OS excluída com sucesso!');
-        redirect(base_url() . 'index.php/os/gerenciar/');
+        redirect(base_url() . 'os/gerenciar/');
     }
 
     public function autoCompleteProduto()

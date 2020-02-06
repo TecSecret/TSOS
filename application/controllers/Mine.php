@@ -132,7 +132,7 @@ class Mine extends CI_Controller
 
             if ($this->Conecte_model->edit('clientes', $data, 'idClientes', $this->input->post('idClientes')) == true) {
                 $this->session->set_flashdata('success', 'Dados editados com sucesso!');
-                redirect(base_url() . 'index.php/mine/conta');
+                redirect(base_url() . 'mine/conta');
             } else {}
         }
 
@@ -152,7 +152,7 @@ class Mine extends CI_Controller
         $data['menuVendas'] = 'vendas';
         $this->load->library('pagination');
 
-        $config['base_url'] = base_url() . 'index.php/mine/compras/';
+        $config['base_url'] = base_url() . 'mine/compras/';
         $config['total_rows'] = $this->Conecte_model->count('vendas', $this->session->userdata('cliente_id'));
         $config['per_page'] = 10;
         $config['next_link'] = 'Próxima';
@@ -192,7 +192,7 @@ class Mine extends CI_Controller
         $data['menuOs'] = 'os';
         $this->load->library('pagination');
 
-        $config['base_url'] = base_url() . 'index.php/mine/os/';
+        $config['base_url'] = base_url() . 'mine/os/';
         $config['total_rows'] = $this->Conecte_model->count('os', $this->session->userdata('cliente_id'));
         $config['per_page'] = 10;
         $config['next_link'] = 'Próxima';
@@ -231,12 +231,12 @@ class Mine extends CI_Controller
 
         $data['menuOs'] = 'os';
         $this->data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('tsos_model');
         $this->load->model('os_model');
         $data['result'] = $this->os_model->getById($this->uri->segment(3));
         $data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-        $data['emitente'] = $this->mapos_model->getEmitente();
+        $data['emitente'] = $this->tsos_model->getEmitente();
 
         if ($data['result']->idClientes != $this->session->userdata('cliente_id')) {
             $this->session->set_flashdata('error', 'Esta OS não pertence ao cliente logado.');
@@ -256,12 +256,12 @@ class Mine extends CI_Controller
 
         $data['menuOs'] = 'os';
         $this->data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('tsos_model');
         $this->load->model('os_model');
         $data['result'] = $this->os_model->getById($this->uri->segment(3));
         $data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-        $data['emitente'] = $this->mapos_model->getEmitente();
+        $data['emitente'] = $this->tsos_model->getEmitente();
 
         if ($data['result']->idClientes != $this->session->userdata('cliente_id')) {
             $this->session->set_flashdata('error', 'Esta OS não pertence ao cliente logado.');
@@ -280,11 +280,11 @@ class Mine extends CI_Controller
 
         $data['menuVendas'] = 'vendas';
         $data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('tsos_model');
         $this->load->model('vendas_model');
         $data['result'] = $this->vendas_model->getById($this->uri->segment(3));
         $data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
-        $data['emitente'] = $this->mapos_model->getEmitente();
+        $data['emitente'] = $this->tsos_model->getEmitente();
 
         if ($data['result']->clientes_id != $this->session->userdata('cliente_id')) {
             $this->session->set_flashdata('error', 'Esta OS não pertence ao cliente logado.');
@@ -304,11 +304,11 @@ class Mine extends CI_Controller
 
         $data['menuVendas'] = 'vendas';
         $data['custom_error'] = '';
-        $this->load->model('mapos_model');
+        $this->load->model('tsos_model');
         $this->load->model('vendas_model');
         $data['result'] = $this->vendas_model->getById($this->uri->segment(3));
         $data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
-        $data['emitente'] = $this->mapos_model->getEmitente();
+        $data['emitente'] = $this->tsos_model->getEmitente();
 
         if ($data['result']->clientes_id != $this->session->userdata('cliente_id')) {
             $this->session->set_flashdata('error', 'Esta OS não pertence ao cliente logado.');
@@ -334,7 +334,7 @@ class Mine extends CI_Controller
 
             $data['menuOs'] = 'os';
             $this->data['custom_error'] = '';
-            $this->load->model('mapos_model');
+            $this->load->model('tsos_model');
             $this->load->model('os_model');
             $data['result'] = $this->os_model->getById($id);
             if ($data['result'] == null) {
@@ -345,7 +345,7 @@ class Mine extends CI_Controller
 
                 $data['produtos'] = $this->os_model->getProdutos($id);
                 $data['servicos'] = $this->os_model->getServicos($id);
-                $data['emitente'] = $this->mapos_model->getEmitente();
+                $data['emitente'] = $this->tsos_model->getEmitente();
 
                 $this->load->view('conecte/minha_os', $data);
             }
@@ -415,7 +415,7 @@ class Mine extends CI_Controller
     {
         if (is_numeric($id) && $id != null) {
 
-            $this->load->model('mapos_model');
+            $this->load->model('tsos_model');
             $this->load->model('os_model');
 
             $this->data['result'] = $this->os_model->getById($id);
@@ -463,7 +463,7 @@ class Mine extends CI_Controller
 
             if ($this->clientes_model->add('clientes', $data) == true) {
                 $this->session->set_flashdata('success', 'Cadastro realizado com sucesso!');
-                redirect(base_url() . 'index.php/mine');
+                redirect(base_url() . '/mine');
             } else {
                 $this->session->set_flashdata('error', 'Falha ao realizar cadastro!');
             }

@@ -13,7 +13,7 @@ class Permissoes extends CI_Controller
     {
         parent::__construct();
         if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('mapos/login');
+            redirect('tsos/login');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cPermissao')) {
@@ -36,7 +36,7 @@ class Permissoes extends CI_Controller
 
         $this->load->library('pagination');
 
-        $config['base_url'] = base_url() . 'index.php/permissoes/gerenciar/';
+        $config['base_url'] = base_url() . 'permissoes/gerenciar/';
         $config['total_rows'] = $this->permissoes_model->count('permissoes');
         $config['per_page'] = 10;
         $config['next_link'] = 'Próxima';
@@ -151,7 +151,7 @@ class Permissoes extends CI_Controller
 
                 $this->session->set_flashdata('success', 'Permissão adicionada com sucesso!');
                 log_info('Adicionou uma permissão');
-                redirect(base_url() . 'index.php/permissoes/adicionar/');
+                redirect(base_url() . 'permissoes/adicionar/');
             } else {
                 $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
             }
@@ -242,7 +242,7 @@ class Permissoes extends CI_Controller
             if ($this->permissoes_model->edit('permissoes', $data, 'idPermissao', $this->input->post('idPermissao')) == true) {
                 $this->session->set_flashdata('success', 'Permissão editada com sucesso!');
                 log_info('Alterou uma permissão. ID: ' . $this->input->post('idPermissao'));
-                redirect(base_url() . 'index.php/permissoes/editar/' . $this->input->post('idPermissao'));
+                redirect(base_url() . 'permissoes/editar/' . $this->input->post('idPermissao'));
             } else {
                 $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um errro.</p></div>';
             }
@@ -260,7 +260,7 @@ class Permissoes extends CI_Controller
         $id = $this->input->post('id');
         if ($id == null) {
             $this->session->set_flashdata('error', 'Erro ao tentar desativar permissão.');
-            redirect(base_url() . 'index.php/permissoes/gerenciar/');
+            redirect(base_url() . 'permissoes/gerenciar/');
         }
         $data = array(
             'situacao' => false,
@@ -272,7 +272,7 @@ class Permissoes extends CI_Controller
             $this->session->set_flashdata('error', 'Erro ao desativar permissão!');
         }
 
-        redirect(base_url() . 'index.php/permissoes/gerenciar/');
+        redirect(base_url() . 'permissoes/gerenciar/');
     }
 }
 

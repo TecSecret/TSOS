@@ -26,7 +26,7 @@ class Email extends CI_Controller
         $this->load->library('pagination');
         $this->load->model('email_model');
 
-        $config['base_url'] = base_url() . 'index.php/email/gerenciar/';
+        $config['base_url'] = base_url() . 'email/gerenciar/';
         $config['total_rows'] = $this->email_model->count('email_queue');
         $config['per_page'] = 10;
         $config['next_link'] = 'Próxima';
@@ -67,7 +67,7 @@ class Email extends CI_Controller
         $id = $this->input->post('id');
         if ($id == null) {
             $this->session->set_flashdata('error', 'Erro ao tentar excluir e-mail da fila.');
-            redirect(base_url() . 'index.php/email/gerenciar/');
+            redirect(base_url() . 'email/gerenciar/');
         }
         
         $this->load->model('email_model');
@@ -77,7 +77,7 @@ class Email extends CI_Controller
         log_info('Removeu um e-mail da fila de envio. ID: ' . $id);
 
         $this->session->set_flashdata('success', 'E-mail removido da fila de envio!');
-        redirect(base_url() . 'index.php/email/gerenciar/');
+        redirect(base_url() . 'email/gerenciar/');
     }
 
     public function process()

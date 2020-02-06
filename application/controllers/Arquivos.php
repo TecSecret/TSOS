@@ -14,7 +14,7 @@ class Arquivos extends CI_Controller
         parent::__construct();
 
         if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('mapos/login');
+            redirect('tsos/login');
         }
 
         $this->load->helper(array('codegen_helper'));
@@ -42,7 +42,7 @@ class Arquivos extends CI_Controller
 
         if ($pesquisa == null && $de == null && $ate == null) {
 
-            $config['base_url'] = base_url() . 'index.php/arquivos/gerenciar';
+            $config['base_url'] = base_url() . 'arquivos/gerenciar';
             $config['total_rows'] = $this->arquivos_model->count('documentos');
             $config['per_page'] = 10;
             $config['next_link'] = 'Próxima';
@@ -139,7 +139,7 @@ class Arquivos extends CI_Controller
 
                 log_info('Adicionou um arquivo');
 
-                redirect(base_url() . 'index.php/arquivos/adicionar/');
+                redirect(base_url() . 'arquivos/adicionar/');
             } else {
                 $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
             }
@@ -154,7 +154,7 @@ class Arquivos extends CI_Controller
 
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('tsos');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'eArquivo')) {
@@ -187,7 +187,7 @@ class Arquivos extends CI_Controller
             if ($this->arquivos_model->edit('documentos', $data, 'idDocumentos', $this->input->post('idDocumentos')) == true) {
                 $this->session->set_flashdata('success', 'Alterações efetuadas com sucesso!');
                 log_info('Alterou um arquivo, ID: ' . $this->input->post('idDocumentos'));
-                redirect(base_url() . 'index.php/arquivos/editar/' . $this->input->post('idDocumentos'));
+                redirect(base_url() . 'arquivos/editar/' . $this->input->post('idDocumentos'));
             } else {
                 $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
             }
@@ -208,7 +208,7 @@ class Arquivos extends CI_Controller
 
         if ($id == null || !is_numeric($id)) {
             $this->session->set_flashdata('error', 'Erro! O arquivo não pode ser localizado.');
-            redirect(base_url() . 'index.php/arquivos/');
+            redirect(base_url() . 'arquivos/');
         }
 
         $file = $this->arquivos_model->getById($id);
@@ -232,7 +232,7 @@ class Arquivos extends CI_Controller
         $id = $this->input->post('id');
         if ($id == null || !is_numeric($id)) {
             $this->session->set_flashdata('error', 'Erro! O arquivo não pode ser localizado.');
-            redirect(base_url() . 'index.php/arquivos/');
+            redirect(base_url() . 'arquivos/');
         }
 
         $file = $this->arquivos_model->getById($id);
@@ -247,11 +247,11 @@ class Arquivos extends CI_Controller
             $this->session->set_flashdata('success', 'Arquivo excluido com sucesso!');
 
             log_info('Removeu um arquivo. ID: ' . $id);
-            redirect(base_url() . 'index.php/arquivos/');
+            redirect(base_url() . 'arquivos/');
         } else {
 
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar excluir o arquivo.');
-            redirect(base_url() . 'index.php/arquivos/');
+            redirect(base_url() . 'arquivos/');
         }
     }
 
@@ -283,7 +283,7 @@ class Arquivos extends CI_Controller
             $error = array('error' => $this->upload->display_errors());
 
             $this->session->set_flashdata('error', 'Erro ao fazer upload do arquivo, verifique se a extensão do arquivo é permitida.');
-            redirect(base_url() . 'index.php/arquivos/adicionar/');
+            redirect(base_url() . 'arquivos/adicionar/');
         } else {
             //$data = array('upload_data' => $this->upload->data());
             return $this->upload->data();

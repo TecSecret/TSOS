@@ -12,7 +12,7 @@ class Clientes extends CI_Controller
     {
         parent::__construct();
         if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('mapos/login');
+            redirect('tsos/login');
         }
         $this->load->helper(array('codegen_helper'));
         $this->load->model('clientes_model', '', true);
@@ -34,7 +34,7 @@ class Clientes extends CI_Controller
         $this->load->library('table');
         $this->load->library('pagination');
 
-        $config['base_url'] = base_url() . 'index.php/clientes/gerenciar/';
+        $config['base_url'] = base_url() . 'clientes/gerenciar/';
         $config['total_rows'] = $this->clientes_model->count('clientes');
         $config['per_page'] = 10;
         $config['next_link'] = 'Próxima';
@@ -95,7 +95,7 @@ class Clientes extends CI_Controller
             if ($this->clientes_model->add('clientes', $data) == true) {
                 $this->session->set_flashdata('success', 'Cliente adicionado com sucesso!');
                 log_info('Adicionou um cliente.');
-                redirect(base_url() . 'index.php/clientes/adicionar/');
+                redirect(base_url() . 'clientes/adicionar/');
             } else {
                 $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
             }
@@ -109,7 +109,7 @@ class Clientes extends CI_Controller
 
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('tsos');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'eCliente')) {
@@ -140,7 +140,7 @@ class Clientes extends CI_Controller
             if ($this->clientes_model->edit('clientes', $data, 'idClientes', $this->input->post('idClientes')) == true) {
                 $this->session->set_flashdata('success', 'Cliente editado com sucesso!');
                 log_info('Alterou um cliente. ID' . $this->input->post('idClientes'));
-                redirect(base_url() . 'index.php/clientes/editar/' . $this->input->post('idClientes'));
+                redirect(base_url() . 'clientes/editar/' . $this->input->post('idClientes'));
             } else {
                 $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro</p></div>';
             }
@@ -156,7 +156,7 @@ class Clientes extends CI_Controller
 
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('tsos');
         }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
@@ -183,7 +183,7 @@ class Clientes extends CI_Controller
         if ($id == null) {
 
             $this->session->set_flashdata('error', 'Erro ao tentar excluir cliente.');
-            redirect(base_url() . 'index.php/clientes/gerenciar/');
+            redirect(base_url() . 'clientes/gerenciar/');
         }
 
         //$id = 2;
@@ -227,6 +227,6 @@ class Clientes extends CI_Controller
         $this->clientes_model->delete('clientes', 'idClientes', $id);
         log_info('Removeu um cliente. ID' . $id);
         $this->session->set_flashdata('success', 'Cliente excluido com sucesso!');
-        redirect(base_url() . 'index.php/clientes/gerenciar/');
+        redirect(base_url() . 'clientes/gerenciar/');
     }
 }

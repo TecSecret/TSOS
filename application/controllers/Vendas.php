@@ -37,7 +37,7 @@ class Vendas extends CI_Controller
 
         $this->load->library('pagination');
 
-        $config['base_url'] = base_url() . 'index.php/vendas/gerenciar/';
+        $config['base_url'] = base_url() . 'vendas/gerenciar/';
         $config['total_rows'] = $this->vendas_model->count('vendas');
         $config['per_page'] = 10;
         $config['next_link'] = 'Próxima';
@@ -152,7 +152,7 @@ class Vendas extends CI_Controller
             if ($this->vendas_model->edit('vendas', $data, 'idVendas', $this->input->post('idVendas')) == true) {
                 $this->session->set_flashdata('success', 'Venda editada com sucesso!');
                 log_info('Alterou uma venda. ID: ' . $this->input->post('idVendas'));
-                redirect(base_url() . 'index.php/vendas/editar/' . $this->input->post('idVendas'));
+                redirect(base_url() . 'vendas/editar/' . $this->input->post('idVendas'));
             } else {
                 $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro</p></div>';
             }
@@ -243,7 +243,7 @@ class Vendas extends CI_Controller
         if ($id == null) {
 
             $this->session->set_flashdata('error', 'Erro ao tentar excluir venda.');
-            redirect(base_url() . 'index.php/vendas/gerenciar/');
+            redirect(base_url() . 'vendas/gerenciar/');
         }
 
         $this->db->where('vendas_id', $id);
@@ -255,7 +255,7 @@ class Vendas extends CI_Controller
         log_info('Removeu uma venda. ID: ' . $id);
 
         $this->session->set_flashdata('success', 'Venda excluída com sucesso!');
-        redirect(base_url() . 'index.php/vendas/gerenciar/');
+        redirect(base_url() . 'vendas/gerenciar/');
     }
 
     public function autoCompleteProduto()
