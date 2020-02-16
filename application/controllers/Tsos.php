@@ -1,6 +1,6 @@
-<?php if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
+<?php if (!defined('BASEPATH')) {exit('No direct script access allowed');}
 
-class Tsos extends CI_Controller
+class Tsos extends MY_Controller
 {
 
     /**
@@ -12,15 +12,11 @@ class Tsos extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('tsos_model', '', true);
+        $this->load->model('tsos_model');
     }
 
     public function index()
     {
-        if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('tsos/login');
-        }
-
         $this->data['ordens'] = $this->tsos_model->getOsAbertas();
         $this->data['ordens1'] = $this->tsos_model->getOsAguardandoPecas();
         $this->data['produtos'] = $this->tsos_model->getProdutosMinimo();
@@ -28,31 +24,23 @@ class Tsos extends CI_Controller
         $this->data['estatisticas_financeiro'] = $this->tsos_model->getEstatisticasFinanceiro();
         $this->data['menuPainel'] = 'Painel';
         $this->data['view'] = 'tsos/painel';
-        $this->load->view('tema/topo', $this->data);
+        return $this->layout();
     }
 
     public function minhaConta()
     {
-        if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('tsos/login');
-        }
-
         $this->data['usuario'] = $this->tsos_model->getById($this->session->userdata('id'));
         $this->data['view'] = 'tsos/minhaConta';
-        $this->load->view('tema/topo', $this->data);
+        return $this->layout();
     }
 
     public function alterarSenha()
     {
-        if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('tsos/login');
-        }
-
         $current_user = $this->tsos_model->getById($this->session->userdata('id'));
 
         if (!$current_user) {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao pesquisar usuário!');
-            redirect(base_url() . 'tsos/minhaConta');
+            redirect(site_url('tsos/minhaConta'));
         }
 
         $oldSenha = $this->input->post('oldSenha');
@@ -60,26 +48,22 @@ class Tsos extends CI_Controller
 
         if (!password_verify($oldSenha, $current_user->senha)) {
             $this->session->set_flashdata('error', 'A senha atual não corresponde com a senha informada.');
-            redirect(base_url() . 'tsos/minhaConta');
+            redirect(site_url('tsos/minhaConta'));
         }
 
         $result = $this->tsos_model->alterarSenha($senha);
 
         if ($result) {
             $this->session->set_flashdata('success', 'Senha alterada com sucesso!');
-            redirect(base_url() . 'tsos/minhaConta');
+            redirect(site_url('tsos/minhaConta'));
         }
 
         $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar a senha!');
-        redirect(base_url() . 'tsos/minhaConta');
+        redirect(site_url('tsos/minhaConta'));
     }
 
     public function pesquisar()
     {
-        if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('tsos/login');
-        }
-
         $termo = $this->input->get('termo');
 
         $data['results'] = $this->tsos_model->pesquisar($termo);
@@ -88,82 +72,11 @@ class Tsos extends CI_Controller
         $this->data['os'] = $data['results']['os'];
         $this->data['clientes'] = $data['results']['clientes'];
         $this->data['view'] = 'tsos/pesquisa';
-        $this->load->view('tema/topo', $this->data);
-    }
-
-    public function login()
-    {
-
-        $this->load->view('tsos/login');
-    }
-    public function sair()
-    {
-        $this->session->sess_destroy();
-        redirect('tsos/login');
-    }
-
-    public function verificarLogin()
-    {
-
-        header('Access-Control-Allow-Origin: ' . base_url());
-        header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
-        header('Access-Control-Max-Age: 1000');
-        header('Access-Control-Allow-Headers: Content-Type');
-
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('email', 'E-mail', 'valid_email|required|trim');
-        $this->form_validation->set_rules('senha', 'Senha', 'required|trim');
-        if ($this->form_validation->run() == false) {
-            $json = array('result' => false, 'message' => validation_errors());
-            echo json_encode($json);
-        } else {
-            $email = $this->input->post('email');
-            $password = $this->input->post('senha');
-            $this->load->model('Tsos_model');
-            $user = $this->Tsos_model->check_credentials($email);
-
-            if ($user) {
-                // Verificar se acesso está expirado
-                if($this->chk_date($user->dataExpiracao)){
-                    $json = array('result' => false, 'message' => 'A conta do usuário está expirada, por favor entre em contato com o administrador do sistema.');
-                    echo json_encode($json);
-                    die();
-                }
-
-                // Verificar credenciais do usuário
-                if (password_verify($password, $user->senha)) {
-                    $session_data = array('nome' => $user->nome, 'email' => $user->email, 'id' => $user->idUsuarios, 'permissao' => $user->permissoes_id, 'logado' => true);
-                    $this->session->set_userdata($session_data);
-                    log_info('Efetuou login no sistema');
-                    $json = array('result' => true);
-                    echo json_encode($json);
-                } else {
-                    $json = array('result' => false, 'message' => 'Os dados de acesso estão incorretos.');
-                    echo json_encode($json);
-                }
-            } else {
-                $json = array('result' => false, 'message' => 'Usuário não encontrado, verifique se suas credenciais estão corretass.');
-                echo json_encode($json);
-            }
-        }
-        die();
-    }
-
-    private function chk_date($data_banco)
-    {
-
-        $data_banco = new DateTime($data_banco);
-        $data_hoje = new DateTime("now");
-
-        return $data_banco < $data_hoje;
+        return $this->layout();
     }
 
     public function backup()
     {
-
-        if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('tsos/login');
-        }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cBackup')) {
             $this->session->set_flashdata('error', 'Você não tem permissão para efetuar backup.');
@@ -190,29 +103,19 @@ class Tsos extends CI_Controller
 
     public function emitente()
     {
-
-        if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('tsos/login');
-        }
-
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cEmitente')) {
             $this->session->set_flashdata('error', 'Você não tem permissão para configurar emitente.');
             redirect(base_url());
         }
 
-        $data['menuConfiguracoes'] = 'Configuracoes';
-        $data['dados'] = $this->tsos_model->getEmitente();
-        $data['view'] = 'tsos/emitente';
-        $this->load->view('tema/topo', $data);
-        $this->load->view('tema/rodape');
+        $this->data['menuConfiguracoes'] = 'Configuracoes';
+        $this->data['dados'] = $this->tsos_model->getEmitente();
+        $this->data['view'] = 'tsos/emitente';
+        return $this->layout();
     }
 
     public function do_upload()
     {
-
-        if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('tsos/login');
-        }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cEmitente')) {
             $this->session->set_flashdata('error', 'Você não tem permissão para configurar emitente.');
@@ -250,10 +153,6 @@ class Tsos extends CI_Controller
     public function cadastrarEmitente()
     {
 
-        if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('tsos/login');
-        }
-
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cEmitente')) {
             $this->session->set_flashdata('error', 'Você não tem permissão para configurar emitente.');
             redirect(base_url());
@@ -274,7 +173,7 @@ class Tsos extends CI_Controller
         if ($this->form_validation->run() == false) {
 
             $this->session->set_flashdata('error', 'Campos obrigatórios não foram preenchidos.');
-            redirect(base_url() . 'tsos/emitente');
+            redirect(site_url('tsos/emitente'));
         } else {
 
             $nome = $this->input->post('nome');
@@ -295,20 +194,16 @@ class Tsos extends CI_Controller
 
                 $this->session->set_flashdata('success', 'As informações foram inseridas com sucesso.');
                 log_info('Adicionou informações de emitente.');
-                redirect(base_url() . 'tsos/emitente');
             } else {
                 $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar inserir as informações.');
-                redirect(base_url() . 'tsos/emitente');
+
             }
+            redirect(site_url('tsos/emitente'));
         }
     }
 
     public function editarEmitente()
     {
-
-        if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('tsos/login');
-        }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cEmitente')) {
             $this->session->set_flashdata('error', 'Você não tem permissão para configurar emitente.');
@@ -330,7 +225,7 @@ class Tsos extends CI_Controller
         if ($this->form_validation->run() == false) {
 
             $this->session->set_flashdata('error', 'Campos obrigatórios não foram preenchidos.');
-            redirect(base_url() . 'tsos/emitente');
+            redirect(site_url('tsos/emitente'));
         } else {
 
             $nome = $this->input->post('nome');
@@ -350,20 +245,15 @@ class Tsos extends CI_Controller
 
                 $this->session->set_flashdata('success', 'As informações foram alteradas com sucesso.');
                 log_info('Alterou informações de emitente.');
-                redirect(base_url() . 'tsos/emitente');
             } else {
                 $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar as informações.');
-                redirect(base_url() . 'tsos/emitente');
             }
+            redirect(site_url('tsos/emitente'));
         }
     }
 
     public function editarLogo()
     {
-
-        if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('tsos/login');
-        }
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cEmitente')) {
             $this->session->set_flashdata('error', 'Você não tem permissão para configurar emitente.');
@@ -373,7 +263,7 @@ class Tsos extends CI_Controller
         $id = $this->input->post('id');
         if ($id == null || !is_numeric($id)) {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar a logomarca.');
-            redirect(base_url() . 'tsos/emitente');
+            redirect(site_url('tsos/emitente'));
         }
         $this->load->helper('file');
         delete_files(FCPATH . 'assets/uploads/');
@@ -386,10 +276,98 @@ class Tsos extends CI_Controller
 
             $this->session->set_flashdata('success', 'As informações foram alteradas com sucesso.');
             log_info('Alterou a logomarca do emitente.');
-            redirect(base_url() . 'tsos/emitente');
         } else {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar alterar as informações.');
-            redirect(base_url() . 'tsos/emitente');
         }
+        redirect(site_url('tsos/emitente'));
     }
+
+    public function emails()
+    {
+        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cEmail')) {
+            $this->session->set_flashdata('error', 'Você não tem permissão para visualizar fila de e-mails');
+            redirect(base_url());
+        }
+
+        $this->data['menuConfiguracoes'] = 'Email';
+
+        $this->load->library('pagination');
+        $this->load->model('email_model');
+
+        $this->data['configuration']['base_url'] = site_url('tsos/emails/');
+        $this->data['configuration']['total_rows'] = $this->email_model->count('email_queue');
+
+        $this->pagination->initialize($this->data['configuration']);
+
+        $this->data['results'] = $this->email_model->get('email_queue', '*', '', $this->data['configuration']['per_page'], $this->uri->segment(3));
+
+        $this->data['view'] = 'emails/emails';
+        return $this->layout();
+    }
+
+    public function excluirEmail()
+    {
+
+        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cEmail')) {
+            $this->session->set_flashdata('error', 'Você não tem permissão para excluir e-mail da fila.');
+            redirect(base_url());
+        }
+
+        $id = $this->input->post('id');
+        if ($id == null) {
+            $this->session->set_flashdata('error', 'Erro ao tentar excluir e-mail da fila.');
+            redirect(site_url('tsos/emails/'));
+        }
+
+        $this->load->model('email_model');
+        $this->email_model->delete('email_queue', 'id', $id);
+
+        log_info('Removeu um e-mail da fila de envio. ID: ' . $id);
+
+        $this->session->set_flashdata('success', 'E-mail removido da fila de envio!');
+        redirect(site_url('tsos/emails/'));
+    }
+
+    public function configurar()
+    {
+        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cSistema')) {
+            $this->session->set_flashdata('error', 'Você não tem permissão para configurar o sistema');
+            redirect(base_url());
+        }
+        $this->data['menuConfiguracoes'] = 'Sistema';
+
+        $this->load->library('form_validation');
+        $this->load->model('tsos_model');
+        
+        $this->data['custom_error'] = '';
+
+        $this->form_validation->set_rules('app_name', 'Nome do Sistema', 'required|trim');
+        $this->form_validation->set_rules('per_page', 'Registros por página', 'required|numeric|trim');
+        $this->form_validation->set_rules('app_theme', 'Tema do Sistema', 'required|trim');
+        $this->form_validation->set_rules('os_notification', 'Notificação de OS', 'required|trim');
+        $this->form_validation->set_rules('control_estoque', 'Controle de Estoque', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->data['custom_error'] = (validation_errors() ? '<div class="alert">' . validation_errors() . '</div>' : false);
+        } else {
+            $data = array(
+                'app_name' => $this->input->post('app_name'),
+                'per_page' => $this->input->post('per_page'),
+                'app_theme' => $this->input->post('app_theme'),
+                'os_notification' => $this->input->post('os_notification'),
+                'control_estoque' => $this->input->post('control_estoque'),
+            );
+
+            if ($this->tsos_model->saveConfiguracao($data) == true) {
+                $this->session->set_flashdata('success', 'Configurações do sistema atualiadas com sucesso!');
+                redirect(site_url('tsos/configurar'));
+            } else {
+                $this->data['custom_error'] = '<div class="alert">Ocorreu um errro.</div>';
+            }
+        }
+
+        $this->data['view'] = 'tsos/configurar';
+        return $this->layout();
+    }
+
 }

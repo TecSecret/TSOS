@@ -11,7 +11,7 @@ $lang['installpre3'] = 'atende aos seguintes requisitos:';
 $lang['installfinishedretorno'] = 'Parece que este aplicativo já está instalado! Você não pode reinstalá-lo novamente.';
 
 // login
-$lang['tsos_login_title'] = ' TS OS - O seus sistema para assistência técnica';
+// $lang['tsos_login_title'] = ' TS OS - O seus sistema para assistência técnica';
 $lang['tsos_login_campoobriga'] = 'Campo obrigatório';
 $lang['tsos_login_mailvalid'] = 'Insira um e-mail valido';
 $lang['tsos_login_notificacao'] = 'notificação';
