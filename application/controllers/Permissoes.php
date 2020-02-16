@@ -14,7 +14,7 @@ class Permissoes extends MY_Controller
         parent::__construct();
 
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cPermissao')) {
-            $this->session->set_flashdata('error', 'Você não tem permissão para configurar as permissões no siste.');
+            $this->session->set_flashdata('error', 'Você não tem permissão para configurar as permissões no sistema.');
             redirect(base_url());
         }
 

@@ -24,7 +24,7 @@ class MY_Controller extends CI_Controller
             'first_tag_close' => '</li>',
             'last_tag_open' => '<li>',
             'last_tag_close' => '</li>',
-            'app_name' => 'Map-OS',
+            'app_name' => 'TSOS',
             'app_theme' => 'default',
             'os_notification' => 'cliente',
             'control_estoque' => '1',

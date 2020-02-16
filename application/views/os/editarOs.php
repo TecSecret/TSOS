@@ -130,16 +130,15 @@
                                             <?php
                                             } ?>
                                             <button class="btn btn-primary" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
-                                            <a href="<?php echo base_url() ?>/os/visualizar/<?php echo $result->idOs; ?>" class="btn btn-secondary"><i class="fas fa-eye"></i> Visualizar OS</a>
-                                            <a target="_blank" title="Imprimir" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir A4</a>
-                                            <a target="_blank" title="Imprimir" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimirTermica/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir Não Fiscal</a>
+                                            <a href="<?php echo base_url() ?>os/visualizar/<?php echo $result->idOs; ?>" class="btn btn-secondary"><i class="fas fa-eye"></i> Visualizar OS</a>
+                                            <a target="_blank" title="Imprimir" class="btn btn-inverse" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir</a>
                                             <a title="Enviar por E-mail" class="btn btn-warning" href="<?php echo site_url() ?>/os/enviar_email/<?php echo $result->idOs; ?>"><i class="fas fa-envelope"></i> Enviar por E-mail</a>
                                             <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
                                                 $zapnumber = preg_replace("/[^0-9]/", "", $result->celular_cliente);
                                                 echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0aFavor%20entrar%20em%20contato%20para%20saber%20mais%20detalhes.%0d%0a%0d%0aAtenciosamente,%20_' . $emitente[0]->nome . '%20' . $emitente[0]->telefone . '_"><i class="fab fa-whatsapp"></i> WhatsApp</a>';
                                             } ?>
                                             <?php if ($result->garantias_id) { ?> <a target="_blank" title="Imprimir Termo de Garantia" class="btn btn-inverse" href="<?php echo site_url() ?>/garantias/imprimir/<?php echo $result->garantias_id; ?>"><i class="fas fa-text-width"></i> Imprimir Termo de Garantia</a> <?php  } ?>
-                                            <a href="<?php echo base_url() ?>/os" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                                            <a href="<?php echo base_url() ?>os" class="btn"><i class="fas fa-backward"></i> Voltar</a>
                                         </div>
                                     </div>
                                 </form>
@@ -148,7 +147,7 @@
                         <!--Produtos-->
                         <div class="tab-pane" id="tab2">
                             <div class="span12 well" style="padding: 1%; margin-left: 0">
-                                <form id="formProdutos" action="<?php echo base_url() ?>/os/adicionarProduto" method="post">
+                                <form id="formProdutos" action="<?php echo base_url() ?>os/adicionarProduto" method="post">
                                     <div class="span6">
                                         <input type="hidden" name="idProduto" id="idProduto" />
                                         <input type="hidden" name="idOsProduto" id="idOsProduto" value="<?php echo $result->idOs ?>" />
@@ -517,7 +516,7 @@
                 $('#btn-cancelar-faturar').trigger('click');
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo base_url(); ?>/os/faturar",
+                    url: "<?php echo base_url(); ?>os/faturar",
                     data: dados,
                     dataType: 'json',
                     success: function(data) {
@@ -540,7 +539,7 @@
         });
 
         $("#produto").autocomplete({
-            source: "<?php echo base_url(); ?>/os/autoCompleteProduto",
+            source: "<?php echo base_url(); ?>os/autoCompleteProduto",
             minLength: 2,
             select: function(event, ui) {
                 $("#idProduto").val(ui.item.id);
@@ -551,7 +550,7 @@
         });
 
         $("#servico").autocomplete({
-            source: "<?php echo base_url(); ?>/os/autoCompleteServico",
+            source: "<?php echo base_url(); ?>os/autoCompleteServico",
             minLength: 2,
             select: function(event, ui) {
                 $("#idServico").val(ui.item.id);
@@ -562,7 +561,7 @@
 
 
         $("#cliente").autocomplete({
-            source: "<?php echo base_url(); ?>/os/autoCompleteCliente",
+            source: "<?php echo base_url(); ?>os/autoCompleteCliente",
             minLength: 2,
             select: function(event, ui) {
                 $("#clientes_id").val(ui.item.id);
@@ -570,7 +569,7 @@
         });
 
         $("#tecnico").autocomplete({
-            source: "<?php echo base_url(); ?>/os/autoCompleteUsuario",
+            source: "<?php echo base_url(); ?>os/autoCompleteUsuario",
             minLength: 2,
             select: function(event, ui) {
                 $("#usuarios_id").val(ui.item.id);
@@ -578,7 +577,7 @@
         });
 
         $("#termoGarantia").autocomplete({
-            source: "<?php echo base_url(); ?>/os/autoCompleteTermoGarantia",
+            source: "<?php echo base_url(); ?>os/autoCompleteTermoGarantia",
             minLength: 1,
             select: function(event, ui) {
                 if (ui.item.id) {
@@ -652,6 +651,11 @@
             submitHandler: function(form) {
                 var quantidade = parseInt($("#quantidade").val());
                 var estoque = parseInt($("#estoque").val());
+                
+                <?php if(!$configuration['control_estoque']){ 
+                    echo 'estoque = 1000000';
+                }; ?>
+
                 if (estoque < quantidade) {
                     Swal.fire({
                         type: "error",
@@ -663,7 +667,7 @@
                     $("#divProdutos").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
                     $.ajax({
                         type: "POST",
-                        url: "<?php echo base_url(); ?>/os/adicionarProduto",
+                        url: "<?php echo base_url(); ?>os/adicionarProduto",
                         data: dados,
                         dataType: 'json',
                         success: function(data) {
@@ -703,7 +707,7 @@
                 $("#divServicos").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo base_url(); ?>/os/adicionarServico",
+                    url: "<?php echo base_url(); ?>os/adicionarServico",
                     data: dados,
                     dataType: 'json',
                     success: function(data) {
@@ -742,7 +746,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo base_url(); ?>/os/adicionarAnotacao",
+                    url: "<?php echo base_url(); ?>os/adicionarAnotacao",
                     data: dados,
                     dataType: 'json',
                     success: function(data) {
@@ -772,7 +776,7 @@
                 $("#divAnexos").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo base_url(); ?>/os/anexar",
+                    url: "<?php echo base_url(); ?>os/anexar",
                     data: dados,
                     mimeType: "multipart/form-data",
                     contentType: false,
@@ -805,7 +809,7 @@
                 $("#divProdutos").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo base_url(); ?>/os/excluirProduto",
+                    url: "<?php echo base_url(); ?>os/excluirProduto",
                     data: "idProduto=" + idProduto + "&quantidade=" + quantidade + "&produto=" + produto,
                     dataType: 'json',
                     success: function(data) {
@@ -832,7 +836,7 @@
                 $("#divServicos").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo base_url(); ?>/os/excluirServico",
+                    url: "<?php echo base_url(); ?>os/excluirServico",
                     data: "idServico=" + idServico,
                     dataType: 'json',
                     success: function(data) {
@@ -856,11 +860,11 @@
             event.preventDefault();
             var link = $(this).attr('link');
             var id = $(this).attr('imagem');
-            var url = '<?php echo base_url(); ?>/os/excluirAnexo/';
+            var url = '<?php echo base_url(); ?>os/excluirAnexo/';
             $("#div-visualizar-anexo").html('<img src="' + link + '" alt="">');
             $("#excluir-anexo").attr('link', url + id);
 
-            $("#download").attr('href', "<?php echo base_url(); ?>/os/downloadanexo/" + id);
+            $("#download").attr('href', "<?php echo base_url(); ?>os/downloadanexo/" + id);
 
         });
 
@@ -895,7 +899,7 @@
                 $("#divAnotacoes").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo base_url(); ?>/os/excluirAnotacao",
+                    url: "<?php echo base_url(); ?>os/excluirAnotacao",
                     data: "idAnotacao=" + idAnotacao,
                     dataType: 'json',
                     success: function(data) {

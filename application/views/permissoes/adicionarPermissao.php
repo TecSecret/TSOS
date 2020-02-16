@@ -1,5 +1,5 @@
 <div class="span12" style="margin-left: 0">
-    <form action="<?php echo base_url(); ?>/permissoes/adicionar" id="formPermissao" method="post">
+    <form action="<?php echo base_url(); ?>permissoes/adicionar" id="formPermissao" method="post">
 
         <div class="span12" style="margin-left: 0">
 
@@ -419,7 +419,13 @@
                                                 <span class="lbl"> Emails</span>
                                             </label>
                                         </td>
-                                        <td colspan="2"></td>
+                                        <td>
+                                            <label>
+                                                <input name="cSistema" class="marcar" type="checkbox" value="1" />
+                                                <span class="lbl"> Sistema</span>
+                                            </label>
+                                        </td>
+                                        <td></td>
                                     </tr>
 
                                 </tbody>
@@ -433,7 +439,7 @@
                         <div class="span12">
                             <div class="span6 offset3">
                                 <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar</button>
-                                <a href="<?php echo base_url() ?>/permissoes" id="" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                                <a href="<?php echo base_url() ?>permissoes" id="" class="btn"><i class="fas fa-backward"></i> Voltar</a>
                             </div>
                         </div>
                     </div>

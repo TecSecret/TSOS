@@ -49,13 +49,13 @@
                                             <?php
                                             } ?>
                                             <button class="btn btn-primary" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
-                                            <a href="<?php echo base_url() ?>/vendas/visualizar/<?php echo $result->idVendas; ?>" class="btn btn-inverse"><i class="fas fa-eye"></i> Visualizar Venda</a>
-                                            <a href="<?php echo base_url() ?>/vendas" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                                            <a href="<?php echo base_url() ?>vendas/visualizar/<?php echo $result->idVendas; ?>" class="btn btn-inverse"><i class="fas fa-eye"></i> Visualizar Venda</a>
+                                            <a href="<?php echo base_url() ?>vendas" class="btn"><i class="fas fa-backward"></i> Voltar</a>
                                         </div>
                                     </div>
                                 </form>
                                 <div class="span12 well" style="padding: 1%; margin-left: 0">
-                                    <form id="formProdutos" action="<?php echo base_url(); ?>/vendas/adicionarProduto" method="post">
+                                    <form id="formProdutos" action="<?php echo base_url(); ?>vendas/adicionarProduto" method="post">
                                         <div class="span6">
                                             <input type="hidden" name="idProduto" id="idProduto" />
                                             <input type="hidden" name="idVendasProduto" id="idVendasProduto" value="<?php echo $result->idVendas ?>" />
@@ -235,7 +235,7 @@
                 $('#btn-cancelar-faturar').trigger('click');
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo base_url(); ?>/vendas/faturar",
+                    url: "<?php echo base_url(); ?>vendas/faturar",
                     data: dados,
                     dataType: 'json',
                     success: function(data) {
@@ -255,7 +255,7 @@
             }
         });
         $("#produto").autocomplete({
-            source: "<?php echo base_url(); ?>/os/autoCompleteProdutoSaida",
+            source: "<?php echo base_url(); ?>os/autoCompleteProdutoSaida",
             minLength: 2,
             select: function(event, ui) {
                 $("#idProduto").val(ui.item.id);
@@ -265,14 +265,14 @@
             }
         });
         $("#cliente").autocomplete({
-            source: "<?php echo base_url(); ?>/os/autoCompleteCliente",
+            source: "<?php echo base_url(); ?>os/autoCompleteCliente",
             minLength: 2,
             select: function(event, ui) {
                 $("#clientes_id").val(ui.item.id);
             }
         });
         $("#tecnico").autocomplete({
-            source: "<?php echo base_url(); ?>/os/autoCompleteUsuario",
+            source: "<?php echo base_url(); ?>os/autoCompleteUsuario",
             minLength: 2,
             select: function(event, ui) {
                 $("#usuarios_id").val(ui.item.id);
@@ -325,6 +325,11 @@
             submitHandler: function(form) {
                 var quantidade = parseInt($("#quantidade").val());
                 var estoque = parseInt($("#estoque").val());
+
+                <?php if(!$configuration['control_estoque']){ 
+                    echo 'estoque = 1000000';
+                }; ?>
+                
                 if (estoque < quantidade) {
                     Swal.fire({
                         type: "warning",
@@ -336,7 +341,7 @@
                     $("#divProdutos").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
                     $.ajax({
                         type: "POST",
-                        url: "<?php echo base_url(); ?>/vendas/adicionarProduto",
+                        url: "<?php echo base_url(); ?>vendas/adicionarProduto",
                         data: dados,
                         dataType: 'json',
                         success: function(data) {
@@ -366,7 +371,7 @@
                 $("#divProdutos").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo base_url(); ?>/vendas/excluirProduto",
+                    url: "<?php echo base_url(); ?>vendas/excluirProduto",
                     data: "idProduto=" + idProduto + "&quantidade=" + quantidade + "&produto=" + produto,
                     dataType: 'json',
                     success: function(data) {
