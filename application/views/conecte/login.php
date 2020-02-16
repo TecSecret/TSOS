@@ -2,9 +2,11 @@
 <html lang="pt-br">
 
 <head>
-    <title><?= ($this->lang->line('conecte_login_title')) ?></title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><?php echo $this->config->item('app_name') ?></title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="<?php echo $this->config->item('app_name') . ' - ' . $this->config->item('app_subname') ?>">
+    <link rel="shortcut icon" type="image/png" href="<?php echo base_url(); ?>assets/img/favicon.png"/>
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap-responsive.min.css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/matrix-login.css" />
@@ -64,25 +66,25 @@
                 </div>
             </div>
             <div class="form-actions" style="text-align: center">
-                <button class="btn btn-info btn-large" /> <?= ($this->lang->line('conecte_login_entrar')) ?></button>
-                <a href="<?= site_url('mine/cadastrar') ?>" class="btn btn-success btn-large"><?= ($this->lang->line('conecte_login_cadastro')) ?></a>
+                <button class="btn btn-info btn-large" /> Acessar</button>
+                <a href="<?= site_url('mine/cadastrar') ?>" class="btn btn-success btn-large">Cadastrar-me</a>
             </div>
         </form>
 
     </div>
 
-    <a href="#notification" id="call-modal" role="button" class="btn" data-toggle="modal" style="display: none "><?= ($this->lang->line('conecte_login_notifi')) ?></a>
+    <a href="#notification" id="call-modal" role="button" class="btn" data-toggle="modal" style="display: none ">notification</a>
 
     <div id="notification" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 id="myModalLabel">.:: <?= ($this->lang->line('conecte_login_tsos')) ?> ::.</h4>
+            <h4 id="myModalLabel">.:: <?php echo $this->config->item('app_name') ?> ::.</h4>
         </div>
         <div class="modal-body">
-            <h5 style="text-align: center"><?= ($this->lang->line('conecte_login_errormsg')) ?></h5>
+            <h5 style="text-align: center">Os dados de acesso estão incorretos, por favor tente novamente!</h5>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true"><?= ($this->lang->line('conecte_login_close')) ?></button>
+            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Fechar</button>
 
         </div>
     </div>
@@ -108,11 +110,11 @@
                 },
                 messages: {
                     email: {
-                        required: '<?= ($this->lang->line('conecte_login_cmporequerido')) ?>',
-                        email: '<?= ($this->lang->line('conecte_login_cmpomailvalid')) ?>'
+                        required: 'Campo Requerido.',
+                        email: 'Insira Email válido'
                     },
                     senha: {
-                        required: '<?= ($this->lang->line('conecte_login_cmporequerido')) ?>'
+                        required: 'Campo Requerido.'
                     }
                 },
                 submitHandler: function(form) {

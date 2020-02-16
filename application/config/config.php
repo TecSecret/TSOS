@@ -1,7 +1,20 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
 
-$config['app_version'] = '2.0 b1';
+/**
+ * App current version
+ */
+$config['app_version'] = 'NEW v1.0';
+
+/**
+ * Nome do sistema
+ */
+$config['app_name'] = 'TSOS';
+
+/**
+ * Descrição do sistema
+ */
+$config['app_subname'] = 'ERP para sua assistência técnica';
 
 /*
 |--------------------------------------------------------------------------
