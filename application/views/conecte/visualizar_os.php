@@ -221,7 +221,7 @@ $totalProdutos = 0; ?>
             }
 
 
-            mywindow.document.write('<html><head><title>Map Os</title>');
+            mywindow.document.write('<html><head><title>TSOS</title>');
             mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url(); ?>assets/css/bootstrap.min.css' />");
             mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url(); ?>assets/css/bootstrap-responsive.min.css' />");
             mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url(); ?>assets/css/matrix-style.css' />");

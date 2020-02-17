@@ -61,7 +61,7 @@
   <!--top-Header-menu-->
   <div id="user-nav" class="navbar navbar-inverse">
     <ul class="nav">
-      <li class=""><a title="" href="<?= site_url(); ?>/mine"><i class="fas fa-eye"></i> <span class="text">Área do Cliente</span></a></li>
+      <li class=""><a title="" href="<?= site_url(); ?>mine" target="_blank"><i class="fas fa-eye"></i> <span class="text">Área do Cliente</span></a></li>
       <li class="pull-right"><a href="https://tecsecret.com.br/sistemas/tsos" target="_blank"><i class="fas fa-asterisk"></i> <span class="text">Versão:
             <?= $this->config->item('app_version'); ?></span></a></li>
       <li class="dropdown">
