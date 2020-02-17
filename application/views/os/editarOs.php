@@ -76,6 +76,9 @@
                                                         } ?> value="Finalizado">Finalizado</option>
                                                 <option <?php if ($result->status == 'Cancelado') {
                                                             echo 'selected';
+                                                            } ?> value="Entregue">Entregue</option>
+                                                <option <?php if ($result->status == 'Entregue') {
+                                                            echo 'selected';
                                                         } ?> value="Cancelado">Cancelado</option>
                                                 <option <?php if ($result->status == 'Aguardando Peças') {
                                                             echo 'selected';
