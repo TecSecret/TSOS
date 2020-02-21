@@ -75,11 +75,12 @@
 
     </ul>
   </div>
-  <!--start-top-serch-->
-  <div id="search">
-    <form action="<?= base_url('tsos/pesquisar') ?>">
-      <input type="text" name="termo" placeholder="Pesquisar..." />
-      <button type="submit" class="tip-bottom" title="Pesquisar"><i class="fas fa-search fa-white"></i></button>
-    </form>
-  </div>
-  <!--close-top-serch-->
+<!--start-top-serch-->
+<div id="search">
+<form action="<?php echo base_url() ?>tsos/pesquisar">
+<input type="text" name="termo" placeholder="Pesquisar..." />
+<button type="submit" class="tip-bottom" title="Pesquisar"><i class="fas
+fa-search fa-white"></i></button>
+</form>
+</div>
+<!--close-top-serch-->
