@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <title><?php echo $this->config->item('app_name') ?>  Área do Cliente</title>
+    <title>Mine - Área do Cliente - <?php echo $this->config->item('app_name') ?></title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="<?php echo $this->config->item('app_name') . ' - ' . $this->config->item('app_subname') ?>">
@@ -114,7 +114,7 @@
                         <div class="span12">
                             <div class="span6 offset3">
                                 <button type="submit" class="btn btn-success btn-large"><i class="fas fa-plus"></i> Cadastrar</button>
-                                <a href="<?php echo base_url() ?>mine" id="" class="btn btn-large"><i class="fas fa-lock"></i> Acessar</a>
+                                <a href="<?php echo base_url() ?>index.php/mine" id="" class="btn btn-large"><i class="fas fa-lock"></i> Acessar</a>
                             </div>
                         </div>
                     </div>

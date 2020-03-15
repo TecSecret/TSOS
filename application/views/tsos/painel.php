@@ -12,7 +12,7 @@
             <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) : ?>
                 <li class="bg_lb">
                     <a href="<?= base_url() ?>clientes"> <i class="fas fa-users" style="font-size:36px"></i>
-                        <div><?= ($this->lang->line('tsos_painel_cli')) ?> <span class="badge badge-light">F1</span></div>
+                        <div>Clientes <span class="badge badge-light">F1</span></div>
                     </a>
                 </li>
             <?php endif ?>
@@ -20,7 +20,7 @@
             <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vProduto')) : ?>
                 <li class="bg_lg">
                     <a href="<?= base_url() ?>produtos"> <i class="fas fa-shopping-bag" style="font-size:36px"></i>
-                        <div><?= ($this->lang->line('tsos_painel_produtos')) ?> <span class="badge badge-light">F2</span></div>
+                        <div>Produtos <span class="badge badge-light">F2</span></div>
                     </a>
                 </li>
             <?php endif ?>
@@ -28,7 +28,7 @@
             <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vServico')) : ?>
                 <li class="bg_ly">
                     <a href="<?= base_url() ?>servicos"> <i class="fas fa-wrench" style="font-size:36px"></i>
-                        <div><?= ($this->lang->line('tsos_painel_services')) ?> <span class="badge badge-light">F3</span></div>
+                        <div>Serviços <span class="badge badge-light">F3</span></div>
                     </a>
                 </li>
             <?php endif ?>
@@ -36,7 +36,7 @@
             <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) : ?>
                 <li class="bg_lo">
                     <a href="<?= base_url() ?>os"> <i class="fas fa-diagnoses" style="font-size:36px"></i>
-                        <div><?= ($this->lang->line('tsos_painel_os')) ?> <span class="badge badge-light">F4</span></div>
+                        <div>OS <span class="badge badge-light">F4</span></div>
                     </a>
                 </li>
             <?php endif ?>
@@ -44,7 +44,7 @@
             <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vVenda')) : ?>
                 <li class="bg_ls">
                     <a href="<?= base_url() ?>vendas"><i class="fas fa-cash-register" style="font-size:36px"></i>
-                        <div><?= ($this->lang->line('tsos_painel_vendas')) ?> <span class="badge badge-light">F6</span></div>
+                        <div>Vendas <span class="badge badge-light">F6</span></div>
                     </a>
                 </li>
             <?php endif ?>
@@ -52,7 +52,7 @@
             <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vGarantia')) : ?>
                 <li class="bg_ls">
                     <a href="<?= base_url() ?>garantias"><i class="fas fa-book" style="font-size:36px"></i>
-                        <div><?= ($this->lang->line('tsos_painel_tergarantia')) ?> <span class="badge badge-light">F7</span></div>
+                        <div>Termo Garantia <span class="badge badge-light">F7</span></div>
                     </a>
                 </li>
             <?php endif ?>
@@ -67,18 +67,18 @@
         <div class="widget-box">
             <div class="widget-title">
                 <span class="icon"><i class="fas fa-shopping-bag"></i></span>
-                <h5><?= ($this->lang->line('tsos_painel_prodstoqmin')) ?></h5>
+                <h5>Produtos Com Estoque Mínimo</h5>
             </div>
             <div class="widget-content">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th><?= ($this->lang->line('tsos_painel_stoqcoditem')) ?></th>
-                            <th><?= ($this->lang->line('tsos_painel_prod')) ?></th>
-                            <th><?= ($this->lang->line('tsos_painel_prodprvenda')) ?></th>
-                            <th><?= ($this->lang->line('tsos_painel_stoq')) ?></th>
-                            <th><?= ($this->lang->line('tsos_painel_stoqmin')) ?></th>
-                            <th><?= ($this->lang->line('tsos_painel_acoes')) ?></th>
+                            <th>Cod. Item</th>
+                            <th>Produto</th>
+                            <th>Preço de Venda</th>
+                            <th>Estoque</th>
+                            <th>Estoque Mínimo</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -91,7 +91,7 @@
                                     <td>
                                         <?= $p->descricao ?>
                                     </td>
-                                    <td><?= ($this->lang->line('tsos_painel_rs')) ?>
+                                    <td>R$
                                         <?= $p->precoVenda ?>
                                     </td>
                                     <td>
@@ -105,13 +105,14 @@
                                             <a href="<?= base_url() ?>produtos/editar/<?= $p->idProdutos ?>" class="btn btn-info">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                        <?php endif ?>
+                                            <a href="#atualizar-estoque" role="button" data-toggle="modal" produto="<?= $p->idProdutos?>" estoque="<?=$p->estoque?>" class="btn btn-primary tip-top" title="Atualizar Estoque"><i class="fas fa-plus-square"></i></a>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
                         <?php else : ?>
                             <tr>
-                                <td colspan="3"><?= ($this->lang->line('tsos_painel_prodstoqnullinfo')) ?></td>
+                                <td colspan="3">Nenhum produto com estoque baixo.</td>
                             </tr>
                         <?php endif ?>
                     </tbody>
@@ -124,7 +125,7 @@
         <div class="widget-box">
             <div class="widget-title">
                 <span class="icon"><i class="fas fa-diagnoses"></i></span>
-                <h5><?= ($this->lang->line('tsos_painel_osopen')) ?></h5>
+                <h5>Ordens de Serviço Em Aberto</h5>
             </div>
             <div class="widget-content">
                 <table class="table table-bordered">
@@ -467,6 +468,7 @@
 <?php
     }
 } ?>
+
 <!-- Modal Estoque -->
 <div id="atualizar-estoque" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form action="<?php echo base_url() ?>produtos/atualizar_estoque" method="post" id="formEstoque">
@@ -532,4 +534,4 @@
             }
         });
     });
-</script> 
+</script>

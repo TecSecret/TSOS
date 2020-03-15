@@ -6,7 +6,7 @@ class Auditoria extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        
+
         if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cAuditoria')) {
             $this->session->set_flashdata('error', 'Você não tem permissão para visualizar logs do sistema.');
             redirect(base_url());

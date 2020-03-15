@@ -1,5 +1,5 @@
 <div class="span12" style="margin-left: 0">
-    <form action="<?php echo base_url(); ?>permissoes/adicionar" id="formPermissao" method="post">
+    <form action="<?php echo base_url(); ?>index.php/permissoes/adicionar" id="formPermissao" method="post">
 
         <div class="span12" style="margin-left: 0">
 
@@ -284,6 +284,38 @@
 
                                         <td>
                                             <label>
+                                                <input name="vPagamento" class="marcar" type="checkbox" checked="checked" value="1" />
+                                                <span class="lbl"> Visualizar Pagamento</span>
+                                            </label>
+                                        </td>
+
+                                        <td>
+                                            <label>
+                                                <input name="aPagamento" class="marcar" type="checkbox" value="1" />
+                                                <span class="lbl"> Adicionar Pagamento</span>
+                                            </label>
+                                        </td>
+
+                                        <td>
+                                            <label>
+                                                <input name="ePagamento" class="marcar" type="checkbox" value="1" />
+                                                <span class="lbl"> Editar Pagamento</span>
+                                            </label>
+                                        </td>
+
+                                        <td>
+                                            <label>
+                                                <input name="dPagamento" class="marcar" type="checkbox" value="1" />
+                                                <span class="lbl"> Excluir Pagamento</span>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>
+                                            <label>
                                                 <input name="vLancamento" class="marcar" type="checkbox" checked="checked" value="1" />
                                                 <span class="lbl"> Visualizar Lançamento</span>
                                             </label>
@@ -439,7 +471,7 @@
                         <div class="span12">
                             <div class="span6 offset3">
                                 <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar</button>
-                                <a href="<?php echo base_url() ?>permissoes" id="" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                                <a href="<?php echo base_url() ?>index.php/permissoes" id="" class="btn"><i class="fas fa-backward"></i> Voltar</a>
                             </div>
                         </div>
                     </div>

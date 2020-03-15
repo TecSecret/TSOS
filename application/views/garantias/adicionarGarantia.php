@@ -45,7 +45,7 @@
                     <div class="span12" style="padding: 1%; margin-left: 0">
                         <div class="span6 offset3" style="text-align: center">
                             <button class="btn btn-success" id="btnContinuar"><i class="fas fa-plus"></i> Adicionar</button>
-                            <a href="<?php echo base_url() ?>/garantias" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                            <a href="<?php echo base_url() ?>index.php/garantias" class="btn"><i class="fas fa-backward"></i> Voltar</a>
                         </div>
                     </div>
                 </form>
@@ -57,14 +57,14 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $("#cliente").autocomplete({
-            source: "<?php echo base_url(); ?>/garantias/autoCompleteCliente",
+            source: "<?php echo base_url(); ?>index.php/garantias/autoCompleteCliente",
             minLength: 1,
             select: function(event, ui) {
                 $("#clientes_id").val(ui.item.id);
             }
         });
         $("#tecnico").autocomplete({
-            source: "<?php echo base_url(); ?>/garantias/autoCompleteUsuario",
+            source: "<?php echo base_url(); ?>index.php/garantias/autoCompleteUsuario",
             minLength: 1,
             select: function(event, ui) {
                 $("#usuarios_id").val(ui.item.id);

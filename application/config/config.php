@@ -4,7 +4,7 @@
 /**
  * App current version
  */
-$config['app_version'] = '2.0 RC';
+$config['app_version'] = '3.0RC';
 
 /**
  * Nome do sistema
@@ -94,7 +94,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']     = 'pt-br';
+$config['language'] = 'pt-br';
 
 /*
 |--------------------------------------------------------------------------
@@ -154,7 +154,7 @@ $config['subclass_prefix'] = 'MY_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = false;
+$config['composer_autoload'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -241,7 +241,7 @@ $config['allow_get_array'] = true;
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 1;
 
 /*
 |--------------------------------------------------------------------------

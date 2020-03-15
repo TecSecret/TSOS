@@ -1,11 +1,11 @@
 <div class="widget-box">
     <div class="widget-title">
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#tab1"><?= ($this->lang->line('client_dadoscli')) ?></a></li>
-            <li><a data-toggle="tab" href="#tab2"><?= ($this->lang->line('client_vis_os')) ?></a></li>
+            <li class="active"><a data-toggle="tab" href="#tab1">Dados do Cliente</a></li>
+            <li><a data-toggle="tab" href="#tab2">Ordens de Serviço</a></li>
             <div class="buttons">
                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eCliente')) {
-                    echo '<a title="Icon Title" class="btn btn-mini btn-info" href="' . base_url() . '/clientes/editar/' . $result->idClientes . '"><i class="fas fa-edit"></i> <?= ($this->lang->line('client_vis_edit')) ?></a>';
+                    echo '<a title="Icon Title" class="btn btn-mini btn-info" href="' . base_url() . 'index.php/clientes/editar/' . $result->idClientes . '"><i class="fas fa-edit"></i> Editar</a>';
                 } ?>
 
             </div>
@@ -198,10 +198,10 @@
 
                                 echo '<td>';
                                 if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vOs')) {
-                                    echo '<a href="' . base_url() . '/os/visualizar/' . $r->idOs . '" style="margin-right: 1%" class="btn tip-top" title="Ver mais detalhes"><i class="fas fa-eye"></i></a>';
+                                    echo '<a href="' . base_url() . 'index.php/os/visualizar/' . $r->idOs . '" style="margin-right: 1%" class="btn tip-top" title="Ver mais detalhes"><i class="fas fa-eye"></i></a>';
                                 }
                                 if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-                                    echo '<a href="' . base_url() . '/os/editar/' . $r->idOs . '" class="btn btn-info tip-top" title="Editar OS"><i class="fas fa-edit"></i></a>';
+                                    echo '<a href="' . base_url() . 'index.php/os/editar/' . $r->idOs . '" class="btn btn-info tip-top" title="Editar OS"><i class="fas fa-edit"></i></a>';
                                 }
 
                                 echo  '</td>';

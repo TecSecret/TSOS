@@ -184,7 +184,7 @@ class Arquivos extends MY_Controller
 
         if ($id == null || !is_numeric($id)) {
             $this->session->set_flashdata('error', 'Erro! O arquivo não pode ser localizado.');
-            redirect(site_url('arquivos'));
+            redirect(base_url() . 'index.php/arquivos/');
         }
 
         $file = $this->arquivos_model->getById($id);
@@ -204,7 +204,7 @@ class Arquivos extends MY_Controller
         $id = $this->input->post('id');
         if ($id == null || !is_numeric($id)) {
             $this->session->set_flashdata('error', 'Erro! O arquivo não pode ser localizado.');
-            redirect(base_url() . 'arquivos/');
+            redirect(site_url('arquivos'));
         }
 
         $file = $this->arquivos_model->getById($id);
@@ -215,10 +215,9 @@ class Arquivos extends MY_Controller
             unlink($path);
             $this->session->set_flashdata('success', 'Arquivo excluido com sucesso!');
             log_info('Removeu um arquivo. ID: ' . $id);
-            
+
         } else {
             $this->session->set_flashdata('error', 'Ocorreu um erro ao tentar excluir o arquivo.');
-            
         }
         redirect(site_url('arquivos'));
     }

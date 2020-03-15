@@ -1,13 +1,13 @@
 <div class="quick-actions_homepage">
     <ul class="quick-actions">
-        <li class="bg_lo span3"> <a href="<?php echo base_url() ?>mine/os"> <i class="fas fa-diagnoses" style="font-size:36px"></i>
-                <div><?= ($this->lang->line('conecte_panel_os')) ?></div>
+        <li class="bg_lo span3"> <a href="<?php echo base_url() ?>index.php/mine/os"> <i class="fas fa-diagnoses" style="font-size:36px"></i>
+                <div>Ordens de Serviço</div>
             </a></li>
-        <li class="bg_ls span3"> <a href="<?php echo base_url() ?>mine/compras"><i class="fas fa-shopping-cart" style="font-size:36px"></i>
-                <div><?= ($this->lang->line('conecte_panel_compras')) ?></div>
+        <li class="bg_ls span3"> <a href="<?php echo base_url() ?>index.php/mine/compras"><i class="fas fa-shopping-cart" style="font-size:36px"></i>
+                <div>Compras</div>
             </a></li>
-        <li class="bg_lg span3"> <a href="<?php echo base_url() ?>mine/conta"><i class="fas fa-user"  style="font-size:36px"></i>
-                <div><?= ($this->lang->line('conecte_panel_account')) ?></div>
+        <li class="bg_lg span3"> <a href="<?php echo base_url() ?>index.php/mine/conta"><i class="fas fa-user"  style="font-size:36px"></i>
+                <div>Minha Conta</div>
             </a></li>
     </ul>
 </div>
@@ -17,16 +17,16 @@
 
     <div class="widget-box">
         <div class="widget-title"><span class="icon"><i class="fas fa-signal"></i></span>
-            <h5><?= ($this->lang->line('conecte_panel_newos')) ?></h5>
+            <h5>Últimas Ordens de Serviço</h5>
         </div>
         <div class="widget-content">
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th><?= ($this->lang->line('conecte_panel_dtinicial')) ?></th>
-                        <th><?= ($this->lang->line('conecte_panel_dtfim')) ?></th>
-                        <th><?= ($this->lang->line('conecte_panel_garantia')) ?></th>
+                        <th>Data Inicial</th>
+                        <th>Data Final</th>
+                        <th>Garantia</th>
                         <th>Status</th>
                         <th></th>
                     </tr>
@@ -43,11 +43,11 @@
                             echo '<td>' . date('d/m/Y', strtotime($o->dataFinal)) . '</td>';
                             echo '<td>' . $o->garantia . '</td>';
                             echo '<td>' . $o->status . '</td>';
-                            echo '<td> <a href="' . base_url() . 'mine/visualizarOs/' . $o->idOs . '" class="btn"> <i class="fas fa-eye" ></i> </a></td>';
+                            echo '<td> <a href="' . base_url() . 'index.php/mine/visualizarOs/' . $o->idOs . '" class="btn"> <i class="fas fa-eye" ></i> </a></td>';
                             echo '</tr>';
                         }
                     } else {
-                        echo '<tr><td colspan="3"><?= ($this->lang->line('conecte_panel_osnone')) ?></td></tr>';
+                        echo '<tr><td colspan="3">Nenhum ordem de serviço encontrada.</td></tr>';
                     }
 
                     ?>
@@ -58,7 +58,7 @@
 
     <div class="widget-box">
         <div class="widget-title"><span class="icon"><i class="fas fa-signal"></i></span>
-            <h5><?= ($this->lang->line('conecte_panel_newcompras')) ?></h5>
+            <h5>Últimas Compras</h5>
         </div>
         <div class="widget-content">
             <table class="table table-bordered">
@@ -85,7 +85,7 @@
                             echo '<td>' . date('d/m/Y', strtotime($p->dataVenda)) . '</td>';
                             echo '<td>' . $p->nome . '</td>';
                             echo '<td>' . $faturado . '</td>';
-                            echo '<td> <a href="' . base_url() . 'mine/visualizarCompra/' . $p->idVendas . '" class="btn"> <i class="fas fa-eye" ></i> </a></td>';
+                            echo '<td> <a href="' . base_url() . 'index.php/mine/visualizarCompra/' . $p->idVendas . '" class="btn"> <i class="fas fa-eye" ></i> </a></td>';
                             echo '</tr>';
                         }
                     } else {

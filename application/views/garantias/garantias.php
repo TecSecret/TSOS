@@ -1,5 +1,5 @@
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aGarantia')) { ?>
-    <a href="<?php echo base_url(); ?>/garantias/adicionar" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar Termo Garantia</a>
+    <a href="<?php echo base_url(); ?>index.php/garantias/adicionar" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar Termo Garantia</a>
 <?php } ?>
 
 <div class="widget-box">
@@ -37,14 +37,14 @@
                         echo '<td>' . $dataGarantia . '</td>';
                         echo '<td>' . $r->refGarantia . '</td>';
                         echo '<td>' . $textoGarantiaShort . '</td>';
-                        echo '<td><a href="' . base_url() . '/usuarios/editar/' . $r->idUsuarios . '">' . $r->nome . '</a></td>';
+                        echo '<td><a href="' . base_url() . 'index.php/usuarios/editar/' . $r->idUsuarios . '">' . $r->nome . '</a></td>';
                         echo '<td>';
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vGarantia')) {
-                            echo '<a style="margin-right: 1%" href="' . base_url() . '/garantias/visualizar/' . $r->idGarantias . '" class="btn tip-top" title="Ver mais detalhes"><i class="fas fa-eye"></i></a>';
-                            echo '<a style="margin-right: 1%" href="' . base_url() . '/garantias/imprimir/' . $r->idGarantias . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir"><i class="fas fa-print"></i></a>';
+                            echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/garantias/visualizar/' . $r->idGarantias . '" class="btn tip-top" title="Ver mais detalhes"><i class="fas fa-eye"></i></a>';
+                            echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/garantias/imprimir/' . $r->idGarantias . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir"><i class="fas fa-print"></i></a>';
                         }
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eGarantia')) {
-                            echo '<a style="margin-right: 1%" href="' . base_url() . '/garantias/editar/' . $r->idGarantias . '" class="btn btn-info tip-top" title="Editar"><i class="fas fa-edit"></i></a>';
+                            echo '<a style="margin-right: 1%" href="' . base_url() . 'index.php/garantias/editar/' . $r->idGarantias . '" class="btn btn-info tip-top" title="Editar"><i class="fas fa-edit"></i></a>';
                         }
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dGarantia')) {
                             echo '<a href="#modal-excluir" role="button" data-toggle="modal" garantia="' . $r->idGarantias . '" class="btn btn-danger tip-top" title="Excluir"><i class="fas fa-trash-alt"></i></a>';
@@ -62,7 +62,7 @@
 
 <!-- Modal -->
 <div id="modal-excluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <form action="<?php echo base_url() ?>/garantias/excluir" method="post">
+    <form action="<?php echo base_url() ?>index.php/garantias/excluir" method="post">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h5 id="myModalLabel">Excluir Termo de Garantia</h5>

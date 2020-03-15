@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title><?= ($this->lang->line('relat_systemname')) ?> - <?= $title ?>
+    <title>TSOS - <?= $title ?>
     </title>
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

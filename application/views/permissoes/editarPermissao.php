@@ -1,6 +1,6 @@
 <?php $permissoes = unserialize($result->permissoes);?>
 <div class="span12" style="margin-left: 0">
-    <form action="<?php echo base_url();?>permissoes/editar" id="formPermissao" method="post">
+    <form action="<?php echo base_url();?>index.php/permissoes/editar" id="formPermissao" method="post">
 
     <div class="span12" style="margin-left: 0">
         
@@ -402,6 +402,56 @@
 
                                     <td>
                                         <label>
+                                            <input <?php if (isset($permissoes['vPagamento'])) {
+                                                if ($permissoes['vPagamento'] == '1') {
+                                                    echo 'checked';
+                                                }
+}?> name="vPagamento" class="marcar" type="checkbox" value="1" />
+                                            <span class="lbl"> Visualizar Pagamento</span>
+                                        </label>
+                                    </td>
+
+                                    <td>
+                                        <label>
+                                            <input <?php if (isset($permissoes['aPagamento'])) {
+                                                if ($permissoes['aPagamento'] == '1') {
+                                                    echo 'checked';
+                                                }
+}?> name="aPagamento" class="marcar" type="checkbox" value="1" />
+                                            <span class="lbl"> Adicionar Pagamento</span>
+                                        </label>
+                                    </td>
+
+                                    <td>
+                                        <label>
+                                            <input <?php if (isset($permissoes['ePagamento'])) {
+                                                if ($permissoes['ePagamento'] == '1') {
+                                                    echo 'checked';
+                                                }
+}?> name="ePagamento" class="marcar" type="checkbox" value="1" />
+                                            <span class="lbl"> Editar Pagamento</span>
+                                        </label>
+                                    </td>
+
+                                    <td>
+                                        <label>
+                                            <input <?php if (isset($permissoes['dPagamento'])) {
+                                                if ($permissoes['dPagamento'] == '1') {
+                                                    echo 'checked';
+                                                }
+}?> name="dPagamento" class="marcar" type="checkbox" value="1" />
+                                            <span class="lbl"> Excluir Pagamento</span>
+                                        </label>
+                                    </td>
+                                 
+                                </tr>
+
+                                <tr><td colspan="4"></td></tr>
+
+                                <tr>
+
+                                    <td>
+                                        <label>
                                             <input <?php if (isset($permissoes['vLancamento'])) {
                                                 if ($permissoes['vLancamento'] == '1') {
                                                     echo 'checked';
@@ -601,7 +651,7 @@
                 <div class="span12">
                     <div class="span6 offset3">
                         <button type="submit" class="btn btn-primary"><i class="fas fa-sync-alt"></i> Atualizar</button>
-                        <a href="<?php echo base_url() ?>permissoes" id="" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                        <a href="<?php echo base_url() ?>index.php/permissoes" id="" class="btn"><i class="fas fa-backward"></i> Voltar</a>
                     </div>
                 </div>
             </div>

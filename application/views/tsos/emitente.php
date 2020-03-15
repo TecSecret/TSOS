@@ -23,7 +23,7 @@
         <form action="<?= site_url('tsos/cadastrarEmitente'); ?>" id="formCadastrar" enctype="multipart/form-data" method="post" class="form-horizontal">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabel">TSOS - <?= ($this->lang->line('tsos_emitter_cad_data_emitter')) ?></h3>
+                <h3 id="myModalLabel">TSOS - Cadastrar Dados do Emitente</h3>
             </div>
             <div class="modal-body">
 
@@ -146,7 +146,7 @@
         <form action="<?= site_url('tsos/editarEmitente'); ?>" id="formAlterar" enctype="multipart/form-data" method="post" class="form-horizontal">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="">TSOS - <?= ($this->lang->line('tsos_emitter_cad_data_edit')) ?></h3>
+                <h3 id="">TSOS - Editar Dados do Emitente</h3>
             </div>
             <div class="modal-body">
 

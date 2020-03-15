@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-  <title><?= $configuration['app_name'] ?: 'Map-OS' ?></title>
+  <title><?= $configuration['app_name'] ?: 'TSOS' ?></title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="<?= base_url(); ?>assets/img/favicon.png"/>
@@ -61,7 +61,7 @@
   <!--top-Header-menu-->
   <div id="user-nav" class="navbar navbar-inverse">
     <ul class="nav">
-      <li class=""><a title="" href="<?= site_url(); ?>mine" target="_blank"><i class="fas fa-eye"></i> <span class="text">Área do Cliente</span></a></li>
+      <li class=""><a title="" href="<?= site_url(); ?>/mine"><i class="fas fa-eye"></i> <span class="text">Área do Cliente</span></a></li>
       <li class="pull-right"><a href="https://tecsecret.com.br/sistemas/tsos" target="_blank"><i class="fas fa-asterisk"></i> <span class="text">Versão:
             <?= $this->config->item('app_version'); ?></span></a></li>
       <li class="dropdown">
@@ -72,15 +72,13 @@
           <li class=""><a title="Sair do Sistema" href="<?= site_url('login/sair'); ?>"><i class="fas fa-sign-out-alt"></i> <span class="text">Sair do Sistema</span></a></li>
         </ul>
       </li>
-
     </ul>
   </div>
-<!--start-top-serch-->
-<div id="search">
-<form action="<?php echo base_url() ?>tsos/pesquisar">
-<input type="text" name="termo" placeholder="Pesquisar..." />
-<button type="submit" class="tip-bottom" title="Pesquisar"><i class="fas
-fa-search fa-white"></i></button>
-</form>
-</div>
-<!--close-top-serch-->
+  <!--start-top-serch-->
+  <div id="search">
+    <form action="<?= site_url('tsos/pesquisar') ?>">
+      <input type="text" name="termo" placeholder="Pesquisar..." />
+      <button type="submit" class="tip-bottom" title="Pesquisar"><i class="fas fa-search fa-white"></i></button>
+    </form>
+  </div>
+  <!--close-top-serch-->

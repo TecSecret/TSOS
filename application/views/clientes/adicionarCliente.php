@@ -9,7 +9,7 @@
                 <span class="icon">
                     <i class="fas fa-user"></i>
                 </span>
-                <h5><?= ($this->lang->line('client_add2')) ?></h5>
+                <h5>Cadastro de Cliente</h5>
             </div>
             <div class="widget-content nopadding">
                 <?php if ($custom_error != '') {
@@ -17,13 +17,13 @@
                 } ?>
                 <form action="<?php echo current_url(); ?>" id="formCliente" method="post" class="form-horizontal">
                     <div class="control-group">
-                        <label for="nomeCliente" class="control-label"><?= ($this->lang->line('cli_add_nome')) ?><span class="required">*</span></label>
+                        <label for="nomeCliente" class="control-label">Nome<span class="required">*</span></label>
                         <div class="controls">
                             <input id="nomeCliente" type="text" name="nomeCliente" value="<?php echo set_value('nomeCliente'); ?>" />
                         </div>
                     </div>
                     <div class="control-group">
-                        <label for="documento" class="control-label"><?= ($this->lang->line('cli_add_cpfcnpj')) ?><span class="required">*</span></label>
+                        <label for="documento" class="control-label">CPF/CNPJ<span class="required">*</span></label>
                         <div class="controls">
                             <input class="cpfcnpj" type="text" name="documento" value="<?php echo set_value('documento'); ?>"  />
                         </div>
@@ -97,7 +97,7 @@
                         <div class="span12">
                             <div class="span6 offset3">
                                 <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar</button>
-                                <a href="<?php echo base_url() ?>/clientes" id="" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                                <a href="<?php echo base_url() ?>index.php/clientes" id="" class="btn"><i class="fas fa-backward"></i> Voltar</a>
                             </div>
                         </div>
                     </div>

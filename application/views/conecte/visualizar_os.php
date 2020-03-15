@@ -167,12 +167,12 @@ $totalProdutos = 0; ?>
                                     <?php
                                         setlocale(LC_MONETARY, 'en_US');
                                         foreach ($servicos as $s) {
-                                            $subTotal = $s->subTotal;
-                                            $totalServico = $totalServico + $subTotal;
+                                            $preco = $s->preco;
+                                            $totalServico = $totalServico + $preco;
                                             echo '<tr>';
                                             echo '<td style="text-align: center">' . $s->nome . '</td>';
-                                             echo '<td style="text-align: center">' . $s->quantidade . '</td>';
-                                            echo '<td style="text-align: center">R$ ' . number_format($s->subTotal, 2, ',', '.') . '</td>';
+                                            echo '<td></td>';
+                                            echo '<td style="text-align: center">R$ ' . number_format($s->preco, 2, ',', '.') . '</td>';
                                             echo '</tr>';
                                         }
                                         ?>
@@ -221,7 +221,7 @@ $totalProdutos = 0; ?>
             }
 
 
-            mywindow.document.write('<html><head><title>TSOS</title>');
+            mywindow.document.write('<html><head><title>Map Os</title>');
             mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url(); ?>assets/css/bootstrap.min.css' />");
             mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url(); ?>assets/css/bootstrap-responsive.min.css' />");
             mywindow.document.write("<link rel='stylesheet' href='<?php echo base_url(); ?>assets/css/matrix-style.css' />");

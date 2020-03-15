@@ -61,7 +61,6 @@
                                                 <option value="Em Andamento">Em Andamento</option>
                                                 <option value="Finalizado">Finalizado</option>
                                                 <option value="Cancelado">Cancelado</option>
-                                                <option value="Entregue">Entregue</option>
                                                 <option value="Aguardando Peças">Aguardando Peças</option>
                                             </select>
                                         </div>
@@ -75,14 +74,7 @@
                                         </div>
                                         <div class="span3">
                                             <label for="garantia">Garantia</label>
-                                            <select id="garantia" name="garantia">
-												<option value="0" <?= ($result->garantia == 0) ? 'selected' : '' ?>>Sem garantia</option>
-                                                <option value="30" <?= ($result->garantia == 30) ? 'selected' : '' ?>>30 dias</option>
-                                                <option value="60" <?= ($result->garantia == 60) ? 'selected' : '' ?>>60 dias</option>
-                                                <option value="90" <?= ($result->garantia == 90) ? 'selected' : '' ?>>90 dias</option>
-                                                <option value="180" <?= ($result->garantia == 180) ? 'selected' : '' ?>>6 meses</option>
-                                                <option value="360" <?= ($result->garantia == 360) ? 'selected' : '' ?>>1 ano</option>
-                                            </select> 
+                                            <input id="garantia" type="text" class="span12" name="garantia" value="" />
 
                                             <label for="termoGarantia">Termo Garantia</label>
                                             <input id="termoGarantia" class="span12" type="text" name="termoGarantia" value="" />
@@ -116,7 +108,7 @@
                                     <div class="span12" style="padding: 1%; margin-left: 0">
                                         <div class="span6 offset3" style="text-align: center">
                                             <button class="btn btn-success" id="btnContinuar"><i class="fas fa-plus"></i> Continuar</button>
-                                            <a href="<?php echo base_url() ?>/os" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                                            <a href="<?php echo base_url() ?>index.php/os" class="btn"><i class="fas fa-backward"></i> Voltar</a>
                                         </div>
                                     </div>
                                 </form>
@@ -132,21 +124,21 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $("#cliente").autocomplete({
-            source: "<?php echo base_url(); ?>/os/autoCompleteCliente",
+            source: "<?php echo base_url(); ?>index.php/os/autoCompleteCliente",
             minLength: 1,
             select: function(event, ui) {
                 $("#clientes_id").val(ui.item.id);
             }
         });
         $("#tecnico").autocomplete({
-            source: "<?php echo base_url(); ?>/os/autoCompleteUsuario",
+            source: "<?php echo base_url(); ?>index.php/os/autoCompleteUsuario",
             minLength: 1,
             select: function(event, ui) {
                 $("#usuarios_id").val(ui.item.id);
             }
         });
         $("#termoGarantia").autocomplete({
-            source: "<?php echo base_url(); ?>/os/autoCompleteTermoGarantia",
+            source: "<?php echo base_url(); ?>index.php/os/autoCompleteTermoGarantia",
             minLength: 1,
             select: function(event, ui) {
                 $("#garantias_id").val(ui.item.id);

@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <title><?php echo $this->config->item('app_name') ?> - Área do Cliente</title>
+    <title>Área do Cliente - <?php echo $this->config->item('app_name') ?></title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="<?php echo $this->config->item('app_name') . ' - ' . $this->config->item('app_subname') ?>">
@@ -29,8 +29,8 @@
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
     <ul class="nav">
-        <li class=""><a title="" href="<?php echo base_url() ?>mine/conta"><i class="icon fas fa-user"></i> <span class="text"> Minha Conta</span></a></li>
-        <li class=""><a title="" href="<?php echo base_url() ?>mine/sair"><i class="icon fas fa-sign-out-alt"></i> <span class="text"> Sair</span></a></li>
+        <li class=""><a title="" href="<?php echo base_url() ?>index.php/mine/conta"><i class="icon fas fa-user"></i> <span class="text"> Minha Conta</span></a></li>
+        <li class=""><a title="" href="<?php echo base_url() ?>index.php/mine/sair"><i class="icon fas fa-sign-out-alt"></i> <span class="text"> Sair</span></a></li>
     </ul>
 </div>
 
@@ -39,17 +39,17 @@
     <ul>
         <li class="<?php if (isset($menuPainel)) {
             echo 'active';
-        }; ?>"><a href="<?php echo base_url() ?>mine/painel"><i class="icon fas fa-home"></i> <span>Painel</span></a></li>
+        }; ?>"><a href="<?php echo base_url() ?>index.php/mine/painel"><i class="icon fas fa-home"></i> <span>Painel</span></a></li>
         <li class="<?php if (isset($menuConta)) {
             echo 'active';
-        }; ?>"><a href="<?php echo base_url() ?>mine/conta"><i class="icon fas fa-user"></i> <span>Minha Conta</span></a></li>
+        }; ?>"><a href="<?php echo base_url() ?>index.php/mine/conta"><i class="icon fas fa-user"></i> <span>Minha Conta</span></a></li>
         <li class="<?php if (isset($menuOs)) {
             echo 'active';
-        }; ?>"><a href="<?php echo base_url() ?>mine/os"><i class="icon fas fa-diagnoses"></i> <span>Ordens de Serviço</span></a></li>
+        }; ?>"><a href="<?php echo base_url() ?>index.php/mine/os"><i class="icon fas fa-diagnoses"></i> <span>Ordens de Serviço</span></a></li>
         <li class="<?php if (isset($menuVendas)) {
             echo 'active';
-        }; ?>"><a href="<?php echo base_url() ?>mine/compras"><i class="icon fas fa-shopping-cart"></i> <span>Compras</span></a></li>
-        <li class=""><a href="<?php echo base_url() ?>mine/sair"><i class="icon fas fa-sign-out-alt"></i> <span>Sair</span></a></li>
+        }; ?>"><a href="<?php echo base_url() ?>index.php/mine/compras"><i class="icon fas fa-shopping-cart"></i> <span>Compras</span></a></li>
+        <li class=""><a href="<?php echo base_url() ?>index.php/mine/sair"><i class="icon fas fa-sign-out-alt"></i> <span>Sair</span></a></li>
 
     </ul>
 </div>
@@ -57,7 +57,7 @@
 
 <div id="content">
     <div id="content-header">
-        <div id="breadcrumb"><a href="<?php echo base_url(); ?>mine/painel" title="Painel" class="tip-bottom"><i class="fas fa-home"></i> Painel</a></div>
+        <div id="breadcrumb"><a href="<?php echo base_url(); ?>index.php/mine/painel" title="Painel" class="tip-bottom"><i class="fas fa-home"></i> Painel</a></div>
     </div>
 
     <div class="container-fluid">
