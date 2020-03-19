@@ -5,7 +5,7 @@
     <form method="get" action="<?= current_url(); ?>">
         <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aArquivo')) : ?>
             <div class="span3">
-                <a href="<?= base_url(); ?>index.php/arquivos/adicionar" class="btn btn-success span12">
+                <a href="<?= base_url(); ?>arquivos/adicionar" class="btn btn-success span12">
                     <i class="fas fa-plus"></i>
                     Adicionar Arquivo
                 </a>
@@ -69,13 +69,13 @@
                                 <?php endif ?>
 
                                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vArquivo')) : ?>
-                                    <a href="<?= base_url() ?>index.php/arquivos/download/<?= $r->idDocumentos; ?>" class="btn tip-top" style="margin-right: 1%" title="Download">
+                                    <a href="<?= base_url() ?>arquivos/download/<?= $r->idDocumentos; ?>" class="btn tip-top" style="margin-right: 1%" title="Download">
                                         <i class="fas fa-download"></i>
                                     </a>
                                 <?php endif ?>
 
                                 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eArquivo')) : ?>
-                                    <a href="<?= base_url() ?>index.php/arquivos/editar/<?= $r->idDocumentos ?>" class="btn btn-info tip-top" style="margin-right: 1%" title="Editar">
+                                    <a href="<?= base_url() ?>arquivos/editar/<?= $r->idDocumentos ?>" class="btn btn-info tip-top" style="margin-right: 1%" title="Editar">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 <?php endif ?>
@@ -97,7 +97,7 @@
 <?= $this->pagination->create_links() ?>
 
 <div id="modal-excluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <form action="<?= base_url() ?>index.php/arquivos/excluir" method="post">
+    <form action="<?= base_url() ?>arquivos/excluir" method="post">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h5 id="myModalLabel">Excluir Arquivo</h5>

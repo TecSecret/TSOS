@@ -57,7 +57,7 @@
                     <div class="span12" style="padding: 1%; margin-left: 0">
                         <div class="span6 offset5">
                             <button type="submit" class="btn btn-primary"><i class="fas fa-sync-alt"></i> Atualizar</button>
-                            <a href="<?php echo base_url() ?>index.php/pagamentos" id="" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                            <a href="<?php echo base_url() ?>/pagamentos" id="" class="btn"><i class="fas fa-backward"></i> Voltar</a>
                         </div>
                     </div>
                 </form>

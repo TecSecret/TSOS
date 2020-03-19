@@ -123,12 +123,12 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "<?php echo base_url(); ?>index.php/mine/login?ajax=true",
+                        url: "<?php echo base_url(); ?>mine/login?ajax=true",
                         data: dados,
                         dataType: 'json',
                         success: function(data) {
                             if (data.result == true) {
-                                window.location.href = "<?php echo base_url(); ?>index.php/mine/painel";
+                                window.location.href = "<?php echo base_url(); ?>mine/painel";
                             } else {
                                 $("#notification").modal();
                             }

@@ -176,7 +176,7 @@ $periodo = $this->input->get('periodo');
 
 <!-- Modal nova receita -->
 <div id="modalReceita" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <form id="formReceita" action="<?php echo base_url() ?>index.php/financeiro/adicionarReceita" method="post">
+  <form id="formReceita" action="<?php echo base_url() ?>financeiro/adicionarReceita" method="post">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       <h3 id="myModalLabel">TSOS - Adicionar Receita</h3>
@@ -244,7 +244,7 @@ $periodo = $this->input->get('periodo');
 
 <!-- Modal nova despesa -->
 <div id="modalDespesa" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <form id="formDespesa" action="<?php echo base_url() ?>index.php/financeiro/adicionarDespesa" method="post">
+  <form id="formDespesa" action="<?php echo base_url() ?>financeiro/adicionarDespesa" method="post">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       <h3 id="myModalLabel">TSOS - Adicionar Despesa</h3>
@@ -314,7 +314,7 @@ $periodo = $this->input->get('periodo');
 
 <!-- Modal editar lançamento -->
 <div id="modalEditar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <form id="formEditar" action="<?php echo base_url() ?>index.php/financeiro/editar" method="post">
+  <form id="formEditar" action="<?php echo base_url() ?>financeiro/editar" method="post">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       <h3 id="myModalLabel">TSOS - Editar Lançamento</h3>
@@ -548,7 +548,7 @@ $periodo = $this->input->get('periodo');
 
       $.ajax({
         type: "POST",
-        url: "<?php echo base_url(); ?>index.php/financeiro/excluirLancamento",
+        url: "<?php echo base_url(); ?>financeiro/excluirLancamento",
         data: "id=" + id,
         dataType: 'json',
         success: function(data) {

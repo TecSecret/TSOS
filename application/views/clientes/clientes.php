@@ -1,5 +1,5 @@
 <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'aCliente')) { ?>
-    <a href="<?php echo base_url(); ?>index.php/clientes/adicionar" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar Cliente</a>
+    <a href="<?php echo base_url(); ?>clientes/adicionar" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar Cliente</a>
 <?php } ?>
 
 <div class="widget-box">
@@ -39,10 +39,10 @@
                         echo '<td>' . $r->email . '</td>';
                         echo '<td>';
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'vCliente')) {
-                            echo '<a href="' . base_url() . 'index.php/clientes/visualizar/' . $r->idClientes . '" style="margin-right: 1%" class="btn tip-top" title="Ver mais detalhes"><i class="fas fa-eye"></i></a>';
+                            echo '<a href="' . base_url() . 'clientes/visualizar/' . $r->idClientes . '" style="margin-right: 1%" class="btn tip-top" title="Ver mais detalhes"><i class="fas fa-eye"></i></a>';
                         }
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eCliente')) {
-                            echo '<a href="' . base_url() . 'index.php/clientes/editar/' . $r->idClientes . '" style="margin-right: 1%" class="btn btn-info tip-top" title="Editar Cliente"><i class="fas fa-edit"></i></a>';
+                            echo '<a href="' . base_url() . 'clientes/editar/' . $r->idClientes . '" style="margin-right: 1%" class="btn btn-info tip-top" title="Editar Cliente"><i class="fas fa-edit"></i></a>';
                         }
                         if ($this->permission->checkPermission($this->session->userdata('permissao'), 'dCliente')) {
                             echo '<a href="#modal-excluir" role="button" data-toggle="modal" cliente="' . $r->idClientes . '" style="margin-right: 1%" class="btn btn-danger tip-top" title="Excluir Cliente"><i class="fas fa-trash-alt"></i></a>';
@@ -60,7 +60,7 @@
 
 <!-- Modal -->
 <div id="modal-excluir" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <form action="<?php echo base_url() ?>index.php/clientes/excluir" method="post">
+    <form action="<?php echo base_url() ?>clientes/excluir" method="post">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h5 id="myModalLabel">Excluir Cliente</h5>

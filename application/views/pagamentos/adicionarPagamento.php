@@ -53,7 +53,7 @@
                     <div class="span12" style="padding: 1%; margin-left: 0">
                         <div class="span6 offset3" style="text-align: center">
                             <button class="btn btn-success" id="btnContinuar"><i class="fas fa-plus"></i> Adicionar</button>
-                            <a href="<?php echo base_url() ?>index.php/pagamentos" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                            <a href="<?php echo base_url() ?>/pagamentos" class="btn"><i class="fas fa-backward"></i> Voltar</a>
                         </div>
                     </div>
                 </form>

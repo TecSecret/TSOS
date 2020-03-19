@@ -11,7 +11,7 @@ $totalProdutos = 0; ?>
                 <h5>Ordem de Serviço</h5>
                 <div class="buttons">
                     <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'eOs')) {
-                        echo '<a title="Editar OS" class="btn btn-mini btn-info" href="' . base_url() . 'index.php/os/editar/' . $result->idOs . '"><i class="fas fa-edit"></i> Editar</a>';
+                        echo '<a title="Editar OS" class="btn btn-mini btn-info" href="' . base_url() . 'os/editar/' . $result->idOs . '"><i class="fas fa-edit"></i> Editar</a>';
                     } ?>
 
                     <a target="_blank" title="Imprimir OS" class="btn btn-mini btn-inverse" href="<?php echo site_url() ?>/os/imprimir/<?php echo $result->idOs; ?>"><i class="fas fa-print"></i> Imprimir A4</a>
@@ -34,7 +34,7 @@ $totalProdutos = 0; ?>
                                 <?php if ($emitente == null) { ?>
 
                                     <tr>
-                                        <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?php echo base_url(); ?>index.php/tsos/emitente">Configurar</a>
+                                        <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?php echo base_url(); ?>tsos/emitente">Configurar</a>
                                             <<<</td> </tr> <?php } else { ?> <tr>
                                         <td style="width: 25%"><img src=" <?php echo $emitente[0]->url_logo; ?> " style="max-height: 100px"></td>
                                         <td> <span style="font-size: 20px; "> <?php echo $emitente[0]->nome; ?></span> </br><span><?php echo $emitente[0]->cnpj; ?> </br> <?php echo $emitente[0]->rua . ', ' . $emitente[0]->numero . ' - ' . $emitente[0]->bairro . ' - ' . $emitente[0]->cidade . ' - ' . $emitente[0]->uf; ?> </span> </br> <span> E-mail: <?php echo $emitente[0]->email . ' - Fone: ' . $emitente[0]->telefone; ?></span></td>

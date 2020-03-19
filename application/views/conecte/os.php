@@ -3,7 +3,7 @@
 if (!$this->session->userdata('cadastra_os')) { ?>
     <div class="span12" style="margin-left: 0">
         <div class="span3">
-            <a href="<?php echo base_url(); ?>index.php/mine/adicionarOs" class="btn btn-success span12"><i class="fas fa-plus"></i> Adicionar OS</a>
+            <a href="<?php echo base_url(); ?>mine/adicionarOs" class="btn btn-success span12"><i class="fas fa-plus"></i> Adicionar OS</a>
         </div>
     </div>
 <?php
@@ -99,9 +99,9 @@ if (!$results) {
                                 echo '<td>' . $status . '</td>';
 
 
-                                echo '<td><a href="' . base_url() . 'index.php/mine/visualizarOs/' . $r->idOs . '" class="btn tip-top" title="Visualizar e Imprimir"><i class="fas fa-eye"></i></a>
-                                  <a href="' . base_url() . 'index.php/mine/imprimirOs/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir"><i class="fas fa-print"></i></a>
-                                  <a href="' . base_url() . 'index.php/mine/detalhesOs/' . $r->idOs . '" class="btn btn-info tip-top" title="Ver mais detalhes"><i class="fas fa-bars"></i></a>  
+                                echo '<td><a href="' . base_url() . 'mine/visualizarOs/' . $r->idOs . '" class="btn tip-top" title="Visualizar e Imprimir"><i class="fas fa-eye"></i></a>
+                                  <a href="' . base_url() . 'mine/imprimirOs/' . $r->idOs . '" target="_blank" class="btn btn-inverse tip-top" title="Imprimir"><i class="fas fa-print"></i></a>
+                                  <a href="' . base_url() . 'mine/detalhesOs/' . $r->idOs . '" class="btn btn-info tip-top" title="Ver mais detalhes"><i class="fas fa-bars"></i></a>  
                               </td>';
                                 echo '</tr>';
                             } ?>

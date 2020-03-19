@@ -4,7 +4,7 @@ $totalProdutos = 0; ?>
 <html lang="pt-br">
 
 <head>
-    <title>Map OS</title>
+    <title><?= $configuration['app_name'] ?: 'TSOS' ?></title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" />
@@ -35,7 +35,7 @@ $totalProdutos = 0; ?>
                                 <?php if ($emitente == null) { ?>
 
                                     <tr>
-                                        <td colspan="4" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?php echo base_url(); ?>index.php/tsos/emitente">Configurar</a>
+                                        <td colspan="4" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?php echo base_url(); ?>tsos/emitente">Configurar</a>
                                             <<<</td> </tr> <?php } else { ?> <tr>
                                         
                                         <td colspan="4" style="text-align: center"> <span style="font-size: 20px; "> 

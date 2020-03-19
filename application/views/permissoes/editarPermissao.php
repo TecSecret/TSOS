@@ -1,6 +1,6 @@
 <?php $permissoes = unserialize($result->permissoes);?>
 <div class="span12" style="margin-left: 0">
-    <form action="<?php echo base_url();?>index.php/permissoes/editar" id="formPermissao" method="post">
+    <form action="<?php echo base_url();?>permissoes/editar" id="formPermissao" method="post">
 
     <div class="span12" style="margin-left: 0">
         
@@ -651,7 +651,7 @@
                 <div class="span12">
                     <div class="span6 offset3">
                         <button type="submit" class="btn btn-primary"><i class="fas fa-sync-alt"></i> Atualizar</button>
-                        <a href="<?php echo base_url() ?>index.php/permissoes" id="" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                        <a href="<?php echo base_url() ?>/permissoes" id="" class="btn"><i class="fas fa-backward"></i> Voltar</a>
                     </div>
                 </div>
             </div>

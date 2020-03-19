@@ -114,7 +114,7 @@
                         <div class="span12">
                             <div class="span6 offset3">
                                 <button type="submit" class="btn btn-success btn-large"><i class="fas fa-plus"></i> Cadastrar</button>
-                                <a href="<?php echo base_url() ?>index.php/mine" id="" class="btn btn-large"><i class="fas fa-lock"></i> Acessar</a>
+                                <a href="<?php echo base_url() ?>/mine" id="" class="btn btn-large"><i class="fas fa-lock"></i> Acessar</a>
                             </div>
                         </div>
                     </div>

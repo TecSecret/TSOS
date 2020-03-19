@@ -1,4 +1,4 @@
-<a href="<?php echo base_url() ?>index.php/usuarios/adicionar" class="btn btn-success"><i class="fas fa-user-plus"></i> Adicionar Usuário</a>
+<a href="<?php echo base_url() ?>usuarios/adicionar" class="btn btn-success"><i class="fas fa-user-plus"></i> Adicionar Usuário</a>
 
 <div class="widget-box">
     <div class="widget-title">
@@ -38,7 +38,7 @@
                         echo '<td>' . $r->permissao . '</td>';
                         echo '<td>' . $r->dataExpiracao . '</td>';
                         echo '<td>
-                                <a href="' . base_url() . 'index.php/usuarios/editar/' . $r->idUsuarios . '" class="btn btn-info tip-top" title="Editar Usuário"><i class="fas fa-edit"></i></a>
+                                <a href="' . base_url() . 'usuarios/editar/' . $r->idUsuarios . '" class="btn btn-info tip-top" title="Editar Usuário"><i class="fas fa-edit"></i></a>
                                 </td>';
                         echo '</tr>';
                     } ?>

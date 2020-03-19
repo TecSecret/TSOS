@@ -32,7 +32,7 @@
                             <tbody>
                                 <?php if ($emitente == null) { ?>
                                     <tr>
-                                        <td colspan="4" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?php echo base_url(); ?>index.php/tsos/emitente">Configurar</a>
+                                        <td colspan="4" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?php echo base_url(); ?>tsos/emitente">Configurar</a>
                                             <<<</td> </tr> <?php
                                                             } else { ?> <tr>
                                         <td colspan="4" style="text-align: center;"> <span style="font-size: 20px;">

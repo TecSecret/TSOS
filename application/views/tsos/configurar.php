@@ -79,7 +79,7 @@
 <script>
     $('#update-database').click(function () {
         if (confirm('Confirma a atualização do banco de dados?')) {
-            window.location = "<?= site_url('mapos/atualizarBanco') ?>"
+            window.location = "<?= site_url('tsos/atualizarBanco') ?>"
         }
     })
 </script>

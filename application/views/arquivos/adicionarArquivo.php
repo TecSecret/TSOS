@@ -47,7 +47,7 @@
                         <div class="span12">
                             <div class="span6 offset3">
                                 <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar</button>
-                                <a href="<?= base_url() ?>index.php/arquivos" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                                <a href="<?= base_url() ?>arquivos" class="btn"><i class="fas fa-backward"></i> Voltar</a>
                             </div>
                         </div>
                     </div>

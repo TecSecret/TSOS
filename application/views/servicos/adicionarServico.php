@@ -32,7 +32,7 @@
                         <div class="span12">
                             <div class="span6 offset3">
                                 <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Adicionar</button>
-                                <a href="<?php echo base_url() ?>index.php/servicos" id="btnAdicionar" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                                <a href="<?php echo base_url() ?>/servicos" id="btnAdicionar" class="btn"><i class="fas fa-backward"></i> Voltar</a>
                             </div>
                         </div>
                     </div>

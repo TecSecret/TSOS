@@ -9,7 +9,7 @@
                 <h5>Credencial de Pagamento</h5>
                 <div class="buttons">
                     <?php if ($this->permission->checkPermission($this->session->userdata('permissao'), 'ePagamento')) {
-                        echo '<a title="Editar Credencial de Pagamento" class="btn btn-mini btn-info" href="' . base_url() . 'index.php/pagamentos/editar/' . $pagamento->idPag . '"><i class="fas fa-edit"></i> Editar</a>';
+                        echo '<a title="Editar Credencial de Pagamento" class="btn btn-mini btn-info" href="' . base_url() . 'pagamentos/editar/' . $pagamento->idPag . '"><i class="fas fa-edit"></i> Editar</a>';
                     } ?>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                             <tbody>
                                 <?php if ($emitente == null) { ?>
                                     <tr>
-                                        <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?php echo base_url(); ?>index.php/tsos/emitente">Configurar</a>
+                                        <td colspan="3" class="alert">Você precisa configurar os dados do emitente. >>><a href="<?php echo base_url(); ?>tsos/emitente">Configurar</a>
                                             <<<</td> </tr> <?php
                                                             } else { ?> <tr>
                                         <td style="width: 25%"><img src=" <?php echo $emitente[0]->url_logo; ?> "></td>

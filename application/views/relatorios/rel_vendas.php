@@ -9,7 +9,7 @@
             </div>
             <div class="widget-content">
                 <ul class="site-stats">
-                    <li><a target="_blank" href="<?php echo base_url() ?>index.php/relatorios/vendasRapid"><i class="fas fa-cash-register"></i> <small>Todas as Vendas</small></a></li>
+                    <li><a target="_blank" href="<?php echo base_url() ?>relatorios/vendasRapid"><i class="fas fa-cash-register"></i> <small>Todas as Vendas</small></a></li>
                 </ul>
             </div>
         </div>
@@ -24,7 +24,7 @@
             </div>
             <div class="widget-content">
                 <div class="span12 well">
-                    <form target="_blank" action="<?php echo base_url() ?>index.php/relatorios/vendasCustom" method="get">
+                    <form target="_blank" action="<?php echo base_url() ?>relatorios/vendasCustom" method="get">
                         <div class="span12 well">
                             <div class="span6">
                                 <label for="">Data de:</label>
