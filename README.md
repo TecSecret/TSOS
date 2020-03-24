@@ -1,9 +1,7 @@
- # TSOS
- O Seu ERP para Assistências Técnicas
 
- <p />
- <p />
- 
+![version](https://img.shields.io/badge/version-3.1-blue.svg?longCache=true&style=flat-square)
+![license](https://img.shields.io/github/license/tecsecret/tsos)
+![issues](https://img.shields.io/github/issues/tecsecret/tsos?style=flat-squaree)
  
  
  #__Informações Úteis__#
