@@ -558,17 +558,17 @@
     },
     {
         "name": "doctrine/persistence",
-        "version": "1.3.6",
-        "version_normalized": "1.3.6.0",
+        "version": "1.3.7",
+        "version_normalized": "1.3.7.0",
         "source": {
             "type": "git",
             "url": "https://github.com/doctrine/persistence.git",
-            "reference": "5dd3ac5eebef2d0b074daa4440bb18f93132dee4"
+            "reference": "0af483f91bada1c9ded6c2cfd26ab7d5ab2094e0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/persistence/zipball/5dd3ac5eebef2d0b074daa4440bb18f93132dee4",
-            "reference": "5dd3ac5eebef2d0b074daa4440bb18f93132dee4",
+            "url": "https://api.github.com/repos/doctrine/persistence/zipball/0af483f91bada1c9ded6c2cfd26ab7d5ab2094e0",
+            "reference": "0af483f91bada1c9ded6c2cfd26ab7d5ab2094e0",
             "shasum": ""
         },
         "require": {
@@ -576,7 +576,7 @@
             "doctrine/cache": "^1.0",
             "doctrine/collections": "^1.0",
             "doctrine/event-manager": "^1.0",
-            "doctrine/reflection": "^1.1",
+            "doctrine/reflection": "^1.2",
             "php": "^7.1"
         },
         "conflict": {
@@ -587,7 +587,7 @@
             "phpstan/phpstan": "^0.11",
             "phpunit/phpunit": "^7.0"
         },
-        "time": "2020-01-16T22:06:23+00:00",
+        "time": "2020-03-21T15:13:52+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -643,17 +643,17 @@
     },
     {
         "name": "doctrine/reflection",
-        "version": "v1.1.0",
-        "version_normalized": "1.1.0.0",
+        "version": "1.2.0",
+        "version_normalized": "1.2.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/doctrine/reflection.git",
-            "reference": "bc420ead87fdfe08c03ecc3549db603a45b06d4c"
+            "reference": "b699ecc7f2784d1e49924fd9858cf1078db6b0e2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/reflection/zipball/bc420ead87fdfe08c03ecc3549db603a45b06d4c",
-            "reference": "bc420ead87fdfe08c03ecc3549db603a45b06d4c",
+            "url": "https://api.github.com/repos/doctrine/reflection/zipball/b699ecc7f2784d1e49924fd9858cf1078db6b0e2",
+            "reference": "b699ecc7f2784d1e49924fd9858cf1078db6b0e2",
             "shasum": ""
         },
         "require": {
@@ -671,11 +671,11 @@
             "phpstan/phpstan-phpunit": "^0.11.0",
             "phpunit/phpunit": "^7.0"
         },
-        "time": "2020-01-08T19:53:19+00:00",
+        "time": "2020-03-21T11:34:59+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.0.x-dev"
+                "dev-master": "1.2.x-dev"
             }
         },
         "installation-source": "dist",
@@ -775,17 +775,17 @@
     },
     {
         "name": "mercadopago/dx-php",
-        "version": "1.8.0",
-        "version_normalized": "1.8.0.0",
+        "version": "1.8.1",
+        "version_normalized": "1.8.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/mercadopago/dx-php.git",
-            "reference": "0986581bba62e24491febea37f0f5c000fb03ced"
+            "reference": "cb98165fdd4806d0b21a9ef1194b77f5abca31dc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/mercadopago/dx-php/zipball/0986581bba62e24491febea37f0f5c000fb03ced",
-            "reference": "0986581bba62e24491febea37f0f5c000fb03ced",
+            "url": "https://api.github.com/repos/mercadopago/dx-php/zipball/cb98165fdd4806d0b21a9ef1194b77f5abca31dc",
+            "reference": "cb98165fdd4806d0b21a9ef1194b77f5abca31dc",
             "shasum": ""
         },
         "require": {
@@ -802,7 +802,7 @@
             "symfony/yaml": "~2.5",
             "vlucas/phpdotenv": "^2.5"
         },
-        "time": "2020-01-21T16:13:16+00:00",
+        "time": "2020-03-25T16:57:37+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1055,23 +1055,23 @@
     },
     {
         "name": "psr/log",
-        "version": "1.1.2",
-        "version_normalized": "1.1.2.0",
+        "version": "1.1.3",
+        "version_normalized": "1.1.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/php-fig/log.git",
-            "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801"
+            "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/php-fig/log/zipball/446d54b4cb6bf489fc9d75f55843658e6f25d801",
-            "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801",
+            "url": "https://api.github.com/repos/php-fig/log/zipball/0f73288fd15629204f9d42b7055f72dacbe811fc",
+            "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2019-11-01T11:05:21+00:00",
+        "time": "2020-03-23T09:12:05+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1104,17 +1104,17 @@
     },
     {
         "name": "setasign/fpdi",
-        "version": "v2.3.1",
-        "version_normalized": "2.3.1.0",
+        "version": "v2.3.2",
+        "version_normalized": "2.3.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/Setasign/FPDI.git",
-            "reference": "f58e64e51f61922d4c3ba4c6c91366ac520cb442"
+            "reference": "527761458f504882ab844f15754523825647f291"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Setasign/FPDI/zipball/f58e64e51f61922d4c3ba4c6c91366ac520cb442",
-            "reference": "f58e64e51f61922d4c3ba4c6c91366ac520cb442",
+            "url": "https://api.github.com/repos/Setasign/FPDI/zipball/527761458f504882ab844f15754523825647f291",
+            "reference": "527761458f504882ab844f15754523825647f291",
             "shasum": ""
         },
         "require": {
@@ -1131,12 +1131,9 @@
             "tecnickcom/tcpdf": "~6.2"
         },
         "suggest": {
-            "setasign/fpdf": "FPDI will extend this class but as it is also possible to use TCPDF or tFPDF as an alternative. There's no fixed dependency configured.",
-            "setasign/fpdi-fpdf": "Use this package to automatically evaluate dependencies to FPDF.",
-            "setasign/fpdi-tcpdf": "Use this package to automatically evaluate dependencies to TCPDF.",
-            "setasign/fpdi-tfpdf": "Use this package to automatically evaluate dependencies to tFPDF."
+            "setasign/fpdf": "FPDI will extend this class but as it is also possible to use TCPDF or tFPDF as an alternative. There's no fixed dependency configured."
         },
-        "time": "2020-03-10T15:28:15+00:00",
+        "time": "2020-03-23T15:53:59+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1166,12 +1163,6 @@
             "fpdf",
             "fpdi",
             "pdf"
-        ],
-        "funding": [
-            {
-                "url": "https://tidelift.com/funding/github/packagist/setasign/fpdi",
-                "type": "tidelift"
-            }
         ]
     }
 ]
