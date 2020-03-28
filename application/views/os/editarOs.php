@@ -60,26 +60,26 @@
                                             <label for="status">Status<span class="required">*</span></label>
                                             <select class="span12" name="status" id="status" value="">
                                                 <option <?php if ($result->status == 'Orçamento') {
-                                                            echo 'selected';
-                                                        } ?> value="Orçamento">Orçamento</option>
+    echo 'selected';
+} ?> value="Orçamento">Orçamento</option>
                                                 <option <?php if ($result->status == 'Aberto') {
-                                                            echo 'selected';
-                                                        } ?> value="Aberto">Aberto</option>
+    echo 'selected';
+} ?> value="Aberto">Aberto</option>
                                                 <option <?php if ($result->status == 'Faturado') {
-                                                            echo 'selected';
-                                                        } ?> value="Faturado">Faturado</option>
+    echo 'selected';
+} ?> value="Faturado">Faturado</option>
                                                 <option <?php if ($result->status == 'Em Andamento') {
-                                                            echo 'selected';
-                                                        } ?> value="Em Andamento">Em Andamento</option>
+    echo 'selected';
+} ?> value="Em Andamento">Em Andamento</option>
                                                 <option <?php if ($result->status == 'Finalizado') {
-                                                            echo 'selected';
-                                                        } ?> value="Finalizado">Finalizado</option>
+    echo 'selected';
+} ?> value="Finalizado">Finalizado</option>
                                                 <option <?php if ($result->status == 'Cancelado') {
-                                                            echo 'selected';
-                                                        } ?> value="Cancelado">Cancelado</option>
+    echo 'selected';
+} ?> value="Cancelado">Cancelado</option>
                                                 <option <?php if ($result->status == 'Aguardando Peças') {
-                                                            echo 'selected';
-                                                        } ?> value="Aguardando Peças">Aguardando Peças</option>
+    echo 'selected';
+} ?> value="Aguardando Peças">Aguardando Peças</option>
                                             </select>
                                         </div>
                                         <div class="span3">
@@ -139,7 +139,7 @@
                                                 echo '<a title="Enviar Por WhatsApp" class="btn btn-success" id="enviarWhatsApp" target="_blank" href="https://web.whatsapp.com/send?phone=55' . $zapnumber . '&text=Prezado(a)%20*' . $result->nomeCliente . '*.%0d%0a%0d%0aSua%20*O.S%20' . $result->idOs . '*%20referente%20ao%20equipamento%20*' . strip_tags($result->descricaoProduto) . '*%20foi%20atualizada%20para%20*' . $result->status . '*.%0d%0aFavor%20entrar%20em%20contato%20para%20saber%20mais%20detalhes.%0d%0a%0d%0aAtenciosamente,%20_' . $emitente[0]->nome . '%20' . $emitente[0]->telefone . '_"><i class="fab fa-whatsapp"></i> WhatsApp</a>';
                                             } ?>
                                             <?php if ($result->garantias_id) { ?> <a target="_blank" title="Imprimir Termo de Garantia" class="btn btn-inverse" href="<?php echo site_url() ?>/garantias/imprimir/<?php echo $result->garantias_id; ?>"><i class="fas fa-text-width"></i> Imprimir Termo de Garantia</a> <?php  } ?>
-                                            <a href="<?php echo base_url() ?>/os" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                                            <a href="<?php echo base_url() ?>os" class="btn"><i class="fas fa-backward"></i> Voltar</a>
                                         </div>
                                     </div>
                                 </form>
@@ -148,7 +148,7 @@
                         <!--Produtos-->
                         <div class="tab-pane" id="tab2">
                             <div class="span12 well" style="padding: 1%; margin-left: 0">
-                                <form id="formProdutos" action="<?php echo base_url() ?>os/adicionarProduto" method="post">
+                                <form id="formProdutos" action="<?php echo base_url() ?>s/adicionarProduto" method="post">
                                     <div class="span6">
                                         <input type="hidden" name="idProduto" id="idProduto" />
                                         <input type="hidden" name="idOsProduto" id="idOsProduto" value="<?php echo $result->idOs ?>" />
@@ -645,9 +645,9 @@
                 var quantidade = parseInt($("#quantidade").val());
                 var estoque = parseInt($("#estoque").val());
                 
-                <?php if(!$configuration['control_estoque']){ 
-                    echo 'estoque = 1000000';
-                }; ?>
+                <?php if (!$configuration['control_estoque']) {
+                                                echo 'estoque = 1000000';
+                                            }; ?>
 
                 if (estoque < quantidade) {
                     Swal.fire({

@@ -50,7 +50,7 @@
                                             } ?>
                                             <button class="btn btn-primary" id="btnContinuar"><i class="fas fa-sync-alt"></i> Atualizar</button>
                                             <a href="<?php echo base_url() ?>vendas/visualizar/<?php echo $result->idVendas; ?>" class="btn btn-inverse"><i class="fas fa-eye"></i> Visualizar Venda</a>
-                                            <a href="<?php echo base_url() ?>/vendas" class="btn"><i class="fas fa-backward"></i> Voltar</a>
+                                            <a href="<?php echo base_url() ?>vendas" class="btn"><i class="fas fa-backward"></i> Voltar</a>
                                         </div>
                                     </div>
                                 </form>
@@ -326,9 +326,9 @@
                 var quantidade = parseInt($("#quantidade").val());
                 var estoque = parseInt($("#estoque").val());
 
-                <?php if(!$configuration['control_estoque']){ 
-                    echo 'estoque = 1000000';
-                }; ?>
+                <?php if (!$configuration['control_estoque']) {
+                                                echo 'estoque = 1000000';
+                                            }; ?>
                 
                 if (estoque < quantidade) {
                     Swal.fire({

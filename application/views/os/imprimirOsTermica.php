@@ -4,7 +4,7 @@ $totalProdutos = 0; ?>
 <html lang="pt-br">
 
 <head>
-    <title><?= $configuration['app_name'] ?: 'TSOS' ?></title>
+    <title>TSOS</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" />
@@ -89,7 +89,6 @@ $totalProdutos = 0; ?>
                                     <?php
 
                                         foreach ($produtos as $p) {
-
                                             $totalProdutos = $totalProdutos + $p->subTotal;
                                             echo '<tr>';
                                             echo '<td>' . $p->quantidade . '</td>';

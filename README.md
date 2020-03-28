@@ -5,7 +5,7 @@
  
  
  #__Informações Úteis__#
-  * Documentação e procedimentos: ___[Confira a Wiki](https://github.com/TecSecret/TSDC-Assistencia/wiki)___
+  * Procedimentos de instalação e atualização: ___[Confira a Wiki](https://github.com/TecSecret/TSDC-Assistencia/wiki)___
  * Reportar erros e solicitar novas funcionalidades: __[Issues](https://github.com/TecSecret/TSDC-Assistencia/issues)__<br />
  __Importante__: _Ao solicitar nova funcionalidade ou reportar erros, por favor informe o máximo de informações possíveis para nossa equipe analizar e poder retornar o mais rápido possível.<br />
 +Caso a dúvida ou sugestão não esteja apresentada nos Issues abra uma nova solicitação, pois assim poderemos debater melhor sobre o assunto, em vez de usar um tópico já existente para um novo assunto.<p />
@@ -17,8 +17,10 @@
  #__Suporte e Atendimento__#
 * O suporte será prestado via __[Issues](https://github.com/TecSecret/TSDC-Assistencia/issues)__.<br />
 * Para atendimento disponibilizamos um grupo do __[Telegram](https://t.me/sistematsos)__.<br />
+* Base de conhecimento: __[Acesse aqui](https://central.tecsecret.com.br/knowledgebase/14/TSOS)__<br />
 
- #__Mantenedores do Projeto__#
+
+ #__Mantenedores do Projeto__# 
  * _[Grupo TecSecret](tecsecret.com.br)_ com o responsável técnico (Nelsir Luterek);<br />
 
  
@@ -42,4 +44,5 @@
  
  O sistema é desenvolvido com o framework [CodeIgniter](https://codeigniter.com/)<br/>
  Utliza as bilbliotecas [Bootstrap](https://github.com/twbs/bootstrap), [jquery](https://jquery.com)<br/>
- PHP 7.x e MySQL 5.6.x
+ PHP 7.x e MySQL 5.6.x<br/>
+ [whoops](https://github.com/filp/whoops)

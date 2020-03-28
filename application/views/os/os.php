@@ -66,7 +66,7 @@
                 <tbody>
                     <?php
 
-                        if(!$results){
+                        if (!$results) {
                             echo '<tr>
                                     <td colspan="9">Nenhuma OS Cadastrada</td>
                                   </tr>';
@@ -173,7 +173,7 @@
         $(document).on('click', '#excluir-notificacao', function(event) {
             event.preventDefault();
             $.ajax({
-                    url: '<?php echo site_url() ?>/os/excluir_notificacao',
+                    url: '<?php echo site_url() ?>os/excluir_notificacao',
                     type: 'GET',
                     dataType: 'json',
                 })
