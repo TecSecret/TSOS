@@ -107,7 +107,7 @@
                             $vencGarantia = '';
 
                             if ($r->garantia && is_numeric($r->garantia)) {
-                                $vencGarantia = dateInterval($dataFinal, $r->garantia);
+                                $vencGarantia = dateInterval($r->dataFinal, $r->garantia);
                             }
 
                             echo '<tr>';
