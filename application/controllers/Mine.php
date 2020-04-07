@@ -52,7 +52,7 @@ class Mine extends CI_Controller
                     $json = ['result' => true];
                     echo json_encode($json);
                 } else {
-                    redirect(site_url() . '/mine');
+                    redirect(site_url() . 'mine');
                 }
             } else {
                 if ($ajax == true) {
@@ -60,7 +60,7 @@ class Mine extends CI_Controller
                     echo json_encode($json);
                 } else {
                     $this->session->set_flashdata('error', 'Os dados de acesso estão incorretos.');
-                    redirect(site_url() . '/mine');
+                    redirect(site_url() . 'mine');
                 }
             }
         }

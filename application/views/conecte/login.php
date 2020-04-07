@@ -35,7 +35,7 @@
 
 <body>
     <div id="loginbox">
-        <form class="form-vertical" id="formLogin" method="post" action="<?php echo site_url() ?>/mine/login">
+        <form class="form-vertical" id="formLogin" method="post" action="<?php echo site_url() ?>mine/login">
             <?php if ($this->session->flashdata('error') != null) { ?>
                 <div class="alert alert-danger">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -67,7 +67,6 @@
             </div>
             <div class="form-actions" style="text-align: center">
                 <button class="btn btn-info btn-large" /> Acessar</button>
-                <a href="<?= site_url('mine/cadastrar') ?>" class="btn btn-success btn-large">Cadastrar-me</a>
             </div>
         </form>
 
