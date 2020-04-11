@@ -370,6 +370,7 @@ class Tsos extends MY_Controller
 
         if ($this->migration->current()) {
             $this->session->set_flashdata('success', 'O banco de dados já está atualizado!');
+
             return redirect(site_url('tsos/configurar'));
         }
 
@@ -377,6 +378,32 @@ class Tsos extends MY_Controller
             $this->session->set_flashdata('error', $this->migration->error_string());
         } else {
             $this->session->set_flashdata('success', 'Banco de dados atualizado com sucesso!');
+        }
+
+        return redirect(site_url('tsos/configurar'));
+    }
+
+    public function atualizarTsos()
+    {
+        if (!$this->permission->checkPermission($this->session->userdata('permissao'), 'cSistema')) {
+            $this->session->set_flashdata('error', 'Você não tem permissão para configurar o sistema');
+            redirect(base_url());
+        }
+
+        $this->load->library('github_updater');
+
+        if (!$this->github_updater->has_update()) {
+            $this->session->set_flashdata('success', 'Seu tsos já está atualizado!');
+
+            return redirect(site_url('tsos/configurar'));
+        }
+
+        $success = $this->github_updater->update();
+
+        if ($success) {
+            $this->session->set_flashdata('success', 'TSOS atualizado com sucesso!');
+        } else {
+            $this->session->set_flashdata('error', 'Erro ao atualizar TSOS!');
         }
 
         return redirect(site_url('tsos/configurar'));

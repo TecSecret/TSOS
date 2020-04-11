@@ -67,6 +67,7 @@
                             <div class="span6">
                                 <button type="submit" class="btn btn-primary"><i class="fas fa-sync-alt"></i> Salvar Configurações</button>
                                 <button id="update-database" type="button" class="btn btn-warning"><i class="fas fa-sync-alt"></i> Atualizar Banco de Dados</button>
+                                <button id="update-tsos" type="button" class="btn btn-danger"><i class="fas fa-sync-alt"></i> Atualizar TSOS</button>
                             </div>
                         </div>
                     </div>
@@ -81,5 +82,11 @@
         if (confirm('Confirma a atualização do banco de dados?')) {
             window.location = "<?= site_url('tsos/atualizarBanco') ?>"
         }
-    })
+    });
+
+    $('#update-tsos').click(function() {
+        if (confirm('Confirma a atualização do TSOS?')) {
+            window.location = "<?= site_url('tsos/atualizarTsos') ?>"
+        }
+    });
 </script>
