@@ -36,7 +36,7 @@ $config['current_commit'] = 'b2cbd57a989f0fb4d770a5f6cbb6ceb0cb72db4e';
 * and any other path with the term 'admin' in it.
 */
 $config['ignored_files'] = [
-    'application/config',
+    'index',
     'application/database',
     'application/email',
 ];
