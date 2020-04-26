@@ -57,6 +57,16 @@ final class IncrementStyleFixer extends AbstractFixer implements ConfigurationDe
 
     /**
      * {@inheritdoc}
+     *
+     * Must run after StandardizeIncrementFixer.
+     */
+    public function getPriority()
+    {
+        return 0;
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function isCandidate(Tokens $tokens)
     {
@@ -99,13 +109,13 @@ final class IncrementStyleFixer extends AbstractFixer implements ConfigurationDe
                 $startIndex = $this->findStart($tokens, $index);
 
                 $prevToken = $tokens[$tokens->getPrevMeaningfulToken($startIndex)];
-                if ($prevToken->equalsAny([';', '{', '}', [T_OPEN_TAG]])) {
+                if ($prevToken->equalsAny([';', '{', '}', [T_OPEN_TAG], ')'])) {
                     $tokens->clearAt($index);
                     $tokens->insertAt($startIndex, clone $token);
                 }
             } elseif (self::STYLE_POST === $this->configuration['style'] && $tokensAnalyzer->isUnaryPredecessorOperator($index)) {
                 $prevToken = $tokens[$tokens->getPrevMeaningfulToken($index)];
-                if (!$prevToken->equalsAny([';', '{', '}', [T_OPEN_TAG]])) {
+                if (!$prevToken->equalsAny([';', '{', '}', [T_OPEN_TAG], ')'])) {
                     continue;
                 }
 
@@ -135,6 +145,7 @@ final class IncrementStyleFixer extends AbstractFixer implements ConfigurationDe
             '[',
             [CT::T_DYNAMIC_PROP_BRACE_OPEN],
             [CT::T_DYNAMIC_VAR_BRACE_OPEN],
+            [CT::T_ARRAY_INDEX_CURLY_BRACE_OPEN],
             [T_NS_SEPARATOR],
             [T_STATIC],
             [T_STRING],

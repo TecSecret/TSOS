@@ -35,7 +35,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 final class Application extends BaseApplication
 {
-    const VERSION = '2.16.1';
+    const VERSION = '2.16.3';
     const VERSION_CODENAME = 'Yellow Bird';
 
     /**
@@ -64,6 +64,14 @@ final class Application extends BaseApplication
     }
 
     /**
+     * @return int
+     */
+    public static function getMajorVersion()
+    {
+        return (int) explode('.', self::VERSION)[0];
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function doRun(InputInterface $input, OutputInterface $output)
@@ -89,11 +97,11 @@ final class Application extends BaseApplication
      */
     public function getLongVersion()
     {
-        $version = parent::getLongVersion();
-        if (self::VERSION_CODENAME) {
-            $version .= ' <info>'.self::VERSION_CODENAME.'</info>';
-        }
-        $version .= ' by <comment>Fabien Potencier</comment> and <comment>Dariusz Ruminski</comment>';
+        $version = sprintf(
+            '%s <info>%s</info> by <comment>Fabien Potencier</comment> and <comment>Dariusz Ruminski</comment>',
+            parent::getLongVersion(),
+            self::VERSION_CODENAME
+        );
 
         $commit = '@git-commit@';
 

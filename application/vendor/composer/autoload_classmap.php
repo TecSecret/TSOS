@@ -61,6 +61,7 @@ return array(
     'PhpCsFixer\\Tests\\Test\\IntegrationCaseFactory' => $vendorDir . '/friendsofphp/php-cs-fixer/tests/Test/IntegrationCaseFactory.php',
     'PhpCsFixer\\Tests\\Test\\IntegrationCaseFactoryInterface' => $vendorDir . '/friendsofphp/php-cs-fixer/tests/Test/IntegrationCaseFactoryInterface.php',
     'PhpCsFixer\\Tests\\Test\\InternalIntegrationCaseFactory' => $vendorDir . '/friendsofphp/php-cs-fixer/tests/Test/InternalIntegrationCaseFactory.php',
+    'PhpCsFixer\\Tests\\Test\\IsIdenticalConstraint' => $vendorDir . '/friendsofphp/php-cs-fixer/tests/Test/IsIdenticalConstraint.php',
     'SessionUpdateTimestampHandlerInterface' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/SessionUpdateTimestampHandlerInterface.php',
     'TypeError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/TypeError.php',
 );

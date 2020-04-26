@@ -38,7 +38,7 @@ final class PhpdocToParamTypeFixer extends AbstractFixer implements Configuratio
     const MINIMUM_PHP_VERSION = 70000;
 
     /**
-     * @var array<int, string>
+     * @var array{int, string}[]
      */
     private $blacklistFuncNames = [
         [T_STRING, '__clone'],
@@ -96,10 +96,12 @@ function my_foo($bar)
 
     /**
      * {@inheritdoc}
+     *
+     * Must run before NoSuperfluousPhpdocTagsFixer, PhpdocAlignFixer.
+     * Must run after CommentToPhpdocFixer, PhpdocIndentFixer, PhpdocScalarFixer, PhpdocToCommentFixer, PhpdocTypesFixer.
      */
     public function getPriority()
     {
-        // should be run before NoSuperfluousPhpdocTagsFixer
         return 8;
     }
 

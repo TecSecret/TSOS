@@ -32,7 +32,7 @@ use PhpCsFixer\Tokenizer\Tokens;
 final class PhpdocToReturnTypeFixer extends AbstractFixer implements ConfigurationDefinitionFixerInterface
 {
     /**
-     * @var array<array<int, string>>
+     * @var array<int, array<int, int|string>>
      */
     private $blacklistFuncNames = [
         [T_STRING, '__construct'],
@@ -130,11 +130,12 @@ function my_foo()
 
     /**
      * {@inheritdoc}
+     *
+     * Must run before FullyQualifiedStrictTypesFixer, NoSuperfluousPhpdocTagsFixer, PhpdocAlignFixer, ReturnTypeDeclarationFixer.
+     * Must run after CommentToPhpdocFixer, PhpdocIndentFixer, PhpdocScalarFixer, PhpdocScalarFixer, PhpdocToCommentFixer, PhpdocTypesFixer, PhpdocTypesFixer.
      */
     public function getPriority()
     {
-        // should be run after PhpdocScalarFixer and PhpdocTypes.
-        // should be run before ReturnTypeDeclarationFixer, FullyQualifiedStrictTypesFixer, NoSuperfluousPhpdocTagsFixer.
         return 13;
     }
 

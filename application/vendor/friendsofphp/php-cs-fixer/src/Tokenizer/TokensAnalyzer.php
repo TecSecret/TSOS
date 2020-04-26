@@ -331,7 +331,7 @@ final class TokensAnalyzer
             $prevIndex = $this->tokens->getPrevMeaningfulToken($prevIndex);
         }
 
-        if ($this->tokens[$prevIndex]->isGivenKind([CT::T_CONST_IMPORT, T_EXTENDS, CT::T_FUNCTION_IMPORT, T_IMPLEMENTS, T_INSTANCEOF, T_INSTEADOF, T_NAMESPACE, T_NEW, CT::T_NULLABLE_TYPE, T_USE, CT::T_USE_TRAIT])) {
+        if ($this->tokens[$prevIndex]->isGivenKind([CT::T_CONST_IMPORT, T_EXTENDS, CT::T_FUNCTION_IMPORT, T_IMPLEMENTS, T_INSTANCEOF, T_INSTEADOF, T_NAMESPACE, T_NEW, CT::T_NULLABLE_TYPE, CT::T_TYPE_COLON, T_USE, CT::T_USE_TRAIT])) {
             return false;
         }
 
@@ -353,7 +353,7 @@ final class TokensAnalyzer
                 $checkIndex = $this->tokens->getPrevMeaningfulToken($checkIndex);
             }
 
-            if ($this->tokens[$checkIndex]->isGivenKind([T_EXTENDS, CT::T_GROUP_IMPORT_BRACE_OPEN, T_IMPLEMENTS, CT::T_USE_TRAIT])) {
+            if ($this->tokens[$checkIndex]->isGivenKind([T_EXTENDS, CT::T_GROUP_IMPORT_BRACE_OPEN, T_IMPLEMENTS, T_USE, CT::T_USE_TRAIT])) {
                 return false;
             }
         }
@@ -388,6 +388,7 @@ final class TokensAnalyzer
             ']',
             [T_STRING],
             [T_VARIABLE],
+            [CT::T_ARRAY_INDEX_CURLY_BRACE_CLOSE],
             [CT::T_DYNAMIC_PROP_BRACE_CLOSE],
             [CT::T_DYNAMIC_VAR_BRACE_CLOSE],
         ];
@@ -431,6 +432,7 @@ final class TokensAnalyzer
                 '"',
                 '`',
                 [CT::T_ARRAY_SQUARE_BRACE_CLOSE],
+                [CT::T_ARRAY_INDEX_CURLY_BRACE_CLOSE],
                 [CT::T_DYNAMIC_PROP_BRACE_CLOSE],
                 [CT::T_DYNAMIC_VAR_BRACE_CLOSE],
                 [T_CLASS_C],

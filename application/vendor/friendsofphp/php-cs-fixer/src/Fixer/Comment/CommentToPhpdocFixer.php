@@ -53,6 +53,8 @@ final class CommentToPhpdocFixer extends AbstractFixer implements ConfigurationD
 
     /**
      * {@inheritdoc}
+     *
+     * Must run before GeneralPhpdocAnnotationRemoveFixer, NoBlankLinesAfterPhpdocFixer, NoEmptyPhpdocFixer, NoSuperfluousPhpdocTagsFixer, PhpdocAddMissingParamAnnotationFixer, PhpdocAlignFixer, PhpdocAlignFixer, PhpdocAnnotationWithoutDotFixer, PhpdocInlineTagFixer, PhpdocLineSpanFixer, PhpdocNoAccessFixer, PhpdocNoAliasTagFixer, PhpdocNoEmptyReturnFixer, PhpdocNoPackageFixer, PhpdocNoUselessInheritdocFixer, PhpdocOrderFixer, PhpdocReturnSelfReferenceFixer, PhpdocSeparationFixer, PhpdocSingleLineVarSpacingFixer, PhpdocSummaryFixer, PhpdocToCommentFixer, PhpdocToParamTypeFixer, PhpdocToReturnTypeFixer, PhpdocTrimConsecutiveBlankLineSeparationFixer, PhpdocTrimFixer, PhpdocTypesOrderFixer, PhpdocVarAnnotationCorrectOrderFixer, PhpdocVarWithoutNameFixer.
      */
     public function getPriority()
     {
@@ -69,7 +71,7 @@ final class CommentToPhpdocFixer extends AbstractFixer implements ConfigurationD
             'Comments with annotation should be docblock when used on structural elements.',
             [new CodeSample("<?php /* header */ \$x = true; /* @var bool \$isFoo */ \$isFoo = true;\n")],
             null,
-            'Risky as new docblocks might mean more, e.g. a Doctrine entity might have a new column in database'
+            'Risky as new docblocks might mean more, e.g. a Doctrine entity might have a new column in database.'
         );
     }
 

@@ -682,7 +682,7 @@ final class ConfigurationResolver
         if ('{' === $rules[0]) {
             $rules = json_decode($rules, true);
             if (JSON_ERROR_NONE !== json_last_error()) {
-                throw new InvalidConfigurationException(sprintf('Invalid JSON rules input: %s.', json_last_error_msg()));
+                throw new InvalidConfigurationException(sprintf('Invalid JSON rules input: "%s".', json_last_error_msg()));
             }
 
             return $rules;
@@ -762,7 +762,7 @@ final class ConfigurationResolver
             if (isset($rules[$fixerName]) && $fixer instanceof DeprecatedFixerInterface) {
                 $successors = $fixer->getSuccessorsNames();
                 $messageEnd = [] === $successors
-                    ? sprintf(' and will be removed in version %d.0.', (int) Application::VERSION + 1)
+                    ? sprintf(' and will be removed in version %d.0.', Application::getMajorVersion())
                     : sprintf('. Use %s instead.', str_replace('`', '"', Utils::naturalLanguageJoinWithBackticks($successors)));
 
                 $message = "Rule \"{$fixerName}\" is deprecated{$messageEnd}";
@@ -847,7 +847,7 @@ final class ConfigurationResolver
             }
 
             return new \CallbackFilterIterator(
-                $nestedFinder,
+                new \IteratorIterator($nestedFinder),
                 static function (\SplFileInfo $current) use ($pathsByType) {
                     $currentRealPath = $current->getRealPath();
 

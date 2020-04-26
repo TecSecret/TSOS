@@ -41,7 +41,7 @@
                                     <?php echo form_hidden('idOs', $result->idOs) ?>
                                     <div class="span12" style="padding: 1%; margin-left: 0">
                                         <h3>N° OS:
-                                            <?php echo $result->idOs ?>
+                                            <?php echo $result->idOs; ?>
                                         </h3>
                                         <div class="span6" style="margin-left: 0">
                                             <label for="cliente">Cliente<span class="required">*</span></label>
@@ -94,7 +94,6 @@
                                             <label for="garantia">Garantia (dias)</label>
                                             <input id="garantia" type="number" min="0" max="9999" class="span12" name="garantia" value="<?php echo $result->garantia ?>" />
                                             <?php echo form_error('garantia'); ?>
-
                                             <label for="termoGarantia">Termo Garantia</label>
                                             <input id="termoGarantia" class="span12" type="text" name="termoGarantia" value="<?php echo $result->refGarantia ?>" />
                                             <input id="garantias_id" class="span12" type="hidden" name="garantias_id" value="<?php echo $result->garantias_id ?>" />
@@ -149,10 +148,10 @@
                         <!--Produtos-->
                         <div class="tab-pane" id="tab2">
                             <div class="span12 well" style="padding: 1%; margin-left: 0">
-                                <form id="formProdutos" action="<?php echo base_url() ?>s/adicionarProduto" method="post">
+                                <form id="formProdutos" action="<?php echo base_url() ?>os/adicionarProduto" method="post">
                                     <div class="span6">
                                         <input type="hidden" name="idProduto" id="idProduto" />
-                                        <input type="hidden" name="idOsProduto" id="idOsProduto" value="<?php echo $result->idOs ?>" />
+                                        <input type="hidden" name="idOsProduto" id="idOsProduto" value="<?php echo $result->idOs; ?>" />
                                         <input type="hidden" name="estoque" id="estoque" value="" />
                                         <label for="">Produto</label>
                                         <input type="text" class="span12" name="produto" id="produto" placeholder="Digite o nome do produto" />
@@ -211,7 +210,7 @@
                                     <form id="formServicos" action="<?php echo base_url() ?>os/adicionarServico" method="post">
                                         <div class="span6">
                                             <input type="hidden" name="idServico" id="idServico" />
-                                            <input type="hidden" name="idOsServico" id="idOsServico" value="<?php echo $result->idOs ?>" />
+                                            <input type="hidden" name="idOsServico" id="idOsServico" value="<?php echo $result->idOs; ?>" />
                                             <label for="">Serviço</label>
                                             <input type="text" class="span12" name="servico" id="servico" placeholder="Digite o nome do serviço" />
                                         </div>
@@ -271,7 +270,7 @@
                                 <div class="span12 well" style="padding: 1%; margin-left: 0" id="form-anexos">
                                     <form id="formAnexos" enctype="multipart/form-data" action="javascript:;" accept-charset="utf-8" s method="post">
                                         <div class="span10">
-                                            <input type="hidden" name="idOsServico" id="idOsServico" value="<?php echo $result->idOs ?>" />
+                                            <input type="hidden" name="idOsServico" id="idOsServico" value="<?php echo $result->idOs; ?>" />
                                             <label for="">Anexo</label>
                                             <input type="file" class="span12" name="userfile[]" multiple="multiple" size="20" />
                                         </div>
@@ -645,7 +644,7 @@
             submitHandler: function(form) {
                 var quantidade = parseInt($("#quantidade").val());
                 var estoque = parseInt($("#estoque").val());
-                
+
                 <?php if (!$configuration['control_estoque']) {
                                                 echo 'estoque = 1000000';
                                             }; ?>
@@ -799,12 +798,14 @@
             var idProduto = $(this).attr('idAcao');
             var quantidade = $(this).attr('quantAcao');
             var produto = $(this).attr('prodAcao');
+            var idOS = "<?php echo $result->idOs; ?>"
+
             if ((idProduto % 1) == 0) {
                 $("#divProdutos").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
                 $.ajax({
                     type: "POST",
                     url: "<?php echo base_url(); ?>os/excluirProduto",
-                    data: "idProduto=" + idProduto + "&quantidade=" + quantidade + "&produto=" + produto,
+                    data: "idProduto=" + idProduto + "&quantidade=" + quantidade + "&produto=" + produto + "&idOs=" + idOS,
                     dataType: 'json',
                     success: function(data) {
                         if (data.result == true) {
@@ -826,12 +827,14 @@
 
         $(document).on('click', '.servico', function(event) {
             var idServico = $(this).attr('idAcao');
+            var idOS = "<?php echo $result->idOs; ?>"
+
             if ((idServico % 1) == 0) {
                 $("#divServicos").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
                 $.ajax({
                     type: "POST",
                     url: "<?php echo base_url(); ?>os/excluirServico",
-                    data: "idServico=" + idServico,
+                    data: "idServico=" + idServico + "&idOs=" + idOS,
                     dataType: 'json',
                     success: function(data) {
                         if (data.result == true) {
@@ -866,6 +869,8 @@
             event.preventDefault();
 
             var link = $(this).attr('link');
+            var idOS = "<?php echo $result->idOs; ?>"
+
             $('#modal-anexo').modal('hide');
             $("#divAnexos").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
 
@@ -873,6 +878,7 @@
                 type: "POST",
                 url: link,
                 dataType: 'json',
+                data: "idOs=" + idOS,
                 success: function(data) {
                     if (data.result == true) {
                         $("#divAnexos").load("<?php echo current_url(); ?> #divAnexos");
@@ -889,12 +895,14 @@
 
         $(document).on('click', '.anotacao', function(event) {
             var idAnotacao = $(this).attr('idAcao');
+            var idOS = "<?php echo $result->idOs; ?>"
+
             if ((idAnotacao % 1) == 0) {
                 $("#divAnotacoes").html("<div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>");
                 $.ajax({
                     type: "POST",
                     url: "<?php echo base_url(); ?>os/excluirAnotacao",
-                    data: "idAnotacao=" + idAnotacao,
+                    data: "idAnotacao=" + idAnotacao + "&idOs=" + idOS,
                     dataType: 'json',
                     success: function(data) {
                         if (data.result == true) {

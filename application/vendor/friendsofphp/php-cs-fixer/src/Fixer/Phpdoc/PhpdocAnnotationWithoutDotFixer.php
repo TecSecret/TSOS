@@ -45,6 +45,17 @@ function foo ($bar) {}
 
     /**
      * {@inheritdoc}
+     *
+     * Must run before PhpdocAlignFixer, PhpdocTypesFixer, PhpdocTypesOrderFixer.
+     * Must run after CommentToPhpdocFixer, PhpdocIndentFixer, PhpdocToCommentFixer.
+     */
+    public function getPriority()
+    {
+        return 17;
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function isCandidate(Tokens $tokens)
     {

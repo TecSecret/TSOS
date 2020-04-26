@@ -71,6 +71,17 @@ final class FinalInternalClassFixer extends AbstractFixer implements Configurati
 
     /**
      * {@inheritdoc}
+     *
+     * Must run before FinalStaticAccessFixer, SelfStaticAccessorFixer.
+     * Must run after PhpUnitInternalClassFixer.
+     */
+    public function getPriority()
+    {
+        return 0;
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function isCandidate(Tokens $tokens)
     {
@@ -144,7 +155,13 @@ final class FinalInternalClassFixer extends AbstractFixer implements Configurati
             (new FixerOptionBuilder('annotation-black-list', 'Class level annotations tags that must be omitted to fix the class, even if all of the white list ones are used as well. (case insensitive)'))
                 ->setAllowedTypes(['array'])
                 ->setAllowedValues($annotationsAsserts)
-                ->setDefault(['@final', '@Entity', '@ORM\Entity'])
+                ->setDefault([
+                    '@final',
+                    '@Entity',
+                    '@ORM\Entity',
+                    '@ORM\Mapping\Entity',
+                    '@Mapping\Entity',
+                ])
                 ->setNormalizer($annotationsNormalizer)
                 ->getOption(),
             (new FixerOptionBuilder('consider-absent-docblock-as-internal-class', 'Should classes without any DocBlock be fixed to final?'))

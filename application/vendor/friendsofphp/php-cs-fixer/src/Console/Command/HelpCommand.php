@@ -12,10 +12,10 @@
 
 namespace PhpCsFixer\Console\Command;
 
+use PhpCsFixer\AbstractFixer;
 use PhpCsFixer\Console\Application;
 use PhpCsFixer\Fixer\ConfigurableFixerInterface;
 use PhpCsFixer\Fixer\ConfigurationDefinitionFixerInterface;
-use PhpCsFixer\Fixer\DefinedFixerInterface;
 use PhpCsFixer\Fixer\DeprecatedFixerInterface;
 use PhpCsFixer\Fixer\FixerInterface;
 use PhpCsFixer\FixerConfiguration\AliasedFixerOption;
@@ -71,8 +71,16 @@ NOTE: the output for the following formats are generated in accordance with XML 
 * ``junit`` follows the `JUnit xml schema from Jenkins </doc/junit-10.xsd>`_
 * ``checkstyle`` follows the common `"checkstyle" xml schema </doc/checkstyle.xsd>`_
 
+The <comment>--quiet</comment> Do not output any message.
 
 The <comment>--verbose</comment> option will show the applied rules. When using the ``txt`` format it will also display progress notifications.
+
+NOTE: if there is an error like "errors reported during linting after fixing", you can use this to be even more verbose for debugging purpose
+
+* ``--verbose=0`` or no option: normal
+* ``--verbose``, ``--verbose=1``, ``-v``: verbose
+* ``--verbose=2``, ``-vv``: very verbose
+* ``--verbose=3``, ``-vvv``: debug
 
 The <comment>--rules</comment> option limits the rules to apply to the
 project:
@@ -400,7 +408,7 @@ EOF
             ));
         }
 
-        for ($i = (int) Application::VERSION; $i > 0; --$i) {
+        for ($i = Application::getMajorVersion(); $i > 0; --$i) {
             if (1 === Preg::match('/Changelog for v('.$i.'.\d+.\d+)/', $changelog, $matches)) {
                 $version = $matches[1];
 
@@ -440,6 +448,7 @@ EOF
     {
         $help = '';
         $fixerFactory = new FixerFactory();
+        /** @var AbstractFixer[] $fixers */
         $fixers = $fixerFactory->registerBuiltInFixers()->getFixers();
 
         // sort fixers by name
@@ -471,11 +480,7 @@ EOF
         foreach ($fixers as $i => $fixer) {
             $sets = $getSetsWithRule($fixer->getName());
 
-            if ($fixer instanceof DefinedFixerInterface) {
-                $description = $fixer->getDefinition()->getSummary();
-            } else {
-                $description = '[n/a]';
-            }
+            $description = $fixer->getDefinition()->getSummary();
 
             if ($fixer instanceof DeprecatedFixerInterface) {
                 $successors = $fixer->getSuccessorsNames();
@@ -534,7 +539,7 @@ EOF
                             }
                         } else {
                             $allowed = array_map(
-                                function ($type) {
+                                static function ($type) {
                                     return '<comment>'.$type.'</comment>';
                                 },
                                 $option->getAllowedTypes()

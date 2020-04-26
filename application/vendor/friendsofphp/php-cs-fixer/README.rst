@@ -46,7 +46,7 @@ or with specified version:
 
 .. code-block:: bash
 
-    $ wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v2.16.1/php-cs-fixer.phar -O php-cs-fixer
+    $ wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v2.16.3/php-cs-fixer.phar -O php-cs-fixer
 
 or with curl:
 
@@ -166,8 +166,16 @@ NOTE: the output for the following formats are generated in accordance with XML 
 * ``junit`` follows the `JUnit xml schema from Jenkins </doc/junit-10.xsd>`_
 * ``checkstyle`` follows the common `"checkstyle" xml schema </doc/checkstyle.xsd>`_
 
+The ``--quiet`` Do not output any message.
 
 The ``--verbose`` option will show the applied rules. When using the ``txt`` format it will also display progress notifications.
+
+NOTE: if there is an error like "errors reported during linting after fixing", you can use this to be even more verbose for debugging purpose
+
+* ``--verbose=0`` or no option: normal
+* ``--verbose``, ``--verbose=1``, ``-v``: verbose
+* ``--verbose=2``, ``-vv``: very verbose
+* ``--verbose=3``, ``-vvv``: debug
 
 The ``--rules`` option limits the rules to apply to the
 project:
@@ -670,7 +678,7 @@ Choose from the list of available rules:
   - ``annotation-black-list`` (``array``): class level annotations tags that must be
     omitted to fix the class, even if all of the white list ones are used
     as well. (case insensitive); defaults to ``['@final', '@Entity',
-    '@ORM\\Entity']``
+    '@ORM\\Entity', '@ORM\\Mapping\\Entity', '@Mapping\\Entity']``
   - ``annotation-white-list`` (``array``): class level annotations tags that must be
     set in order to fix the class. (case insensitive); defaults to
     ``['@internal']``
@@ -733,8 +741,9 @@ Choose from the list of available rules:
   Configuration options:
 
   - ``functions`` (a subset of ``['get_called_class', 'get_class',
-    'php_sapi_name', 'phpversion', 'pi']``): list of function names to fix;
-    defaults to ``['get_class', 'php_sapi_name', 'phpversion', 'pi']``
+    'get_class_this', 'php_sapi_name', 'phpversion', 'pi']``): list of
+    function names to fix; defaults to ``['get_class', 'php_sapi_name',
+    'phpversion', 'pi']``
 
 * **function_typehint_space** [@Symfony, @PhpCsFixer]
 
@@ -1150,14 +1159,14 @@ Choose from the list of available rules:
 
 * **no_superfluous_phpdoc_tags** [@Symfony, @PhpCsFixer]
 
-  Removes ``@param`` and ``@return`` tags that don't provide any useful
-  information.
+  Removes ``@param``, ``@return`` and ``@var`` tags that don't provide any
+  useful information.
 
   Configuration options:
 
   - ``allow_mixed`` (``bool``): whether type ``mixed`` without description is allowed
     (``true``) or considered superfluous (``false``); defaults to ``false``
-  - ``allow_unused_params`` (``bool``): whether ``param`` annontation without actual
+  - ``allow_unused_params`` (``bool``): whether ``param`` annotation without actual
     signature is allowed (``true``) or considered superfluous (``false``);
     defaults to ``false``
   - ``remove_inheritdoc`` (``bool``): remove ``@inheritDoc`` tags; defaults to ``false``
@@ -1193,9 +1202,17 @@ Choose from the list of available rules:
   Removes unneeded curly braces that are superfluous and aren't part of a
   control structure's body.
 
-* **no_unneeded_final_method** [@Symfony, @PhpCsFixer]
+  Configuration options:
 
-  A final class must not have final methods.
+  - ``namespaces`` (``bool``): remove unneeded curly braces from bracketed
+    namespaces; defaults to ``false``
+
+* **no_unneeded_final_method** [@Symfony:risky, @PhpCsFixer:risky]
+
+  A ``final`` class must not have ``final`` methods and ``private`` methods must
+  not be ``final``.
+
+  *Risky rule: risky when child class overrides a ``private`` method.*
 
 * **no_unreachable_default_argument_value** [@PhpCsFixer:risky]
 
@@ -1703,7 +1720,8 @@ Choose from the list of available rules:
 
 * **phpdoc_var_without_name** [@Symfony, @PhpCsFixer]
 
-  ``@var`` and ``@type`` annotations should not contain the variable name.
+  ``@var`` and ``@type`` annotations of classy properties should not contain
+  the name.
 
 * **pow_to_exponentiation** [@PHP56Migration:risky, @PHP70Migration:risky, @PHP71Migration:risky]
 
@@ -1886,7 +1904,7 @@ Choose from the list of available rules:
 
   Lambdas not (indirect) referencing ``$this`` must be declared ``static``.
 
-  *Risky rule: risky when using "->bindTo" on lambdas without referencing to ``$this``.*
+  *Risky rule: risky when using ``->bindTo`` on lambdas without referencing to ``$this``.*
 
 * **strict_comparison** [@PhpCsFixer:risky]
 
@@ -1993,7 +2011,7 @@ Config file
 
 Instead of using command line options to customize the rule, you can save the
 project configuration in a ``.php_cs.dist`` file in the root directory of your project.
-The file must return an instance of `PhpCsFixer\\ConfigInterface <https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/v2.16.1/src/ConfigInterface.php>`_
+The file must return an instance of `PhpCsFixer\\ConfigInterface <https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/v2.16.3/src/ConfigInterface.php>`_
 which lets you configure the rules, the files and directories that
 need to be analyzed. You may also create ``.php_cs`` file, which is
 the local configuration that will be used instead of the project configuration. It
