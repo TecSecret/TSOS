@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title><?= $configuration['app_name'] ?: 'TSOS' ?></title>
+    <title>TSOS</title>
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,6 +21,8 @@
             <div class="span12">
 
                 <div class="widget-box">
+                    <?= $topo ?>
+
                     <div class="widget-title">
                         <h4 style="text-align: center">Relatório Financeiro</h4>
                     </div>
@@ -29,13 +31,13 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th style="font-size: 1.2em; padding: 5px;">Cliente/Fornecedor</th>
-                                    <th style="font-size: 1.2em; padding: 5px;">Tipo</th>
-                                    <th style="font-size: 1.2em; padding: 5px;">Valor</th>
-                                    <th style="font-size: 1.2em; padding: 5px;">Vencimento</th>
-                                    <th style="font-size: 1.2em; padding: 5px;">Pagamento</th>
-                                    <th style="font-size: 1.2em; padding: 5px;">Forma de Pagamento</th>
-                                    <th style="font-size: 1.2em; padding: 5px;">Situação</th>
+                                    <th style="font-size: 1.2em; padding: 5px;width: 25%;">Cliente/Fornecedor</th>
+                                    <th style="font-size: 1.2em; padding: 5px;width: 20%;">Tipo</th>
+                                    <th style="font-size: 1.2em; padding: 5px;width: 20%;">Valor</th>
+                                    <th style="font-size: 1.2em; padding: 5px;width: 20%;">Vencimento</th>
+                                    <th style="font-size: 1.2em; padding: 5px;width: 20%;">Pagamento</th>
+                                    <th style="font-size: 1.2em; padding: 5px;width: 20%;">Forma de Pagamento</th>
+                                    <th style="font-size: 1.2em; padding: 5px;width: 20%;">Situação</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,7 +61,7 @@
                                         echo '<tr>';
                                         echo '<td>' . $l->cliente_fornecedor . '</td>';
                                         echo '<td>' . $l->tipo . '</td>';
-                                        echo '<td>' . $l->valor . '</td>';
+                                        echo '<td>' . 'R$ ' . number_format($l->valor, 2, ',', '.') . '</td>';
                                         echo '<td>' . $vencimento . '</td>';
                                         echo '<td>' . $pagamento . '</td>';
                                         echo '<td>' . $l->forma_pgto . '</td>';
