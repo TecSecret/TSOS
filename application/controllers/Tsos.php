@@ -24,6 +24,7 @@ class Tsos extends MY_Controller
         $this->data['produtos'] = $this->tsos_model->getProdutosMinimo();
         $this->data['os'] = $this->tsos_model->getOsEstatisticas();
         $this->data['estatisticas_financeiro'] = $this->tsos_model->getEstatisticasFinanceiro();
+        $this->data['vendas_mes'] = $this->tsos_model->getEstatisticasVendasMes($this->input->get('year'));
         $this->data['menuPainel'] = 'Painel';
         $this->data['view'] = 'tsos/painel';
         return $this->layout();
@@ -367,12 +368,6 @@ class Tsos extends MY_Controller
         }
 
         $this->load->library('migration');
-
-        if ($this->migration->current()) {
-            $this->session->set_flashdata('success', 'O banco de dados já está atualizado!');
-
-            return redirect(site_url('tsos/configurar'));
-        }
 
         if ($this->migration->latest() === false) {
             $this->session->set_flashdata('error', $this->migration->error_string());

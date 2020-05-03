@@ -139,6 +139,7 @@ class Financeiro extends MY_Controller
         $this->data['configuration']['page_query_string'] = true;
 
         $this->pagination->initialize($this->data['configuration']);
+        $this->data['totals'] = $this->financeiro_model->getTotals($where);
 
         $this->data['results'] = $this->financeiro_model->get('lancamentos', '*', $where, $this->data['configuration']['per_page'], $this->input->get('per_page'));
 
