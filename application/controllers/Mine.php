@@ -52,7 +52,7 @@ class Mine extends CI_Controller
                     $json = ['result' => true];
                     echo json_encode($json);
                 } else {
-                    redirect(site_url() . 'mine');
+                    redirect(site_url() . '/mine');
                 }
             } else {
                 if ($ajax == true) {
@@ -60,7 +60,7 @@ class Mine extends CI_Controller
                     echo json_encode($json);
                 } else {
                     $this->session->set_flashdata('error', 'Os dados de acesso estão incorretos.');
-                    redirect(site_url() . 'mine');
+                    redirect(site_url() . '/mine');
                 }
             }
         }
@@ -447,6 +447,19 @@ class Mine extends CI_Controller
         }
         $data = '';
         $this->load->view('conecte/cadastrar', $data);
+    }
+
+    public function downloadanexo($id = null)
+    {
+        if ($id != null && is_numeric($id)) {
+            $this->db->where('idAnexos', $id);
+            $file = $this->db->get('anexos', 1)->row();
+
+            $this->load->library('zip');
+            $path = $file->path;
+            $this->zip->read_file($path . '/' . $file->anexo);
+            $this->zip->download('file' . date('d-m-Y-H.i.s') . '.zip');
+        }
     }
 }
 
